@@ -1,0 +1,46 @@
+body {
+    background-color: #2D2D37 !important;
+}
+
+#form > div {
+    margin-bottom: 25px;
+}
+
+#form > div:last-child {
+    margin-bottom: 10px;
+}
+
+.img-login {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    margin: 0 auto 0;
+}
+
+.login-panel-title{
+    color: #337AB7 !important;
+}
+
+.profile-img
+{
+    width: 96px;
+    height: 96px;
+    margin: 5px auto 25px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.credits {
+    margin-top: 100px;
+    color: #999;
+    font-size: 12px;
+}
+.credits a {
+    color: inherit;
+}
+
+a.navbar-brand {
+    padding-top: 7px;
+}
+
