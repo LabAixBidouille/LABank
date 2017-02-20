@@ -14,8 +14,6 @@
 - HMAC Factory for AngularJS
 - Security utility class
 
-#Credentials
-
 
 #To run Java unit tests
 ````bash
