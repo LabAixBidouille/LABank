@@ -1,4 +1,5 @@
-<div class="navbar navbar-default" role="navigation" *ngIf="authenticated">
+<!--
+<div class="navbar navbar-default" role="navigation">
     <div class="container">
         <div class="navbar-header">
 
@@ -16,8 +17,25 @@
 
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#/users">Users</a></li>
-                <li class="pull-right"><a href="" (click)="logout($event)">Logout</a></li>
+                <li class="pull-right" *ngIf="authenticated"><a href="" (click)="logout($event)">Logout</a></li>
             </ul>
         </div>
     </div>
+
 </div>
+-->
+
+    <div class="menu">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a href="#">Bootsnipp</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" ><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+

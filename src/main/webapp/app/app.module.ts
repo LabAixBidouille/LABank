@@ -13,6 +13,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { Header } from './header/header';
+import { Sidebar } from './sidebar/sidebar';
 
 
 import { RoutesModule } from './app.routes';
@@ -24,7 +25,7 @@ import { DashboardModule } from './dashboard/dashboard.module';
 
 @NgModule({
     imports:        [ HttpModule, RouterModule, BrowserModule, AccountModule, LoginModule, UserModule, UtilsModule, RoutesModule, DashboardModule ],
-    declarations:   [ AppComponent, Header ],
+    declarations:   [ AppComponent, Header, Sidebar ],
     bootstrap:      [ AppComponent, Header ],
     providers:      [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
