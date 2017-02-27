@@ -3,7 +3,7 @@ import {AccountEventsService} from '../account/account.events.service';
 import {LoginService} from '../login/login.service';
 
 @Component({
-    selector: 'header',
+    selector: 'headerbar',
     templateUrl: './app/header/header.html',
     providers: [LoginService],
 })

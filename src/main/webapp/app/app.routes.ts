@@ -5,6 +5,7 @@ import {Users} from './users/users';
 import {User} from './users/user';
 import {Dashboard} from './dashboard/dashboard';
 
+
 export const routes:Routes = [
     {path: '', component: Dashboard},
     {path: 'authenticate', component: Login},

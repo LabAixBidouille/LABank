@@ -25,17 +25,139 @@
 </div>
 -->
 
-    <div class="menu">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a href="#">Bootsnipp</a>
-            </div>
-            <div>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#" ><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
+<header class="main-header">
 
+    <!-- Logo -->
+    <a href="http://labaixbidouille.com/" class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>L</b>AB</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>LAB</b>Aix Bidouille</span>
+    </a>
+
+    <!-- Header Navbar -->
+    <nav class="navbar navbar-static-top" role="navigation">
+
+        <!-- Sidebar toggle button-->
+        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+            <span class="sr-only">Réduire le panneau</span>
+        </a>
+
+        <!-- Navbar Right Menu -->
+        <div class="navbar-custom-menu">
+            <ul class="nav navbar-nav">
+                <!-- Messages: style can be found in dropdown.less-->
+                <li class="dropdown messages-menu">
+                    <!-- Menu toggle button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-comments-o"></i>
+                        <span class="label label-success">4</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">Vous avez 4 nouveaux messages</li>
+                        <li>
+                            <!-- inner menu: contains the messages -->
+                            <ul class="menu">
+                                <li><!-- start message -->
+                                    <a href="#">
+                                        <div class="pull-left">
+                                            <!-- User Image -->
+                                            <img src="assets/img/photo.png" class="img-circle" alt="User Image">
+                                        </div>
+                                        <!-- Message title and timestamp -->
+                                        <h4>
+                                            Seb
+                                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
+                                        </h4>
+                                        <!-- The message -->
+                                        <p>La machine est dispo...</p>
+                                    </a>
+                                </li>
+                                <!-- end message -->
+                            </ul>
+                            <!-- /.menu -->
+                        </li>
+                        <li class="footer"><a href="#">Voir Tous Les Messages</a></li>
+                    </ul>
+                </li>
+                <!-- /.messages-menu -->
+
+                <!-- Notifications Menu -->
+                <li class="dropdown notifications-menu">
+                    <!-- Menu toggle button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="label label-warning">10</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">Vous avez 10 notifications</li>
+                        <li>
+                            <!-- Inner Menu: contains the notifications -->
+                            <ul class="menu">
+                                <li><!-- start notification -->
+                                    <a href="#">
+                                        <i class="fa fa-users text-aqua"></i> 5 nouveaux membres aujourd'hui
+                                    </a>
+                                </li>
+                                <!-- end notification -->
+                            </ul>
+                        </li>
+                        <li class="footer"><a href="#">Tout voir</a></li>
+                    </ul>
+                </li>
+
+                <!-- User Account Menu -->
+                <li class="dropdown user user-menu" *ngIf="authenticated">
+                    <!-- Menu Toggle Button -->
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <!-- The user image in the navbar-->
+                        <img src="assets/img/photo.png" class="user-image" alt="User Image">
+                        <!-- hidden-xs hides the username on small devices so only the image appears. -->
+                        <span class="hidden-xs">Patou</span>
+                    </a>
+
+                    <ul class="dropdown-menu" >
+                        <!-- The user image in the menu -->
+                        <li class="user-header">
+                            <img src="assets/img/photo.png" class="img-circle" alt="User Image">
+
+                            <p>
+                                François Lami - Roi de la bidouille
+                                <small>Membre depuis Nov. 2012</small>
+                            </p>
+                        </li>
+                        <!-- Menu Body -->
+                        <li class="user-body">
+                            <div class="row">
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Portefeuille</a>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Twitter</a>
+                                </div>
+                                <div class="col-xs-4 text-center">
+                                    <a href="#">Site web</a>
+                                </div>
+                            </div>
+                            <!-- /.row -->
+                        </li>
+                        <!-- Menu Footer-->
+                        <li class="user-footer">
+                            <div class="pull-left">
+                                <a href="#" class="btn btn-default btn-flat">Mon Profil</a>
+                            </div>
+                            <div class="pull-right">
+                                <a href="#" class="btn btn-default btn-flat">Se déconnecter</a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <li *ngIf="!authenticated"><a href="#" ><span class="fa fa-rocket" data-toggle="modal" data-target="#myModal"></span> S'inscrire</a></li>
+                <li *ngIf="!authenticated"><a href="#"><span class="fa fa-sign-in"></span> Se connecter</a></li>
+
+            </ul>
+
+        </div>
+    </nav>
+</header>

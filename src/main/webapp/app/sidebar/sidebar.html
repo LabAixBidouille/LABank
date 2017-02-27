@@ -1,50 +1,46 @@
- <div class="container">
-        <div class="row">
+<aside class="main-sidebar">
 
-            <div id="wrapper">
-                <!-- Sidebar -->
-                <div id="sidebar-wrapper">
-                    <ul class="sidebar-nav" style="margin-left:0;">
-                        <li style="background-color:#1A2226; ">
-                            <span style="margin-left:10px; color: #4b646f;"> NAVIGATION PRINCIPALE</span>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-home" aria-hidden="true"> </i> <span style="margin-left:10px;"> Accueil</span>  </a>
-                        </li>
-                        <li>
-                            <a href="#"> <i class="fa fa-cogs" aria-hidden="true"> </i> <span style="margin-left:10px;"> Machines</span> </a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-graduation-cap" aria-hidden="true"> </i> <span style="margin-left:10px;"> Formations</span>  </a>
-                        </li>
-                        <li>
-                            <a href="#"> <i class="fa fa-tags" aria-hidden="true"> </i> <span style="margin-left:10px;"> Évènements</span> </a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-calendar" aria-hidden="true"> </i> <span style="margin-left:10px;"> Calendrier </span> </a>
-                        </li>
-                        <li>
-                            <a href="#"> <i class="fa fa-th" aria-hidden="true"> </i> <span style="margin-left:10px;"> Projets</span> </a>
-                        </li>
-                        <li>
-                            <a href="#"> <i class="fa fa-credit-card" aria-hidden="true"> </i> <span style="margin-left:10px;"> Abonnements</span> </a>
-                        </li>
+    <!-- sidebar -->
+    <section class="sidebar">
 
-                        <li class="sidebar-brand">
-                            <a href="#menu-toggle"  id="menu-toggle" style="margin-top:20px;float:right;" > <i class="fa fa-bars " style="font-size:20px !Important;"  aria-hidden="true"></i>
-                            </a>
-                        </li>
-
-                    </ul>
-                </div>
-                <!-- /#sidebar-wrapper -->
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel" *ngIf="authenticated">
+            <div class="pull-left image">
+                <img src="assets/img/photo.png" class="img-circle" alt="User Image">
             </div>
-            <script>
-                $("#menu-toggle").click(function(e) {
-                    e.preventDefault();
-                    $("#wrapper").toggleClass("toggled");
-                });
-            </script>
+            <div class="pull-left info">
+                <p>François</p>
+                <!-- Status -->
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
         </div>
-    </div>
 
+        <!-- Sidebar Menu -->
+        <ul class="sidebar-menu">
+            <li class="header">NAVIGATION PRINCIPALE</li>
+
+            <li class="active"><a href="#"><i class="fa fa-home"></i> <span>Accueil</span></a></li>
+            <li><a href="#"><i class="fa fa-cogs"></i> <span>Réserver une machine</span></a></li>
+            <li><a href="#"><i class="fa fa-graduation-cap"></i> <span>S'inscrire à une formation</span></a></li>
+            <li><a href="#"><i class="fa fa-tags"></i> <span>S'inscrire à une évènement</span></a></li>
+            <li><a href="#"><i class="fa fa-calendar"></i> <span>Calendrier</span></a></li>
+            <li><a href="#"><i class="fa fa-th"></i> <span>Galerie de projets</span></a></li>
+            <li><a href="#"><i class="fa fa-credit-card"></i> <span>Abonnement</span></a></li>
+
+            <!-- Admin features -->
+            <li class="header">ADMIN</li>
+            <li><a href="#"><i class="fa fa-cogs"></i> <span>Gestion des machines</span></a></li>
+            <li><a href="#"><i class="fa fa-graduation-cap"></i> <span>Gestion des formations</span></a></li>
+            <li><a href="#"><i class="fa fa-tags"></i> <span>Gestion des évènements</span></a></li>
+            <li><a href="#"><i class="fa fa-calendar"></i> <span>Gestion du calendrier</span></a></li>
+            <li><a href="#"><i class="fa fa-th"></i> <span>Gestion des projets</span></a></li>
+            <li><a href="#"><i class="fa fa-credit-card"></i> <span>Suivi des abonnements</span></a></li>
+            <li><a href="#"><i class="fa fa-bar-chart"></i> <span>Statistiques</span></a></li>
+
+        </ul>
+        <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+
+    <div class="control-sidebar-bg"></div>
+</aside>
