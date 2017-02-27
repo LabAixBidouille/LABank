@@ -5,11 +5,12 @@ import {Users} from './users/users';
 import {User} from './users/user';
 import {Dashboard} from './dashboard/dashboard';
 
+
 export const routes:Routes = [
+    {path: '', component: Dashboard},
     {path: 'authenticate', component: Login},
     {path: 'users', component: Users, },
-    {path: 'user/:id', component: User,},
-    {path: '', component: Login}
+    {path: 'user/:id', component: User,}
 ];
 
 export const RoutesModule: ModuleWithProviders = RouterModule.forRoot(routes);

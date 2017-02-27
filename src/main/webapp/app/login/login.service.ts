@@ -56,11 +56,12 @@ export class LoginService {
             this.http.get(AppUtils.BACKEND_API_ROOT_URL + '/logout').subscribe(() => {
                 this.accountEventService.logout(new Account(JSON.parse(localStorage.getItem(AppUtils.STORAGE_ACCOUNT_TOKEN))));
                 this.removeAccount();
-                this.router.navigate(['/authenticate']);
+                /*this.router.navigate(['/authenticate']);*/
+                this.router.navigate(['/app']);
             });
         } else {
             this.removeAccount();
-            this.router.navigate(['/authenticate']);
+            /*this.router.navigate(['/authenticate']);*/
         }
     }
     isAuthorized(roles:Array<string>):boolean {
