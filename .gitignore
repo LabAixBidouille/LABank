@@ -4,3 +4,5 @@ target/
 *.iml
 /src/main/webapp/app/**/*.js
 src/main/webapp/**/*.js.map
+/diff.xml
+/ui.lnf.xml

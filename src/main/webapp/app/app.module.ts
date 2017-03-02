@@ -10,7 +10,6 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HmacHttpClient } from './utils/hmac-http-client';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { Header } from './header/header';
@@ -23,9 +22,10 @@ import { LoginModule } from './login/login.module';
 import { UserModule } from './users/user.module';
 import { UtilsModule } from './utils/utils.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import {MachineModule} from "./machines/machine.module";
 
 @NgModule({
-    imports:        [ FormsModule, ReactiveFormsModule, HttpModule, RouterModule, BrowserModule, AccountModule, LoginModule, UserModule, UtilsModule, RoutesModule, DashboardModule ],
+    imports:        [ HttpModule, RouterModule, BrowserModule, AccountModule, LoginModule, UserModule, UtilsModule, RoutesModule, DashboardModule, MachineModule ],
     declarations:   [ AppComponent, Header, Sidebar ],
     bootstrap:      [ AppComponent, Header ],
     providers:      [

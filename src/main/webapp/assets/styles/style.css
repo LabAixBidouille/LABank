@@ -1827,6 +1827,9 @@ a:focus {
     padding: 10px;
     background-color: #ffffff;
 }
+.box-footer-btn-text {
+    font-size: 0.7em;
+}
 .chart-legend {
     margin: 10px 0;
 }
