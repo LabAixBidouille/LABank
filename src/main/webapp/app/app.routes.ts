@@ -9,7 +9,6 @@ import {Events} from "./events/events";
 import {EventType} from "./events/eventtype";
 import {Machine} from "./machines/machine";
 
-
 export const routes:Routes = [
     {path: '', component: Dashboard},
     {path: 'authenticate', component: Login},

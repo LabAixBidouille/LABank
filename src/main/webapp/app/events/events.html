@@ -1,0 +1,52 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Les évènements du FABLAB
+            <small>Sélectionner une catégorie</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li class="active">Évènements</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-primary">
+
+            <!-- Box header -->
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-cogs"></i> Liste des évènements</h3>
+
+                <div class="btn-group pull-right">
+                    <button type="button" class="btn btn-sm btn-danger">Toutes les catégories</button>
+                    <button type="button" class="btn btn-sm btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="caret"></span>
+                        <span class="sr-only">Toutes les catégories</span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li *ngFor="let eventtype of eventType; let i = index">
+                            <a href="#" (click)="onSelectCategory($event,eventtype.idEventType)">{{eventtype.libelle}}</a>
+                        </li>
+                    </ul>
+                </div>
+
+
+            </div>
+            <!-- /.Box header -->
+
+            <!-- Box body -->
+            <div class="box-body">
+                <!-- Split button -->
+                <evenements></evenements>
+            </div>
+            <!-- /.Box body -->
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
