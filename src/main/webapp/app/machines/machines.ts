@@ -5,6 +5,8 @@ import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {MachinesService} from './machines.service';
 import {IMachine} from "./IMachine";
+import {Response} from "@angular/http";
+import {Observable} from "rxjs";
 
 @Component({
     selector: 'machines',
@@ -20,8 +22,9 @@ export class Machines {
         this.router = router;
         machineService.getAll().subscribe((machines:Array<IMachine>) => this.machines = machines);
     }
-    onSelectMachine(event:Event,id:string):void {
+
+    showMachine(event:Event, id:number):void {
         event.preventDefault();
-        this.router.navigate(['/machine',id]);
+        this.router.navigate(['/machines', id]);
     }
 }

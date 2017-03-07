@@ -54,7 +54,7 @@
                                 </div>
 
                                 <div class="col-sm-6 no-padder">
-                                    <button type="button" class="btn btn-block btn-primary ng-binding box-footer-btn-text" ng-click="showMachine(machine)">
+                                    <button type="button" class="btn btn-block btn-primary ng-binding box-footer-btn-text" (click)="showMachine($event, i+1)">
                                         <span class="fa fa-eye"></span>
                                         Consulter
                                     </button>

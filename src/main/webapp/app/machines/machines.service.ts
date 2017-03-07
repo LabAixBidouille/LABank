@@ -13,6 +13,7 @@ export class MachinesService {
     constructor(http:Http) {
         this.http = http;
     }
+
     getAll():Observable<Array<IMachine>> {
         return this.http.get(AppUtils.BACKEND_ROOT_URL+'/machines')
             .map((res:Response) => {
@@ -25,8 +26,7 @@ export class MachinesService {
             }).catch(this.handleError);
     }
 
-
-    getById(id:string):Observable<IMachine> {
+     getById(id:number):Observable<IMachine> {
         return this.http.get(AppUtils.BACKEND_ROOT_URL+'/machines/'+id).map((res:Response) => {
             return new IMachine(res.json());
         });
