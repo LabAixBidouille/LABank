@@ -1,0 +1,53 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Les Formations du FABLAB
+            <small>Connectez-vous pour réserver une formation</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li class="active">Formations</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-primary">
+
+            <!-- Box header -->
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-graduation-cap"></i> {{training.name}}</h3>
+            </div>
+            <!-- /.Box header -->
+
+            <!-- Box body -->
+            <div class="box-body">
+                <div class="row">
+
+                    <div class="col-md-5">
+                        <div class="box-body text-center">
+                            <img [attr.src]="training.illustration" alt="Formation Image" width="128px" height="95px"/>
+                        </div>
+                        <!-- /.box-body -->
+
+                    </div>
+                    <div class="col-md-5">
+                        <div class="box-body text-center">
+                            <p>{{training.description}}</p>
+                        </div>
+                        <!-- /.box-body -->
+
+                    </div>
+
+                </div>
+            </div>
+            <!-- /.Box body -->
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
