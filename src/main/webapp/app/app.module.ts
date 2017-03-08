@@ -22,10 +22,11 @@ import { LoginModule } from './login/login.module';
 import { UserModule } from './users/user.module';
 import { UtilsModule } from './utils/utils.module';
 import { DashboardModule } from './dashboard/dashboard.module';
-import {MachineModule} from "./machines/machine.module";
+import { MachineModule } from "./machines/machine.module";
+import { EventModule } from "./events/event.module"
 
 @NgModule({
-    imports:        [ HttpModule, RouterModule, BrowserModule, AccountModule, LoginModule, UserModule, UtilsModule, RoutesModule, DashboardModule, MachineModule ],
+    imports:        [ HttpModule, RouterModule, BrowserModule, AccountModule, LoginModule, UserModule, UtilsModule, RoutesModule, DashboardModule, MachineModule, EventModule ],
     declarations:   [ AppComponent, Header, Sidebar ],
     bootstrap:      [ AppComponent, Header ],
     providers:      [

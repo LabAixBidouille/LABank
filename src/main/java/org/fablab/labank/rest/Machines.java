@@ -19,14 +19,11 @@ public class Machines {
 
     @RequestMapping("/machines")
     public List<MachineDTO> query(){
-        System.out.println("1");
         return (List<MachineDTO>) machineDAO.findAll();
     }
 
     @RequestMapping("/machines/{id}")
     public MachineDTO query(@PathVariable Integer id){
-        System.out.println("nom de la machine");
-        System.out.println(machineDAO.findByIdMachine(Long.valueOf(id)).getIdMachine());
         return machineDAO.findByIdMachine(Long.valueOf(id));
     }
 
