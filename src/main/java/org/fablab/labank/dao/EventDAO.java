@@ -3,6 +3,8 @@ package org.fablab.labank.dao;
 import org.fablab.labank.dto.EventDTO;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.List;
+
 /**
  * Created by kprim on 02/03/2017.
  */
@@ -12,5 +14,5 @@ public interface EventDAO extends CrudRepository<EventDTO, Long> {
      *
      * @param IdEvent the event id.
      */
-    public EventDTO findByIdEvent (Long IdEvent);
+    public List<EventDTO> findByIdEvent (Long IdEvent);
 }

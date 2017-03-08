@@ -14,8 +14,8 @@ export const routes:Routes = [
     {path: 'authenticate', component: Login},
     {path: 'machines/:id', component: Machine},
     {path: 'machines', component: Machines},
-    {path: 'events', component: EventType},
-    {path: 'eventslist', component: Events},
+    {path: 'events/cat/:id', component: Events},
+    {path: 'eventtype', component: EventType},
     {path: 'users', component: Users, },
     {path: 'user/:id', component: User,}
 ];

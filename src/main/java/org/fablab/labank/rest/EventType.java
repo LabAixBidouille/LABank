@@ -17,7 +17,7 @@ public class EventType {
     @Autowired
     EventTypeDAO eventTypeDAO;
 
-    @RequestMapping("/events")
+    @RequestMapping("/eventstype")
     public List<EventTypeDTO> query(){
         return (List<EventTypeDTO>) eventTypeDAO.findAll();
     }

@@ -1,0 +1,14 @@
+<div class="btn-group pull-right">
+    <button type="button" class="btn btn-sm btn-danger">Toutes les catégories</button>
+    <button type="button" class="btn btn-sm btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <span class="caret"></span>
+        <span class="sr-only">Toutes les catégories</span>
+    </button>
+    <ul class="dropdown-menu">
+
+        <li *ngFor="let eventtype of eventType; let i = index">
+            <a href="" (click)="onSelectCategory($event,eventtype.idEventType)">{{eventtype.libelle}}</a>
+        </li>
+
+    </ul>
+</div>

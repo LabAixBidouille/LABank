@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
 
 @Component({
     selector: 'eventtype',
-    templateUrl: './app/events/events.html',
+    templateUrl: './app/events/eventtype.html',
     providers:[EventsService]
 })
 
@@ -20,13 +20,11 @@ export class EventType {
         this.eventType = [];
         this.router = router;
         this.eventsService = eventsService;
-        eventsService.getAll().subscribe((eventType:Array<IEventType>) => this.eventType = eventType);
+        eventsService.getAllEventType().subscribe((eventType:Array<IEventType>) => this.eventType = eventType);
     }
 
-
-    onSelectCategory(event:Event,id:string):void {
-        // event.preventDefault();
-        // this.router.navigate(['/user',id]);
-        // this.eventsService.getEventsListByCategory(id).subscribe()
+    onSelectCategory(event:Event, id:number):void {
+        //event.preventDefault();
+        this.router.navigate(['/events/cat',id]);
     }
 }

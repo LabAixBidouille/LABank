@@ -19,17 +19,14 @@ public class Events {
     @Autowired
     EventDAO eventDAO;
 
-    @Autowired
-    EventTypeDAO eventTypeDAO;
-
-    @RequestMapping("/eventslist")
-    public List<EventDTO> query(){
-        return (List<EventDTO>) eventDAO.findAll();
-    }
-
-    @RequestMapping("/events/{id}")
-    public EventDTO query(@PathVariable Integer id){
-        return eventDAO.findByIdEvent(Long.valueOf(id));
+    @RequestMapping("/eventslist/{id}")
+    public List<EventDTO> query(@PathVariable Integer id){
+        if(id == 0) {
+            return (List<EventDTO>) eventDAO.findAll();
+        }
+        else {
+            return eventDAO.findByIdEvent(Long.valueOf(id));
+        }
     }
 
     @RequestMapping(value = "/events/{id}", method = RequestMethod.PUT)

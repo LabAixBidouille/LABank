@@ -15,8 +15,8 @@ export class EventsService {
         this.http = http;
     }
 
-    getAll():Observable<Array<IEventType>> {
-        return this.http.get(AppUtils.BACKEND_ROOT_URL+'/events')
+    getAllEventType():Observable<Array<IEventType>> {
+        return this.http.get(AppUtils.BACKEND_ROOT_URL+'/eventstype')
             .map((res:Response) => {
                 let eventTypes:Array<IEventType> = [];
                 let jsonResults:Array<any> = res.json();
@@ -27,19 +27,7 @@ export class EventsService {
             }).catch(this.handleError);
     }
 
-    getAllEvents():Observable<Array<IEvent>> {
-        return this.http.get(AppUtils.BACKEND_ROOT_URL+'/eventslist')
-            .map((res:Response) => {
-                let events:Array<IEvent> = [];
-                let jsonResults:Array<any> = res.json();
-                jsonResults.forEach((jsonResult) => {
-                    events.push(new IEvent(jsonResult));
-                });
-                return events;
-            }).catch(this.handleError);
-    }
-
-    getEventsListByCategory(id:string):Observable<IEvent> {
+    getEventsListByCategory(id:number):Observable<Array<IEvent>> {
         return this.http.get(AppUtils.BACKEND_ROOT_URL+'/eventslist/'+id)
             .map((res:Response) => {
                 let events:Array<IEvent> = [];

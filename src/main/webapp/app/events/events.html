@@ -21,19 +21,7 @@
             <div class="box-header with-border">
                 <h3 class="box-title"><i class="fa fa-cogs"></i> Liste des évènements</h3>
 
-                <div class="btn-group pull-right">
-                    <button type="button" class="btn btn-sm btn-danger">Toutes les catégories</button>
-                    <button type="button" class="btn btn-sm btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="caret"></span>
-                        <span class="sr-only">Toutes les catégories</span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li *ngFor="let eventtype of eventType; let i = index">
-                            <a href="#" (click)="onSelectCategory($event,eventtype.idEventType)">{{eventtype.libelle}}</a>
-                        </li>
-                    </ul>
-                </div>
-
+                <eventtype></eventtype>
 
             </div>
             <!-- /.Box header -->
@@ -41,7 +29,49 @@
             <!-- Box body -->
             <div class="box-body">
                 <!-- Split button -->
-                <evenements></evenements>
+
+                <div class="row">
+
+                    <div class="col-md-4" *ngFor="let event of events; let i = index">
+
+                        <div class="box box-primary box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">{{event.title}}</h3>
+
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                                <!-- /.box-tools -->
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body text-center">
+                                <!--<img [src]="machine.illustration" alt="User Image" width="128px"/>-->
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer text-center ">
+
+                                <div class="col-sm-6 b-r no-padder">
+                                    <button type="button" class="btn btn-block btn-primary ng-binding box-footer-btn-text">
+                                        <span class="fa fa-bookmark"></span>
+                                        Réserver
+                                    </button>
+                                </div>
+
+                                <div class="col-sm-6 no-padder">
+                                    <button type="button" class="btn btn-block btn-primary ng-binding box-footer-btn-text">
+                                        <span class="fa fa-eye"></span>
+                                        Consulter
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- /.box -->
+                    </div>
+
+                </div>
+
             </div>
             <!-- /.Box body -->
         </div>
