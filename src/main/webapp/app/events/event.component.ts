@@ -11,10 +11,15 @@ import {IEvent} from "./IEvent";
     selector: 'event',
     templateUrl: './app/events/event.html'
 })
-export class Event{
+export class EventComponent{
     event:IEvent;
 
     constructor(private eventsService: EventsService, private route: ActivatedRoute, private location: Location){
-        this.training = new CTraining();
+        this.event = new IEvent();
+    }
+
+    ngOnInit(): void {
+        this.route.params.switchMap( (params: Params) => this.eventsService.getEvent(+params['id']))
+            .subscribe( (event: IEvent) => this.event = event);
     }
 }

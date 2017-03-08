@@ -39,6 +39,12 @@ export class EventsService {
             }).catch(this.handleError);
     }
 
+    getEvent(id:number):Observable<IEvent>{
+        return this.http.get(AppUtils.BACKEND_ROOT_URL+'/events/'+id).map( (res:Response) => {
+            return new IEvent(res.json());
+        })
+    }
+
     private handleError(error: Response) {
         console.error(error);
         return Observable.throw(error.json().error || 'Erreur Serveur');

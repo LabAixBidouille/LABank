@@ -26,7 +26,6 @@ export class TrainingService{
     }
 
     getTraining(id:number): Observable<CTraining> {
-        console.log('Test getTraining');
         return this.http.get(AppUtils.BACKEND_ROOT_URL+'/training/'+id).map( (res:Response)=> {
             return new CTraining(res.json());
         })
