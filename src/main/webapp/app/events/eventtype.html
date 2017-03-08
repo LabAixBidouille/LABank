@@ -7,7 +7,7 @@
     <ul class="dropdown-menu">
 
         <li *ngFor="let eventtype of eventType; let i = index">
-            <a href="" (click)="onSelectCategory($event,eventtype.idEventType)">{{eventtype.libelle}}</a>
+            <a href="#/events/cat/{{eventtype.idEventType}}" >{{eventtype.libelle}}</a>
         </li>
 
     </ul>

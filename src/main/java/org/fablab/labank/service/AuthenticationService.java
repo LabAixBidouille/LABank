@@ -124,7 +124,7 @@ public class AuthenticationService {
         UserDTO userDTO = new UserDTO(securityUser.getId());
         userDTO.setPseudonym(securityUser.getUsername());
         userDTO.setAuthorities(authorities);
-        userDTO.setIdProfile(securityUser.getProfile().getIdProfile());
+        userDTO.setProfile(securityUser.getProfile());
         return userDTO;
     }
 

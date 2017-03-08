@@ -80,12 +80,16 @@ public class UserDTO {
     private String interests;
 
     // The user's group ID
+    @OneToOne
+    @JoinColumn(name = "groupid")
     @NotNull
-    private long groupID;
+    private GroupDTO group;
 
     // The user's profile ID
+    @OneToOne
+    @JoinColumn(name = "profileid")
     @NotNull
-    private long profileID;
+    private Profile profile;
 
     // The user's avatar
     private String avatar;
@@ -122,8 +126,8 @@ public class UserDTO {
         this.website = userDTO.website;
         this.occupation = userDTO.occupation;
         this.interests = userDTO.interests;
-        this.groupID = userDTO.groupID;
-        this.profileID = userDTO.profileID;
+        this.group = userDTO.group;
+        this.profile = userDTO.profile;
         this.avatar = userDTO.avatar;
     }
 
@@ -131,7 +135,7 @@ public class UserDTO {
         this.id = id;
     }
 
-    public UserDTO(char sex, String pseudonym, String password, String email, String name, String firstname, Date birthday, String address, String phone, String website, String occupation, String interests, long groupID, long profileID, String avatar) {
+    public UserDTO(char sex, String pseudonym, String password, String email, String name, String firstname, Date birthday, String address, String phone, String website, String occupation, String interests, GroupDTO group, Profile profile, String avatar) {
         this.sex = sex;
         this.pseudonym = pseudonym;
         this.password = password;
@@ -144,8 +148,8 @@ public class UserDTO {
         this.website = website;
         this.occupation = occupation;
         this.interests = interests;
-        this.groupID = groupID;
-        this.profileID = profileID;
+        this.group = group;
+        this.profile = profile;
         this.avatar = avatar;
     }
 
@@ -243,20 +247,20 @@ public class UserDTO {
         this.interests = interests;
     }
 
-    public long getIdGroup() {
-        return groupID;
+    public GroupDTO getGroup() {
+        return group;
     }
 
-    public void setIdGroup(long idGroup) {
-        this.groupID = idGroup;
+    public void setGroup(GroupDTO group) {
+        this.group = group;
     }
 
-    public long getIdProfile() {
-        return profileID;
+    public Profile getProfile() {
+        return profile;
     }
 
-    public void setIdProfile(long idProfile) {
-        this.profileID = idProfile;
+    public void setProfile(Profile profile) {
+        this.profile = profile;
     }
 
     public String getAvatar() {

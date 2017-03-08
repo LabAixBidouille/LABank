@@ -21,7 +21,11 @@ export class Login {
     loginService:LoginService;
     account:Account;
     error:string;
+
+    closeLoginModal: boolean;
+
     constructor(router: Router,form: FormBuilder,loginService:LoginService,accountEventService:AccountEventsService) {
+        this.closeLoginModal = false;
         this.router = router;
         this.wrongCredentials = false;
         this.loginService = loginService;
@@ -39,15 +43,19 @@ export class Login {
                         this.error = account.error;
                     }
                 }
+                this.closeLoginModal = false;
             }
         });
     }
+
+
     authenticate(event) {
         event.preventDefault();
         this.loginService.authenticate(this.loginForm.value.username,this.loginForm.value.password).subscribe(account => {
             this.account = account;
             console.log('Successfully logged',account);
-            this.router.navigate(['/users']);
+            this.router.navigate(['']);
+            this.closeLoginModal = true;
         });
     }
 }

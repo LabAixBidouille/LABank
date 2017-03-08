@@ -1,7 +1,6 @@
 /**
  * Created by kprim on 28/02/2017.
  */
-
 export class IMachine {
     id: number;
     nom: string;

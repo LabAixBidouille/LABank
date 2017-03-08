@@ -57,7 +57,7 @@ export class LoginService {
                 this.accountEventService.logout(new Account(JSON.parse(localStorage.getItem(AppUtils.STORAGE_ACCOUNT_TOKEN))));
                 this.removeAccount();
                 /*this.router.navigate(['/authenticate']);*/
-                this.router.navigate(['/app']);
+                this.router.navigate(['']);
             });
         } else {
             this.removeAccount();

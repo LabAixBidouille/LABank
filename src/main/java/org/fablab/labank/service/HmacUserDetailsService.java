@@ -64,7 +64,7 @@ public class HmacUserDetailsService implements UserDetailsService{
             }
         }
 
-        Profile profile = profileDAO.findByIdProfile(userDTO.getIdProfile());
+        Profile profile = profileDAO.findByIdProfile(userDTO.getProfile().getIdProfile());
 
         List<GrantedAuthority> authorities = new ArrayList<>();
         if(profile != null){

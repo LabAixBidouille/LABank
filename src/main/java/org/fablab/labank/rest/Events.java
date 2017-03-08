@@ -25,7 +25,7 @@ public class Events {
             return (List<EventDTO>) eventDAO.findAll();
         }
         else {
-            return eventDAO.findByIdEvent(Long.valueOf(id));
+            return eventDAO.findByIdEventType(Long.valueOf(id));
         }
     }
 

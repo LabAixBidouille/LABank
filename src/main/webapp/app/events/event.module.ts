@@ -8,15 +8,15 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { UtilsModule } from '../utils/utils.module';
 
-import { Event } from './event';
+import {Event} from './event';
 import { Events } from './events';
 import { EventsService } from './events.service';
 import { EventType } from './eventtype'
 
 @NgModule({
     imports: [ FormsModule, ReactiveFormsModule, BrowserModule, UtilsModule ],
-    bootstrap: [ Event, Events, EventType ],
-    declarations: [ Event, Events, EventType ],
+    bootstrap: [Event, Events, EventType ],
+    declarations: [Event, Events, EventType ],
     providers: [ EventsService ]
 })
 

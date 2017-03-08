@@ -10,6 +10,7 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HmacHttpClient } from './utils/hmac-http-client';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { Header } from './header/header';
@@ -22,11 +23,13 @@ import { LoginModule } from './login/login.module';
 import { UserModule } from './users/user.module';
 import { UtilsModule } from './utils/utils.module';
 import { DashboardModule } from './dashboard/dashboard.module';
-import { MachineModule } from "./machines/machine.module";
+import {MachineModule} from "./machines/machine.module";
+import {SignUpModule} from "./signup/sign-up.module";
+import {TrainingModule} from "./training/training.module";
 import { EventModule } from "./events/event.module"
 
 @NgModule({
-    imports:        [ HttpModule, RouterModule, BrowserModule, AccountModule, LoginModule, UserModule, UtilsModule, RoutesModule, DashboardModule, MachineModule, EventModule ],
+    imports:        [ HttpModule, RouterModule, BrowserModule ,FormsModule, ReactiveFormsModule, AccountModule, LoginModule, UserModule, UtilsModule, RoutesModule, DashboardModule,MachineModule, TrainingModule, SignUpModule,EventModule ],
     declarations:   [ AppComponent, Header, Sidebar ],
     bootstrap:      [ AppComponent, Header ],
     providers:      [

@@ -46,7 +46,7 @@
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body text-center">
-                                <!--<img [src]="machine.illustration" alt="User Image" width="128px"/>-->
+                                <img [attr.src]="event.picture" alt="Event Image" width="128px" height="95px"/>
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer text-center ">
@@ -59,7 +59,7 @@
                                 </div>
 
                                 <div class="col-sm-6 no-padder">
-                                    <button type="button" class="btn btn-block btn-primary ng-binding box-footer-btn-text">
+                                    <button (click)="showEvent(event.idEvent)" type="button" class="btn btn-block btn-primary ng-binding box-footer-btn-text">
                                         <span class="fa fa-eye"></span>
                                         Consulter
                                     </button>

@@ -13,6 +13,7 @@ import {LoginService} from '../login/login.service';
 
 export class Sidebar {
     authenticated:boolean;
+    profile:string;
     loginService:LoginService;
     constructor(accountEventService:AccountEventsService,loginService:LoginService) {
         this.loginService = loginService;
@@ -21,6 +22,8 @@ export class Sidebar {
                 this.authenticated = false;
                 this.loginService.logout(false);
             } else {
+                console.log(account.profile);
+                this.profile = account.profile.profile;
                 this.authenticated = true;
             }
         });

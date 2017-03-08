@@ -25,10 +25,14 @@ export class Events {
     }
 
     ngOnInit():void {
-        this.sub = this.route.params.subscribe(params => this.getEventListByCat(0));
+        this.sub = this.route.params.subscribe(params => this.getEventListByCat(+params['id']));
     }
 
     getEventListByCat(id:number):void {
         this.eventsService.getEventsListByCategory(id).subscribe((events:Array<IEvent>) => this.events = events);
+    }
+
+    showEvent(id:number){
+        this.router.navigate(['/events',id]);
     }
 }
