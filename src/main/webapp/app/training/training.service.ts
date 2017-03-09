@@ -31,6 +31,16 @@ export class TrainingService{
         })
     }
 
+    saveTraining(training:CTraining):Observable<CTraining> {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post(AppUtils.BACKEND_ROOT_URL+'/admin/trainings', JSON.stringify(training),{headers:headers})
+            .map((res:Response) => {
+                /*TODO*/
+                return new CTraining(res.json());
+            });
+    }
+
     private handleError(error: Response) {
         console.error(error);
         return Observable.throw(error.json().error || 'Erreur Serveur');

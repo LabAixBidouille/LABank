@@ -1,0 +1,94 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Les Formations du FABLAB
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li class="active"><a href="#/admin/trainings">Gestion des formations</a></li>
+            <li class="active">Ajout de formations</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-primary">
+
+            <!-- Box header -->
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-graduation-cap"></i> Ajouter une nouvelle formation</h3>
+            </div>
+            <!-- /.Box header -->
+
+            <!-- Box body -->
+            <div class="box-body">
+                <form  [formGroup]="trainingForm" (ngSubmit)="addTraining()" >
+                    <fieldset>
+                        <!-- Name -->
+                        <div class="form-group">
+                            <label for="name">Nom: </label>
+                            <div >
+                                <input id="name" name="name" type="text" placeholder="Nom de la formation"
+                                       class="form-control" required [formControl]="trainingForm.controls['name']">
+                            </div>
+                        </div>
+
+                        <!-- Illustration -->
+                        <div class="form-group">
+                            <label for="illustration">Illustration </label>
+                            <div>
+                                <input id="illustration" name="illustration"  class="form-control" type="file" required>
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <div >
+                                <textarea id="description" name="description" placeholder="Description" class="form-control"
+                                          rows="5" required [formControl]="trainingForm.controls['description']"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Number of tickets -->
+                        <div class="form-group">
+                            <label for="nbTicket">Nombre de tickets</label>
+                            <div >
+                                <input id="nbTicket" name="nbTicket" type="number" min="0" class="form-control">
+                            </div>
+                        </div>
+
+                        <!-- Display -->
+                        <div class="form-group">
+                            <label>Afficher dans la liste</label>
+                            <div>
+                                <label class="radio-inline">
+                                    <input type="radio" name="display" value="1" [formControl]="trainingForm.controls['display']">
+                                    Oui
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="display" value="0" [formControl]="trainingForm.controls['display']">
+                                    Non
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Form actions -->
+                        <div class="form-group">
+                            <div class="col-md-12 text-right">
+                                <button [disabled]="!trainingForm.valid" type="submit" class="btn btn-primary">Enregistrer la formation</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <!-- /.Box body -->
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

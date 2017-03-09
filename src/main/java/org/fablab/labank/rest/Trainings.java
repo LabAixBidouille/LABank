@@ -7,6 +7,7 @@ import org.fablab.labank.dto.TrainingDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -42,4 +43,24 @@ public class Trainings {
     public TrainingDTO query(@PathVariable Long id){
         return this.trainingDAO.findOne(id);
     }
+
+    /**
+     *
+     * @param training
+     * @return
+     */
+    @RequestMapping(value = "/admin/trainings", method = RequestMethod.POST)
+    public List<TrainingDTO> save(@PathVariable TrainingDTO training){
+        List<TrainingDTO> trainings = null;
+        try {
+            this.trainingDAO.save(training);
+            trainings = (List<TrainingDTO>) this.trainingDAO.findAll();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return trainings;
+    }
+
+    @RequestMapping(value = "")
+    public List<TrainingDTO> save()
 }
