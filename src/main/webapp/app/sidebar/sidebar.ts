@@ -21,6 +21,7 @@ export class Sidebar {
             if(!account.authenticated) {
                 this.authenticated = false;
                 this.loginService.logout(false);
+                this.profile = "";
             } else {
                 console.log(account.profile);
                 this.profile = account.profile.profile;
