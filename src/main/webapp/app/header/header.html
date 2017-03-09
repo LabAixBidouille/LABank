@@ -46,13 +46,17 @@
                     <div class="text-center"><span class="label label-danger" *ngIf="error">{{error}}</span></div>
 
                     <div class="input-group input-margin-bottom" [ngClass]="{'has-error':!loginForm.controls['username'].valid && loginForm.controls['username'].touched}">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-user"></i></button>
+                        </div>
                         <input type="text" class="form-control" required [formControl]="loginForm.controls['username']"
                                name="username" id="username" placeholder="e-mail ou login">
                     </div>
 
                     <div class="input-group input-margin-bottom" [ngClass]="{'has-error':!loginForm.controls['password'].valid && loginForm.controls['password'].touched}">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <div class="input-group-btn">
+                            <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-lock"></i></button>
+                        </div>
                         <input type="password" class="form-control" required [formControl]="loginForm.controls['password']"
                                name="password" id="password" placeholder="Mot de passe">
                     </div>
