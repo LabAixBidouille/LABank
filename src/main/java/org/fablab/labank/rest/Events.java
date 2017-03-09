@@ -33,4 +33,9 @@ public class Events {
     public EventDTO update(@RequestBody @Valid EventDTO eventDTO) {
         return eventDAO.save(eventDTO);
     }
+
+    @RequestMapping(value = "/events/{id}")
+    public EventDTO query(@PathVariable Long id){
+        return eventDAO.findOne(id);
+    }
 }
