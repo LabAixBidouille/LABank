@@ -30,6 +30,6 @@ export class AddTrainingComponent{
 
     addTraining(){
         /*TODO*/
-        this.router.navigate([/admin/trainings]);
+        this.router.navigate(['/admin/trainings']);
     }
 }
