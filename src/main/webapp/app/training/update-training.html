@@ -1,5 +1,3 @@
-
-
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -27,23 +25,24 @@
 
             <!-- Box body -->
             <div class="box-body">
-                <form  [formGroup]="trainingForm" (ngSubmit)="addTraining()" >
+                <form  #trainingForm="ngForm" (ngSubmit)="updateTraining()" >
                     <fieldset>
                         <!-- Name -->
                         <div class="form-group">
-                            <label for="name">Nom: </label>
+                            <label for="name">Nom</label>
                             <div >
                                 <input id="name" name="name" type="text" placeholder="Nom de la formation"
-                                       class="form-control" required [formControl]="trainingForm.controls['name']">
+                                       class="form-control" required [(ngModel)]="training.name" #name="ngModel" >
                             </div>
+                            <div *ngIf="name.control.dirty && name.control.hasError('required')">Le nom doit etre renseigné</div>
                         </div>
 
                         <!-- Illustration -->
                         <div class="form-group">
-                            <label for="illustration">Illustration </label>
+                            <label for="illustration">Illustration</label>
                             <div>
                                 <input id="illustration" name="illustration"  class="form-control" type="file"
-                                    (change)="getIllustration($event.target.files[0])" accept=".png,.jpg,.jpeg">
+                                       (change)="getIllustration($event.target.files[0].name)">
                             </div>
                         </div>
 
@@ -52,7 +51,7 @@
                             <label for="description">Description</label>
                             <div >
                                 <textarea id="description" name="description" placeholder="Description" class="form-control"
-                                          rows="5" required [formControl]="trainingForm.controls['description']"></textarea>
+                                          rows="5" required [(ngModel)]="training.description"></textarea>
                             </div>
                         </div>
 
@@ -61,7 +60,7 @@
                             <label for="nbTicket">Nombre de tickets</label>
                             <div >
                                 <input id="nbTicket" name="nbTicket" type="number" min="0"
-                                       class="form-control" [formControl]="trainingForm.controls['nbTicket']">
+                                       class="form-control" required  [(ngModel)]="training.nbTicket">
                             </div>
                         </div>
 
@@ -70,11 +69,11 @@
                             <label>Afficher dans la liste</label>
                             <div>
                                 <label class="radio-inline">
-                                    <input type="radio" name="display" value="true" [formControl]="trainingForm.controls['display']">
+                                    <input required type="radio" name="display" [value]=true [(ngModel)]="training.display" />
                                     Oui
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="display" value="false" [formControl]="trainingForm.controls['display']">
+                                    <input required type="radio" name="display" [value]=false [(ngModel)]="training.display" />
                                     Non
                                 </label>
                             </div>
@@ -84,7 +83,7 @@
                         <div class="form-group">
                             <div class="col-md-12 text-right">
                                 <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
-                                <button [disabled]="!trainingForm.valid" type="submit" class="btn btn-primary">Enregistrer la formation</button>
+                                <button [disabled]="!trainingForm.valid" type="submit" class="btn btn-primary">Enregistrer les modifications</button>
                             </div>
                         </div>
                     </fieldset>

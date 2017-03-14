@@ -5,10 +5,8 @@ import org.fablab.labank.dao.TrainingDAO;
 import org.fablab.labank.dto.MachineDTO;
 import org.fablab.labank.dto.TrainingDTO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -50,17 +48,26 @@ public class Trainings {
      * @return
      */
     @RequestMapping(value = "/admin/trainings", method = RequestMethod.POST)
-    public List<TrainingDTO> save(@PathVariable TrainingDTO training){
-        List<TrainingDTO> trainings = null;
+    public TrainingDTO save(@RequestBody TrainingDTO training){
+        TrainingDTO t = null;
         try {
-            this.trainingDAO.save(training);
-            trainings = (List<TrainingDTO>) this.trainingDAO.findAll();
+            t = this.trainingDAO.save(training);
         }catch(Exception e){
             e.printStackTrace();
         }
-        return trainings;
+        return t;
     }
 
-    @RequestMapping(value = "")
-    public List<TrainingDTO> save()
+
+    @RequestMapping(value = "/admin/trainings/{id}", method = RequestMethod.DELETE)
+    public boolean delete(@PathVariable Long id){
+        boolean msg = false;
+        try {
+            this.trainingDAO.delete(id);
+            msg = true;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return msg;
+    }
 }

@@ -14,6 +14,7 @@ export class TrainingService{
     }
 
     getAll(): Observable<Array<CTraining>> {
+        console.log("TEst getAll");
         return this.http.get(AppUtils.BACKEND_ROOT_URL+'/trainings')
             .map( (res:Response)=> {
                 let trainings:Array<CTraining> = [];
@@ -36,8 +37,18 @@ export class TrainingService{
         headers.append('Content-Type', 'application/json');
         return this.http.post(AppUtils.BACKEND_ROOT_URL+'/admin/trainings', JSON.stringify(training),{headers:headers})
             .map((res:Response) => {
-                /*TODO*/
                 return new CTraining(res.json());
+            });
+    }
+
+    deleteTraining(id:number):Observable<boolean> {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.delete(AppUtils.BACKEND_ROOT_URL+'/admin/trainings/'+id, {headers:headers})
+            .map((res:Response) => {
+               let message:boolean ;
+               message = res.json();
+               return message ;
             });
     }
 

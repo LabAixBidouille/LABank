@@ -8,11 +8,12 @@ import {Dashboard} from './dashboard/dashboard';
 import {Login} from './login/login';
 import {SignUpComponent} from './signup/sign-up.component';
 
-
 import {TrainingsComponent} from './training/trainings.component';
 import {TrainingComponent} from './training/training.component';
 import {AdminTrainingsComponent} from './training/admin.trainings.component';
 import {AddTrainingComponent} from './training/add.training.component';
+import {UpdateTrainingComponent} from './training/update.training.component';
+
 
 import {Events} from "./events/events";
 import {EventComponent} from './events/event.component';
@@ -35,7 +36,8 @@ export const routes:Routes = [
     {path: 'trainings', component: TrainingsComponent},
     {path: 'training/:id', component: TrainingComponent},
     {path: 'admin/trainings', component: AdminTrainingsComponent},
-    {path: 'admin/trainings/new', component: AddTrainingComponent}
+    {path: 'admin/trainings/new', component: AddTrainingComponent},
+    {path: 'admin/trainings/:id', component: UpdateTrainingComponent}
 
 ];
 

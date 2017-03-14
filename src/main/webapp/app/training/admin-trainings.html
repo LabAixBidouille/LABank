@@ -1,3 +1,33 @@
+<!--Modal Login-->
+<div id="deleteModal" class="modal fade" >
+    <div class="login-box modal-dialog modal-sm box box-primary">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="box-header with-border">
+                <i class="fa fa-graduation-cap"></i>
+
+                <h3 class="box-title">Supprimer la formation</h3>
+                <!-- tools box -->
+                <div class="pull-right box-tools">
+                    <button type="button" class="btn btn-primary btn-sm" data-widget="remove" data-toggle="tooltip" title="Fermer" data-dismiss="modal">
+                        <i class="fa fa-times"></i></button>
+                </div>
+                <!-- /. tools -->
+            </div>
+
+            <div class="modal-body form-horizontal">
+                <p>Etes vous sur de vouloir supprimer la formation ?</p>
+            </div>
+
+            <div class="modal-footer box-footer last-row">
+                <button type="button" class="btn btn-default pull-left" data-widget="remove" data-toggle="tooltip" title="Fermer" data-dismiss="modal"><i class="fa fa-ban"></i> Annuler</button>
+                <button (click)="delete()" type="button" class="btn btn-primary pull-right" data-dismiss="modal" ><i class="glyphicon glyphicon-trash"></i> Supprimer</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -24,6 +54,10 @@
 
             <!-- Box body -->
             <div class="box-body">
+                <div *ngIf="msg" class="alert alert-success alert-dismissible">
+                    <a href="#/admin/trainings" (click)="closeAlert()" class="close">&times;</a>
+                    <strong>Formation supprimée avec succes!</strong>.
+                </div>
                 <div class="table-responsive">
                     <button (click)="newTraining()" type="button" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-plus"></i> Ajouter une formation</button>
                     <table class="table table-condensed">
@@ -36,13 +70,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr *ngFor="let training of trainings">
-                            <td>{{training.name}}</td>
-                            <td>None</td>
-                            <td>{{training.nbTicket}}</td>
-                            <td>
+                        <tr *ngFor="let training of trainings" >
+                            <td *ngIf="training.display">{{training.name}}</td>
+                            <td *ngIf="training.display">None</td>
+                            <td *ngIf="training.display">{{training.nbTicket}}</td>
+                            <td *ngIf="training.display">
                                 <button (click)="updateTraining(training.id)" type="button" class="btn btn-warning btn-circle"><i class="glyphicon glyphicon-edit"></i>Edit</button>
-                                <button (click)="deleteTraining(training)" type="button" class="btn btn-danger btn-circle"><i class="glyphicon glyphicon-trash"></i></button>
+                                <button (click)="deleteTraining(training.id)" data-toggle="modal" data-target="#deleteModal" data-backdrop="false" type="button" class="btn btn-danger btn-circle"><i class="glyphicon glyphicon-trash"></i></button>
                             </td>
                         </tr>
                         </tbody>
