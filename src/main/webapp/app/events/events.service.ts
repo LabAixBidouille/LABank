@@ -45,6 +45,35 @@ export class EventsService {
         })
     }
 
+    saveEvent(event:IEvent):Observable<IEvent> {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post(AppUtils.BACKEND_ROOT_URL+'/admin/events', JSON.stringify(event),{headers:headers})
+            .map((res:Response) => {
+                return new IEvent(res.json());
+            });
+    }
+
+     updateEvent(event:IEvent):Observable<IEvent> {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.put(AppUtils.BACKEND_ROOT_URL+'/admin/events', JSON.stringify(event),{headers:headers})
+            .map((res:Response) => {
+                return new IEvent(res.json());
+            });
+    }
+
+    deleteEvent(id:number):Observable<boolean> {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.delete(AppUtils.BACKEND_ROOT_URL+'/admin/events/'+id, {headers:headers})
+            .map((res:Response) => {
+               let message:boolean ;
+               message = res.json();
+               return message ;
+            });
+    }
+
     private handleError(error: Response) {
         console.error(error);
         return Observable.throw(error.json().error || 'Erreur Serveur');
