@@ -41,6 +41,15 @@ export class TrainingService{
             });
     }
 
+     updateTraining(training:CTraining):Observable<CTraining> {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.put(AppUtils.BACKEND_ROOT_URL+'/admin/trainings', JSON.stringify(training),{headers:headers})
+            .map((res:Response) => {
+                return new CTraining(res.json());
+            });
+    }
+
     deleteTraining(id:number):Observable<boolean> {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');

@@ -58,6 +58,21 @@ public class Trainings {
         return t;
     }
 
+    /**
+     *
+     * @param training
+     * @return
+     */
+    @RequestMapping(value = "/admin/trainings", method = RequestMethod.PUT)
+    public TrainingDTO update(@RequestBody TrainingDTO training){
+        TrainingDTO t = null;
+        try {
+            t = this.trainingDAO.save(training);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return t;
+    }
 
     @RequestMapping(value = "/admin/trainings/{id}", method = RequestMethod.DELETE)
     public boolean delete(@PathVariable Long id){

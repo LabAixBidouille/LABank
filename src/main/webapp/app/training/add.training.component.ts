@@ -45,8 +45,7 @@ export class AddTrainingComponent{
     }
 
     getIllustration(illustration:any){
-        console.log(JSON.stringify(illustration));
-        /*this.illustration = '../assets/img/training/'+ illustration;*/
+        this.illustration = '../assets/img/training/'+ illustration;
     }
 
     goBack(): void {

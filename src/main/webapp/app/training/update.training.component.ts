@@ -41,7 +41,7 @@ export class UpdateTrainingComponent{
 
     updateTraining(){
         this.training.illustration = this.illustration;
-        this.trainingService.saveTraining(this.training).subscribe((training:CTraining) => this.training = training);
+        this.trainingService.updateTraining(this.training).subscribe((training:CTraining) => this.training = training);
 
         this.router.navigate(['/admin/trainings']);
     }
