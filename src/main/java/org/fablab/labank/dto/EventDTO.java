@@ -49,11 +49,13 @@ public class EventDTO {
     // The event's start date
     @NotNull
     @Column(name = "startdate")
+    @Temporal(TemporalType.DATE)
     private Date startDate;
 
     // The event's end date
     @NotNull
     @Column(name = "enddate")
+    @Temporal(TemporalType.DATE)
     private Date endDate;
 
     // The event's start time

@@ -13,7 +13,7 @@ import {CTraining} from "./CTraining";
     templateUrl: './app/training/update-training.html',
     providers: [TrainingService]
 })
-export class UpdateTrainingComponent{
+export class UpdateTrainingComponent implements OnInit{
     router: Router;
     trainingForm:FormGroup;
 

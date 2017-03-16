@@ -1,0 +1,182 @@
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Les Evenements du FABLAB
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li class="active"><a href="#/admin/events/home">Gestion des evenements</a></li>
+            <li class="active">Ajout d'evenement</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-primary">
+
+            <!-- Box header -->
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-tags"></i> Ajouter une nouvel evenement</h3>
+            </div>
+            <!-- /.Box header -->
+
+            <!-- Box body -->
+            <div class="box-body">
+                <form  [formGroup]="eventForm" (ngSubmit)="addEvent()" >
+                    <fieldset>
+                        <!-- Title -->
+                        <div class="form-group">
+                            <label for="title">Titre </label>
+                            <div >
+                                <input id="title" name="title" type="text" placeholder="Nom de la formation"
+                                       class="form-control" required [formControl]="eventForm.controls['title']">
+                            </div>
+                        </div>
+
+                        <!-- Picture -->
+                        <div class="form-group">
+                            <label for="illustration">Illustration </label>
+                            <div>
+                                <input id="illustration" name="illustration"  class="form-control" type="file"
+                                       (change)="getIllustration($event.target.files[0])" accept=".png,.jpg,.jpeg">
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <div >
+                                <textarea id="description" name="description" placeholder="Description" class="form-control"
+                                          rows="5" required [formControl]="eventForm.controls['description']"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Events type -->
+                        <div class="form-group">
+                            <label for="eventType">Type d'evenement</label>
+                            <div >
+                                <!--TODO: creer un composant angular qui gere les recurrences-->
+                                <select class="form-control " id="eventType" required>
+                                    <option *ngFor="let type of eventsType" [value]="type">{{type.libelle}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <!-- AllDay -->
+                        <div class="form-group">
+                            <label>Tous les jours</label>
+                            <div>
+                                <label class="radio-inline">
+                                    <input type="radio" name="allDay" value="true" [formControl]="eventForm.controls['allDay']">
+                                    Oui
+                                </label>
+                                <label class="radio-inline">
+                                    <input #noAllday  type="radio" name="allDay" value="false"
+                                           [formControl]="eventForm.controls['allDay']">
+                                    Non
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- StartDate -->
+                        <div class="form-group">
+                            <label for="startDate">Date de debut</label>
+                            <div class="input-group" >
+                                <input id="startDate" name="startDate" type="date" class="form-control" required
+                                       [formControl]="eventForm.controls['startDate']">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            </div>
+                        </div>
+
+                        <!-- EndDate -->
+                        <div class="form-group">
+                            <label for="endDate">Date de fin</label>
+                            <div class="input-group" >
+                                <input id="endDate" name="startDate" type="date" class="form-control" required
+                                       [formControl]="eventForm.controls['endDate']">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                            </div>
+                        </div>
+
+                        <!-- StartAt -->
+                        <div class="form-group">
+                            <label for="startAt">Débute à </label>
+                            <div >
+                                <input id="startAt" name="startAt" type="time" class="form-control" required
+                                       [formControl]="eventForm.controls['startAt']">
+                            </div>
+                        </div>
+
+                        <!-- EndAt -->
+                        <div *ngIf="!noAllday.value === false" class="form-group">
+                            <label for="endAt">Finit à </label>
+                            <div >
+                                <input id="endAt" name="endAt" type="time" class="form-control" required
+                                       [formControl]="eventForm.controls['endAt']">
+                            </div>
+                        </div>
+
+                        <!-- Recurrence -->
+                        <div class="form-group">
+                            <label for="recurrence">Recurrence</label>
+                            <div >
+                                <select class="form-control " id="recurrence" required>
+                                    <option *ngFor="let recurrence of recurrences" [value]="recurrence">{{recurrence.libelle}}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Standard price -->
+                        <div class="form-group">
+                            <label for="stdPrice">Tarifs</label>
+                            <div class="input-group" >
+                                <input id="stdPrice" name="standardPrice" type="number" min="0"
+                                       class="form-control" [formControl]="eventForm.controls['standardPrice']">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-euro"></i></span>
+                            </div>
+                        </div>
+
+                        <!-- Reduced fare -->
+                        <div class="form-group">
+                            <label for="reducedFare">Reduction</label>
+                            <div class="input-group" >
+                                <input id="reducedFare" name="reducedFare" type="number" min="0"
+                                       class="form-control" [formControl]="eventForm.controls['reducedFare']">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-euro"></i></span>
+                            </div>
+                        </div>
+
+
+                        <!-- Number of tickets -->
+                        <div class="form-group">
+                            <label for="nbTickets">Nombre de tickets</label>
+                            <div class="input-group" >
+                                <input id="nbTickets" name="nbTickets" type="number" min="0"
+                                       class="form-control" [formControl]="eventForm.controls['nbTickets']">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
+                            </div>
+                        </div>
+
+                        <!-- Form actions -->
+                        <div class="form-group">
+                            <div class="col-md-12 text-right">
+                                <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
+                                <button [disabled]="!eventForm.valid" type="submit" class="btn btn-primary">Enregistrer la formation</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <!-- /.Box body -->
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

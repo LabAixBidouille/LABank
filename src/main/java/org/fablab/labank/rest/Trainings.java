@@ -24,7 +24,7 @@ public class Trainings {
     TrainingDAO trainingDAO;
 
     /**
-     * Methode permettant de retourner une liste de Training à l'URL spécifiée
+     * Methode permettant de retourner une liste de TrainingDTO à l'URL spécifiée
      * @return List<TrainingDTO> trainings : liste de Training
      */
     @RequestMapping("/trainings")
@@ -33,8 +33,8 @@ public class Trainings {
     }
 
     /**
-     * Methode permettant de retourner l'objet Training ayant l'id passé en parametre de l'URL.
-     * @param id : id du Training à recuperer
+     * Methode permettant de retourner l'objet TrainingDTO ayant l'id passé en parametre de l'URL.
+     * @param id : id du Training à recuperer.
      * @return TrainingDTO training : objet TrainingDTO ayant l'id passé en parametre de l'URL.
      */
     @RequestMapping("/training/{id}")
@@ -43,9 +43,9 @@ public class Trainings {
     }
 
     /**
-     *
-     * @param training
-     * @return
+     * Methode permettant d'enregistrer un nouvel objet TrainingDTO.
+     * @param training : objet TrainingDTO.
+     * @return TrainingDTO training : objet TraininDTO passé en parametre de la requete HTTP.
      */
     @RequestMapping(value = "/admin/trainings", method = RequestMethod.POST)
     public TrainingDTO save(@RequestBody TrainingDTO training){
@@ -59,9 +59,9 @@ public class Trainings {
     }
 
     /**
-     *
-     * @param training
-     * @return
+     * Methode permettant de mettre à jour l'objet TrainingDTO passé en parametre de la requete HTTP.
+     * @param training : objet TrainingDTO.
+     * @return TrainingDTO training : objet TraininDTO passé en parametre de la requete HTTP.
      */
     @RequestMapping(value = "/admin/trainings", method = RequestMethod.PUT)
     public TrainingDTO update(@RequestBody TrainingDTO training){
@@ -74,6 +74,11 @@ public class Trainings {
         return t;
     }
 
+    /**
+     * Methode permettant de supprimer l'objet TrainingDTO ayant l'id passé en parametre de l'URL.
+     * @param id : id du Training à supprimer.
+     * @return boolean msg : booleen permettant d'indiquer le succes ou l'echec de la suppression.
+     */
     @RequestMapping(value = "/admin/trainings/{id}", method = RequestMethod.DELETE)
     public boolean delete(@PathVariable Long id){
         boolean msg = false;

@@ -6,9 +6,9 @@ import { UtilsModule } from '../utils/utils.module';
 
 import { TrainingsComponent } from "./trainings.component";
 import { TrainingComponent } from "./training.component";
-import { AdminTrainingsComponent } from "./admin.trainings.component";
-import { AddTrainingComponent } from "./add.training.component";
-import { UpdateTrainingComponent } from "./update.training.component";
+import { AdminTrainingsComponent } from "./admin-trainings.component";
+import { AddTrainingComponent } from "./add-training.component";
+import { UpdateTrainingComponent } from "./update-training.component";
 import { TrainingService } from "./training.service";
 
 @NgModule({
