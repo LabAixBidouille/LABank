@@ -105,7 +105,7 @@ export class EventsService {
      * en parametre de la requete http.
      */
     getAllRecurrence():Observable<Array<CRecurrence>>{
-        return this.http.get(AppUtils.BACKEND_ROOT_URL+'/admin/events/new')
+        return this.http.get(AppUtils.BACKEND_ROOT_URL+'/recurrences')
             .map((res:Response) => {
                 let recurrences:Array<CRecurrence> = [];
                 let jsonResults:Array<any> = res.json();

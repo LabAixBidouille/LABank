@@ -29,7 +29,7 @@
 
                     <div class="col-md-5" *ngFor="let training of trainings; let i = index">
 
-                        <div class="box box-primary box-solid">
+                        <div  *ngIf="training.display" class="box box-primary box-solid">
                             <div class="box-header with-border">
                                 <h3 class="box-title">{{training.name}}</h3>
 

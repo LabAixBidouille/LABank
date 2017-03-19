@@ -60,7 +60,6 @@
                         <div class="form-group">
                             <label for="eventType">Type d'evenement</label>
                             <div >
-                                <!--TODO: creer un composant angular qui gere les recurrences-->
                                 <select class="form-control " id="eventType" required>
                                     <option *ngFor="let type of eventsType" [value]="type">{{type.libelle}}</option>
                                 </select>
@@ -123,14 +122,15 @@
                         </div>
 
                         <!-- Recurrence -->
-                        <div class="form-group">
-                            <label for="recurrence">Recurrence</label>
-                            <div >
-                                <select class="form-control " id="recurrence" required>
-                                    <option *ngFor="let recurrence of recurrences" [value]="recurrence">{{recurrence.libelle}}</option>
-                                </select>
-                            </div>
-                        </div>
+                        <event-recurrences (recurrenceSelected)="getRecurrence($event)" ></event-recurrences>
+                        <!--<div class="form-group">-->
+                            <!--<label for="recurrence">Recurrence</label>-->
+                            <!--<div >-->
+                                <!--&lt;!&ndash;<select class="form-control " id="recurrence" required>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<option *ngFor="let recurrence of recurrences" [value]="recurrence">{{recurrence.libelle}}</option>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</select>&ndash;&gt;-->
+                            <!--</div>-->
+                        <!--</div>-->
 
                         <!-- Standard price -->
                         <div class="form-group">

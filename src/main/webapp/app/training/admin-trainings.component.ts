@@ -15,8 +15,6 @@ export class AdminTrainingsComponent{
     trainings: Array<CTraining>;
     router: Router;
 
-    deleteMsg:string;
-
     msg:boolean;
 
     constructor(router:Router, private trainingService:TrainingService, private _ngZone:NgZone){

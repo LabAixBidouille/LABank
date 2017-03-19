@@ -71,10 +71,10 @@
                         </thead>
                         <tbody>
                         <tr *ngFor="let training of trainings" >
-                            <td *ngIf="training.display">{{training.name}}</td>
-                            <td *ngIf="training.display">None</td>
-                            <td *ngIf="training.display">{{training.nbTicket}}</td>
-                            <td *ngIf="training.display">
+                            <td>{{training.name}}</td>
+                            <td>None</td>
+                            <td>{{training.nbTicket}}</td>
+                            <td>
                                 <button (click)="updateTraining(training.id)" type="button" class="btn btn-warning btn-circle"><i class="glyphicon glyphicon-edit"></i>Edit</button>
                                 <button (click)="deleteTraining(training.id)" data-toggle="modal" data-target="#deleteModal" data-backdrop="false" type="button" class="btn btn-danger btn-circle"><i class="glyphicon glyphicon-trash"></i></button>
                             </td>

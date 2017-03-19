@@ -17,13 +17,14 @@ import {AdminEventsPricesComponent} from './admin-events-prices.component';
 import {AdminEventsComponent} from './admin-events.component';
 import {AddEventComponent} from './add-event.component';
 import {UpdateEventComponent} from './update-event.component';
-import { EventType } from './eventtype'
+import { EventType } from './eventtype';
+import { EventRecurrencesComponent } from './event-recurrences.component';
 
 @NgModule({
     imports: [ FormsModule, ReactiveFormsModule, BrowserModule, UtilsModule ],
     bootstrap: [EventComponent, Events, EventType ],
     declarations: [EventComponent, Events, EventType, AdminEventsComponent, AddEventComponent, UpdateEventComponent,
-                    AdminEventsHomeComponent, AdminEventsFiltersComponent, AdminEventsPricesComponent ],
+                    AdminEventsHomeComponent, AdminEventsFiltersComponent, AdminEventsPricesComponent, EventRecurrencesComponent ],
     providers: [ EventsService ]
 })
 

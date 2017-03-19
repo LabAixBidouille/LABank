@@ -16,7 +16,8 @@ public class Recurrences {
 
     @Autowired
     private RecurrenceDAO recurrenceDAO;
-/*TODO: requestmapping pour recuperer toutes les recurrences*/
+
+    @RequestMapping("/recurrences")
     public List<RecurrenceDTO> getAll(){
         return (List<RecurrenceDTO>) this.recurrenceDAO.findAll();
     }

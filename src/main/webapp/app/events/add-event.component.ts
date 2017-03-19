@@ -1,7 +1,7 @@
 /**
  * Created by Kandel HANAFI on 15/03/17.
  */
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, Validators, FormGroup} from '@angular/forms';
 
@@ -23,7 +23,7 @@ export class AddEventComponent implements OnInit{
 
     event:IEvent;
     eventsType:Array<IEventType>;
-    recurrences: Array<CRecurrence>;
+    recurrence: CRecurrence;
 
     illustration:string;
     error:string;
@@ -31,7 +31,7 @@ export class AddEventComponent implements OnInit{
     constructor(router:Router,form: FormBuilder, private eventService:EventsService, private location:Location){
         this.event = new IEvent();
         this.eventsType = [];
-
+        this.recurrence = new CRecurrence();
 
         this.router = router;
         this.eventForm = form.group({
@@ -53,9 +53,7 @@ export class AddEventComponent implements OnInit{
     }
 
     ngOnInit(){
-        this.eventService.getAllEventType().subscribe( (eventsType:Array<IEventType>) => this.eventsType = eventsType);
-        this.eventService.getAllRecurrence().subscribe((recurrences:Array<CRecurrence>) => this.recurrences = recurrences);
-        /* TODO : recuperer la liste des types des evenements et la liste des recurrences */
+
     }
 
     addEvent(){
@@ -68,7 +66,12 @@ export class AddEventComponent implements OnInit{
     }
 
     getIllustration(illustration:any){
+        console.log(this.recurrence.type);
         this.illustration = '../assets/img/training/'+ illustration;
+    }
+
+    getRecurrence(recurrence:CRecurrence){
+        this.recurrence = recurrence;
     }
 
     goBack(): void {
