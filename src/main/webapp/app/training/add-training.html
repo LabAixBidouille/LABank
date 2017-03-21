@@ -30,12 +30,19 @@
                 <form  [formGroup]="trainingForm" (ngSubmit)="addTraining()" >
                     <fieldset>
                         <!-- Name -->
-                        <div class="form-group">
-                            <label for="name">Nom: </label>
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!trainingForm.controls['name'].valid && trainingForm.controls['name'].touched}">
+                            <label for="name">Nom*</label>
                             <div >
                                 <input id="name" name="name" type="text" placeholder="Nom de la formation"
                                        class="form-control" required [formControl]="trainingForm.controls['name']">
                             </div>
+                            <!--Errors Msg-->
+                            <div *ngIf="trainingForm.controls['name'].hasError('required') &&
+                                  trainingForm.controls['name'].touched" class="alert alert-danger">
+                                Le nom de la formation doit etre renseigné.
+                            </div>
+                            <!--/.Errors Msg-->
                         </div>
 
                         <!-- Illustration -->
@@ -43,17 +50,32 @@
                             <label for="illustration">Illustration </label>
                             <div>
                                 <input id="illustration" name="illustration"  class="form-control" type="file"
-                                    (change)="getIllustration($event.target.files[0])" accept=".png,.jpg,.jpeg">
+                                    (change)="getIllustration($event.target.files[0].name)" accept=".png,.jpg,.jpeg">
                             </div>
                         </div>
 
                         <!-- Description -->
-                        <div class="form-group">
-                            <label for="description">Description</label>
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!trainingForm.controls['description'].valid && trainingForm.controls['description'].touched}">
+                            <label for="description">Description*</label>
                             <div >
                                 <textarea id="description" name="description" placeholder="Description" class="form-control"
                                           rows="5" required [formControl]="trainingForm.controls['description']"></textarea>
                             </div>
+                            <!-- Errors Msg-->
+                            <div *ngIf="trainingForm.controls['description'].hasError('required') &&
+                                  trainingForm.controls['description'].touched" class="alert alert-danger">
+                                La description de la formation doit etre renseignée.
+                            </div>
+                            <div *ngIf="trainingForm.controls['description'].hasError('minlength') &&
+                                  trainingForm.controls['description'].touched" class="alert alert-danger">
+                                La description de la formation doit contenir 5 caracteres minimum.
+                            </div>
+                            <div *ngIf="trainingForm.controls['description'].hasError('maxlength') &&
+                                  trainingForm.controls['description'].touched" class="alert alert-danger">
+                                La description de la formation doit contenir 750 caracteres maximum.
+                            </div>
+                            <!--/. Errors Msg-->
                         </div>
 
                         <!-- Number of tickets -->
@@ -66,8 +88,9 @@
                         </div>
 
                         <!-- Display -->
-                        <div class="form-group">
-                            <label>Afficher dans la liste</label>
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!trainingForm.controls['display'].valid && trainingForm.controls['display'].touched}">
+                            <label>Afficher dans la liste*</label>
                             <div>
                                 <label class="radio-inline">
                                     <input type="radio" name="display" value="true" [formControl]="trainingForm.controls['display']">
@@ -78,6 +101,12 @@
                                     Non
                                 </label>
                             </div>
+                            <!--Errors Msg-->
+                            <div *ngIf="trainingForm.controls['display'].hasError('required') &&
+                                  trainingForm.controls['display'].touched" class="alert alert-danger">
+                                Ce champ doit etre selectionné.
+                            </div>
+                            <!--/.Errors Msg-->
                         </div>
 
                         <!-- Form actions -->

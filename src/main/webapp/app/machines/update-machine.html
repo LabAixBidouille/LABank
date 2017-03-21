@@ -1,0 +1,122 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Les Machines du FABLAB
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li class="active"><a href="#/admin/machines">Gestion des machines</a></li>
+            <li class="active">Ajout de machines</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-primary">
+
+            <!-- Box header -->
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-cogs"></i> Modifier la machine</h3>
+            </div>
+            <!-- /.Box header -->
+
+            <!-- Box body -->
+            <div class="box-body">
+                <form  #machineForm="ngForm" (ngSubmit)="updateMachine()" >
+                    <fieldset>
+                        <!-- Name -->
+                        <div class="form-group">
+                            <label for="name">Nom*</label>
+                            <div >
+                                <input id="name" name="name" type="text" placeholder="Nom de la formation"
+                                       class="form-control" required [(ngModel)]="machine.name" #name="ngModel" >
+                            </div>
+                            <!--Errors Msg-->
+                            <div *ngIf="name.control.dirty && name.control.hasError('required')" class="alert alert-danger">
+                                Le nom de la machine doit etre renseigné
+                            </div>
+                            <!--/.Errors Msg-->
+                        </div>
+
+                        <!-- Illustration -->
+                        <div class="form-group">
+                            <label for="illustration">Illustration</label>
+                            <div>
+                                <input id="illustration" name="illustration"  class="form-control" type="file"
+                                       (change)="getIllustration($event.target.files[0].name)">
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-group">
+                            <label for="description">Description*</label>
+                            <div >
+                                <textarea id="description" name="description" placeholder="Description de la machine"
+                                          class="form-control" rows="5" required minlength="5" maxlength="750"
+                                          [(ngModel)]="machine.description" #desc="ngModel"></textarea>
+                            </div>
+                            <!--Errors msg-->
+                            <div *ngIf="desc.control.dirty && desc.control.hasError('required')" class="alert alert-danger">
+                                La description de la machine doit etre renseignée.
+                            </div>
+                            <div *ngIf="desc.control.dirty && desc.control.hasError('minlength')" class="alert alert-danger">
+                                La description de la machine doit contenir 5 caracteres minimum.
+                            </div>
+                            <div *ngIf="desc.control.dirty && desc.control.hasError('maxlength')" class="alert alert-danger">
+                                La description de la machine doit contenir 750 caracteres maximum.
+                            </div>
+                            <!--/.Errors Msg-->
+                        </div>
+
+                        <!-- Specification -->
+                        <div class="form-group">
+                            <label for="specification">Specification*</label>
+                            <div >
+                                <textarea id="specification" name="specification" placeholder="Specifications de la machine"
+                                          class="form-control" rows="5" required minlength="5" maxlength="750"
+                                          [(ngModel)]="machine.specification" #spec="ngModel"></textarea>
+                            </div>
+                            <!--Errors msg-->
+                            <div *ngIf="spec.control.dirty && spec.control.hasError('required')" class="alert alert-danger">
+                                La specification de la machine doit etre renseignée.
+                            </div>
+                            <div *ngIf="spec.control.dirty && spec.control.hasError('minlength')" class="alert alert-danger">
+                                La specification de la machine doit contenir 5 caracteres minimum.
+                            </div>
+                            <div *ngIf="spec.control.dirty && spec.control.hasError('maxlength')" class="alert alert-danger">
+                                La specification de la machine doit contenir 750 caracteres maximum.
+                            </div>
+                            <!--/.Errors Msg-->
+                        </div>
+
+                        <!--TODO: Pieces jointes-->
+                        <!-- Attached files -->
+                        <!--<div class="form-group">-->
+                        <!--<label for="docMachine">Pieces jointes</label>-->
+                        <!--<div >-->
+                        <!--<input id="docMachine" name="docMachine"  class="form-control" type="file"-->
+                        <!--(change)="getDocMachine($event.target.files[0])" accept=".pdf,.doc,.xls">-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--/.TODO-->
+
+                        <!-- Form actions -->
+                        <div class="form-group">
+                            <div class="col-md-12 text-right">
+                                <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
+                                <button [disabled]="!machineForm.valid" type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <!-- /.Box body -->
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

@@ -21,7 +21,7 @@
 
             <!-- Box header -->
             <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-tags"></i> Ajouter une nouvel evenement</h3>
+                <h3 class="box-title"><i class="fa fa-tags"></i> Ajouter un nouvel evenement</h3>
             </div>
             <!-- /.Box header -->
 
@@ -30,35 +30,58 @@
                 <form  [formGroup]="eventForm" (ngSubmit)="addEvent()" >
                     <fieldset>
                         <!-- Title -->
-                        <div class="form-group">
-                            <label for="title">Titre </label>
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!eventForm.controls['title'].valid && eventForm.controls['title'].touched}">
+                            <label for="title">Titre* </label>
                             <div >
                                 <input id="title" name="title" type="text" placeholder="Nom de la formation"
                                        class="form-control" required [formControl]="eventForm.controls['title']">
                             </div>
+                            <!--Errors Msg-->
+                            <div *ngIf="eventForm.controls['title'].hasError('required') &&
+                                  eventForm.controls['title'].touched" class="alert alert-danger">
+                                Le titre de l'evenement doit etre renseigné.
+                            </div>
+                            <!--/.Errors Msg-->
                         </div>
 
                         <!-- Picture -->
                         <div class="form-group">
-                            <label for="illustration">Illustration </label>
+                            <label for="picture">Image </label>
                             <div>
-                                <input id="illustration" name="illustration"  class="form-control" type="file"
-                                       (change)="getIllustration($event.target.files[0])" accept=".png,.jpg,.jpeg">
+                                <input id="picture" name="picture"  class="form-control" type="file"
+                                       (change)="getPicture($event.target.files[0].name)" accept=".png,.jpg,.jpeg">
                             </div>
                         </div>
 
                         <!-- Description -->
-                        <div class="form-group">
-                            <label for="description">Description</label>
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!eventForm.controls['description'].valid && eventForm.controls['description'].touched}">
+                            <label for="description">Description*</label>
                             <div >
-                                <textarea id="description" name="description" placeholder="Description" class="form-control"
-                                          rows="5" required [formControl]="eventForm.controls['description']"></textarea>
+                                <textarea id="description" name="description" placeholder="Description de l'evenement"
+                                          class="form-control" rows="5" required
+                                          [formControl]="eventForm.controls['description']"></textarea>
                             </div>
+                            <!-- Errors Msg-->
+                            <div *ngIf="eventForm.controls['description'].hasError('required') &&
+                                  eventForm.controls['description'].touched" class="alert alert-danger">
+                                La description de l'evenement doit etre renseignée.
+                            </div>
+                            <div *ngIf="eventForm.controls['description'].hasError('minlength') &&
+                                  eventForm.controls['description'].touched" class="alert alert-danger">
+                                La description de l'evenement doit contenir 5 caracteres minimum.
+                            </div>
+                            <div *ngIf="eventForm.controls['description'].hasError('maxlength') &&
+                                  eventForm.controls['description'].touched" class="alert alert-danger">
+                                La description de l'evenement doit contenir 750 caracteres maximum.
+                            </div>
+                            <!--/. Errors Msg-->
                         </div>
 
                         <!-- Events type -->
                         <div class="form-group">
-                            <label for="eventType">Type d'evenement</label>
+                            <label for="eventType">Type d'evenement*</label>
                             <div >
                                 <select class="form-control " id="eventType" required>
                                     <option *ngFor="let type of eventsType" [value]="type">{{type.libelle}}</option>
@@ -68,24 +91,27 @@
 
 
                         <!-- AllDay -->
-                        <div class="form-group">
-                            <label>Tous les jours</label>
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!eventForm.controls['allDay'].valid && eventForm.controls['allDay'].touched}">
+                            <label>Tous les jours*</label>
                             <div>
                                 <label class="radio-inline">
-                                    <input type="radio" name="allDay" value="true" [formControl]="eventForm.controls['allDay']">
+                                    <input type="radio" name="allDay" value="true" required
+                                           [formControl]="eventForm.controls['allDay']">
                                     Oui
                                 </label>
                                 <label class="radio-inline">
-                                    <input #noAllday  type="radio" name="allDay" value="false"
-                                           [formControl]="eventForm.controls['allDay']">
+                                    <input #noAllday type="radio" name="allDay" value="false" (click)="displayHour(noAllday.value)"
+                                           [formControl]="eventForm.controls['allDay']" required>
                                     Non
                                 </label>
                             </div>
                         </div>
 
                         <!-- StartDate -->
-                        <div class="form-group">
-                            <label for="startDate">Date de debut</label>
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!eventForm.controls['startDate'].valid && eventForm.controls['startDate'].touched}">
+                            <label for="startDate">Date de debut*</label>
                             <div class="input-group" >
                                 <input id="startDate" name="startDate" type="date" class="form-control" required
                                        [formControl]="eventForm.controls['startDate']">
@@ -94,8 +120,9 @@
                         </div>
 
                         <!-- EndDate -->
-                        <div class="form-group">
-                            <label for="endDate">Date de fin</label>
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!eventForm.controls['endDate'].valid && eventForm.controls['endDate'].touched}">
+                            <label for="endDate">Date de fin*</label>
                             <div class="input-group" >
                                 <input id="endDate" name="startDate" type="date" class="form-control" required
                                        [formControl]="eventForm.controls['endDate']">
@@ -104,19 +131,19 @@
                         </div>
 
                         <!-- StartAt -->
-                        <div class="form-group">
+                        <div *ngIf="noAllday.value === false" class="form-group">
                             <label for="startAt">Débute à </label>
                             <div >
-                                <input id="startAt" name="startAt" type="time" class="form-control" required
+                                <input id="startAt" name="startAt" type="time" class="form-control"
                                        [formControl]="eventForm.controls['startAt']">
                             </div>
                         </div>
 
                         <!-- EndAt -->
-                        <div *ngIf="!noAllday.value === false" class="form-group">
+                        <div *ngIf="noAllday.value === false" class="form-group">
                             <label for="endAt">Finit à </label>
                             <div >
-                                <input id="endAt" name="endAt" type="time" class="form-control" required
+                                <input id="endAt" name="endAt" type="time" class="form-control"
                                        [formControl]="eventForm.controls['endAt']">
                             </div>
                         </div>

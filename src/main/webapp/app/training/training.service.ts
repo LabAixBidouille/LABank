@@ -14,7 +14,6 @@ export class TrainingService{
     }
 
     getAll(): Observable<Array<CTraining>> {
-        console.log("TEst getAll");
         return this.http.get(AppUtils.BACKEND_ROOT_URL+'/trainings')
             .map( (res:Response)=> {
                 let trainings:Array<CTraining> = [];

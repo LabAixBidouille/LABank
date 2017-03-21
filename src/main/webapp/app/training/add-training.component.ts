@@ -25,7 +25,7 @@ export class AddTrainingComponent{
         this.trainingForm = form.group({
                 name: ['', Validators.required],
                 illustration: "",
-                description: ['', Validators.required],
+                description: ['', Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(750)])],
                 nbTicket: "",
                 display: ['', Validators.required]
             });
@@ -34,7 +34,11 @@ export class AddTrainingComponent{
     addTraining(){
         this.training = new CTraining();
         this.training.name = this.trainingForm.value.name;
-        this.training.illustration = this.illustration;
+        if(this.illustration == null){
+            this.training.illustration = '../assets/img/trainings/defaultTraining.jpg';
+        }else{
+            this.training.illustration = this.illustration;
+        }
         this.training.description = this.trainingForm.value.description;
         this.training.nbTicket = this.trainingForm.value.nbTicket;
         this.training.display = this.trainingForm.value.display;
@@ -45,7 +49,7 @@ export class AddTrainingComponent{
     }
 
     getIllustration(illustration:any){
-        this.illustration = '../assets/img/training/'+ illustration;
+        this.illustration = '../assets/img/trainings/'+ illustration;
     }
 
     goBack(): void {

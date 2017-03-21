@@ -17,7 +17,7 @@ import {CRecurrence} from "./CRecurrence";
     templateUrl: './app/events/add-event.html',
     providers: [EventsService]
 })
-export class AddEventComponent implements OnInit{
+export class AddEventComponent{
     router: Router;
     eventForm:FormGroup;
 
@@ -25,8 +25,9 @@ export class AddEventComponent implements OnInit{
     eventsType:Array<IEventType>;
     recurrence: CRecurrence;
 
-    illustration:string;
+    picture:string;
     error:string;
+    display:string;
 
     constructor(router:Router,form: FormBuilder, private eventService:EventsService, private location:Location){
         this.event = new IEvent();
@@ -52,10 +53,6 @@ export class AddEventComponent implements OnInit{
         });
     }
 
-    ngOnInit(){
-
-    }
-
     addEvent(){
         this.event = new IEvent();
 
@@ -65,13 +62,17 @@ export class AddEventComponent implements OnInit{
         this.router.navigate(['/admin/events']);
     }
 
-    getIllustration(illustration:any){
+    getPicture(picture:string){
         console.log(this.recurrence.type);
-        this.illustration = '../assets/img/training/'+ illustration;
+        this.picture = '../assets/img/events/'+ picture;
     }
 
     getRecurrence(recurrence:CRecurrence){
         this.recurrence = recurrence;
+    }
+
+    displayHour(value:any){
+        this.display=value;
     }
 
     goBack(): void {

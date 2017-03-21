@@ -1,0 +1,132 @@
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Les Machines du FABLAB
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li class="active"><a href="#/admin/machines">Gestion des machines</a></li>
+            <li class="active">Ajout de machines</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-primary">
+
+            <!-- Box header -->
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-cogs"></i> Ajouter une nouvelle machine</h3>
+            </div>
+            <!-- /.Box header -->
+
+            <!-- Box body -->
+            <div class="box-body">
+                <form  [formGroup]="machineForm" (ngSubmit)="addMachine()" >
+                    <fieldset>
+                        <!-- Name -->
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!machineForm.controls['name'].valid && machineForm.controls['name'].touched}">
+                            <label for="name">Nom* </label>
+                            <div >
+                                <input id="name" name="name" type="text" placeholder="Nom de la machine"
+                                       class="form-control" required [formControl]="machineForm.controls['name']">
+                            </div>
+                            <!--Errors Msg-->
+                            <div *ngIf="machineForm.controls['name'].hasError('required') &&
+                                  machineForm.controls['name'].touched" class="alert alert-danger">
+                                Le nom de la machine doit etre renseigné.
+                            </div>
+                            <!--/.Errors Msg-->
+                        </div>
+
+                        <!-- Illustration -->
+                        <div class="form-group">
+                            <label for="illustration">Illustration </label>
+                            <div>
+                                <input id="illustration" name="illustration"  class="form-control" type="file"
+                                       (change)="getIllustration($event.target.files[0].name)" accept=".png,.jpg,.jpeg">
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!machineForm.controls['description'].valid && machineForm.controls['description'].touched}">
+                            <label for="description">Description*</label>
+                            <div >
+                                <textarea id="description" name="description" placeholder="Description" class="form-control"
+                                          rows="5" required [formControl]="machineForm.controls['description']"></textarea>
+                            </div>
+                            <!-- Errors Msg-->
+                            <div *ngIf="machineForm.controls['description'].hasError('required') &&
+                                  machineForm.controls['description'].touched" class="alert alert-danger">
+                                La description de la machine doit etre renseignée.
+                            </div>
+                            <div *ngIf="machineForm.controls['description'].hasError('minlength') &&
+                                  machineForm.controls['description'].touched" class="alert alert-danger">
+                                La description de la machine doit contenir 5 caracteres minimum.
+                            </div>
+                            <div *ngIf="machineForm.controls['description'].hasError('maxlength') &&
+                                  machineForm.controls['description'].touched" class="alert alert-danger">
+                                La description de la machine doit contenir 750 caracteres maximum.
+                            </div>
+                            <!--/. Errors Msg-->
+                        </div>
+
+                        <!-- Specification -->
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!machineForm.controls['specification'].valid && machineForm.controls['specification'].touched}">
+                            <label for="specification">Specification*</label>
+                            <div >
+                                <textarea id="specification" name="specification" placeholder="Specification"
+                                          class="form-control" rows="5" required
+                                          [formControl]="machineForm.controls['specification']"></textarea>
+                            </div>
+                            <!-- Errors Msg-->
+                            <div *ngIf="machineForm.controls['specification'].hasError('required') &&
+                                  machineForm.controls['specification'].touched" class="alert alert-danger">
+                                La specification de la machine doit etre renseignée.
+                            </div>
+                            <div *ngIf="machineForm.controls['specification'].hasError('minlength') &&
+                                  machineForm.controls['specification'].touched" class="alert alert-danger">
+                                La specification de la machine doit contenir 5 caracteres minimum.
+                            </div>
+                            <div *ngIf="machineForm.controls['specification'].hasError('maxlength') &&
+                                  machineForm.controls['specification'].touched" class="alert alert-danger">
+                                La specification de la machine doit contenir 750 caracteres maximum.
+                            </div>
+                            <!--/. Errors Msg-->
+                        </div>
+                        <!--TODO: Pieces jointes-->
+                        <!-- Attached files -->
+                        <!--<div class="form-group">-->
+                            <!--<label for="docMachine">Pieces jointes</label>-->
+                            <!--<div >-->
+                                <!--<input id="docMachine" name="docMachine"  class="form-control" type="file"-->
+                                       <!--(change)="getDocMachine($event.target.files[0])" accept=".pdf,.doc,.xls">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--/.TODO-->
+
+                        <!-- Form actions -->
+                        <div class="form-group">
+                            <div class="col-md-12 text-right">
+                                <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
+                                <button [disabled]="!machineForm.valid" type="submit" class="btn btn-primary">Enregistrer la machine</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <!-- /.Box body -->
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

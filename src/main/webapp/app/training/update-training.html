@@ -8,7 +8,7 @@
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
             <li class="active"><a href="#/admin/trainings">Gestion des formations</a></li>
-            <li class="active">Ajout de formations</li>
+            <li class="active">Modification de formations</li>
         </ol>
     </section>
 
@@ -19,7 +19,7 @@
 
             <!-- Box header -->
             <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-graduation-cap"></i> Ajouter une nouvelle formation</h3>
+                <h3 class="box-title"><i class="fa fa-graduation-cap"></i> Modifier la formation</h3>
             </div>
             <!-- /.Box header -->
 
@@ -34,7 +34,11 @@
                                 <input id="name" name="name" type="text" placeholder="Nom de la formation"
                                        class="form-control" required [(ngModel)]="training.name" #name="ngModel" >
                             </div>
-                            <div *ngIf="name.control.dirty && name.control.hasError('required')">Le nom doit etre renseigné</div>
+                            <!--Errors Msg-->
+                            <div *ngIf="name.control.dirty && name.control.hasError('required')" class="alert alert-danger">
+                                Le nom de la formation doit etre renseigné
+                            </div>
+                            <!--/.Errors Msg-->
                         </div>
 
                         <!-- Illustration -->
@@ -51,8 +55,20 @@
                             <label for="description">Description</label>
                             <div >
                                 <textarea id="description" name="description" placeholder="Description" class="form-control"
-                                          rows="5" required [(ngModel)]="training.description"></textarea>
+                                          rows="5" required minlength="5" maxlength="750"
+                                          [(ngModel)]="training.description" #desc="ngModel"></textarea>
                             </div>
+                            <!--Errors msg-->
+                            <div *ngIf="desc.control.dirty && desc.control.hasError('required')" class="alert alert-danger">
+                                La description de la formation doit etre renseignée.
+                            </div>
+                            <div *ngIf="desc.control.dirty && desc.control.hasError('minlength')" class="alert alert-danger">
+                                La description de la formation doit contenir 5 caracteres minimum.
+                            </div>
+                            <div *ngIf="desc.control.dirty && desc.control.hasError('maxlength')" class="alert alert-danger">
+                                La description de la formation doit contenir 750 caracteres maximum.
+                            </div>
+                            <!--/.Errors Msg-->
                         </div>
 
                         <!-- Number of tickets -->
@@ -60,7 +76,7 @@
                             <label for="nbTicket">Nombre de tickets</label>
                             <div >
                                 <input id="nbTicket" name="nbTicket" type="number" min="0"
-                                       class="form-control" required  [(ngModel)]="training.nbTicket">
+                                       class="form-control" [(ngModel)]="training.nbTicket">
                             </div>
                         </div>
 

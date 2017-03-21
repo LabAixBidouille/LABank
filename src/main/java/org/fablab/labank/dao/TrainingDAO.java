@@ -3,7 +3,6 @@ package org.fablab.labank.dao;
 import org.fablab.labank.dto.TrainingDTO;
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
 
 /**
  * Created by Kandel HANAFI on 06/03/2017.

@@ -14,5 +14,5 @@ public interface MachineDAO extends CrudRepository<MachineDTO, Long> {
      *
      * @param id the machine id.
      */
-    public MachineDTO findByIdMachine(Long id);
+    //public MachineDTO findByIdMachine(Long id);
 }

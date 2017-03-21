@@ -10,12 +10,15 @@ import { UtilsModule } from '../utils/utils.module';
 
 import { Machine } from './machine';
 import { Machines } from './machines';
+import { AdminMachinesComponent } from './admin-machines.component';
+import { AddMachineComponent } from './add-machine.component';
+import { UpdateMachineComponent } from './update-machine.component';
 import { MachinesService } from './machines.service';
 
 @NgModule({
     imports: [ FormsModule, ReactiveFormsModule, BrowserModule, UtilsModule ],
-    bootstrap: [ Machine, Machines ],
-    declarations: [ Machine, Machines ],
+    bootstrap: [ Machine, Machines,  AdminMachinesComponent, AddMachineComponent, UpdateMachineComponent ],
+    declarations: [ Machine, Machines, AdminMachinesComponent, AddMachineComponent, UpdateMachineComponent ],
     providers: [ MachinesService ]
 })
 export class MachineModule { }

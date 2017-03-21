@@ -1,5 +1,6 @@
 package org.fablab.labank.dto;
 
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -18,7 +19,7 @@ public class MachineDTO {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long idMachine;
+    private Long id;
 
     // The machine's name
     @NotNull
@@ -44,12 +45,12 @@ public class MachineDTO {
     // ------------------------
     public MachineDTO() { }
 
-    public MachineDTO(long id) {
-        this.idMachine = id;
+    public MachineDTO(Long id) {
+        this.id = id;
     }
 
     public MachineDTO(MachineDTO machine) {
-        this.idMachine = machine.idMachine;
+        this.id = machine.id;
         this.name = machine.name;
         this.description = machine.description;
         this.specification = machine.specification;
@@ -58,12 +59,12 @@ public class MachineDTO {
 
     // Getter and setter methods
 
-    public long getIdMachine() {
-        return idMachine;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdMachine(long idMachine) {
-        this.idMachine = idMachine;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {

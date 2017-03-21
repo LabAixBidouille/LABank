@@ -1,5 +1,5 @@
 <div class="form-group">
-    <label for="recurrence">Recurrence</label>
+    <label for="recurrence">Recurrence*</label>
     <div >
         <select [ngModel]="recurrence" (ngModelChange)="selectRecurrence($event)" class="form-control " id="recurrence" required>
         <option *ngFor="let currentRecurrence of recurrences"  [value]="currentRecurrence" >

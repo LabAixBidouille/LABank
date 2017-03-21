@@ -28,6 +28,9 @@ import {UpdateEventComponent} from './events/update-event.component';
 
 import {Machines} from "./machines/machines";
 import {Machine} from "./machines/machine";
+import {AdminMachinesComponent} from './machines/admin-machines.component';
+import {AddMachineComponent} from './machines/add-machine.component';
+import {UpdateMachineComponent} from './machines/update-machine.component';
 
 export const routes:Routes = [
     {path: 'users', component: Users, },
@@ -39,6 +42,9 @@ export const routes:Routes = [
 
     {path: 'machines/:id', component: Machine},
     {path: 'machines', component: Machines},
+    {path: 'admin/machines', component: AdminMachinesComponent},
+    {path: 'admin/machines/new', component: AddMachineComponent},
+    {path: 'admin/machines/:id', component: UpdateMachineComponent},
 
     {path: 'events/:id', component: EventComponent},
     {path: 'events/cat/:id', component: Events},

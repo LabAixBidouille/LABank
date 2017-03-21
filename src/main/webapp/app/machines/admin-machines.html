@@ -1,0 +1,113 @@
+<!--Modal Delete Machine-->
+<div id="deleteModal" class="modal fade" >
+    <div class="login-box modal-dialog modal-sm box box-primary">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="box-header with-border">
+                <i class="fa fa-cogs"></i>
+
+                <h3 class="box-title">Supprimer la machine</h3>
+                <!-- tools box -->
+                <div class="pull-right box-tools">
+                    <button type="button" class="btn btn-primary btn-sm" data-widget="remove" data-toggle="tooltip" title="Fermer" data-dismiss="modal">
+                        <i class="fa fa-times"></i></button>
+                </div>
+                <!-- /. tools -->
+            </div>
+
+            <div class="modal-body form-horizontal">
+                <p>Etes vous sur de vouloir supprimer la machine ?</p>
+            </div>
+
+            <div class="modal-footer box-footer last-row">
+                <button type="button" class="btn btn-default pull-left" data-widget="remove" data-toggle="tooltip" title="Fermer" data-dismiss="modal"><i class="fa fa-ban"></i> Annuler</button>
+                <button (click)="delete()" type="button" class="btn btn-primary pull-right" data-dismiss="modal" ><i class="glyphicon glyphicon-trash"></i> Supprimer</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Les Machines du FABLAB
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li class="active">Gestion des machines</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-primary">
+
+            <!-- Box header -->
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-cogs"></i> Gestion des machines</h3>
+            </div>
+            <!-- /.Box header -->
+
+            <!-- Box body -->
+            <div class="box-body">
+                <div *ngIf="msg" class="alert alert-success alert-dismissible" role="alert">
+                    <a href="#/admin/machines" (click)="closeAlert()" class="close">&times;</a>
+                    <strong>Machine supprimée avec succes!</strong>.
+                </div>
+                <div>
+                    <button (click)="newMachine()" type="button" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-plus"></i> Ajouter une machine</button>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-md-4" *ngFor="let machine of machines">
+
+                        <div class="box box-primary box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">{{machine.name}}</h3>
+
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                                <!-- /.box-tools -->
+                            </div>
+                            <!-- /.box-header -->
+                            <div class="box-body text-center">
+                                <img [src]="machine.illustration" alt="User Image" width="128px"/>
+                            </div>
+                            <!-- /.box-body -->
+                            <div class="box-footer text-center ">
+
+                                <div class="col-sm-6 b-r no-padder">
+                                    <button (click)="updateMachine(machine.id)" type="button"
+                                            class="btn btn-block btn-warning ng-binding box-footer-btn-text">
+                                        <i class="glyphicon glyphicon-edit"></i> Editer
+                                    </button>
+                                </div>
+
+                                <div class="col-sm-6 no-padder">
+                                    <button (click)="deleteMachine(machine.id)" data-toggle="modal" data-target="#deleteModal"
+                                            data-backdrop="false" type="button" class="btn btn-block btn-danger ng-binding box-footer-btn-text">
+                                        <i class="glyphicon glyphicon-trash"></i> Supprimer
+                                    </button>
+                                </div>
+
+                            </div>
+                            <!-- /.box-footer -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+
+                </div>
+            </div>
+            <!-- /.Box body -->
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

@@ -3,11 +3,11 @@
  */
 export class IMachine {
     id: number;
-    nom: string;
+    name: string;
     description: string;
     specification: string;
     illustration: string;
-    constructor(machine?:{id:number,nom:string,description:string,specification:string, illustration:string}) {
+    constructor(machine?:{id:number,name:string,description:string,specification:string, illustration:string}) {
         if(machine) {
             _.assignIn(this, machine);
         }

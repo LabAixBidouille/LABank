@@ -5,7 +5,6 @@ import org.fablab.labank.dto.MachineDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 
 /**
@@ -36,14 +35,14 @@ public class Machines {
      * @return MachineDTO machine : objet MachineDTO ayant l'id passé en parametre de l'URL.
      */
     @RequestMapping("/machines/{id}")
-    public MachineDTO query(@PathVariable Integer id){
-        return machineDAO.findByIdMachine(Long.valueOf(id));
+    public MachineDTO query(@PathVariable Long id){
+        return machineDAO.findOne(id);
     }
 
     /**
      * Methode permettant d'enregistrer un nouvel objet MachineDTO.
      * @param machine : objet MachineDTO.
-     * @return TrainingDTO training : objet MachineDTO passé en parametre de la requete HTTP.
+     * @return MachineDTO machine : objet MachineDTO passé en parametre de la requete HTTP.
      */
     @RequestMapping(value = "/admin/machines", method = RequestMethod.POST)
     public MachineDTO save(@RequestBody MachineDTO machine){
@@ -59,7 +58,7 @@ public class Machines {
     /**
      * Methode permettant de mettre à jour l'objet MachineDTO passé en parametre de la requete HTTP.
      * @param machine : objet MachineDTO.
-     * @return TrainingDTO training : objet MachineDTO passé en parametre de la requete HTTP.
+     * @return MachineDTO machine : objet MachineDTO passé en parametre de la requete HTTP.
      */
     @RequestMapping(value = "/admin/machines", method = RequestMethod.PUT)
     public MachineDTO update(@RequestBody MachineDTO machine){
