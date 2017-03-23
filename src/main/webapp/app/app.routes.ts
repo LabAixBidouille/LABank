@@ -18,6 +18,7 @@ import {UpdateTrainingComponent} from './training/update-training.component';
 import {Events} from "./events/events";
 import {EventComponent} from './events/event.component';
 import {EventType} from "./events/eventtype";
+import {EventTypesSelectComponent} from "./events/event-types-select.component";
 import {EventRecurrencesComponent} from "./events/event-recurrences.component";
 import {AdminEventsHomeComponent} from './events/admin-events-home.component';
 import {AdminEventsFiltersComponent} from './events/admin-events-filters.component';
@@ -49,6 +50,7 @@ export const routes:Routes = [
     {path: 'events/:id', component: EventComponent},
     {path: 'events/cat/:id', component: Events},
     {path: 'eventtype', component: EventType},
+    {path: 'event-types-select', component: EventTypesSelectComponent},
     {path: 'event-recurrences', component: EventRecurrencesComponent},
     {path: 'admin/events/home', component: AdminEventsHomeComponent},
     {path: 'admin/events', component: AdminEventsComponent},

@@ -7,7 +7,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-            <li class="active"><a href="#/admin/events">Gestion des evenements</a></li>
+            <li class="active"><a href="#/admin/events/home">Gestion des evenements</a></li>
             <li class="active">Modification de l'evenement</li>
         </ol>
     </section>
@@ -39,10 +39,10 @@
 
                         <!-- Picture -->
                         <div class="form-group">
-                            <label for="illustration">Illustration </label>
+                            <label for="picture">Image </label>
                             <div>
-                                <input id="illustration" name="illustration"  class="form-control" type="file"
-                                       (change)="getIllustration($event.target.files[0])" accept=".png,.jpg,.jpeg">
+                                <input id="picture" name="picture"  class="form-control" type="file"
+                                       (change)="getPicture($event.target.files[0].name)" accept=".png,.jpg,.jpeg">
                             </div>
                         </div>
 
@@ -52,19 +52,21 @@
                             <div >
                                 <textarea id="description" name="description" placeholder="Description de l'evenement"
                                           class="form-control" rows="5" required
-                                          [(ngModel)]="machine.description" #description="ngModel"></textarea>
+                                          [(ngModel)]="event.description" #description="ngModel"></textarea>
                             </div>
                         </div>
 
                         <!-- Events type -->
-                        <div class="form-group">
+                        <event-types-select (eventTypeSelected)="getEventType($event)" ></event-types-select>
+                        <!--<div class="form-group">
                             <label for="eventType">Type d'evenement</label>
                             <div >
                                 <select class="form-control " id="eventType" required>
                                     <option *ngFor="let type of eventsType" [value]="type">{{type.libelle}}</option>
                                 </select>
                             </div>
-                        </div>
+                        </div>-->
+
 
 
                         <!-- AllDay -->
@@ -73,12 +75,12 @@
                             <div>
                                 <label class="radio-inline">
                                     <input type="radio" name="allDay" [value]=true
-                                           [(ngModel)]="machine.allDay" #allDay="ngModel">
+                                           [(ngModel)]="event.allDay" #allDay="ngModel">
                                     Oui
                                 </label>
                                 <label class="radio-inline">
                                     <input #noAllday type="radio" name="allDay" [value]=false
-                                           [(ngModel)]="machine.allDay" #allDay="ngModel">
+                                           [(ngModel)]="event.allDay" #allDay="ngModel">
                                     Non
                                 </label>
                             </div>
@@ -89,7 +91,7 @@
                             <label for="startDate">Date de debut</label>
                             <div class="input-group" >
                                 <input id="startDate" name="startDate" type="date" class="form-control" required
-                                       [(ngModel)]="machine.startDate" #startDate="ngModel">
+                                       [(ngModel)]="event.startDate" #startDate="ngModel">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                             </div>
                         </div>
@@ -99,46 +101,38 @@
                             <label for="endDate">Date de fin</label>
                             <div class="input-group" >
                                 <input id="endDate" name="startDate" type="date" class="form-control" required
-                                       [(ngModel)]="machine.endDate" #endDate="ngModel">
+                                       [(ngModel)]="event.endDate" #endDate="ngModel">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                             </div>
                         </div>
 
                         <!-- StartAt -->
-                        <div *ngIf="noAllday.value === false"  class="form-group">
+                        <div *ngIf="noAllday.checked"  class="form-group">
                             <label for="startAt">Débute à </label>
                             <div >
                                 <input id="startAt" name="startAt" type="time" class="form-control" required
-                                       [formControl]="eventForm.controls['startAt']">
+                                       [(ngModel)]="event.startAt" #startAt="ngModel">
                             </div>
                         </div>
 
                         <!-- EndAt -->
-                        <div *ngIf="noAllday.value === false" class="form-group">
+                        <div *ngIf="noAllday.checked" class="form-group">
                             <label for="endAt">Finit à </label>
                             <div >
                                 <input id="endAt" name="endAt" type="time" class="form-control" required
-                                       [formControl]="eventForm.controls['endAt']">
+                                       [(ngModel)]="event.endAt" #endAt="ngModel">
                             </div>
                         </div>
 
                         <!-- Recurrence -->
                         <event-recurrences (recurrenceSelected)="getRecurrence($event)" ></event-recurrences>
-                        <!--<div class="form-group">-->
-                        <!--<label for="recurrence">Recurrence</label>-->
-                        <!--<div >-->
-                        <!--&lt;!&ndash;<select class="form-control " id="recurrence" required>&ndash;&gt;-->
-                        <!--&lt;!&ndash;<option *ngFor="let recurrence of recurrences" [value]="recurrence">{{recurrence.libelle}}</option>&ndash;&gt;-->
-                        <!--&lt;!&ndash;</select>&ndash;&gt;-->
-                        <!--</div>-->
-                        <!--</div>-->
 
                         <!-- Standard price -->
                         <div class="form-group">
                             <label for="stdPrice">Tarifs</label>
                             <div class="input-group" >
                                 <input id="stdPrice" name="standardPrice" type="number" min="0"
-                                       class="form-control" [formControl]="eventForm.controls['standardPrice']">
+                                       class="form-control" [(ngModel)]="event.standardPrice" >
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-euro"></i></span>
                             </div>
                         </div>
@@ -148,7 +142,7 @@
                             <label for="reducedFare">Reduction</label>
                             <div class="input-group" >
                                 <input id="reducedFare" name="reducedFare" type="number" min="0"
-                                       class="form-control" [formControl]="eventForm.controls['reducedFare']">
+                                       class="form-control" [(ngModel)]="event.reducedFare">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-euro"></i></span>
                             </div>
                         </div>
@@ -159,18 +153,8 @@
                             <label for="nbTickets">Nombre de tickets</label>
                             <div class="input-group" >
                                 <input id="nbTickets" name="nbTickets" type="number" min="0"
-                                       class="form-control" [formControl]="eventForm.controls['nbTickets']">
+                                       class="form-control" [(ngModel)]="event.nbTickets">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
-                            </div>
-                        </div>
-
-                        <!-- Specification -->
-                        <div class="form-group">
-                            <label for="specification">Specification</label>
-                            <div >
-                                <textarea id="specification" name="specification" placeholder="Specifications de la machine"
-                                          class="form-control" rows="5" required
-                                          [(ngModel)]="machine.specification"></textarea>
                             </div>
                         </div>
 
@@ -179,7 +163,7 @@
                         <div class="form-group">
                             <div class="col-md-12 text-right">
                                 <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
-                                <button [disabled]="!machineForm.valid" type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+                                <button [disabled]="!eventForm.valid" type="submit" class="btn btn-primary">Enregistrer les modifications</button>
                             </div>
                         </div>
                     </fieldset>

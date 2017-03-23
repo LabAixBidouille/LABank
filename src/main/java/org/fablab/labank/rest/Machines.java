@@ -78,13 +78,13 @@ public class Machines {
      */
     @RequestMapping(value = "/admin/machines/{id}", method = RequestMethod.DELETE)
     public boolean delete(@PathVariable Long id){
-        boolean msg = false;
+        boolean status = false;
         try {
             this.machineDAO.delete(id);
-            msg = true;
+            status = true;
         }catch(Exception e){
             e.printStackTrace();
         }
-        return msg;
+        return status;
     }
 }

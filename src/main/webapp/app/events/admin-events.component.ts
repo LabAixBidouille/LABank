@@ -55,7 +55,7 @@ export class AdminEventsComponent implements OnInit{
         this._ngZone.run(() => { this.eventService.getEventsListByCategory(0).
             subscribe( (events:Array<IEvent>) => this.events = events ); });
 
-        this.router.navigate(['admin/events']);
+        this.router.navigate(['admin/events/home']);
     }
 
     closeAlert(){

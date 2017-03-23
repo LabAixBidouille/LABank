@@ -14,18 +14,16 @@ import {CR} from "@angular/compiler/src/i18n/serializers/xml_helper";
 })
 export class EventRecurrencesComponent{
     recurrences: Array<CRecurrence>;
-    recurrence: CRecurrence;
+    recurrence = new CRecurrence();
     @Output()
     recurrenceSelected = new EventEmitter<CRecurrence>();
 
     constructor(private eventsService:EventsService){
-        this.recurrence = new CRecurrence;
         this.eventsService.getAllRecurrence().subscribe(
             (recurrences:Array<CRecurrence>) => this.recurrences = recurrences);
     }
 
-    selectRecurrence(recurrence){
-        console.log(recurrence.type);
-        this.recurrenceSelected.emit(recurrence);
+    selectRecurrence(){
+        this.recurrenceSelected.emit(this.recurrence);
     }
 }

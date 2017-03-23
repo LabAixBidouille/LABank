@@ -30,10 +30,16 @@ export class UpdateTrainingComponent implements OnInit{
     }
 
     updateTraining(){
-        this.training.illustration = this.illustration;
+        if(this.illustration == null){
+            this.training.illustration = '../assets/img/trainings/defaultTraining.jpg';
+        }else{
+            this.training.illustration = this.illustration;
+        }
         this.trainingService.updateTraining(this.training).subscribe((training:CTraining) => this.training = training);
+
         this._ngZone.run(() => { this.trainingService.getAll().
             subscribe( (trainings:Array<CTraining>) => this.trainings = trainings ); });
+
         this.router.navigate(['/admin/trainings']);
     }
 

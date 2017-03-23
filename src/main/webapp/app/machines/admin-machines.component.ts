@@ -41,11 +41,14 @@ export class AdminMachinesComponent{
     delete(){
         this.machinesService.deleteMachine(this.machineToDelete.id).subscribe( (msg:boolean) => this.msg = msg );
 
-        /* Permets de rafraichir la liste des machines apres une suppression */
+        /*Permets de rafraichir la liste des machines apres une suppression*/
         this.ngZone.run(() => { this.machinesService.getAll().
-            subscribe( (machines:Array<IMachine>) => this.machines = machines ); });
+            subscribe( (machines:Array<IMachine>) => {
+                this.machines = machines;
+                this.router.navigate(['admin/machines']);
+        } ); });
 
-        this.router.navigate(['admin/machines']);
+
     }
 
     closeAlert(){

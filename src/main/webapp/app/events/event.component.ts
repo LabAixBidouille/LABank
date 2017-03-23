@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import { Router, ActivatedRoute, Params }   from '@angular/router';
-import { Location } from '@angular/common';
+import { ActivatedRoute, Params }   from '@angular/router';
 
 import 'rxjs/add/operator/switchMap';
 
@@ -14,7 +13,7 @@ import {IEvent} from "./IEvent";
 export class EventComponent{
     event:IEvent;
 
-    constructor(private eventsService: EventsService, private route: ActivatedRoute, private location: Location){
+    constructor(private eventsService: EventsService, private route: ActivatedRoute){
         this.event = new IEvent();
     }
 

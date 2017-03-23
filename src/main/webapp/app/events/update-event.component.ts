@@ -5,6 +5,8 @@ import {Location} from "@angular/common";
 
 import {EventsService} from "./events.service";
 import {IEvent} from "./IEvent";
+import {IEventType} from "./IEventType";
+import {CRecurrence} from "./CRecurrence";
 /**
  * Created by Kandel HANAFI on 15/03/17.
  */
@@ -16,12 +18,16 @@ export class UpdateEventComponent implements OnInit{
 
     event= new IEvent();
     events:Array<IEvent>;
+    eventType:IEventType;
+    recurrence:CRecurrence;
 
     picture:string;
 
     constructor(private router:Router, private route:ActivatedRoute, private location:Location,
                 private eventsService:EventsService, private ngZone:NgZone){
         this.events=[];
+        this.eventType = new IEventType();
+        this.recurrence = new CRecurrence();
         this.picture ="";
     }
 
@@ -31,15 +37,37 @@ export class UpdateEventComponent implements OnInit{
     }
 
     updateEvent(){
-        this.event.picture = this.picture;
+        /*TODO: a supprimer ou à modifier lorsque l'upload de fichier sera implementé */
+        if(this.picture == null){
+            this.event.picture = '../assets/img/events/defaultEvent.png';
+        }else{
+            this.event.picture = this.picture;
+        }
+        /*FIN TODO*/
+        let test:Date;
+        this.event.idEventType = this.eventType.idEventType;
+        this.event.idRecurrence = this.recurrence.idRecurrence;
+
+        /*TODO:convertir le startAt e endAt au bon format */
+
         this.eventsService.updateEvent(this.event).subscribe((event:IEvent) => this.event = event);
+
         this.ngZone.run(() => { this.eventsService.getEventsListByCategory(0).
             subscribe( (events:Array<IEvent>) => this.events = events ); });
-        this.router.navigate(['/admin/events']);
+
+        this.router.navigate(['/admin/events/home']);
     }
 
     getPicture(picture:string){
         this.picture = '../assets/img/events/'+ picture;
+    }
+
+    getEventType(eventType:IEventType){
+        this.eventType = eventType;
+    }
+
+    getRecurrence(recurrence:CRecurrence){
+        this.recurrence = recurrence;
     }
 
     goBack(): void {

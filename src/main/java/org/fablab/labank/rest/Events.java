@@ -29,13 +29,57 @@ public class Events {
         }
     }
 
-    @RequestMapping(value = "/events/{id}", method = RequestMethod.PUT)
-    public EventDTO update(@RequestBody @Valid EventDTO eventDTO) {
-        return eventDAO.save(eventDTO);
-    }
-
     @RequestMapping(value = "/events/{id}")
     public EventDTO query(@PathVariable Long id){
         return eventDAO.findOne(id);
+    }
+
+    /**
+     * Methode permettant d'enregistrer un nouvel objet EventDTO.
+     * @param event : objet EventDTO.
+     * @return EventDTO event : objet EventDTO passé en parametre de la requete HTTP.
+     */
+    @RequestMapping(value = "/admin/events", method = RequestMethod.POST)
+    public EventDTO save(@RequestBody EventDTO event){
+        EventDTO e = null;
+        try {
+            e = this.eventDAO.save(event);
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return e;
+    }
+
+    /**
+     * Methode permettant de mettre à jour l'objet EventDTO passé en parametre de la requete HTTP.
+     * @param event : objet EventDTO.
+     * @return EventDTO event : objet EventDTO passé en parametre de la requete HTTP.
+     */
+    @RequestMapping(value = "/admin/events", method = RequestMethod.PUT)
+    public EventDTO update(@RequestBody EventDTO event){
+        EventDTO e = null;
+        try {
+            e = this.eventDAO.save(event);
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }
+        return e;
+    }
+
+    /**
+     * Methode permettant de supprimer l'objet EventDTO ayant l'id passé en parametre de l'URL.
+     * @param id : id de l'objet EventDTO à supprimer.
+     * @return boolean msg : booleen permettant d'indiquer le succes ou l'echec de la suppression.
+     */
+    @RequestMapping(value = "/admin/events/{id}", method = RequestMethod.DELETE)
+    public boolean delete(@PathVariable Long id){
+        boolean msg = false;
+        try {
+            this.eventDAO.delete(id);
+            msg = true;
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return msg;
     }
 }

@@ -43,9 +43,12 @@ export class AddMachineComponent{
         }else{
             this.machine.illustration = this.illustration;
         }
-        this.machinesService.saveMachine(this.machine).subscribe((machine:IMachine) => this.machine = machine);
+        this.machinesService.saveMachine(this.machine).subscribe((machine:IMachine) => {
+            this.machine = machine;
+            this.router.navigate(['/admin/machines']);
+        });
 
-        this.router.navigate(['/admin/machines']);
+
     }
 
     getIllustration(illustration:string){

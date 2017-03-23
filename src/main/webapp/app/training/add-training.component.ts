@@ -43,9 +43,12 @@ export class AddTrainingComponent{
         this.training.nbTicket = this.trainingForm.value.nbTicket;
         this.training.display = this.trainingForm.value.display;
 
-        this.trainingService.saveTraining(this.training).subscribe((training:CTraining) => this.training = training);
+        this.trainingService.saveTraining(this.training).subscribe((training:CTraining) => {
+            this.training = training;
+            this.router.navigate(['/admin/trainings']);
+        });
 
-        this.router.navigate(['/admin/trainings']);
+
     }
 
     getIllustration(illustration:any){

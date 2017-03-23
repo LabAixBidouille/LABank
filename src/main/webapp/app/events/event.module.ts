@@ -19,12 +19,15 @@ import {AddEventComponent} from './add-event.component';
 import {UpdateEventComponent} from './update-event.component';
 import { EventType } from './eventtype';
 import { EventRecurrencesComponent } from './event-recurrences.component';
+import { EventTypesSelectComponent } from './event-types-select.component';
+
 
 @NgModule({
     imports: [ FormsModule, ReactiveFormsModule, BrowserModule, UtilsModule ],
     bootstrap: [EventComponent, Events, EventType ],
     declarations: [EventComponent, Events, EventType, AdminEventsComponent, AddEventComponent, UpdateEventComponent,
-                    AdminEventsHomeComponent, AdminEventsFiltersComponent, AdminEventsPricesComponent, EventRecurrencesComponent ],
+                    AdminEventsHomeComponent, AdminEventsFiltersComponent, AdminEventsPricesComponent, EventRecurrencesComponent,
+                    EventTypesSelectComponent],
     providers: [ EventsService ]
 })
 

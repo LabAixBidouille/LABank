@@ -32,8 +32,13 @@ export class UpdateMachineComponent{
     }
 
     updateMachine(){
-        this.machine.illustration = this.illustration;
+        if(this.illustration == null){
+            this.machine.illustration = '../assets/img/machines/DefaultMachine.png';
+        }else{
+            this.machine.illustration = this.illustration;
+        }
         this.machinesService.updateMachine(this.machine).subscribe((machine:IMachine) => this.machine = machine);
+
         this.ngZone.run(() => { this.machinesService.getAll().
             subscribe( (machines:Array<IMachine>) => this.machines = machines ); });
         this.router.navigate(['/admin/machines']);

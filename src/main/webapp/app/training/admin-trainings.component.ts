@@ -22,7 +22,11 @@ export class AdminTrainingsComponent{
         this.trainingToDelete = new CTraining();
         this.msg=false;
         this.router = router;
-        trainingService.getAll().subscribe( (trainings:Array<CTraining>) => this.trainings = trainings );
+        trainingService.getAll().subscribe( (trainings:Array<CTraining>) => {
+            this.trainings = trainings;
+            console.log(this.trainings.length);
+        } );
+
     }
 
     newTraining(){
@@ -38,10 +42,13 @@ export class AdminTrainingsComponent{
     }
 
     delete(){
-        this.trainingService.deleteTraining(this.trainingToDelete.id).subscribe( (msg:boolean) => this.msg = msg );
-        this._ngZone.run(() => { this.trainingService.getAll().
+        this.trainingService.deleteTraining(this.trainingToDelete.id).subscribe( (msg:boolean) =>{
+            this.msg = msg;
+        });
+
+        /*this._ngZone.run(() => { this.trainingService.getAll().
             subscribe( (trainings:Array<CTraining>) => this.trainings = trainings ); });
-        this.router.navigate(['admin/trainings']);
+        this.router.navigate(['admin/trainings']);*/
     }
 
     closeAlert(){

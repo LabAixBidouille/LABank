@@ -13,26 +13,13 @@ import {CTraining} from "./CTraining";
 })
 export class TrainingComponent implements OnInit {
     training: CTraining;
-    private sub:any;
 
-    constructor(private trainingService: TrainingService, private route: ActivatedRoute, private location: Location){
+    constructor(private trainingService: TrainingService, private route: ActivatedRoute){
         this.training = new CTraining();
     }
 
     ngOnInit(): void {
         this.route.params.switchMap( (params: Params) => this.trainingService.getTraining(+params['id']))
             .subscribe( (training: CTraining) => this.training = training);
-
-      /*this.sub = this.route.params.subscribe( params => this.getTrainingById(+params['id']));*/
     }
-
-    /*
-    ngOnDestroy():void {
-        this.sub.unsubscribe();
-    }
-
-    getTrainingById(id:number): void{
-        this.trainingService.getTraining(id).subscribe( (training:CTraining) => this.training = training);
-    }*/
-
 }

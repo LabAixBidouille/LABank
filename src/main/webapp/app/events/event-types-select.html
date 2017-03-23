@@ -1,0 +1,9 @@
+<div class="form-group">
+    <label for="eventType">Type d'evenement*</label>
+    <div >
+        <select [(ngModel)]="eventType" (change)="selectEventType()" class="form-control " id="eventType" required>
+            <option *ngFor="let currentEventType of eventTypes"  [ngValue]="currentEventType" >
+                {{currentEventType.libelle}}</option>
+        </select>
+    </div>
+</div>

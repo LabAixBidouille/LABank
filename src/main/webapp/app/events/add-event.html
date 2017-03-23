@@ -34,7 +34,7 @@
                              [ngClass]="{'has-error':!eventForm.controls['title'].valid && eventForm.controls['title'].touched}">
                             <label for="title">Titre* </label>
                             <div >
-                                <input id="title" name="title" type="text" placeholder="Nom de la formation"
+                                <input id="title" name="title" type="text" placeholder="Nom de l'evenement"
                                        class="form-control" required [formControl]="eventForm.controls['title']">
                             </div>
                             <!--Errors Msg-->
@@ -80,15 +80,7 @@
                         </div>
 
                         <!-- Events type -->
-                        <div class="form-group">
-                            <label for="eventType">Type d'evenement*</label>
-                            <div >
-                                <select class="form-control " id="eventType" required>
-                                    <option *ngFor="let type of eventsType" [value]="type">{{type.libelle}}</option>
-                                </select>
-                            </div>
-                        </div>
-
+                        <event-types-select required="true" (eventTypeSelected)="getEventType($event)" ></event-types-select>
 
                         <!-- AllDay -->
                         <div class="form-group"
@@ -96,13 +88,13 @@
                             <label>Tous les jours*</label>
                             <div>
                                 <label class="radio-inline">
-                                    <input type="radio" name="allDay" value="true" required
+                                    <input type="radio" name="allDay" value="true"
                                            [formControl]="eventForm.controls['allDay']">
                                     Oui
                                 </label>
                                 <label class="radio-inline">
-                                    <input #noAllday type="radio" name="allDay" value="false" (click)="displayHour(noAllday.value)"
-                                           [formControl]="eventForm.controls['allDay']" required>
+                                    <input #noAllday type="radio" name="allDay" value="false" (change)="displayHour(noAllday.value)"
+                                           [formControl]="eventForm.controls['allDay']">
                                     Non
                                 </label>
                             </div>
@@ -131,7 +123,7 @@
                         </div>
 
                         <!-- StartAt -->
-                        <div *ngIf="noAllday.value === false" class="form-group">
+                        <div *ngIf="noAllday.checked " class="form-group">
                             <label for="startAt">Débute à </label>
                             <div >
                                 <input id="startAt" name="startAt" type="time" class="form-control"
@@ -140,7 +132,7 @@
                         </div>
 
                         <!-- EndAt -->
-                        <div *ngIf="noAllday.value === false" class="form-group">
+                        <div *ngIf="noAllday.checked" class="form-group">
                             <label for="endAt">Finit à </label>
                             <div >
                                 <input id="endAt" name="endAt" type="time" class="form-control"
@@ -150,14 +142,6 @@
 
                         <!-- Recurrence -->
                         <event-recurrences (recurrenceSelected)="getRecurrence($event)" ></event-recurrences>
-                        <!--<div class="form-group">-->
-                            <!--<label for="recurrence">Recurrence</label>-->
-                            <!--<div >-->
-                                <!--&lt;!&ndash;<select class="form-control " id="recurrence" required>&ndash;&gt;-->
-                                    <!--&lt;!&ndash;<option *ngFor="let recurrence of recurrences" [value]="recurrence">{{recurrence.libelle}}</option>&ndash;&gt;-->
-                                <!--&lt;!&ndash;</select>&ndash;&gt;-->
-                            <!--</div>-->
-                        <!--</div>-->
 
                         <!-- Standard price -->
                         <div class="form-group">

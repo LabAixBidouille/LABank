@@ -2,7 +2,6 @@ package org.fablab.labank.dto;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.sql.Time;
 import java.util.Date;
 
 /**
@@ -60,17 +59,19 @@ public class EventDTO {
 
     // The event's start time
     @Column(name = "startat")
-    private Time startAt;
+    @Temporal(TemporalType.TIME)
+    private Date startAt;
 
     // The event's end time
     @Column(name = "endat")
-    private Time endAt;
+    @Temporal(TemporalType.TIME)
+    private Date endAt;
 
     // The recurrence type of the event
     // (in case the event is recurrent... daily, weekly, monthly etc...)
     @NotNull
     @Column(name="idrecurrence")
-    private long idReccurence;
+    private long idRecurrence;
 
     @Column(name="endrecurrence")
     private Date endRecurrence;
@@ -104,14 +105,14 @@ public class EventDTO {
         this.endDate = event.endDate;
         this.startAt = event.startAt;
         this.endAt = event.endAt;
-        this.idReccurence = event.idReccurence;
+        this.idRecurrence = event.idRecurrence;
         this.endRecurrence = event.endRecurrence;
         this.standardPrice = event.standardPrice;
         this.reducedFare = event.reducedFare;
         this.nbTickets = event.nbTickets;
     }
 
-    public EventDTO(long idEvent, String title, String picture, String description, long idEventType, boolean allDay, Date startDate, Date endDate, Time startAt, Time endAt, long idReccurence, Date endRecurrence, float standardPrice, float reducedFare, int nbTickets ) {
+    public EventDTO(long idEvent, String title, String picture, String description, long idEventType, boolean allDay, Date startDate, Date endDate, Date startAt, Date endAt, long idRecurrence, Date endRecurrence, float standardPrice, float reducedFare, int nbTickets ) {
         this.idEvent = idEvent;
         this.title = title;
         this.picture = picture;
@@ -122,7 +123,7 @@ public class EventDTO {
         this.endDate = endDate;
         this.startAt = startAt;
         this.endAt = endAt;
-        this.idReccurence = idReccurence;
+        this.idRecurrence = idRecurrence;
         this.endRecurrence =  endRecurrence;
         this.standardPrice = standardPrice;
         this.reducedFare =  reducedFare;
@@ -196,28 +197,28 @@ public class EventDTO {
         this.endDate = endDate;
     }
 
-    public Time getStartAt() {
+    public Date getStartAt() {
         return startAt;
     }
 
-    public void setStartAt(Time startAt) {
+    public void setStartAt(Date startAt) {
         this.startAt = startAt;
     }
 
-    public Time getEndAt() {
+    public Date getEndAt() {
         return endAt;
     }
 
-    public void setEndAt(Time endAt) {
+    public void setEndAt(Date endAt) {
         this.endAt = endAt;
     }
 
-    public long getIdReccurence() {
-        return idReccurence;
+    public long getIdRecurrence() {
+        return idRecurrence;
     }
 
-    public void setIdReccurence(long idReccurence) {
-        this.idReccurence = idReccurence;
+    public void setIdRecurrence(long idRecurrence) {
+        this.idRecurrence = idRecurrence;
     }
 
     public Date getEndRecurrence() {

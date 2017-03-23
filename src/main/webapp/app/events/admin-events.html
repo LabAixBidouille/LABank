@@ -30,8 +30,8 @@
 
 
 <div *ngIf="msg" class="alert alert-success alert-dismissible">
-    <a href="#/admin/events" (click)="closeAlert()" class="close">&times;</a>
-    <strong>Evenement supprimé avec succes!</strong>.
+    <a href="#/admin/events/home" (click)="closeAlert()" class="close">&times;</a>
+    <strong>Evenement supprimé avec succes !</strong>.
 </div>
 <div class="table-responsive">
     <button (click)="newEvent()" type="button" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-plus"></i> Ajouter un evenement</button>
@@ -47,7 +47,7 @@
         <tr *ngFor="let event of events" >
             <td >{{event.title}}</td>
             <td>
-                <p>Du {{event.startDate}} Au {{event.endDate}}</p>
+                <p>Du {{event.startDate | date:'dd/MM/yyyy'}} Au {{event.endDate | date:'dd/MM/yyyy'}}</p>
                 <p *ngIf="event.allDay">Tous les jours</p>
                 <p *ngIf="!event.allDay"> De {{event.startAt}} à {{event.endAt}}</p>
             </td>
