@@ -123,21 +123,15 @@
                         </div>
 
                         <!-- StartAt -->
-                        <div *ngIf="noAllday.checked " class="form-group">
-                            <label for="startAt">Débute à </label>
-                            <div >
-                                <input id="startAt" name="startAt" type="time" class="form-control"
-                                       [formControl]="eventForm.controls['startAt']">
-                            </div>
+                        <div *ngIf="noAllday.checked" class="form-group">
+                            <label>Débute à </label>
+                            <timepicker [showMeridian]="false" [(ngModel)]="startAt" [ngModelOptions]="{standalone: true}" ngDefaultControl></timepicker>
                         </div>
 
                         <!-- EndAt -->
                         <div *ngIf="noAllday.checked" class="form-group">
-                            <label for="endAt">Finit à </label>
-                            <div >
-                                <input id="endAt" name="endAt" type="time" class="form-control"
-                                       [formControl]="eventForm.controls['endAt']">
-                            </div>
+                            <label>Finit à </label>
+                            <timepicker [showMeridian]="false" [(ngModel)]="endAt" [ngModelOptions]="{standalone: true}" ngDefaultControl ></timepicker>
                         </div>
 
                         <!-- Recurrence -->

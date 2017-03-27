@@ -16,7 +16,6 @@ import { AppComponent } from './app.component';
 import { Header } from './header/header';
 import { Sidebar } from './sidebar/sidebar';
 
-
 import { RoutesModule } from './app.routes';
 import { AccountModule } from './account/account.module';
 import { LoginModule } from './login/login.module';
@@ -28,8 +27,11 @@ import {SignUpModule} from "./signup/sign-up.module";
 import {TrainingModule} from "./training/training.module";
 import { EventModule } from "./events/event.module"
 
+import { DatepickerModule, TimepickerModule, AlertModule } from 'ng2-bootstrap';
+
 @NgModule({
-    imports:        [ HttpModule, RouterModule, BrowserModule ,FormsModule, ReactiveFormsModule, AccountModule, LoginModule, UserModule, UtilsModule, RoutesModule, DashboardModule,MachineModule, TrainingModule, SignUpModule,EventModule ],
+    imports:        [ HttpModule, RouterModule, BrowserModule ,FormsModule, ReactiveFormsModule, AccountModule, LoginModule, UserModule, UtilsModule, RoutesModule, DashboardModule,MachineModule, TrainingModule, SignUpModule,EventModule, AlertModule.forRoot(),
+        DatepickerModule.forRoot(), TimepickerModule.forRoot()],
     declarations:   [ AppComponent, Header, Sidebar ],
     bootstrap:      [ AppComponent, Header ],
     providers:      [
