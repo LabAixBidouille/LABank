@@ -1,7 +1,7 @@
 package org.fablab.labank.dto;
 
-
 import javax.persistence.*;
+import java.util.List;
 import javax.validation.constraints.NotNull;
 
 /**
@@ -39,6 +39,17 @@ public class MachineDTO {
     // The machine's illustration
     @Column(name = "illustration")
     private String illustration;
+
+    // List of files
+    @OneToMany
+    @JoinTable
+    (
+        name="machine_has_docmachine",
+        joinColumns={ @JoinColumn(name="idmachine", referencedColumnName="id") },
+        inverseJoinColumns={ @JoinColumn(name="iddocmachine", referencedColumnName="iddocmachine", unique=true) }
+    )
+    // While Update this will also insert collection row another insert
+    private List<MachineManualDTO> machinemanual;
 
     // ------------------------
     // PUBLIC METHODS
@@ -98,4 +109,13 @@ public class MachineDTO {
     public void setIllustration(String illustration) {
         this.illustration = illustration;
     }
+
+    public List<MachineManualDTO> getMachinemanual() {
+        return machinemanual;
+    }
+
+    public void setMachinemanual(List<MachineManualDTO> machinemanual) {
+        this.machinemanual = machinemanual;
+    }
+
 }

@@ -4,7 +4,7 @@
     <section class="content-header">
         <h1>
             Les évènements du FABLAB
-            <small>Sélectionner une catégorie</small>
+            <small *ngIf="authenticated">Sélectionner une catégorie</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
@@ -32,7 +32,7 @@
 
                 <div class="row">
 
-                    <div class="col-md-4" *ngFor="let event of events; let i = index">
+                    <div class="col-md-5" *ngFor="let event of events; let i = index">
 
                         <div class="box box-primary box-solid">
                             <div class="box-header with-border">

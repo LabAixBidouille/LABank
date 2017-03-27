@@ -12,10 +12,12 @@ import {LoginService} from '../login/login.service';
 })
 
 export class Sidebar {
+    isAdmin:boolean;
     authenticated:boolean;
     profile:string;
     loginService:LoginService;
     constructor(accountEventService:AccountEventsService,loginService:LoginService) {
+        this.isAdmin = false;
         this.loginService = loginService;
         accountEventService.subscribe((account) => {
             if(!account.authenticated) {
@@ -25,6 +27,7 @@ export class Sidebar {
                 console.log(account.profile);
                 this.profile = account.profile.profile;
                 this.authenticated = true;
+                this.isAdmin = (this.profile == "ADMIN") ? true : false;
             }
         });
     }

@@ -538,6 +538,7 @@ a:focus {
     right: 10px;
     margin-top: -8px;
 }
+
 .sidebar-menu li.active > a > .fa-angle-left,
 .sidebar-menu li.active > a > .pull-right-container > .fa-angle-left {
     -webkit-transform: rotate(-90deg);
@@ -1738,6 +1739,9 @@ a:focus {
     display: block;
     padding: 10px;
     position: relative;
+}
+.box-header-events {
+    padding: 12px;
 }
 .box-header.with-border {
     border-bottom: 1px solid #f4f4f4;

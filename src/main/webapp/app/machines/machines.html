@@ -4,7 +4,7 @@
     <section class="content-header">
         <h1>
             Les Machines du FABLAB
-            <small>Connectez-vous pour réserver une machine</small>
+            <small *ngIf="authenticated">Connectez-vous pour réserver une machine</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
@@ -43,6 +43,7 @@
                             <div class="box-body text-center">
                                 <img [src]="machine.illustration" alt="User Image" width="128px"/>
                             </div>
+
                             <!-- /.box-body -->
                             <div class="box-footer text-center ">
 

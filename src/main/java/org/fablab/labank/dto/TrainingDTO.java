@@ -1,14 +1,13 @@
-package org.fablab.labank.dto;
-
-import org.springframework.web.bind.annotation.RestController;
-
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-
 /**
  * Created by Kandel HANAFI on 03/03/2017.
  * Classe DTO permettant de gerer les informations relatives aux Training.
  */
+package org.fablab.labank.dto;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.List;
+
 @Entity
 @Table(name="Training")
 public class TrainingDTO {
@@ -43,6 +42,19 @@ public class TrainingDTO {
     // Booelan that indicates if the training has to be displayed
     @NotNull
     private boolean display;
+
+    // List of associated machine (user can associate a machine to a training)
+    @OneToMany
+    @JoinTable
+    (
+        name="associatedmachine",
+        joinColumns={ @JoinColumn(name="training_idtraining", referencedColumnName="idtraining") },
+        inverseJoinColumns={ @JoinColumn(name="machine_id", referencedColumnName="id", unique=true) }
+    )
+    // While Update this will also insert collection row another insert
+    private List<MachineDTO> machines;
+
+
 
     // ------------------------
     // PUBLIC METHODS
@@ -109,5 +121,13 @@ public class TrainingDTO {
 
     public void setDisplay(boolean display) {
         this.display = display;
+    }
+
+    public List<MachineDTO> getMachines() {
+        return machines;
+    }
+
+    public void setMachines(List<MachineDTO> machines) {
+        this.machines = machines;
     }
 }

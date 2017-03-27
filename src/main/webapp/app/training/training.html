@@ -4,7 +4,7 @@
     <section class="content-header">
         <h1>
             Les Formations du FABLAB
-            <small>Connectez-vous pour réserver une formation</small>
+            <small *ngIf="authenticated">Connectez-vous pour réserver une formation</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>

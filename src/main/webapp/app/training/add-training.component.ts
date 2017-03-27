@@ -58,4 +58,6 @@ export class AddTrainingComponent{
     goBack(): void {
       this.location.back();
     }
+
+
 }

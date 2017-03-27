@@ -12,7 +12,6 @@ import {IMachine} from "./IMachine";
     providers:[MachinesService]
 })
 export class AdminMachinesComponent{
-
     machineToDelete:IMachine;
     machines:Array<IMachine>;
 
@@ -22,7 +21,6 @@ export class AdminMachinesComponent{
         this.machineToDelete = new IMachine();
         this.machines = [];
         this.msg= false;
-
         this.machinesService.getAll().subscribe( (machines:Array<IMachine>) => this.machines = machines);
     }
 

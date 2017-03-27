@@ -4,11 +4,12 @@
     <section class="content-header">
         <h1>
             Les Machines du FABLAB
-            <small>Connectez-vous pour réserver une machine</small>
+            <small *ngIf="authenticated">Connectez-vous pour réserver une machine</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-            <li class="active">Machines</li>
+            <li><a href="#"> Machines</a></li>
+            <li class="active">{{machine.name}}</li>
         </ol>
     </section>
 
@@ -18,8 +19,19 @@
         <div class="box box-primary">
 
             <!-- Box header -->
-            <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-cogs"></i> Liste des machines</h3>
+            <div class="box-header with-border box-header-events">
+                <h3 class="box-title"><i class="fa fa-cogs"></i> {{machine.name}}</h3>
+                <div class="box-tools pull-right">
+                    <a class="btn btn-block btn-social btn-google">
+                        <i class="fa fa-bookmark-o"></i> Réserver cette machine
+                    </a>
+                    <!--
+                    <button type="button" class="btn btn-block btn-primary ng-binding box-footer-btn-text" ng-click="reserveMachine(machine, $event)">
+                        <span class="fa fa-bookmark"></span>
+                        Réserver cette machine
+                    </button>
+                    -->
+                </div>
             </div>
             <!-- /.Box header -->
 
@@ -28,32 +40,83 @@
                 <div class="row">
 
                     <div class="col-md-4">
+                        <div class="box box-danger">
 
-                        <div class="box box-primary box-solid">
                             <div class="box-header with-border">
-                                <h3 class="box-title">{{machine.name}}</h3>
+                                <h3 class="box-title"> Description</h3>
 
                                 <div class="box-tools pull-right">
                                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                                     </button>
                                 </div>
-                                <!-- /.box-tools -->
                             </div>
-                            <!-- /.box-header -->
-                            <div class="box-body text-center">
-                                <img [attr.src]="machine.illustration" [alt]="machine.name" width="128px"/>
-                            </div>
-                            <!-- /.box-body -->
-                            <div class="box-footer text-center ">
 
-                                <div class="col-sm-6 b-r no-padder">
-                                    <button type="button" class="btn btn-block btn-primary ng-binding box-footer-btn-text" ng-click="reserveMachine(machine, $event)">
-                                        <span class="fa fa-bookmark"></span>
-                                        Réserver
-                                    </button>
+                            <div class="box-body text-center">
+                                <img [attr.src]="machine.illustration" alt="Machine Image" width="200px" />
+                            </div>
+
+                            <div >
+                                <div class="box-body text-justify">
+                                    <p>{{machine.description}}</p>
                                 </div>
 
                             </div>
+                        </div>
+                        <!-- /.box -->
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="box box-success with-border">
+
+                            <div class="box-header with-border">
+                                <h3 class="box-title"> Caractéristiques techniques</h3>
+
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="box-body text-justify">
+                                <p>{{machine.specification}}</p>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+
+                        <div class="box box-info with-border">
+
+                            <div class="box-header with-border">
+                                <h3 class="box-title"> Fichiers à télécharger </h3>
+                                <small class="label pull-right bg-red">{{machine.machinemanual?.length}}</small>
+                            </div>
+
+                            <div class="box-body text-justify">
+                                <p *ngFor="let machinemanual of machine.machinemanual">
+                                    {{machinemanual.fileName}}
+                                    <i class="fa fa-download pull-right"></i> <i class="fa fa-book pull-right"></i>
+                                </p>
+                            </div>
+                            <!-- /.box-body -->
+                        </div>
+                        <!-- /.box -->
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="box box-warning">
+
+                            <div class="box-header with-border">
+                                <h3 class="box-title"> Projets utilisant la machine</h3>
+
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="box-body text-justify">
+                                <p></p>
+                            </div>
+
                         </div>
                         <!-- /.box -->
                     </div>
