@@ -49,7 +49,7 @@ public class TrainingDTO {
     (
         name="associatedmachine",
         joinColumns={ @JoinColumn(name="training_idtraining", referencedColumnName="idtraining") },
-        inverseJoinColumns={ @JoinColumn(name="machine_id", referencedColumnName="id", unique=true) }
+        inverseJoinColumns={ @JoinColumn(name="machine_idmachine", referencedColumnName="id", unique=true) }
     )
     // While Update this will also insert collection row another insert
     private List<MachineDTO> machines;

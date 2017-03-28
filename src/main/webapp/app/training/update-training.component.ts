@@ -35,12 +35,11 @@ export class UpdateTrainingComponent implements OnInit{
         }else{
             this.training.illustration = this.illustration;
         }
-        this.trainingService.updateTraining(this.training).subscribe((training:CTraining) => this.training = training);
-
-        this._ngZone.run(() => { this.trainingService.getAll().
-            subscribe( (trainings:Array<CTraining>) => this.trainings = trainings ); });
-
-        this.router.navigate(['/admin/trainings']);
+        this.trainingService.updateTraining(this.training).subscribe((training:CTraining) => {
+            this.training = training;
+            this.trainingService.getAll().subscribe( (trainings:Array<CTraining>) => this.trainings = trainings );
+            this.router.navigate(['/admin/trainings']);
+        });
     }
 
     getIllustration(illustration:string){

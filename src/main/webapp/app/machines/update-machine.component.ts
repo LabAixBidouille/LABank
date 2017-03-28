@@ -37,11 +37,11 @@ export class UpdateMachineComponent{
         }else{
             this.machine.illustration = this.illustration;
         }
-        this.machinesService.updateMachine(this.machine).subscribe((machine:IMachine) => this.machine = machine);
-
-        this.ngZone.run(() => { this.machinesService.getAll().
-            subscribe( (machines:Array<IMachine>) => this.machines = machines ); });
-        this.router.navigate(['/admin/machines']);
+        this.machinesService.updateMachine(this.machine).subscribe((machine:IMachine) => {
+            this.machine = machine;
+            this.machinesService.getAll().subscribe( (machines:Array<IMachine>) => this.machines = machines );
+            this.router.navigate(['/admin/machines']);
+        });
     }
 
     getIllustration(illustration:string){

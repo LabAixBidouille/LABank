@@ -49,13 +49,11 @@ export class AdminEventsComponent implements OnInit{
     }
 
     delete(){
-        this.eventService.deleteEvent(this.eventToDelete.idEvent).subscribe( (msg:boolean) => this.msg = msg );
-
-        /*Permets de rafraichir la liste */
-        this._ngZone.run(() => { this.eventService.getEventsListByCategory(0).
-            subscribe( (events:Array<IEvent>) => this.events = events ); });
-
-        this.router.navigate(['admin/events/home']);
+        this.eventService.deleteEvent(this.eventToDelete.idEvent).subscribe( (msg:boolean) => {
+            this.msg = msg;
+            this.eventService.getEventsListByCategory(0).subscribe( (events:Array<IEvent>) => this.events = events );
+            this.router.navigate(['admin/events/home']);
+        } );
     }
 
     closeAlert(){

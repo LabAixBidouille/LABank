@@ -44,11 +44,9 @@ export class AdminTrainingsComponent{
     delete(){
         this.trainingService.deleteTraining(this.trainingToDelete.id).subscribe( (msg:boolean) =>{
             this.msg = msg;
+            this.trainingService.getAll().subscribe( (trainings:Array<CTraining>) => this.trainings = trainings );
+            this.router.navigate(['admin/trainings']);
         });
-
-        /*this._ngZone.run(() => { this.trainingService.getAll().
-            subscribe( (trainings:Array<CTraining>) => this.trainings = trainings ); });
-        this.router.navigate(['admin/trainings']);*/
     }
 
     closeAlert(){

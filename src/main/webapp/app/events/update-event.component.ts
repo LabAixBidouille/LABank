@@ -1,6 +1,5 @@
-import {Component, OnInit, NgZone} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {Router, ActivatedRoute, Params} from "@angular/router";
-import {FormBuilder} from "@angular/forms";
 import {Location} from "@angular/common";
 
 import {EventsService} from "./events.service";
@@ -24,7 +23,7 @@ export class UpdateEventComponent implements OnInit{
     picture:string;
 
     constructor(private router:Router, private route:ActivatedRoute, private location:Location,
-                private eventsService:EventsService, private ngZone:NgZone){
+                private eventsService:EventsService){
         this.events=[];
         this.eventType = new IEventType();
         this.recurrence = new CRecurrence();
@@ -33,7 +32,10 @@ export class UpdateEventComponent implements OnInit{
 
     ngOnInit(){
         this.route.params.switchMap((params: Params) => this.eventsService.getEvent(+params['id']))
-            .subscribe( (event: IEvent) => this.event = event );
+            .subscribe( (event: IEvent) => {
+                this.event = event;
+                this.picture = this.event.picture;
+            } );
     }
 
     updateEvent(){
@@ -44,18 +46,14 @@ export class UpdateEventComponent implements OnInit{
             this.event.picture = this.picture;
         }
         /*FIN TODO*/
-        let test:Date;
         this.event.idEventType = this.eventType.idEventType;
         this.event.idRecurrence = this.recurrence.idRecurrence;
 
-        /*TODO:convertir le startAt e endAt au bon format */
-
-        this.eventsService.updateEvent(this.event).subscribe((event:IEvent) => this.event = event);
-
-        this.ngZone.run(() => { this.eventsService.getEventsListByCategory(0).
-            subscribe( (events:Array<IEvent>) => this.events = events ); });
-
-        this.router.navigate(['/admin/events/home']);
+        this.eventsService.updateEvent(this.event).subscribe((event:IEvent) => {
+            this.event = event;
+            this.eventsService.getEventsListByCategory(0).subscribe( (events:Array<IEvent>) => this.events = events );
+            this.router.navigate(['/admin/events/home']);
+        });
     }
 
     getPicture(picture:string){

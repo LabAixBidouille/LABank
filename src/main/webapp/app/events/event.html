@@ -8,7 +8,7 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-            <li><a href="#"> Evenement</a></li>
+            <li><a href="#/events/cat/0"> Evenements</a></li>
             <li class="active">{{event.title}}</li>
         </ol>
     </section>
@@ -84,7 +84,7 @@
                             </div>
 
                             <div class="box-body text-justify">
-                                <small class="label pull-left bg-red">stage</small> <!-- TODO: recuperer le type d'event (atelier, formation, no category etc... -->
+                                <small class="label pull-left bg-red">{{eventType.libelle}}</small>
                             </div>
                             <div class="box-body">
                                 <label>
@@ -96,7 +96,7 @@
                                     <i class="fa fa-clock-o"></i>
                                     Horaires :
                                 </label>
-                                De: {{event.startAt }} à {{event.endAt }}
+                                De: {{event.startAt | date:"HH:mm" }} à {{event.endAt | date:"HH:mm" }}
                                 <label>
                                     <i class="fa fa-credit-card"></i>
                                     Plein tarif :

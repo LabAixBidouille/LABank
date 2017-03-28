@@ -1,7 +1,7 @@
 /**
  * Created by Kandel HANAFI on 15/03/17.
  */
-import {Component, OnInit, Input} from '@angular/core';
+import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, Validators, FormGroup} from '@angular/forms';
 
@@ -72,43 +72,31 @@ export class AddEventComponent{
         this.event.startDate = this.eventForm.value.startDate ;
         this.event.endDate = this.eventForm.value.endDate ;
 
-        this.event.startAt = this.eventForm.value.startAt;
-        this.event.endAt = this.eventForm.value.endAt;
+        this.event.startAt = this.startAt;
+        this.event.endAt = this.endAt;
         this.event.idRecurrence = this.recurrence.idRecurrence;
 
         this.event.standardPrice = this.eventForm.value.standardPrice ;
         this.event.reducedFare = this.eventForm.value.reducedFare ;
         this.event.nbTickets = this.eventForm.value.nbTickets ;
 
-        console.log(this.startAt);
-        console.log(this.endAt);
-
-        /*
         this.eventService.saveEvent(this.event).subscribe((event:IEvent) => {
             this.event = event
+            this.router.navigate(['admin/events/home']);
         });
-        */
+
     }
 
     getPicture(picture:string){
-        console.log(this.recurrence.type);
         this.picture = '../assets/img/events/'+ picture;
     }
 
     getEventType(eventType:IEventType){
-        console.log(eventType.idEventType);
         this.eventType = eventType;
     }
 
     getRecurrence(recurrence:CRecurrence){
-        console.log(recurrence.idRecurrence);
         this.recurrence = recurrence;
-    }
-
-    displayHour(value:string){
-        console.log(value);
-        this.test = "ok";
-        this.display=value;
     }
 
     goBack(): void {

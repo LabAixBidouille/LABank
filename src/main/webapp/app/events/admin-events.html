@@ -49,7 +49,7 @@
             <td>
                 <p>Du {{event.startDate | date:'dd/MM/yyyy'}} Au {{event.endDate | date:'dd/MM/yyyy'}}</p>
                 <p *ngIf="event.allDay">Tous les jours</p>
-                <p *ngIf="!event.allDay"> De {{event.startAt}} à {{event.endAt}}</p>
+                <p *ngIf="!event.allDay"> De {{event.startAt | date:"HH:mm"}} à {{event.endAt | date:"HH:mm"}}</p>
             </td>
             <td>
                 <button (click)="showReservations(event.idEvent)" type="button" class="btn btn-default btn-circle"><i class="glyphicon glyphicon-bookmark"></i> Voir reservations</button>

@@ -59,12 +59,12 @@ public class EventDTO {
 
     // The event's start time
     @Column(name = "startat")
-    @Temporal(TemporalType.TIME)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date startAt;
 
     // The event's end time
     @Column(name = "endat")
-    @Temporal(TemporalType.TIME)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date endAt;
 
     // The recurrence type of the event

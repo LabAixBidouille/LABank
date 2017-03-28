@@ -57,7 +57,7 @@
                         </div>
 
                         <!-- Events type -->
-                        <event-types-select (eventTypeSelected)="getEventType($event)" ></event-types-select>
+                        <event-types-select required="true" (eventTypeSelected)="getEventType($event)" ></event-types-select>
                         <!--<div class="form-group">
                             <label for="eventType">Type d'evenement</label>
                             <div >
@@ -106,26 +106,19 @@
                             </div>
                         </div>
 
-                        <!-- StartAt -->
-                        <div *ngIf="noAllday.checked"  class="form-group">
-                            <label for="startAt">Débute à </label>
-                            <div >
-                                <input id="startAt" name="startAt" type="time" class="form-control" required
-                                       [(ngModel)]="event.startAt" #startAt="ngModel">
-                            </div>
+                        <div *ngIf="noAllday.checked" class="form-group">
+                            <label>Débute à </label>
+                            <timepicker [showMeridian]="false" [minuteStep]="1" [(ngModel)]="event.startAt" [ngModelOptions]="{standalone: true}" ngDefaultControl></timepicker>
                         </div>
 
                         <!-- EndAt -->
                         <div *ngIf="noAllday.checked" class="form-group">
-                            <label for="endAt">Finit à </label>
-                            <div >
-                                <input id="endAt" name="endAt" type="time" class="form-control" required
-                                       [(ngModel)]="event.endAt" #endAt="ngModel">
-                            </div>
+                            <label>Finit à </label>
+                            <timepicker [showMeridian]="false" [minuteStep]="1" [(ngModel)]="event.endAt" [ngModelOptions]="{standalone: true}" ngDefaultControl ></timepicker>
                         </div>
 
                         <!-- Recurrence -->
-                        <event-recurrences (recurrenceSelected)="getRecurrence($event)" ></event-recurrences>
+                        <event-recurrences required="true" (recurrenceSelected)="getRecurrence($event)" ></event-recurrences>
 
                         <!-- Standard price -->
                         <div class="form-group">
