@@ -21,7 +21,7 @@ export class TrainingsComponent {
     }
 
     showTraining(id:number): void{
-        this.router.navigate(['/training',id]);
+        this.router.navigate(['/trainings',id]);
     }
 
 }

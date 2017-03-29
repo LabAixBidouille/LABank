@@ -23,11 +23,12 @@ export class Sidebar {
             if(!account.authenticated) {
                 this.authenticated = false;
                 this.loginService.logout(false);
+                this.isAdmin = false;
             } else {
                 console.log(account.profile);
                 this.profile = account.profile.profile;
                 this.authenticated = true;
-                this.isAdmin = (this.profile == "ADMIN") ? true : false;
+                this.isAdmin = (this.profile === "ADMIN") ? true : false;
             }
         });
     }

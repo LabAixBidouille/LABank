@@ -28,10 +28,12 @@ import { TrainingModule } from "./training/training.module";
 import { EventModule } from "./events/event.module"
 
 import { DatepickerModule, TimepickerModule, AlertModule } from 'ng2-bootstrap';
+import {ProjectModule} from "./projects/project.module";
 
 @NgModule({
-    imports:        [ HttpModule, RouterModule, BrowserModule ,FormsModule, ReactiveFormsModule, AccountModule, LoginModule, UserModule, UtilsModule, RoutesModule, DashboardModule,MachineModule, TrainingModule, SignUpModule,EventModule, AlertModule.forRoot(),
-        DatepickerModule.forRoot(), TimepickerModule.forRoot()],
+    imports:        [ HttpModule, RouterModule, BrowserModule ,FormsModule, ReactiveFormsModule, AccountModule,
+        LoginModule, UserModule, UtilsModule, RoutesModule, DashboardModule,MachineModule, TrainingModule, SignUpModule,
+        EventModule, AlertModule.forRoot(), DatepickerModule.forRoot(), TimepickerModule.forRoot(), ProjectModule],
     declarations:   [ AppComponent, Header, Sidebar ],
     bootstrap:      [ AppComponent, Header ],
     providers:      [

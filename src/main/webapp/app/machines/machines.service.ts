@@ -30,6 +30,9 @@ export class MachinesService {
             }).catch(this.handleError);
     }
 
+    /*
+     * Methode permettant de recuperer, via le web service, la machine ayant l'id  passé en parametre de la requete http
+     */
      getById(id:number):Observable<IMachine> {
         return this.http.get(AppUtils.BACKEND_ROOT_URL+'/machines/'+id).map((res:Response) => {
             return new IMachine(res.json());

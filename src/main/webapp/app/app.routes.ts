@@ -33,6 +33,17 @@ import {AdminMachinesComponent} from './machines/admin-machines.component';
 import {AddMachineComponent} from './machines/add-machine.component';
 import {UpdateMachineComponent} from './machines/update-machine.component';
 
+import {ProjectComponent} from "./projects/project.component";
+import {ProjectsComponent} from './projects/projects.component';
+import {AdminProjectsHomeComponent} from './projects/admin-projects-home.component';
+import {AdminProjectsLicencesComponent} from './projects/admin-projects-licences.component';
+import {AdminProjectsMaterialsComponent} from './projects/admin-projects-materials.component';
+import {AdminProjectsThemesComponent} from './projects/admin-projects-themes.component';
+import {AdminProjectsComponent} from './projects/admin-projects.component';
+import {AddProjectComponent} from './projects/add-project.component';
+import {UpdateProjectComponent} from './projects/update-project.component';
+
+
 export const routes:Routes = [
     {path: 'users', component: Users, },
     {path: 'user/:id', component: User,},
@@ -60,10 +71,20 @@ export const routes:Routes = [
     {path: 'admin/events/prices', component: AdminEventsPricesComponent},
 
     {path: 'trainings', component: TrainingsComponent},
-    {path: 'training/:id', component: TrainingComponent},
+    {path: 'trainings/:id', component: TrainingComponent},
     {path: 'admin/trainings', component: AdminTrainingsComponent},
     {path: 'admin/trainings/new', component: AddTrainingComponent},
-    {path: 'admin/trainings/:id', component: UpdateTrainingComponent}
+    {path: 'admin/trainings/:id', component: UpdateTrainingComponent},
+
+    {path: 'projects/:id', component: ProjectComponent},
+    {path: 'projects', component: ProjectsComponent},
+    {path: 'admin/projects/home', component: AdminProjectsHomeComponent},
+    {path: 'admin/projects', component: AdminProjectsComponent},
+    {path: 'admin/projects/new', component: AddProjectComponent},
+    {path: 'admin/projects/:id', component: UpdateProjectComponent},
+    {path: 'admin/projects/licences', component: AdminProjectsLicencesComponent},
+    {path: 'admin/projects/materials', component: AdminProjectsMaterialsComponent},
+    {path: 'admin/projects/themes', component: AdminProjectsThemesComponent}
 
 ];
 
