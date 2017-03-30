@@ -6,6 +6,7 @@ import org.springframework.data.repository.CrudRepository;
 
 /**
  * Created by kprim on 02/03/2017.
+ * Interface DAO permettant de gerer les transactions de données relatives aux RecurrenceDTO.
  */
 public interface RecurrenceDAO extends CrudRepository<RecurrenceDTO, Long> {
 

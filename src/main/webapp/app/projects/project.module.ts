@@ -5,6 +5,7 @@ import {UtilsModule} from "../utils/utils.module";
 
 import {ProjectComponent} from "./project.component";
 import {ProjectsComponent} from "./projects.component";
+import {ProjectStepsComponent} from "./project-steps.component"
 import {AdminProjectsComponent} from "./admin-projects.component";
 import {AdminProjectsLicencesComponent} from "./admin-projects-licences.component";
 import {AdminProjectsMaterialsComponent} from "./admin-projects-materials.component";
@@ -22,7 +23,7 @@ import {ProjectService} from "./project.service";
     bootstrap: [ ProjectComponent, ProjectsComponent,  AdminProjectsComponent, AddProjectComponent, UpdateProjectComponent ],
     declarations: [ ProjectComponent, ProjectsComponent, AdminProjectsComponent, AdminProjectsHomeComponent,
         AdminProjectsLicencesComponent, AdminProjectsMaterialsComponent, AdminProjectsThemesComponent,
-        AddProjectComponent, UpdateProjectComponent],
+        AddProjectComponent, UpdateProjectComponent, ProjectStepsComponent],
     providers: [ ProjectService ]
 })
 export class ProjectModule{}

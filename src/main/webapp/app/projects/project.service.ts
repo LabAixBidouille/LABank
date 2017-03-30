@@ -3,6 +3,7 @@ import {Http, Response, Headers} from "@angular/http";
 import * as AppUtils from '../utils/app.utils';
 import {Observable} from "rxjs/Observable";
 import {CProject} from "./CProject";
+import {CStep} from "./CStep";
 /**
  * Created by Kandel HANAFI on 29/03/2017.
  */
@@ -78,6 +79,18 @@ export class ProjectService{
                 message = res.json();
                 return message ;
             });
+    }
+
+    getStepsByIdProject(id:number):Observable<Array<CStep>>{
+        return this.http.get(AppUtils.BACKEND_ROOT_URL+'/steps/'+id)
+            .map((res:Response) => {
+                let steps:Array<CStep> = [];
+                let jsonResults:Array<any> = res.json();
+                jsonResults.forEach((jsonResult) => {
+                    steps.push(new CStep(jsonResult));
+                });
+                return steps;
+            }).catch(this.handleError);
     }
 
     private handleError(error: Response) {

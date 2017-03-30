@@ -35,6 +35,7 @@ import {UpdateMachineComponent} from './machines/update-machine.component';
 
 import {ProjectComponent} from "./projects/project.component";
 import {ProjectsComponent} from './projects/projects.component';
+import {ProjectStepsComponent} from "./projects/project-steps.component"
 import {AdminProjectsHomeComponent} from './projects/admin-projects-home.component';
 import {AdminProjectsLicencesComponent} from './projects/admin-projects-licences.component';
 import {AdminProjectsMaterialsComponent} from './projects/admin-projects-materials.component';
@@ -78,6 +79,7 @@ export const routes:Routes = [
 
     {path: 'projects/:id', component: ProjectComponent},
     {path: 'projects', component: ProjectsComponent},
+    {path: 'project-steps', component: ProjectStepsComponent},
     {path: 'admin/projects/home', component: AdminProjectsHomeComponent},
     {path: 'admin/projects', component: AdminProjectsComponent},
     {path: 'admin/projects/new', component: AddProjectComponent},

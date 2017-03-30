@@ -5,9 +5,10 @@ import javax.validation.constraints.NotNull;
 
 /**
  * Created by Kandel HANAFI on 29/03/2017.
+ * Classe DTO permettant de gerer les informations relatives aux Material.
  */
 @Entity
-@Table(name = "Matrerial")
+@Table(name = "Material")
 public class MaterialDTO {
 
     // ------------------------

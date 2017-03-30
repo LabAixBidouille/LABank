@@ -6,6 +6,7 @@ import java.util.Date;
 
 /**
  * Created by kprim on 02/03/2017.
+ * Classe DTO permettant de gerer les informations relatives aux Event.
  */
 @Entity
 @Table(name = "Event")

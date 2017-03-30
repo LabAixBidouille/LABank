@@ -1,5 +1,6 @@
 package org.fablab.labank.rest;
 import org.fablab.labank.dao.ProjectDAO;
+import org.fablab.labank.dao.StepDAO;
 import org.fablab.labank.dto.ProjectDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,11 +20,17 @@ public class Projects {
     ProjectDAO projectDAO;
 
     /**
+     * Objet permettant d'utiliser les methodes DAO.
+     */
+    @Autowired
+    StepDAO stepDAO;
+
+    /**
      * Methode permettant de retourner une liste de ProjectDTO à l'URL spécifiée
      * @return List<ProjectDTO> projects : liste de ProjectDTO
      */
     @RequestMapping("/projects")
-    public List<ProjectDTO> query(){
+    public List<ProjectDTO> getAll(){
         return (List<ProjectDTO>) projectDAO.findAll();
     }
 
@@ -33,8 +40,16 @@ public class Projects {
      * @return ProjectDTO project : objet ProjectDTO ayant l'id passé en parametre de l'URL.
      */
     @RequestMapping("/projects/{id}")
-    public ProjectDTO query(@PathVariable Long id){
-        return projectDAO.findOne(id);
+    public ProjectDTO getById(@PathVariable Long id){
+        ProjectDTO p = null;
+        try{
+            p=projectDAO.findOne(id);
+            p.setProjectSteps(stepDAO.findByIdProject(p.getIdProject()));
+            System.out.println(p.getProjectSteps().size());
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        return p;
     }
 
     /**

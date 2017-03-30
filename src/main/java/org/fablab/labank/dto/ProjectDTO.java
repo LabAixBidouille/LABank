@@ -6,6 +6,7 @@ import java.util.List;
 
 /**
  * Created by Kandel HANAFI on 29/03/2017.
+ * Classe DTO permettant de gerer les informations relatives aux Project.
  */
 @Entity
 @Table(name="Project")
@@ -40,13 +41,16 @@ public class ProjectDTO {
     @NotNull
     private boolean publish;
 
+    @NotNull
+    private String description;
+
     // List of collaborators
     @OneToMany
     @JoinTable
             (
                     name="collaborators",
-                    joinColumns={ @JoinColumn(name="idproject", referencedColumnName="idproject") },
-                    inverseJoinColumns={ @JoinColumn(name="iduser", referencedColumnName="id", unique=true) }
+                    joinColumns={ @JoinColumn(name="project_idproject", referencedColumnName="idproject") },
+                    inverseJoinColumns={ @JoinColumn(name="user_iduser", referencedColumnName="id", unique=true) }
             )
     // While Update this will also insert collection row another insert
     private List<UserDTO> collaborators;
@@ -56,8 +60,8 @@ public class ProjectDTO {
     @JoinTable
             (
                     name="employed_materials",
-                    joinColumns={ @JoinColumn(name="idproject", referencedColumnName="idproject") },
-                    inverseJoinColumns={ @JoinColumn(name="idmaterial", referencedColumnName="idmaterial", unique=true) }
+                    joinColumns={ @JoinColumn(name="project_idproject", referencedColumnName="idproject") },
+                    inverseJoinColumns={ @JoinColumn(name="material_idmaterial", referencedColumnName="idmaterial", unique=true) }
             )
     // While Update this will also insert collection row another insert
     private List<MaterialDTO> projectsMaterials;
@@ -67,8 +71,8 @@ public class ProjectDTO {
     @JoinTable
             (
                     name="project_has_theme",
-                    joinColumns={ @JoinColumn(name="idproject", referencedColumnName="idproject") },
-                    inverseJoinColumns={ @JoinColumn(name="idtheme", referencedColumnName="idtheme", unique=true) }
+                    joinColumns={ @JoinColumn(name="project_idproject", referencedColumnName="idproject") },
+                    inverseJoinColumns={ @JoinColumn(name="theme_idtheme", referencedColumnName="idtheme", unique=true) }
             )
     // While Update this will also insert collection row another insert
     private List<ThemeDTO> projectsThemes;
@@ -78,23 +82,14 @@ public class ProjectDTO {
     @JoinTable
             (
                     name="employed_machines",
-                    joinColumns={ @JoinColumn(name="idproject", referencedColumnName="idproject") },
-                    inverseJoinColumns={ @JoinColumn(name="idmachine", referencedColumnName="id", unique=true) }
+                    joinColumns={ @JoinColumn(name="project_idproject", referencedColumnName="idproject") },
+                    inverseJoinColumns={ @JoinColumn(name="machine_idmachine", referencedColumnName="id", unique=true) }
             )
     // While Update this will also insert collection row another insert
     private List<MachineDTO> projectsdMachines;
 
-    // List of files
-    @OneToMany
-    @JoinTable
-            (
-                    name="projectfile ",
-                    joinColumns={ @JoinColumn(name="idproject", referencedColumnName="idproject") },
-                    inverseJoinColumns={ @JoinColumn(name="idprojectfile", referencedColumnName="idprojectfile", unique=true) }
-            )
-    // While Update this will also insert collection row another insert
-    private List<ProjectFileDTO> projectsFiles;
-
+    @Transient
+    private List<StepDTO> projectSteps;
 
 
     // ------------------------
@@ -112,6 +107,7 @@ public class ProjectDTO {
         this.idLicence = project.idLicence;
         this.tags = project.tags;
         this.publish = project.publish;
+        this.description = project.description;
     }
 
     public Long getIdProject() {
@@ -162,6 +158,14 @@ public class ProjectDTO {
         this.publish = publish;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public List<UserDTO> getCollaborators() {
         return collaborators;
     }
@@ -194,11 +198,11 @@ public class ProjectDTO {
         this.projectsdMachines = projectsdMachines;
     }
 
-    public List<ProjectFileDTO> getProjectsFiles() {
-        return projectsFiles;
+    public List<StepDTO> getProjectSteps() {
+        return projectSteps;
     }
 
-    public void setProjectsFiles(List<ProjectFileDTO> projectsFiles) {
-        this.projectsFiles = projectsFiles;
+    public void setProjectSteps(List<StepDTO> projectSteps) {
+        this.projectSteps = projectSteps;
     }
 }
