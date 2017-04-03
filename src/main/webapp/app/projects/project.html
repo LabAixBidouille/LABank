@@ -26,7 +26,7 @@
             <div class="box-body">
 
                 <div >
-                    <img [attr.src]="project.illustration" alt="Projet Image" width="200px" height="200px"/>
+                    <img [attr.src]="project.illustration" alt="Project Image" width="200px" height="200px"/>
                 </div>
 
                 <div>
@@ -36,11 +36,13 @@
 
                 <div>
                     <h3>Etapes du projet</h3>
-                    <div *ngFor="let step of project.projectSteps">
-                        <h4>Etape {{step.order}} : {{step.title}}</h4>
-                        <img [attr.src]="project.illustration" alt="Projet Image" width="200px" height="200px"
-                             class="pull-left"/>
-                        <div class="pull-right">{{step.description}}</div>
+                    <div class="panel panel-info" *ngFor="let step of project.projectSteps">
+                        <div class="panel-heading"><h4>Etape {{step.order}} : {{step.title}}</h4></div>
+                        <div class="panel-body">
+                            <img [attr.src]="step.picture" alt="Step Image" width="200px" height="200px"
+                            class="pull-left"/>
+                            <div class="pull-right">{{step.description}}</div>
+                        </div>
                     </div>
                 </div>
 

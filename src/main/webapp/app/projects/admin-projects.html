@@ -1,0 +1,57 @@
+<!--Modal Delete Project-->
+<div id="deleteModal" class="modal fade" >
+    <div class="login-box modal-dialog modal-sm box box-primary">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="box-header with-border">
+                <i class="fa fa-th"></i>
+
+                <h3 class="box-title">Supprimer le projet</h3>
+                <!-- tools box -->
+                <div class="pull-right box-tools">
+                    <button type="button" class="btn btn-primary btn-sm" data-widget="remove" data-toggle="tooltip" title="Fermer" data-dismiss="modal">
+                        <i class="fa fa-times"></i></button>
+                </div>
+                <!-- /. tools -->
+            </div>
+
+            <div class="modal-body form-horizontal">
+                <p>Etes vous sur de vouloir supprimer le projet ?</p>
+            </div>
+
+            <div class="modal-footer box-footer last-row">
+                <button type="button" class="btn btn-default pull-left" data-widget="remove" data-toggle="tooltip" title="Fermer" data-dismiss="modal"><i class="fa fa-ban"></i> Annuler</button>
+                <button (click)="delete()" type="button" class="btn btn-primary pull-right" data-dismiss="modal" ><i class="glyphicon glyphicon-trash"></i> Supprimer</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="msg" class="alert alert-success alert-dismissible">
+    <a href="#/admin/projects/home" (click)="closeAlert()" class="close">&times;</a>
+    <strong>Projet supprimé avec succes !</strong>.
+</div>
+<div class="table-responsive">
+    <button (click)="newProject()" type="button" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-plus"></i> Ajouter un projet</button>
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Description</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let project of projects" >
+            <td >{{project.name}}</td>
+            <td>{{project.description}}</td>
+            <td>
+                <button (click)="updateProject(project.idProject)" type="button" class="btn btn-warning btn-circle"><i class="glyphicon glyphicon-edit"></i>Editer</button>
+                <button (click)="deleteProject(project.idProject)" data-toggle="modal" data-target="#deleteModal" data-backdrop="false" type="button" class="btn btn-danger btn-circle"><i class="glyphicon glyphicon-trash"></i></button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

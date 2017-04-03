@@ -1,0 +1,53 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Les Projets du FABLAB
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li class="active">Projets</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-primary">
+
+            <!-- Box header -->
+            <div class="box-header with-border">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#projets">Gestion des projets</a></li>
+                    <li><a data-toggle="tab" href="#materials">Gestion des materiaux</a></li>
+                    <li><a data-toggle="tab" href="#themes">Gestion des themes</a></li>
+                    <li><a data-toggle="tab" href="#licences">Gestion des licences</a></li>
+                </ul>
+            </div>
+            <!-- /.Box header -->
+
+            <!-- Box body -->
+            <div class="box-body">
+                <div class="tab-content">
+                    <div id="projets" class="tab-pane fade in active">
+                        <admin-projects></admin-projects>
+                    </div>
+                    <div id="materials" class="tab-pane fade in ">
+                        <admin-projectsMaterials></admin-projectsMaterials>
+                    </div>
+                    <div id="themes" class="tab-pane fade in ">
+                        <admin-projectsThemes></admin-projectsThemes>
+                    </div>
+                    <div id="licences" class="tab-pane fade in ">
+                        <admin-projectsThemes></admin-projectsThemes>
+                    </div>
+                </div>
+            </div>
+            <!-- /.Box body -->
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

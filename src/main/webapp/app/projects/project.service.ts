@@ -4,6 +4,7 @@ import * as AppUtils from '../utils/app.utils';
 import {Observable} from "rxjs/Observable";
 import {CProject} from "./CProject";
 import {CStep} from "./CStep";
+import {CLicence} from "./CLicence";
 /**
  * Created by Kandel HANAFI on 29/03/2017.
  */
@@ -96,5 +97,13 @@ export class ProjectService{
     private handleError(error: Response) {
         console.error(error);
         return Observable.throw(error.json().error || 'Erreur Serveur');
+    }
+
+    getLicence(id: number):Observable<CLicence> {
+        return new Observable<CLicence>();
+    }
+
+    deleteLicence(idLicence: number) :Observable<boolean> {
+        return new Observable<boolean>();
     }
 }
