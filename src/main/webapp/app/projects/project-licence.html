@@ -1,0 +1,10 @@
+<div class="form-group">
+    <label for="licence">Licence*</label>
+    <div >
+        <select [(ngModel)]="licenceSelected" (change)="selectLicence()" class="form-control"
+                id="licence">
+            <option *ngFor="let currentLicence of licences"  [ngValue]="currentLicence" >
+                {{currentLicence.name}}</option>
+        </select>
+    </div>
+</div>

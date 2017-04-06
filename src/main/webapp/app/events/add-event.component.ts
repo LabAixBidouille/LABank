@@ -28,7 +28,7 @@ export class AddEventComponent{
     eventType:IEventType;
     recurrence: CRecurrence;
 
-    picture:string;
+    illustration:string;
     error:string;
     display:string;
     test:string;
@@ -42,7 +42,7 @@ export class AddEventComponent{
         this.router = router;
         this.eventForm = form.group({
             title: ['', Validators.required],
-            picture:"",
+            illustration:"",
             description: ['', Validators.required],
             allDay : ['', Validators.required],
             startDate: ['', Validators.required],
@@ -60,10 +60,10 @@ export class AddEventComponent{
         this.event = new IEvent();
         this.event.title = this.eventForm.value.title;
         /*TODO: a supprimer ou à modifier lorsque l'upload de fichier sera implementé */
-        if(this.picture == null){
-            this.event.picture = '../assets/img/events/defaultEvent.png';
+        if(this.illustration == null){
+            this.event.illustration = '../assets/img/events/defaultEvent.png';
         }else{
-            this.event.picture = this.picture;
+            this.event.illustration = this.illustration;
         }
         /*FIN TODO*/
         this.event.description = this. eventForm.value.description ;
@@ -87,8 +87,8 @@ export class AddEventComponent{
 
     }
 
-    getPicture(picture:string){
-        this.picture = '../assets/img/events/'+ picture;
+    getIllustration(illustration:string){
+        this.illustration = '../assets/img/events/'+ illustration;
     }
 
     getEventType(eventType:IEventType){

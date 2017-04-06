@@ -1,0 +1,151 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Les Projets du FABLAB
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li class="active"><a href="#/admin/projects/home">Gestion des projets</a></li>
+            <li class="active">Ajout de projet</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-primary">
+
+            <!-- Box header -->
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-th"></i> Ajouter un nouveau projet</h3>
+            </div>
+            <!-- /.Box header -->
+
+            <!-- Box body -->
+            <div class="box-body">
+                <form  [formGroup]="projectForm" (ngSubmit)="addProject()" >
+                    <fieldset>
+                        <!-- Name -->
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!projectForm.controls['name'].valid && projectForm.controls['name'].touched}">
+                            <label for="name">Nom* </label>
+                            <div >
+                                <input id="name" name="name" type="text" placeholder="Nom du projet"
+                                       class="form-control" required [formControl]="projectForm.controls['name']">
+                            </div>
+                            <!--Errors Msg-->
+                            <div *ngIf="projectForm.controls['name'].hasError('required') &&
+                                  projectForm.controls['name'].touched" class="alert alert-danger">
+                                Le nom du projet doit etre renseigné.
+                            </div>
+                            <!--/.Errors Msg-->
+                        </div>
+
+                        <!-- Illustration -->
+                        <div class="form-group">
+                            <label for="illustration">Image </label>
+                            <div>
+                                <input id="illustration" name="illustration"  class="form-control" type="file"
+                                       (change)="getIllustration($event.target.files[0].name)" accept=".png,.jpg,.jpeg">
+                            </div>
+                        </div>
+
+                        <!-- Project's files -->
+
+                        <!-- Description -->
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!projectForm.controls['description'].valid && projectForm.controls['description'].touched}">
+                            <label for="description">Description*</label>
+                            <div >
+                                <textarea id="description" name="description" placeholder="Description du projet"
+                                          class="form-control" rows="5" required
+                                          [formControl]="projectForm.controls['description']"></textarea>
+                            </div>
+                            <!-- Errors Msg-->
+                            <div *ngIf="projectForm.controls['description'].hasError('required') &&
+                                  projectForm.controls['description'].touched" class="alert alert-danger">
+                                La description du projet doit etre renseignée.
+                            </div>
+                            <div *ngIf="projectForm.controls['description'].hasError('minlength') &&
+                                  projectForm.controls['description'].touched" class="alert alert-danger">
+                                La description du projet doit contenir 5 caracteres minimum.
+                            </div>
+                            <div *ngIf="projectForm.controls['description'].hasError('maxlength') &&
+                                  projectForm.controls['description'].touched" class="alert alert-danger">
+                                La description du projet doit contenir 750 caracteres maximum.
+                            </div>
+                            <!--/. Errors Msg-->
+                        </div>
+
+                        <!-- Project's steps -->
+                        <div class="form-group multiple-form-group">
+                            <label>Etapes</label>
+
+                            <div class="form-group input-group">
+                                <input type="text" name="multiple[]" class="form-control" placeholder="Titre de l'etape">
+                                <textarea style="width:100%" rows="5" name="multiple[]" placeholder="Description de l'etape"></textarea>
+                                <input name="multiple[]"  class="form-control" type="file"
+                                       (change)="getIllustration($event.target.files[0].name)" accept=".png,.jpg,.jpeg">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default btn-add">
+                                        + Ajouter une etape
+						            </button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Project's materials -->
+                        <project-materials></project-materials>
+
+                        <!-- Project's machines -->
+                        <project-machines></project-machines>
+
+                        <!-- Project's licence -->
+                        <project-licences></project-licences>
+
+                        <!-- Project's themes -->
+                        <project-themes></project-themes>
+
+                        <!-- Project's tags -->
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!projectForm.controls['tags'].valid && projectForm.controls['tags'].touched}">
+                            <label for="tags">Tags*</label>
+                            <div >
+                                <textarea id="tags" name="tags" placeholder="Mots-clés"
+                                          class="form-control" rows="5" required
+                                          [formControl]="projectForm.controls['tags']"></textarea>
+                            </div>
+                            <!-- Errors Msg-->
+                            <div *ngIf="projectForm.controls['tags'].hasError('required') &&
+                                  projectForm.controls['tags'].touched" class="alert alert-danger">
+                                Tags du projet doit etre renseignée.
+                            </div>
+                            <div *ngIf="projectForm.controls['tags'].hasError('minlength') &&
+                                  projectForm.controls['tags'].touched" class="alert alert-danger">
+                                Tags du projet doit contenir 5 caracteres minimum.
+                            </div>
+                            <div *ngIf="projectForm.controls['tags'].hasError('maxlength') &&
+                                  projectForm.controls['tags'].touched" class="alert alert-danger">
+                                Tags du projet doit contenir 750 caracteres maximum.
+                            </div>
+                            <!--/. Errors Msg-->
+                        </div>
+                        <!-- Form actions -->
+                        <div class="form-group">
+                            <div class="col-md-12 text-right">
+                                <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
+                                <button [disabled]="!projectForm.valid" type="submit" class="btn btn-primary">Enregistrer le projet</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <!-- /.Box body -->
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

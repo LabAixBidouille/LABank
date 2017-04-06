@@ -1,0 +1,10 @@
+<div class="form-group">
+    <label for="materials">Materiaux*</label>
+    <div >
+        <select [(ngModel)]="materialsSelected" (change)="selectMaterials()" class="form-control"
+                id="materials" multiple="multiple">
+            <option *ngFor="let currentMaterial of materials"  [ngValue]="currentMaterial" >
+                {{currentMaterial.name}}</option>
+        </select>
+    </div>
+</div>

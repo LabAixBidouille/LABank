@@ -27,9 +27,9 @@ public class EventDTO {
     @Column(name = "title")
     private String title;
 
-    // The event's picture
-    @Column(name = "picture")
-    private String picture;
+    // The event's illustration
+    @Column(name = "illustration")
+    private String illustration;
 
     // The event's description
     @NotNull
@@ -85,9 +85,24 @@ public class EventDTO {
     @Column(name="reducedfare")
     private float reducedFare;
 
-    // Available tickets for this event
+    // Tickets numbers for this event
     @Column(name = "nbtickets")
     private int nbTickets;
+
+    // Available tickets for this event
+    @Column(name = "availabletickets")
+    private int availableTickets;
+
+    // Facebook share
+    @Column(name = "facebookshare")
+    private int facebookShare;
+
+    // Twitter share
+    @Column(name = "twittershare")
+    private int twitterShare;
+
+    // Likes
+    private int likes;
 
     // ------------------------
     // PUBLIC METHODS
@@ -98,7 +113,7 @@ public class EventDTO {
     public EventDTO(EventDTO event) {
         this.idEvent = event.idEvent;
         this.title = event.title;
-        this.picture = event.picture;
+        this.illustration = event.illustration;
         this.description = event.description;
         this.idEventType = event.idEventType;
         this.allDay = event.allDay;
@@ -111,12 +126,19 @@ public class EventDTO {
         this.standardPrice = event.standardPrice;
         this.reducedFare = event.reducedFare;
         this.nbTickets = event.nbTickets;
+        this.availableTickets = event.availableTickets;
+        this.facebookShare = event.facebookShare;
+        this.twitterShare = event.twitterShare;
+        this.likes = event.likes;
     }
 
-    public EventDTO(long idEvent, String title, String picture, String description, long idEventType, boolean allDay, Date startDate, Date endDate, Date startAt, Date endAt, long idRecurrence, Date endRecurrence, float standardPrice, float reducedFare, int nbTickets ) {
+    public EventDTO(long idEvent, String title, String illustration, String description, long idEventType, boolean allDay,
+                    Date startDate, Date endDate, Date startAt, Date endAt, long idRecurrence, Date endRecurrence,
+                    float standardPrice, float reducedFare, int nbTickets, int availableTickets, int facebookShare,
+                    int twitterShare, int likes) {
         this.idEvent = idEvent;
         this.title = title;
-        this.picture = picture;
+        this.illustration = illustration;
         this.description = description;
         this.idEventType = idEventType;
         this.allDay = allDay;
@@ -129,6 +151,10 @@ public class EventDTO {
         this.standardPrice = standardPrice;
         this.reducedFare =  reducedFare;
         this.nbTickets = nbTickets;
+        this.availableTickets = availableTickets;
+        this.facebookShare = facebookShare;
+        this.twitterShare = twitterShare;
+        this.likes = likes;
     }
 
     // Getter and setter methods
@@ -150,12 +176,12 @@ public class EventDTO {
         this.title = title;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getIllustration() {
+        return illustration;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setIllustration(String illustration) {
+        this.illustration = illustration;
     }
 
     public String getDescription() {
@@ -252,5 +278,37 @@ public class EventDTO {
 
     public void setNbTickets(int nbTickets) {
         this.nbTickets = nbTickets;
+    }
+
+    public int getAvailableTickets() {
+        return availableTickets;
+    }
+
+    public void setAvailableTickets(int availableTickets) {
+        this.availableTickets = availableTickets;
+    }
+
+    public int getFacebookShare() {
+        return facebookShare;
+    }
+
+    public void setFacebookShare(int facebookShare) {
+        this.facebookShare = facebookShare;
+    }
+
+    public int getTwitterShare() {
+        return twitterShare;
+    }
+
+    public void setTwitterShare(int twitterShare) {
+        this.twitterShare = twitterShare;
+    }
+
+    public int getLikes() {
+        return likes;
+    }
+
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
 }

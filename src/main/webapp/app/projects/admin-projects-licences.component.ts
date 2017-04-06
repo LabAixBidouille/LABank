@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
     templateUrl: './app/projects/admin-projectsLicences.html',
     providers: [ProjectService]
 })
-export class AdminProjectsLicencesComponent implements OnInit{
+export class AdminProjectsLicencesComponent{
 
     licenceToDelete: CLicence;
     licences: Array<CLicence>;
@@ -21,10 +21,7 @@ export class AdminProjectsLicencesComponent implements OnInit{
         this.licences = [];
         this.licenceToDelete = new CLicence();
         this.msg=false;
-    }
-
-    ngOnInit(){
-        /*TODO:GetAllLicence*/
+        this.projectsService.getAllLicence().subscribe((licences:Array<CLicence>)=> this.licences = licences);
     }
 
     newLicence(){
@@ -42,8 +39,8 @@ export class AdminProjectsLicencesComponent implements OnInit{
     delete(){
         this.projectsService.deleteLicence(this.licenceToDelete.idLicence).subscribe( (msg:boolean) => {
             this.msg = msg;
-            this.projectsService.getAll().subscribe( (licences:Array<CLicence>) => this.licences = licences );
-            this.router.navigate(['admin/projects/licences']);
+            this.projectsService.getAllLicence().subscribe( (licences:Array<CLicence>) => this.licences = licences );
+            this.router.navigate(['admin/projects/home']);
         } );
     }
 

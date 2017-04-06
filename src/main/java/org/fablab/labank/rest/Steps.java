@@ -21,6 +21,11 @@ public class Steps {
     @Autowired
     StepDAO stepDAO;
 
+    @RequestMapping("/steps")
+    public List<StepDTO> getAll(){
+        return (List<StepDTO>) this.stepDAO.findAll();
+    }
+
     /**
      * Methode permettant, à partir de l'id du projet, de retourner une liste de StepDTO.
      * @return List<StepDTO> steps : liste de StepDTO.

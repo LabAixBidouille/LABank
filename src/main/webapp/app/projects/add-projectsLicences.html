@@ -1,0 +1,89 @@
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Les Licences des Projets du FABLAB
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li class="active"><a href="#/admin/projects/home">Gestion des licences</a></li>
+            <li class="active">Ajout de licence</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-primary">
+
+            <!-- Box header -->
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-th"></i> Ajouter une nouvelle licence</h3>
+            </div>
+            <!-- /.Box header -->
+
+            <!-- Box body -->
+            <div class="box-body">
+                <form  [formGroup]="licenceForm" (ngSubmit)="addLicence()" >
+                    <fieldset>
+                        <!-- Name -->
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!licenceForm.controls['name'].valid && licenceForm.controls['name'].touched}">
+                            <label for="name">Nom* </label>
+                            <div >
+                                <input id="name" name="name" type="text" placeholder="Nom de la licence"
+                                       class="form-control" required [formControl]="licenceForm.controls['name']">
+                            </div>
+                            <!--Errors Msg-->
+                            <div *ngIf="licenceForm.controls['name'].hasError('required') &&
+                                  licenceForm.controls['name'].touched" class="alert alert-danger">
+                                Le nom de la licence doit etre renseigné.
+                            </div>
+                            <!--/.Errors Msg-->
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!licenceForm.controls['description'].valid && licenceForm.controls['description'].touched}">
+                            <label for="description">Description*</label>
+                            <div >
+                                <textarea id="description" name="description" placeholder="Description de la licence"
+                                          class="form-control" rows="5" required
+                                          [formControl]="licenceForm.controls['description']"></textarea>
+                            </div>
+                            <!-- Errors Msg-->
+                            <div *ngIf="licenceForm.controls['description'].hasError('required') &&
+                                  licenceForm.controls['description'].touched" class="alert alert-danger">
+                                La description de la licence doit etre renseignée.
+                            </div>
+                            <div *ngIf="licenceForm.controls['description'].hasError('minlength') &&
+                                  licenceForm.controls['description'].touched" class="alert alert-danger">
+                                La description de la licence doit contenir 5 caracteres minimum.
+                            </div>
+                            <div *ngIf="licenceForm.controls['description'].hasError('maxlength') &&
+                                  licenceForm.controls['description'].touched" class="alert alert-danger">
+                                La description de la licence doit contenir 750 caracteres maximum.
+                            </div>
+                            <!--/. Errors Msg-->
+                        </div>
+
+                        <!-- Form actions -->
+                        <div class="form-group">
+                            <div class="col-md-12 text-right">
+                                <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
+                                <button [disabled]="!licenceForm.valid" type="submit" class="btn btn-primary">Enregistrer la licence</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <!-- /.Box body -->
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

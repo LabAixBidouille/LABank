@@ -1,0 +1,56 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Les Materiels des Projets du FABLAB
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li class="active"><a href="#/admin/projects/home">Gestion des materiels</a></li>
+            <li class="active">Modification du materiel</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-primary">
+
+            <!-- Box header -->
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-th"></i> Modifier le materiel</h3>
+            </div>
+            <!-- /.Box header -->
+
+            <!-- Box body -->
+            <div class="box-body">
+                <form  #materialForm="ngForm" (ngSubmit)="updateMaterial()" >
+                    <fieldset>
+                        <!-- Name -->
+                        <div class="form-group">
+                            <label for="name">Nom </label>
+                            <div >
+                                <input id="name" name="name" type="text" placeholder="Nom de la licence"
+                                       class="form-control" required [(ngModel)]="material.name" #name="ngModel" >
+                            </div>
+                            <div *ngIf="name.control.dirty && name.control.hasError('required')">Le nom doit etre renseigné</div>
+                        </div>
+
+                        <!-- Form actions -->
+                        <div class="form-group">
+                            <div class="col-md-12 text-right">
+                                <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
+                                <button [disabled]="!materialForm.valid" type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <!-- /.Box body -->
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

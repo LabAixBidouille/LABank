@@ -1,0 +1,64 @@
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Les Themes des Projets du FABLAB
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li class="active"><a href="#/admin/projects/home">Gestion des themes</a></li>
+            <li class="active">Ajout de theme</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-primary">
+
+            <!-- Box header -->
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-th"></i> Ajouter un nouveau theme</h3>
+            </div>
+            <!-- /.Box header -->
+
+            <!-- Box body -->
+            <div class="box-body">
+                <form  [formGroup]="themeForm" (ngSubmit)="addTheme()" >
+                    <fieldset>
+                        <!-- Name -->
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!themeForm.controls['name'].valid && themeForm.controls['name'].touched}">
+                            <label for="name">Nom* </label>
+                            <div >
+                                <input id="name" name="name" type="text" placeholder="Nom du theme"
+                                       class="form-control" required [formControl]="themeForm.controls['name']">
+                            </div>
+                            <!--Errors Msg-->
+                            <div *ngIf="themeForm.controls['name'].hasError('required') &&
+                                  themeForm.controls['name'].touched" class="alert alert-danger">
+                                Le nom du theme doit etre renseigné.
+                            </div>
+                            <!--/.Errors Msg-->
+                        </div>
+
+                        <!-- Form actions -->
+                        <div class="form-group">
+                            <div class="col-md-12 text-right">
+                                <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
+                                <button [disabled]="!themeForm.valid" type="submit" class="btn btn-primary">Enregistrer le theme</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <!-- /.Box body -->
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

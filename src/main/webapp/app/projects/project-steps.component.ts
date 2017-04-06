@@ -11,11 +11,12 @@ import {ProjectService} from "./project.service";
 })
 export class ProjectStepsComponent{
     steps:Array<CStep>;
-    @Input()
-    idProjectSelected:number;
+    step = new CStep();
+    @Output()
+    stepSelected = new  EventEmitter<CStep>();
 
     constructor(private projectsService:ProjectService){
-
+        this.projectsService.getAllStep().subscribe((steps:Array<CStep>)=> this.steps = steps);
     }
 
 

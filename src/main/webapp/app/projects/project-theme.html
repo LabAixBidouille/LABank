@@ -1,0 +1,10 @@
+<div class="form-group">
+    <label for="themes">Themes*</label>
+    <div >
+        <select [(ngModel)]="themesSelected" (change)="selectThemes()" class="form-control"
+                id="themes" multiple="multiple">
+            <option *ngFor="let currentTheme of themes"  [ngValue]="currentTheme" >
+                {{currentTheme.name}}</option>
+        </select>
+    </div>
+</div>

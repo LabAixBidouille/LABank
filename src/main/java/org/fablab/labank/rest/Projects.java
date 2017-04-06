@@ -1,6 +1,6 @@
 package org.fablab.labank.rest;
-import org.fablab.labank.dao.ProjectDAO;
-import org.fablab.labank.dao.StepDAO;
+import org.fablab.labank.dao.*;
+import org.fablab.labank.dto.LicenceDTO;
 import org.fablab.labank.dto.ProjectDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -71,7 +71,7 @@ public class Projects {
     /**
      * Methode permettant de mettre à jour l'objet ProjectDTO passé en parametre de la requete HTTP.
      * @param project : objet ProjectDTO.
-     * @return ProjectDTO project : objet MachineDTO passé en parametre de la requete HTTP.
+     * @return ProjectDTO project : objet ProjectDTO passé en parametre de la requete HTTP.
      */
     @RequestMapping(value = "/admin/projects", method = RequestMethod.PUT)
     public ProjectDTO update(@RequestBody ProjectDTO project){
@@ -100,4 +100,5 @@ public class Projects {
         }
         return status;
     }
+
 }

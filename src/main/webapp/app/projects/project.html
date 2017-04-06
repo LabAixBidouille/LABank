@@ -7,7 +7,8 @@
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-            <li class="active">Projets</li>
+            <li> <a  href="#/projects"><i class="fa fa-th"></i>Projets</a></li>
+            <li class="active">{{project.name}}</li>
         </ol>
     </section>
 
@@ -24,24 +25,67 @@
 
             <!-- Box body -->
             <div class="box-body">
+                <div class="row">
+                    <div class="col-md-7 col-sm-7">
+                        <div >
+                            <img [attr.src]="project.illustration" alt="Project Image" width="200px" height="200px"/>
+                        </div>
 
-                <div >
-                    <img [attr.src]="project.illustration" alt="Project Image" width="200px" height="200px"/>
-                </div>
+                        <div>
+                            <h3>Description du projet</h3>
+                            <p>{{project.description}}</p>
+                        </div>
 
-                <div>
-                    <h3>Description du projet</h3>
-                    <p>{{project.description}}</p>
-                </div>
+                        <div>
+                            <h3>Etapes du projet</h3>
+                            <div class="panel panel-info" *ngFor="let step of project.projectSteps">
+                                <div class="panel-heading"><h4>Etape {{step.order}} : {{step.title}}</h4></div>
+                                <div class="panel-body">
+                                    <img [attr.src]="step.illustration" alt="Step Image" width="200px" height="200px"
+                                    class="pull-left"/>
+                                    <div class="pull-right">{{step.description}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 col-sm-5">
+                        <div>
+                            <div class="panel panel-info">
+                                <div class="panel-heading">
+                                    <h4>Fichiers CAO à télécharger <span class="badge">0</span></h4> <!-- TODO: rajouter la taille de la liste a place du 0 -->
+                                </div>
+                                <div class="panel-body" *ngFor="let file of project.projectFiles">
+                                    <div >{{file.fileName}}</div>
+                                </div>
+                            </div>
+                        </div>
 
-                <div>
-                    <h3>Etapes du projet</h3>
-                    <div class="panel panel-info" *ngFor="let step of project.projectSteps">
-                        <div class="panel-heading"><h4>Etape {{step.order}} : {{step.title}}</h4></div>
-                        <div class="panel-body">
-                            <img [attr.src]="step.picture" alt="Step Image" width="200px" height="200px"
-                            class="pull-left"/>
-                            <div class="pull-right">{{step.description}}</div>
+
+                        <div class="panel panel-info" >
+                            <div class="panel-heading">
+                                <h4>Machines et materiaux <span class="badge">0</span></h4> <!-- TODO: rajouter la taille de la liste a place du 0 -->
+                            </div>
+                            <div class="panel-body" *ngFor="let machine of project.projectsMachines">
+                                <div>{{machine.name}}</div>
+                            </div>
+                            <div class="panel-body" *ngFor="let material of project.projectsMaterials">
+                                <div>{{material.name}}</div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-info" >
+                            <div class="panel-heading"><h4>Collaborateurs <span class="badge">0</span></h4> <!-- TODO: rajouter la taille de la liste a place du 0 -->
+                            </div>
+                            <div class="panel-body" *ngFor="let collab of project.collaborators">
+                                <div>{{collab.id}}</div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-info" >
+                            <div class="panel-heading"><h4>Licence</h4></div>
+                            <div class="panel-body">
+                                <div>{{licence.name}}</div>
+                            </div>
                         </div>
                     </div>
                 </div>

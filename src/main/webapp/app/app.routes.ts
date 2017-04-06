@@ -35,11 +35,22 @@ import {UpdateMachineComponent} from './machines/update-machine.component';
 
 import {ProjectComponent} from "./projects/project.component";
 import {ProjectsComponent} from './projects/projects.component';
-import {ProjectStepsComponent} from "./projects/project-steps.component"
+import {ProjectStepsComponent} from "./projects/project-steps.component";
+import {ProjectMaterialsComponent} from "./projects/project-materials.component";
+import {ProjectMachinesComponent} from "./projects/project-machines.component";
+import {ProjectThemesComponent} from "./projects/project-themes.component";
+import {ProjectCollaboratorsComponent} from "./projects/project-collaborators.component";
+import {ProjectLicencesComponent} from "./projects/project-licences.component";
 import {AdminProjectsHomeComponent} from './projects/admin-projects-home.component';
 import {AdminProjectsLicencesComponent} from './projects/admin-projects-licences.component';
+import {AddProjectsLicencesComponent} from './projects/add-projectsLicences.component';
+import {UpdateProjectsLicencesComponent} from './projects/update-projectsLicences.component';
 import {AdminProjectsMaterialsComponent} from './projects/admin-projects-materials.component';
+import {AddProjectsMaterialsComponent} from './projects/add-projectsMaterials.component';
+import {UpdateProjectsMaterialsComponent} from './projects/update-projectsMaterials.component';
 import {AdminProjectsThemesComponent} from './projects/admin-projects-themes.component';
+import {AddProjectsThemesComponent} from './projects/add-projectsThemes.component';
+import {UpdateProjectsThemesComponent} from './projects/update-projectsThemes.component';
 import {AdminProjectsComponent} from './projects/admin-projects.component';
 import {AddProjectComponent} from './projects/add-project.component';
 import {UpdateProjectComponent} from './projects/update-project.component';
@@ -80,13 +91,24 @@ export const routes:Routes = [
     {path: 'projects/:id', component: ProjectComponent},
     {path: 'projects', component: ProjectsComponent},
     {path: 'project-steps', component: ProjectStepsComponent},
+    {path: 'project-materials', component: ProjectMaterialsComponent},
+    {path: 'project-machines', component: ProjectMachinesComponent},
+    {path: 'project-themes', component: ProjectThemesComponent},
+    {path: 'project-collaborators', component: ProjectCollaboratorsComponent},
+    {path: 'project-licences', component: ProjectLicencesComponent},
     {path: 'admin/projects/home', component: AdminProjectsHomeComponent},
     {path: 'admin/projects', component: AdminProjectsComponent},
     {path: 'admin/projects/new', component: AddProjectComponent},
     {path: 'admin/projects/:id', component: UpdateProjectComponent},
     {path: 'admin/projects/licences', component: AdminProjectsLicencesComponent},
+    {path: 'admin/projects/licences/new', component: AddProjectsLicencesComponent},
+    {path: 'admin/projects/licences/:id', component: UpdateProjectsLicencesComponent},
     {path: 'admin/projects/materials', component: AdminProjectsMaterialsComponent},
-    {path: 'admin/projects/themes', component: AdminProjectsThemesComponent}
+    {path: 'admin/projects/materials/new', component: AddProjectsMaterialsComponent},
+    {path: 'admin/projects/materials/:id', component: UpdateProjectsMaterialsComponent},
+    {path: 'admin/projects/themes', component: AdminProjectsThemesComponent},
+    {path: 'admin/projects/themes/new', component: AddProjectsThemesComponent},
+    {path: 'admin/projects/themes/:id', component: UpdateProjectsThemesComponent}
 
 ];
 

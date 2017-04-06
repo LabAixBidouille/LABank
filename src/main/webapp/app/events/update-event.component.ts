@@ -20,30 +20,30 @@ export class UpdateEventComponent implements OnInit{
     eventType:IEventType;
     recurrence:CRecurrence;
 
-    picture:string;
+    illustration:string;
 
     constructor(private router:Router, private route:ActivatedRoute, private location:Location,
                 private eventsService:EventsService){
         this.events=[];
         this.eventType = new IEventType();
         this.recurrence = new CRecurrence();
-        this.picture ="";
+        this.illustration ="";
     }
 
     ngOnInit(){
         this.route.params.switchMap((params: Params) => this.eventsService.getEvent(+params['id']))
             .subscribe( (event: IEvent) => {
                 this.event = event;
-                this.picture = this.event.picture;
+                this.illustration = this.event.illustration;
             } );
     }
 
     updateEvent(){
         /*TODO: a supprimer ou à modifier lorsque l'upload de fichier sera implementé */
-        if(this.picture == null){
-            this.event.picture = '../assets/img/events/defaultEvent.png';
+        if(this.illustration == null){
+            this.event.illustration = '../assets/img/events/defaultEvent.png';
         }else{
-            this.event.picture = this.picture;
+            this.event.illustration = this.illustration;
         }
         /*FIN TODO*/
         this.event.idEventType = this.eventType.idEventType;
@@ -56,8 +56,8 @@ export class UpdateEventComponent implements OnInit{
         });
     }
 
-    getPicture(picture:string){
-        this.picture = '../assets/img/events/'+ picture;
+    getIllustration(illustration:string){
+        this.illustration = '../assets/img/events/'+ illustration;
     }
 
     getEventType(eventType:IEventType){

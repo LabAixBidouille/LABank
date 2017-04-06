@@ -1,5 +1,5 @@
 <!--Modal Delete Licence-->
-<div id="deleteModal" class="modal fade" >
+<div id="deleteLicenceModal" class="modal fade" >
     <div class="login-box modal-dialog modal-sm box box-primary">
         <!-- Modal content-->
         <div class="modal-content">
@@ -30,7 +30,7 @@
 
 
 <div *ngIf="msg" class="alert alert-success alert-dismissible">
-    <a href="#/admin/projects/licences" (click)="closeAlert()" class="close">&times;</a>
+    <a href="#/admin/projects/home" (click)="closeAlert()" class="close">&times;</a>
     <strong>Licence supprimée avec succes !</strong>.
 </div>
 <div class="table-responsive">
@@ -44,12 +44,12 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let project of projects" >
+        <tr *ngFor="let licence of licences" >
             <td >{{licence.name}}</td>
             <td>{{licence.description}}</td>
             <td>
                 <button (click)="updateLicence(licence.idLicence)" type="button" class="btn btn-warning btn-circle"><i class="glyphicon glyphicon-edit"></i>Editer</button>
-                <button (click)="deleteLicence(project.idLicence)" data-toggle="modal" data-target="#deleteModal" data-backdrop="false" type="button" class="btn btn-danger btn-circle"><i class="glyphicon glyphicon-trash"></i></button>
+                <button (click)="deleteLicence(licence.idLicence)" data-toggle="modal" data-target="#deleteLicenceModal" data-backdrop="false" type="button" class="btn btn-danger btn-circle"><i class="glyphicon glyphicon-trash"></i></button>
             </td>
         </tr>
         </tbody>

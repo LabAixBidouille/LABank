@@ -86,7 +86,18 @@ public class ProjectDTO {
                     inverseJoinColumns={ @JoinColumn(name="machine_idmachine", referencedColumnName="id", unique=true) }
             )
     // While Update this will also insert collection row another insert
-    private List<MachineDTO> projectsdMachines;
+    private List<MachineDTO> projectsMachines;
+
+    // List of project's files
+    @OneToMany
+    @JoinTable
+            (
+                    name="project_has_file",
+                    joinColumns={ @JoinColumn(name="project_idproject", referencedColumnName="idproject") },
+                    inverseJoinColumns={ @JoinColumn(name="projectfile_idprojectfile", referencedColumnName="idprojectfile", unique=true) }
+            )
+    // While Update this will also insert collection row another insert
+    private List<ProjectFileDTO> projectFiles;
 
     @Transient
     private List<StepDTO> projectSteps;
@@ -190,12 +201,12 @@ public class ProjectDTO {
         this.projectsThemes = projectsThemes;
     }
 
-    public List<MachineDTO> getProjectsdMachines() {
-        return projectsdMachines;
+    public List<MachineDTO> getProjectsMachines() {
+        return projectsMachines;
     }
 
-    public void setProjectsdMachines(List<MachineDTO> projectsdMachines) {
-        this.projectsdMachines = projectsdMachines;
+    public void setProjectsMachines(List<MachineDTO> projectsMachines) {
+        this.projectsMachines = projectsMachines;
     }
 
     public List<StepDTO> getProjectSteps() {

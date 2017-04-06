@@ -5,7 +5,7 @@
 export class IEvent {
     idEvent: number;
     title: string;
-    picture: string;
+    illustration: string;
     description: string;
     idEventType: number;
     allDay : boolean;
@@ -18,7 +18,7 @@ export class IEvent {
     standardPrice : number;
     reducedFare : number;
     nbTickets : number;
-    constructor(event?:{idEvent:number, title:string, picture:string, description:string,
+    constructor(event?:{idEvent:number, title:string, illustration:string, description:string,
                         idEventType:number, allDay:boolean, startDate:Date, endDate:Date, startAt:Date,
                         endAt:Date, idRecurrence:number, endRecurrence:Date, standardRecurrence:number,
                         reducedFare:number, nbTickets:number}) {

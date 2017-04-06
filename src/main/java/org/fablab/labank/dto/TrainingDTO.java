@@ -43,6 +43,21 @@ public class TrainingDTO {
     @NotNull
     private boolean display;
 
+    // Available tickets for this event
+    @Column(name = "availabletickets")
+    private int availableTickets;
+
+    // Facebook share
+    @Column(name = "facebookshare")
+    private int facebookShare;
+
+    // Twitter share
+    @Column(name = "twittershare")
+    private int twitterShare;
+
+    // Likes
+    private int like;
+
     // List of associated machine (user can associate a machine to a training)
     @OneToMany
     @JoinTable
@@ -72,6 +87,10 @@ public class TrainingDTO {
         this.description = trainingDTO.description;
         this.nbTicket = trainingDTO.nbTicket;
         this.display = trainingDTO.display;
+        this.availableTickets = trainingDTO.availableTickets;
+        this.facebookShare = trainingDTO.facebookShare;
+        this.twitterShare = trainingDTO.twitterShare;
+        this.like = trainingDTO.like;
     }
 
     /** Getter and Setters **/
@@ -121,6 +140,38 @@ public class TrainingDTO {
 
     public void setDisplay(boolean display) {
         this.display = display;
+    }
+
+    public int getAvailableTickets() {
+        return availableTickets;
+    }
+
+    public void setAvailableTickets(int availableTickets) {
+        this.availableTickets = availableTickets;
+    }
+
+    public int getFacebookShare() {
+        return facebookShare;
+    }
+
+    public void setFacebookShare(int facebookShare) {
+        this.facebookShare = facebookShare;
+    }
+
+    public int getTwitterShare() {
+        return twitterShare;
+    }
+
+    public void setTwitterShare(int twitterShare) {
+        this.twitterShare = twitterShare;
+    }
+
+    public int getLike() {
+        return like;
+    }
+
+    public void setLike(int like) {
+        this.like = like;
     }
 
     public List<MachineDTO> getMachines() {

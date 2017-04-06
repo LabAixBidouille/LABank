@@ -1,7 +1,5 @@
 package org.fablab.labank.dto;
 
-import org.springframework.web.bind.annotation.RestController;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -35,7 +33,7 @@ public class StepDTO {
     @NotNull
     private Long order;
 
-    private String picture;
+    private String illustration;
 
     // ------------------------
     // PUBLIC METHODS
@@ -51,7 +49,7 @@ public class StepDTO {
         this.idProject = step.idProject;
         this.description = step.description;
         this.order = step.order;
-        this.picture = step.picture;
+        this.illustration = step.illustration;
     }
 
     public Long getIdStep() {
@@ -94,11 +92,11 @@ public class StepDTO {
         this.order = order;
     }
 
-    public String getPicture() {
-        return picture;
+    public String getIllustration() {
+        return illustration;
     }
 
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setIllustration(String illustration) {
+        this.illustration = illustration;
     }
 }
