@@ -209,6 +209,14 @@ public class ProjectDTO {
         this.projectsMachines = projectsMachines;
     }
 
+    public List<ProjectFileDTO> getProjectFiles() {
+        return projectFiles;
+    }
+
+    public void setProjectFiles(List<ProjectFileDTO> projectFiles) {
+        this.projectFiles = projectFiles;
+    }
+
     public List<StepDTO> getProjectSteps() {
         return projectSteps;
     }

@@ -38,7 +38,7 @@
 
                         <div>
                             <h3>Etapes du projet</h3>
-                            <div class="panel panel-info" *ngFor="let step of project.projectSteps">
+                            <div class="panel panel-info" *ngFor="let step of project.projectsSteps">
                                 <div class="panel-heading"><h4>Etape {{step.order}} : {{step.title}}</h4></div>
                                 <div class="panel-body">
                                     <img [attr.src]="step.illustration" alt="Step Image" width="200px" height="200px"
@@ -54,7 +54,7 @@
                                 <div class="panel-heading">
                                     <h4>Fichiers CAO à télécharger <span class="badge">0</span></h4> <!-- TODO: rajouter la taille de la liste a place du 0 -->
                                 </div>
-                                <div class="panel-body" *ngFor="let file of project.projectFiles">
+                                <div class="panel-body" *ngFor="let file of project.projectsFiles">
                                     <div >{{file.fileName}}</div>
                                 </div>
                             </div>

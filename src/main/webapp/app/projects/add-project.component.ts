@@ -4,6 +4,10 @@ import {Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CProject} from "./CProject";
 import {Location} from "@angular/common";
+import {CMaterial} from "./CMaterial";
+import {IMachine} from "../machines/IMachine";
+import {CLicence} from "./CLicence";
+import {CTheme} from "./CTheme";
 
 /**
  * Created by Kandel HANAFI on 29/03/2017.
@@ -20,22 +24,22 @@ export class AddProjectComponent{
     projectForm:FormGroup;
 
     project:CProject;
-    // employedMaterials:Array<CMaterial>;
-    // employedMachines:Array<IMachine>;
+    employedMaterials:Array<CMaterial>;
+    employedMachines:Array<IMachine>;
     /*TODO: collaborators */
-    // licence:CLicence;
-    // themes:Array<CTheme>;
+    licence:CLicence;
+    themes:Array<CTheme>;
 
     illustration:string;
 
 
     constructor(router:Router,form: FormBuilder, private projectsService:ProjectService, private location:Location){
         this.project = new CProject();
-        //this.employedMaterials=[];
-        // this.employedMachines=[];
+        this.employedMaterials=[];
+        this.employedMachines=[];
         /*TODO: collaborators */
-        // this.licences=[];
-        // this.themes=[];
+        this.licence=new CLicence();
+        this.themes=[];
 
         this.router = router;
         this.projectForm = form.group({
@@ -45,7 +49,7 @@ export class AddProjectComponent{
         });
     }
 
-    addEvent(){
+    addProject(){
         this.project = new CProject();
         this.project.name = "";
         /*TODO: a supprimer ou à modifier lorsque l'upload de fichier sera implementé */
@@ -55,7 +59,11 @@ export class AddProjectComponent{
             this.project.illustration = this.illustration;
         }
         /*FIN TODO*/
-
+        /*TODO: collaborators + steps + files */
+        this.project.projectsMaterials = this.employedMaterials;
+        this.project.projectsMachines = this.employedMachines;
+        this.project.idLicence = this.licence.idLicence;
+        this.project.projectsThemes = this.themes;
 
         // this.projectsService.saveProject(this.project).subscribe((project:CProject) => {
         //     this.project = project;
@@ -66,6 +74,26 @@ export class AddProjectComponent{
 
     getIllustration(illustration:string){
         this.illustration = '../assets/img/events/'+ illustration;
+    }
+
+    getStepIllustration(stepIllustration:string){
+
+    }
+
+    getMaterials(employedMaterials:Array<CMaterial>){
+        this.employedMaterials = employedMaterials;
+    }
+
+    getMachines(employedMachines:Array<IMachine>){
+        this.employedMachines = employedMachines;
+    }
+
+    getLicence(licence:CLicence){
+        this.licence = licence;
+    }
+
+    getThemes(themes:Array<CTheme>){
+        this.themes = themes;
     }
 
 

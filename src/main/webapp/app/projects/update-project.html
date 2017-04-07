@@ -1,0 +1,134 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Les Projets du FABLAB
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li class="active"><a href="#/admin/projects/home">Gestion des projets</a></li>
+            <li class="active">Modification du projet</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-primary">
+
+            <!-- Box header -->
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-th"></i> Modifier le projet</h3>
+            </div>
+            <!-- /.Box header -->
+
+            <!-- Box body -->
+            <div class="box-body">
+                <form  #projectForm="ngForm" (ngSubmit)="updateProject()" >
+                    <fieldset>
+                        <!-- Name -->
+                        <div class="form-group" [ngClass]="{'has-error': !name.control.valid && name.control.touched}">
+                            <label for="name">Nom* </label>
+                            <div >
+                                <input id="name" name="name" type="text" placeholder="Nom du projet"
+                                       class="form-control" required [(ngModel)]="project.name" #name="ngModel">
+                            </div>
+                            <!--Errors Msg-->
+                            <div *ngIf="name.control.dirty && name.control.hasError('required')"
+                                 class="alert alert-danger">
+                                Le nom du projet doit etre renseigné
+                            </div>
+                            <!--/.Errors Msg-->
+                        </div>
+
+                        <!-- Illustration -->
+                        <div class="form-group">
+                            <label for="illustration">Image </label>
+                            <div>
+                                <input id="illustration" name="illustration"  class="form-control" type="file"
+                                       (change)="getIllustration($event.target.files[0].name)" accept=".png,.jpg,.jpeg">
+                            </div>
+                        </div>
+
+                        <!-- Project's files -->
+                        <!-- TODO -->
+
+                        <!-- Description -->
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!description.control.valid && description.control.touched}">
+                            <label for="description">Description*</label>
+                            <div >
+                                <textarea id="description" name="description" placeholder="Description du projet"
+                                          class="form-control" rows="5" required [(ngModel)]="project.description"
+                                          #description="ngModel" minlength="5" maxlength="750" ></textarea>
+                            </div>
+                            <!-- Errors Msg-->
+                            <div *ngIf="description.control.dirty && description.control.hasError('required')"
+                                 class="alert alert-danger">
+                                La description du projet doit etre renseignée
+                            </div>
+                            <!--/. Errors Msg-->
+                        </div>
+
+                        <!-- Project's steps -->
+                        <div class="form-group multiple-form-group">
+                            <label>Etapes</label>
+
+                            <div class="form-group input-group">
+                                <input type="text" name="multiple[]" class="form-control" placeholder="Titre de l'etape">
+                                <textarea style="width:100%" rows="5" name="multiple[]" placeholder="Description de l'etape"></textarea>
+                                <input name="multiple[]"  class="form-control" type="file"
+                                       (change)="getStepIllustration($event.target.files[0].name)" accept=".png,.jpg,.jpeg">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default btn-add">
+                                        + Ajouter une etape
+						            </button>
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Project's materials -->
+                        <project-materials required="true" (selectedMaterials)="getMaterials($event)"></project-materials>
+
+                        <!-- Project's machines -->
+                        <project-machines required="true" (selectedMachines)="getMachines($event)"></project-machines>
+
+                        <!-- Project's licence -->
+                        <project-licences required="true" (selectedLicence)="getLicence($event)"></project-licences>
+
+                        <!-- Project's themes -->
+                        <project-themes required="true" (selectedThemes)="getThemes($event)"></project-themes>
+
+                        <!-- Project's tags -->
+                        <div class="form-group" [ngClass]="{'has-error':!tags.control.valid && tags.control.touched}">
+                            <label for="tags">Tags*</label>
+                            <div >
+                                <textarea id="tags" name="tags" placeholder="Mots-clés" class="form-control" rows="5"
+                                          required [(ngModel)]="project.tags" #tags="ngModel"></textarea>
+                            </div>
+                            <!-- Errors Msg-->
+                            <div *ngIf="tags.control.hasError('required') &&
+                                  tags.control.dirty" class="alert alert-danger">
+                                Les tags du projet doivent etre renseignés.
+                            </div>
+                            <!--/. Errors Msg-->
+                        </div>
+
+                        <!-- Form actions -->
+                        <div class="form-group">
+                            <div class="col-md-12 text-right">
+                                <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
+                                <button [disabled]="!projectForm.valid" type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <!-- /.Box body -->
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
