@@ -21,7 +21,7 @@ export class UpdateMachineComponent{
     illustration:string;
 
     constructor(private router:Router, private route:ActivatedRoute,private location:Location,
-                private machinesService:MachinesService, private ngZone:NgZone){
+                private machinesService:MachinesService){
         this.machines = [];
         this.illustration = "";
     }

@@ -26,29 +26,55 @@
             <!-- Box body -->
             <div class="box-body">
                 <div class="row">
-                    <div class="col-md-7 col-sm-7">
-                        <div >
-                            <img [attr.src]="project.illustration" alt="Project Image" width="200px" height="200px"/>
-                        </div>
+                    <div class="col-md-4 col-sm-4">
+                        <div class="box box-danger">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Description</h3>
 
-                        <div>
-                            <h3>Description du projet</h3>
-                            <p>{{project.description}}</p>
-                        </div>
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
 
-                        <div>
-                            <h3>Etapes du projet</h3>
-                            <div class="panel panel-info" *ngFor="let step of project.projectsSteps">
-                                <div class="panel-heading"><h4>Etape {{step.order}} : {{step.title}}</h4></div>
-                                <div class="panel-body">
-                                    <img [attr.src]="step.illustration" alt="Step Image" width="200px" height="200px"
-                                    class="pull-left"/>
-                                    <div class="pull-right">{{step.description}}</div>
+                            <div class="box-body text-center">
+                                <img [attr.src]="project.illustration" alt="Project Image" width="200px" />
+                            </div>
+
+                            <div >
+                                <div class="box-body text-justify">
+                                    <p>{{project.description}}</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-5 col-sm-5">
+
+                    <div class="col-md-4 col-sm-4">
+                        <div class="box box-info">
+
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Etapes</h3>
+
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="box-body">
+                                <div class="panel panel-info" *ngFor="let step of project.projectsSteps">
+                                    <div class="panel-heading"><h4>Etape {{step.order}} : {{step.title}}</h4></div>
+                                    <div class="panel-body">
+                                        <img [attr.src]="step.illustration" alt="Step Image" width="200px" height="200px"
+                                             class="pull-left"/>
+                                        <div class="pull-right">{{step.description}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
                         <div>
                             <div class="panel panel-info">
                                 <div class="panel-heading">
@@ -88,7 +114,9 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
+                <!-- Row -->
 
             </div>
             <!-- /.Box body -->

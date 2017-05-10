@@ -1,0 +1,131 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Les Espaces De Travail du FABLAB
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li class="active"><a href="#/admin/spaces">Gestion des espaces de travail</a></li>
+            <li class="active">Ajout d'espaces de travail</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-primary">
+
+            <!-- Box header -->
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-cogs"></i> Modifier l'espace de travail</h3>
+            </div>
+            <!-- /.Box header -->
+
+            <!-- Box body -->
+            <div class="box-body">
+                <form  #spaceForm="ngForm" (ngSubmit)="updateSpace()" >
+                    <fieldset>
+                        <!-- Name -->
+                        <div class="form-group">
+                            <label for="name">Nom*</label>
+                            <div >
+                                <input id="name" name="name" type="text" placeholder="Nom de l'espace de travail"
+                                       class="form-control" required [(ngModel)]="space.name" #name="ngModel" >
+                            </div>
+                            <!--Errors Msg-->
+                            <div *ngIf="name.control.dirty && name.control.hasError('required')" class="alert alert-danger">
+                                Le nom de l'espace de travail doit etre renseigné
+                            </div>
+                            <!--/.Errors Msg-->
+                        </div>
+
+                        <!-- Illustration -->
+                        <div class="form-group">
+                            <label for="illustration">Illustration</label>
+                            <div>
+                                <input id="illustration" name="illustration"  class="form-control" type="file"
+                                       (change)="getIllustration($event.target.files[0].name)">
+                            </div>
+                        </div>
+
+                        <!-- Tickets -->
+                        <div class="form-group">
+                            <label for="maxTickets">Nombre de tickets</label>
+                            <div >
+                                <input id="maxTickets" name="maxTickets" type="number" min="0"
+                                       class="form-control" [(ngModel)]="space.maxTickets">
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-group">
+                            <label for="description">Description*</label>
+                            <div >
+                                <textarea id="description" name="description" placeholder="Description de l'espace de travail"
+                                          class="form-control" rows="5" required minlength="5" maxlength="750"
+                                          [(ngModel)]="space.description" #desc="ngModel"></textarea>
+                            </div>
+                            <!--Errors msg-->
+                            <div *ngIf="desc.control.dirty && desc.control.hasError('required')" class="alert alert-danger">
+                                La description de l'espace de travail doit etre renseignée.
+                            </div>
+                            <div *ngIf="desc.control.dirty && desc.control.hasError('minlength')" class="alert alert-danger">
+                                La description de l'espace de travail doit contenir 5 caracteres minimum.
+                            </div>
+                            <div *ngIf="desc.control.dirty && desc.control.hasError('maxlength')" class="alert alert-danger">
+                                La description de l'espace de travail doit contenir 750 caracteres maximum.
+                            </div>
+                            <!--/.Errors Msg-->
+                        </div>
+
+                        <!-- Characteristics -->
+                        <div class="form-group">
+                            <label for="characteristics">Caractéristiques*</label>
+                            <div >
+                                <textarea id="characteristics" name="characteristics" placeholder="Caractéristiques de l'espace de travail"
+                                          class="form-control" rows="5" required minlength="5" maxlength="750"
+                                          [(ngModel)]="space.characteristic" #carac="ngModel"></textarea>
+                            </div>
+                            <!--Errors msg-->
+                            <div *ngIf="carac.control.dirty && carac.control.hasError('required')" class="alert alert-danger">
+                                Les caractéristiques de l'espace de travail doivent etre renseignée.
+                            </div>
+                            <div *ngIf="carac.control.dirty && carac.control.hasError('minlength')" class="alert alert-danger">
+                                Les caractéristiques de l'espace de travail doivent contenir 5 caracteres minimum.
+                            </div>
+                            <div *ngIf="carac.control.dirty && carac.control.hasError('maxlength')" class="alert alert-danger">
+                                Les caractéristiques de l'espace de travail doivent contenir 750 caracteres maximum.
+                            </div>
+                            <!--/.Errors Msg-->
+                        </div>
+
+                        <!--TODO: Pieces jointes-->
+                        <!-- Attached files -->
+                        <!--<div class="form-group">-->
+                        <!--<label for="docMachine">Pieces jointes</label>-->
+                        <!--<div >-->
+                        <!--<input id="docMachine" name="docMachine"  class="form-control" type="file"-->
+                        <!--(change)="getDocMachine($event.target.files[0])" accept=".pdf,.doc,.xls">-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--/.TODO-->
+
+                        <!-- Form actions -->
+                        <div class="form-group">
+                            <div class="col-md-12 text-right">
+                                <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
+                                <button [disabled]="!spaceForm.valid" type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <!-- /.Box body -->
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

@@ -3,12 +3,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Les Machines du FABLAB
-            <small *ngIf="authenticated">Connectez-vous pour réserver une machine</small>
+            Les Espaces du FABLAB
+            <small *ngIf="authenticated">Connectez-vous pour réserver un espace</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-            <li class="active">Machines</li>
+            <li class="active">Espaces</li>
         </ol>
     </section>
 
@@ -19,7 +19,7 @@
 
             <!-- Box header -->
             <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-cogs"></i> Liste des machines</h3>
+                <h3 class="box-title"><i class="fa fa-rocket"></i> Liste des espaces</h3>
             </div>
             <!-- /.Box header -->
 
@@ -27,11 +27,11 @@
             <div class="box-body">
                 <div class="row">
 
-                    <div class="col-md-5 col-lg-3" *ngFor="let machine of machines">
+                    <div class="col-md-5 col-lg-4" *ngFor="let space of spaces">
 
                         <div class="box box-primary box-solid">
                             <div class="box-header with-border">
-                                <h3 class="box-title">{{machine.name}}</h3>
+                                <h3 class="box-title">{{space.name}}</h3>
 
                                 <div class="box-tools pull-right">
                                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -41,21 +41,20 @@
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body text-center">
-                                <img [src]="machine.illustration" alt="User Image" width="60%%" height="150px"/>
+                                <img [attr.src]="space.illustration" alt="Space Image" width="100%" height="150px"/>
                             </div>
-
                             <!-- /.box-body -->
                             <div class="box-footer text-center ">
 
                                 <div class="col-sm-6 b-r no-padder">
-                                    <button type="button" class="btn btn-block btn-primary ng-binding box-footer-btn-text" ng-click="reserveMachine(machine, $event)">
+                                    <button type="button"  class="btn btn-block btn-primary ng-binding box-footer-btn-text" (click)="bookSpace($event, space.idSpace)">
                                         <span class="fa fa-bookmark"></span>
                                         Réserver
                                     </button>
                                 </div>
 
                                 <div class="col-sm-6 no-padder">
-                                    <button type="button" class="btn btn-block btn-primary ng-binding box-footer-btn-text" (click)="showMachine($event, machine.id)">
+                                    <button type="button" class="btn btn-block btn-primary ng-binding box-footer-btn-text" (click)="showSpace(space.idSpace)">
                                         <span class="fa fa-eye"></span>
                                         Consulter
                                     </button>

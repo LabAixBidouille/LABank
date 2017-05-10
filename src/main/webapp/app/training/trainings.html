@@ -27,7 +27,7 @@
             <div class="box-body">
                 <div class="row">
 
-                    <div class="col-md-5" *ngFor="let training of trainings; let i = index">
+                    <div class="col-md-5 col-lg-5" *ngFor="let training of trainings">
 
                         <div  *ngIf="training.display" class="box box-primary box-solid">
                             <div class="box-header with-border">
@@ -41,7 +41,7 @@
                             </div>
                             <!-- /.box-header -->
                             <div class="box-body text-center">
-                                <img [attr.src]="training.illustration" alt="Training Image" width="128px" height="95px"/>
+                                <img [attr.src]="training.illustration" alt="Training Image" width="60%" height="150px"/>
                             </div>
                             <!-- /.box-body -->
                             <div class="box-footer text-center ">

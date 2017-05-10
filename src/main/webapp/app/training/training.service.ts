@@ -13,6 +13,10 @@ export class TrainingService{
         this.http = http;
     }
 
+    /*
+     * Methode permettant de recuperer tous les trainings retournés par le web service dont l'URL est passé
+     * en parametre de la requete http.
+     */
     getAll(): Observable<Array<CTraining>> {
         return this.http.get(AppUtils.BACKEND_ROOT_URL+'/trainings')
             .map( (res:Response)=> {
@@ -25,12 +29,20 @@ export class TrainingService{
             }).catch(this.handleError);
     }
 
+
+    /*
+     * Methode permettant de recuperer, via le web service, le training ayant l'id  passé en parametre de la requete http
+     */
     getTraining(id:number): Observable<CTraining> {
         return this.http.get(AppUtils.BACKEND_ROOT_URL+'/training/'+id).map( (res:Response)=> {
             return new CTraining(res.json());
         })
     }
 
+    /*
+     * Methode permettant d'enregister le training passé en parametre de la requete http.
+     * Ce training est enregistré en base par le web service dont l'URL est passé en parametre de la requete http.
+     */
     saveTraining(training:CTraining):Observable<CTraining> {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
@@ -40,7 +52,11 @@ export class TrainingService{
             });
     }
 
-     updateTraining(training:CTraining):Observable<CTraining> {
+    /*
+     * Methode permettant d'enregister les modifications du training passé en parametre de la requete http.
+     * Ce training est enregistré en base par le web service dont l'URL est passé en parametre de la requete http.
+     */
+    updateTraining(training:CTraining):Observable<CTraining> {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.put(AppUtils.BACKEND_ROOT_URL+'/admin/trainings', JSON.stringify(training),{headers:headers})
@@ -49,6 +65,10 @@ export class TrainingService{
             });
     }
 
+    /*
+     * Methode permettant de supprimer le training passé en parametre de la requete http.
+     * Ce training est supprimé en base par le web service dont l'URL est passé en parametre de la requete http.
+     */
     deleteTraining(id:number):Observable<boolean> {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');

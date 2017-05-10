@@ -17,7 +17,7 @@ export class AdminMachinesComponent{
 
     msg:boolean; /* booleen permettant de connaitre le succes ou l'echec de la suppression de la machine */
 
-    constructor(private router: Router, private ngZone: NgZone, private machinesService:MachinesService ){
+    constructor(private router: Router, private machinesService:MachinesService ){
         this.machineToDelete = new IMachine();
         this.machines = [];
         this.msg= false;

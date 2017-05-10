@@ -1,0 +1,141 @@
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Les Espaces du FABLAB
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li class="active"><a href="#/admin/spaces">Gestion des espaces</a></li>
+            <li class="active">Ajout d'espace</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-primary">
+
+            <!-- Box header -->
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-rocket"></i> Ajouter un nouvel espace</h3>
+            </div>
+            <!-- /.Box header -->
+
+            <!-- Box body -->
+            <div class="box-body">
+                <form  [formGroup]="spaceForm" (ngSubmit)="addSpace()" >
+                    <fieldset>
+                        <!-- Name -->
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!spaceForm.controls['name'].valid && spaceForm.controls['name'].touched}">
+                            <label for="name">Nom* </label>
+                            <div >
+                                <input id="name" name="name" type="text" placeholder="Nom de l'espace"
+                                       class="form-control" required [formControl]="spaceForm.controls['name']">
+                            </div>
+                            <!--Errors Msg-->
+                            <div *ngIf="spaceForm.controls['name'].hasError('required') &&
+                                  spaceForm.controls['name'].touched" class="alert alert-danger">
+                                Le nom de l'espace doit etre renseigné.
+                            </div>
+                            <!--/.Errors Msg-->
+                        </div>
+
+                        <!-- Illustration -->
+                        <div class="form-group">
+                            <label for="illustration">Illustration </label>
+                            <div>
+                                <input id="illustration" name="illustration"  class="form-control" type="file"
+                                       (change)="getIllustration($event.target.files[0].name)" accept=".png,.jpg,.jpeg">
+                            </div>
+                        </div>
+
+                        <!-- Tickets -->
+                        <div class="form-group">
+                            <label for="maxTickets">Nombre de tickets</label>
+                            <div >
+                                <input id="maxTickets" name="maxTickets" type="number" min="0"
+                                       class="form-control" [formControl]="spaceForm.controls['maxTickets']">
+                            </div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!spaceForm.controls['description'].valid && spaceForm.controls['description'].touched}">
+                            <label for="description">Description*</label>
+                            <div >
+                                <textarea id="description" name="description" placeholder="Description" class="form-control"
+                                          rows="5" required [formControl]="spaceForm.controls['description']"></textarea>
+                            </div>
+                            <!-- Errors Msg-->
+                            <div *ngIf="spaceForm.controls['description'].hasError('required') &&
+                                  spaceForm.controls['description'].touched" class="alert alert-danger">
+                                La description de l'espace doit etre renseignée.
+                            </div>
+                            <div *ngIf="spaceForm.controls['description'].hasError('minlength') &&
+                                  spaceForm.controls['description'].touched" class="alert alert-danger">
+                                La description de l'espace doit contenir 5 caracteres minimum.
+                            </div>
+                            <div *ngIf="spaceForm.controls['description'].hasError('maxlength') &&
+                                  spaceForm.controls['description'].touched" class="alert alert-danger">
+                                La description de l'espace doit contenir 750 caracteres maximum.
+                            </div>
+                            <!--/. Errors Msg-->
+                        </div>
+
+                        <!-- Characteristic -->
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!spaceForm.controls['characteristic'].valid && spaceForm.controls['characteristic'].touched}">
+                            <label for="characteristic">Caractéristiques*</label>
+                            <div >
+                                <textarea id="characteristic" name="specification" placeholder="Caractéristiques"
+                                          class="form-control" rows="5" required
+                                          [formControl]="spaceForm.controls['characteristic']"></textarea>
+                            </div>
+                            <!-- Errors Msg-->
+                            <div *ngIf="spaceForm.controls['characteristic'].hasError('required') &&
+                                  spaceForm.controls['characteristic'].touched" class="alert alert-danger">
+                                Les caractéristiques de l'espace doivent etre renseignée.
+                            </div>
+                            <div *ngIf="spaceForm.controls['characteristic'].hasError('minlength') &&
+                                  spaceForm.controls['characteristic'].touched" class="alert alert-danger">
+                                Les caractéristiques de l'espace doivent contenir 5 caracteres minimum.
+                            </div>
+                            <div *ngIf="spaceForm.controls['characteristic'].hasError('maxlength') &&
+                                  spaceForm.controls['characteristic'].touched" class="alert alert-danger">
+                                Les caractéristiques de l'espace doivent doit contenir 750 caracteres maximum.
+                            </div>
+                            <!--/. Errors Msg-->
+                        </div>
+                        <!--TODO: Pieces jointes-->
+                        <!-- Attached files -->
+                        <!--<div class="form-group">-->
+                        <!--<label for="docMachine">Pieces jointes</label>-->
+                        <!--<div >-->
+                        <!--<input id="docMachine" name="docMachine"  class="form-control" type="file"-->
+                        <!--(change)="getDocMachine($event.target.files[0])" accept=".pdf,.doc,.xls">-->
+                        <!--</div>-->
+                        <!--</div>-->
+                        <!--/.TODO-->
+
+                        <!-- Form actions -->
+                        <div class="form-group">
+                            <div class="col-md-12 text-right">
+                                <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
+                                <button [disabled]="!spaceForm.valid" type="submit" class="btn btn-primary">Enregistrer l'espace</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <!-- /.Box body -->
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

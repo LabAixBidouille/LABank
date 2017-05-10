@@ -55,6 +55,12 @@ import {AdminProjectsComponent} from './projects/admin-projects.component';
 import {AddProjectComponent} from './projects/add-project.component';
 import {UpdateProjectComponent} from './projects/update-project.component';
 
+import {SpacesComponent} from "./spaces/spaces.component";
+import {SpaceComponent} from "./spaces/space.component";
+import {AdminSpacesComponent} from './spaces/admin-spaces.component';
+import {AddSpaceComponent} from './spaces/add-space.component';
+import {UpdateSpaceComponent} from './spaces/update-space.component';
+
 
 export const routes:Routes = [
     {path: 'users', component: Users, },
@@ -108,7 +114,13 @@ export const routes:Routes = [
     {path: 'admin/projects/materials/:id', component: UpdateProjectsMaterialsComponent},
     {path: 'admin/projects/themes', component: AdminProjectsThemesComponent},
     {path: 'admin/projects/themes/new', component: AddProjectsThemesComponent},
-    {path: 'admin/projects/themes/:id', component: UpdateProjectsThemesComponent}
+    {path: 'admin/projects/themes/:id', component: UpdateProjectsThemesComponent},
+
+    {path: 'spaces', component: SpacesComponent},
+    {path: 'spaces/:id', component: SpaceComponent},
+    {path: 'admin/spaces', component: AdminSpacesComponent},
+    {path: 'admin/spaces/new', component: AddSpaceComponent},
+    {path: 'admin/spaces/:id', component: UpdateSpaceComponent}
 
 ];
 

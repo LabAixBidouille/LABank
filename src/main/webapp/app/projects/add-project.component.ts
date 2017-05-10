@@ -72,6 +72,10 @@ export class AddProjectComponent{
 
     }
 
+    addStep(){
+
+    }
+
     getIllustration(illustration:string){
         this.illustration = '../assets/img/events/'+ illustration;
     }
