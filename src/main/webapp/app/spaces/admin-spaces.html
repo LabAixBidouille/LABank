@@ -6,7 +6,7 @@
             <div class="box-header with-border">
                 <i class="fa fa-rocket"></i>
 
-                <h3 class="box-title">Supprimer l'espace</h3>
+                <h3 class="box-title">Supprimer l'espace de travail</h3>
                 <!-- tools box -->
                 <div class="pull-right box-tools">
                     <button type="button" class="btn btn-primary btn-sm" data-widget="remove" data-toggle="tooltip" title="Fermer" data-dismiss="modal">
@@ -16,7 +16,7 @@
             </div>
 
             <div class="modal-body form-horizontal">
-                <p>Etes vous sur de vouloir supprimer l'espace ?</p>
+                <p>Etes vous sur de vouloir supprimer l'espace de travail ?</p>
             </div>
 
             <div class="modal-footer box-footer last-row">
@@ -33,11 +33,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Les Espaces du FABLAB
+            Les Espaces de travail du FABLAB
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-            <li class="active">Gestion des espaces</li>
+            <li class="active">Gestion des espaces de travail</li>
         </ol>
     </section>
 
@@ -48,7 +48,7 @@
 
             <!-- Box header -->
             <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-rocket"></i> Gestion des espaces</h3>
+                <h3 class="box-title"><i class="fa fa-rocket"></i> Gestion des espaces de travail</h3>
             </div>
             <!-- /.Box header -->
 
@@ -56,7 +56,7 @@
             <div class="box-body">
                 <div *ngIf="msg" class="alert alert-success alert-dismissible" role="alert">
                     <a href="#/admin/machines" (click)="closeAlert()" class="close">&times;</a>
-                    <strong>Espace supprimé avec succes !</strong>.
+                    <strong>Espace de travail supprimé avec succes !</strong>.
                 </div>
                 <div>
                     <button (click)="newSpace()" type="button" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-plus"></i> Ajouter un espace</button>

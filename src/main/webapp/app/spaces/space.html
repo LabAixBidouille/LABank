@@ -3,12 +3,12 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
-            Les Espaces du FABLAB
-            <small *ngIf="authenticated">Connectez-vous pour réserver un espace</small>
+            Les Espaces de travail du FABLAB
+            <small *ngIf="authenticated">Connectez-vous pour réserver un espace de travail</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
-            <li><a href="#/spaces"> Espaces</a></li>
+            <li><a href="#/spaces">Espaces de travail</a></li>
             <li class="active">{{space.name}}</li>
         </ol>
     </section>
@@ -23,7 +23,7 @@
                 <h3 class="box-title"><i class="fa fa-rocket"></i> {{space.name}}</h3>
                 <div class="box-tools pull-right">
                     <a class="btn btn-block btn-social btn-google">
-                        <i class="fa fa-bookmark-o"></i> Réserver cet espace
+                        <i class="fa fa-bookmark-o"></i> Réserver cet espace de travail
                     </a>
                     <!--
                     <button type="button" class="btn btn-block btn-primary ng-binding box-footer-btn-text" ng-click="bookSpace(space, $event)">
