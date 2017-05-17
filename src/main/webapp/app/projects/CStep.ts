@@ -6,10 +6,10 @@ export class CStep{
     idProject:number;
     title:string;
     description:string;
-    order:number;
-    picture:string;
+    stepsOrder:number;
+    illustration:string;
 
-    constructor(step?:{idStep:number,idProject:number,title:string,description:string,order:number,picture:string}){
+    constructor(step?:{idStep:number,idProject:number,title:string,description:string,stepsOrder:number,illustration:string}){
         if(step){
             _.assignIn(this,step);
         }

@@ -32,11 +32,13 @@ import {AddProjectsThemesComponent} from "./add-projectsThemes.component";
 import {UpdateProjectsThemesComponent} from "./update-projectsThemes.component";
 
 import {ProjectService} from "./project.service";
+import {ProjectStepsListComponent} from "./project-steps-list.component";
 
 /**
  * Created by Kandel HANAFI on 29/03/2017.
  */
 @NgModule({
+    entryComponents: [ProjectStepsComponent],
     imports: [ FormsModule, ReactiveFormsModule, BrowserModule, UtilsModule ],
     bootstrap: [ ProjectComponent, ProjectsComponent,  AdminProjectsComponent, AddProjectComponent, UpdateProjectComponent ],
     declarations: [ ProjectComponent, ProjectsComponent, AdminProjectsComponent, AdminProjectsHomeComponent,
@@ -44,7 +46,7 @@ import {ProjectService} from "./project.service";
         AdminProjectsMaterialsComponent, AddProjectsMaterialsComponent, UpdateProjectsMaterialsComponent,
         AdminProjectsThemesComponent, AddProjectsThemesComponent, UpdateProjectsThemesComponent, AddProjectComponent,
         UpdateProjectComponent, ProjectStepsComponent, ProjectMaterialsComponent, ProjectMachinesComponent,
-        ProjectThemesComponent, ProjectCollaboratorsComponent, ProjectLicencesComponent],
+        ProjectThemesComponent, ProjectCollaboratorsComponent, ProjectLicencesComponent, ProjectStepsListComponent],
     providers: [ ProjectService ]
 })
 export class ProjectModule{}

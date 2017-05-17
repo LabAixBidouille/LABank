@@ -33,6 +33,7 @@ public class Steps {
     @RequestMapping("/steps/{id}")
     public List<StepDTO> query(@PathVariable Long id){
         System.out.println("test");
-        return stepDAO.findByIdProject(id);
+        //return stepDAO.findByIdProject(id);
+        return null;
     }
 }

@@ -1,5 +1,8 @@
 package org.fablab.labank.dto;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
@@ -21,9 +24,13 @@ public class StepDTO {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long idStep;
 
-    @NotNull
-    @Column(name = "idproject")
-    private Long idProject;
+//    @NotNull
+//    @Column(name = "idproject")
+//    private Long idProject;
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "idproject", referencedColumnName = "idproject")
+    private ProjectDTO project;
 
     @NotNull
     private String title;
@@ -31,7 +38,8 @@ public class StepDTO {
     private String description;
 
     @NotNull
-    private Long order;
+    @Column(name = "stepsorder")
+    private Long stepsOrder;
 
     private String illustration;
 
@@ -46,9 +54,9 @@ public class StepDTO {
     StepDTO(StepDTO step){
         this.idStep = step.idStep;
         this.title = step.title;
-        this.idProject = step.idProject;
+        this.project = step.project;
         this.description = step.description;
-        this.order = step.order;
+        this.stepsOrder = step.stepsOrder;
         this.illustration = step.illustration;
     }
 
@@ -60,13 +68,21 @@ public class StepDTO {
         this.idStep = idStep;
     }
 
-    public Long getIdProject() {
-        return idProject;
+    public ProjectDTO getProject() {
+        return project;
     }
 
-    public void setIdProject(Long idProject) {
-        this.idProject = idProject;
+    public void setProject(ProjectDTO project) {
+        this.project = project;
     }
+
+    //    public Long getIdProject() {
+    //        return idProject;
+    //    }
+    //
+    //    public void setIdProject(Long idProject) {
+    //        this.idProject = idProject;
+    //    }
 
     public String getTitle() {
         return title;
@@ -84,12 +100,12 @@ public class StepDTO {
         this.description = description;
     }
 
-    public Long getOrder() {
-        return order;
+    public Long getStepsOrder() {
+        return stepsOrder;
     }
 
-    public void setOrder(Long order) {
-        this.order = order;
+    public void setStepsOrder(Long stepsOrder) {
+        this.stepsOrder = stepsOrder;
     }
 
     public String getIllustration() {

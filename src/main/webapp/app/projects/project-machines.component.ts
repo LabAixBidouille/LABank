@@ -22,6 +22,7 @@ export class ProjectMachinesComponent{
     }
 
     selectMachines(){
+        console.log(this.machinesSelected[0].name);
         this.selectedMachines.emit(this.machinesSelected);
     }
 }

@@ -50,6 +50,7 @@ export class ProjectService{
     saveProject(project:CProject):Observable<CProject> {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
+        console.log(project.projectSteps[0].title);
         return this.http.post(AppUtils.BACKEND_ROOT_URL+'/admin/projects', JSON.stringify(project),{headers:headers})
             .map((res:Response) => {
                 return new CProject(res.json());

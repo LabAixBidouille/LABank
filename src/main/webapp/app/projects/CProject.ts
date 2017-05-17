@@ -14,16 +14,16 @@ export class CProject{
     idLicence:number;
     tags:string;
     publish:boolean;
-    description:string
+    description:string;
     collaborators:Array<Account>;
     projectsMachines:Array<IMachine>;
     projectsThemes:Array<CTheme>;
     projectsMaterials:Array<CMaterial>;
     projectsFiles:Array<CProjectFile>;
-    projectsSteps:Array<CStep>;
+    projectSteps:Array<CStep>;
     constructor(project?:{idProject:number,name:string,illustration:string,idLicence:number,tags:string,publish:boolean,
         description:string,collaborators:Array<Account>,projectsMachines:Array<IMachine>, projectsThemes:Array<CTheme>,
-        projectsMaterials:Array<CMaterial>,projectsFiles:Array<CProjectFile>,projectsSteps:Array<CStep>}){
+        projectsMaterials:Array<CMaterial>,projectsFiles:Array<CProjectFile>,projectSteps:Array<CStep>}){
         if(project){
             _.assignIn(this,project);
         }

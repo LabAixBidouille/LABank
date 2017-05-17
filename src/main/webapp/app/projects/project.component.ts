@@ -24,6 +24,7 @@ export class ProjectComponent implements OnInit{
     ngOnInit(): void {
         this.route.params.switchMap( (params: Params) => this.projectsService.getProject(+params['id']))
             .subscribe( (project: CProject) => {
+                // console.log(project.projectsSteps[0].title);
                 this.project = project;
                 this.projectsService.getLicence(this.project.idLicence).subscribe((licence:CLicence)=>this.licence=licence);
             });

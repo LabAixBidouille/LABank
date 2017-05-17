@@ -10,5 +10,5 @@ import java.util.List;
  * Interface DAO permettant de gerer les transactions de données relatives aux StepDTO.
  */
 public interface StepDAO extends CrudRepository<StepDTO, Long> {
-    public List<StepDTO> findByIdProject(Long idProject);
+    //public List<StepDTO> findByIdProject(Long idProject);
 }
