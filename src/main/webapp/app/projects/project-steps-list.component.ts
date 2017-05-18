@@ -1,6 +1,7 @@
-import {Component, EventEmitter, Output} from "@angular/core";
+import {Component, EventEmitter, Output, Input} from "@angular/core";
 import {ProjectService} from "./project.service";
 import {CStep} from "./CStep";
+import {CProject} from "./CProject";
 /**
  * Created by Kandel on 17/05/2017.
  */
@@ -10,10 +11,14 @@ import {CStep} from "./CStep";
     providers: [ProjectService]
 })
 export class ProjectStepsListComponent{
+    @Input()
+    currentProject:CProject;
+
     step:CStep;
     steps:Array<CStep>;
     @Output()
     stepSelected = new  EventEmitter<CStep>();
+
     illustration:string;
     show = true;
     noDelete = false;
@@ -22,7 +27,7 @@ export class ProjectStepsListComponent{
     constructor(private projectsService:ProjectService){
         this.show = true;
         this.noDelete = false;
-        this.projectsService.getAllStep().subscribe((steps:Array<CStep>)=> this.steps = steps);
+        this.projectsService.getStepsByIdProject(26).subscribe((steps:Array<CStep>)=> this.steps = steps);
     }
 
     getStepIllustration(illustration:string){

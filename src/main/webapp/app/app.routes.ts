@@ -35,6 +35,7 @@ import {UpdateMachineComponent} from './machines/update-machine.component';
 
 import {ProjectComponent} from "./projects/project.component";
 import {ProjectsComponent} from './projects/projects.component';
+import {ProjectStepsListComponent} from "./projects/project-steps-list.component";
 import {ProjectStepsComponent} from "./projects/project-steps.component";
 import {ProjectMaterialsComponent} from "./projects/project-materials.component";
 import {ProjectMachinesComponent} from "./projects/project-machines.component";
@@ -97,6 +98,7 @@ export const routes:Routes = [
     {path: 'projects/:id', component: ProjectComponent},
     {path: 'projects', component: ProjectsComponent},
     {path: 'project-steps', component: ProjectStepsComponent},
+    {path: 'project-steps-list', component: ProjectStepsListComponent},
     {path: 'project-materials', component: ProjectMaterialsComponent},
     {path: 'project-machines', component: ProjectMachinesComponent},
     {path: 'project-themes', component: ProjectThemesComponent},

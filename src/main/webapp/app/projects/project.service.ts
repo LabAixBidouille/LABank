@@ -312,6 +312,18 @@ export class ProjectService{
             }).catch(this.handleError);
     }
 
+    getStepsByIdProject(id:number):Observable<Array<CStep>>{
+        return this.http.get(AppUtils.BACKEND_ROOT_URL+'/steps/'+id)
+            .map((res:Response) => {
+                let steps:Array<CStep> = [];
+                let jsonResults:Array<any> = res.json();
+                jsonResults.forEach((jsonResult) => {
+                    steps.push(new CStep(jsonResult));
+                });
+                return steps;
+            }).catch(this.handleError);
+    }
+
 
     private handleError(error: Response) {
         console.error(error);

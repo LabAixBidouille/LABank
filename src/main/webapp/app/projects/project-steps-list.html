@@ -1,12 +1,12 @@
 
 <div class="form-group input-group"  *ngIf="show">
-    <input required="true" [(ngModel)]="step.title" type="text" name="title" class="form-control" placeholder="Titre de l'etape">
-    <textarea requiredl="true"  [(ngModel)]="step.description" style="width:100%" rows="5" name="desc" placeholder="Description de l'etape"></textarea>
-    <input name="illustration"  class="form-control" type="file"
-           (change)="getStepIllustration($event.target.files[0].name)" accept=".png,.jpg,.jpeg">
-    <button (click)="validate()" type="button" class="btn btn-default"  title="Valider">Valider l'étape</button>
-    <button [disabled]="noDelete" (click)="delete()" type="button" class="btn btn-danger"  title="Supprimer"><i class="fa fa-ban"></i> Supprimer</button>
-    <!--<span class="input-group-btn">-->
-    <!--<button (click)="delete()" type="button" class="btn btn-danger">Supprimer l'étape</button>-->
-    <!--</span>-->
+    <div *ngFor="let step of steps">
+        <label >Etape {{step.stepsOrder}}</label>
+        <input required="true" [(ngModel)]="step.title" type="text" name="title" class="form-control" placeholder="Titre de l'etape">
+        <textarea requiredl="true"  [(ngModel)]="step.description" style="width:100%" rows="5" name="desc" placeholder="Description de l'etape"></textarea>
+        <input name="illustration"  class="form-control" type="file"
+               (change)="getStepIllustration($event.target.files[0].name)" accept=".png,.jpg,.jpeg">
+        <button (click)="validate()" type="button" class="btn btn-default"  title="Valider">Valider l'étape</button>
+        <button [disabled]="noDelete" (click)="delete()" type="button" class="btn btn-danger"  title="Supprimer"><i class="fa fa-ban"></i> Supprimer</button>
+    </div>
 </div>

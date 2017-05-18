@@ -1,5 +1,6 @@
 package org.fablab.labank.rest;
 
+import org.fablab.labank.dao.ProjectDAO;
 import org.fablab.labank.dao.StepDAO;
 import org.fablab.labank.dto.StepDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,9 @@ public class Steps {
     @Autowired
     StepDAO stepDAO;
 
+    @Autowired
+    ProjectDAO projectDAO;
+
     @RequestMapping("/steps")
     public List<StepDTO> getAll(){
         return (List<StepDTO>) this.stepDAO.findAll();
@@ -33,7 +37,7 @@ public class Steps {
     @RequestMapping("/steps/{id}")
     public List<StepDTO> query(@PathVariable Long id){
         System.out.println("test");
-        //return stepDAO.findByIdProject(id);
-        return null;
+        return stepDAO.findByProject(this.projectDAO.findOne(id));
+//        return null;
     }
 }
