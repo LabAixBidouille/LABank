@@ -36,6 +36,7 @@ export class ProjectStepsComponent{
         }else{
             this.step.illustration = this.illustration;
         }
+        console.log(this.step.title);
         this.stepSelected.emit(this.step);
         this.noDelete = true;
     }
