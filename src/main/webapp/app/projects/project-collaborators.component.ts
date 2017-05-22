@@ -1,5 +1,7 @@
 import {ProjectService} from "./project.service";
-import {Component} from "@angular/core";
+import {Component, Output, EventEmitter} from "@angular/core";
+import {UsersService} from "../users/users.service";
+import {Account} from "../account/account";
 /**
  * Created by Kandel HANAFI on 06/04/2017.
  */
@@ -9,13 +11,16 @@ import {Component} from "@angular/core";
     providers: [ProjectService]
 })
 export class ProjectCollaboratorsComponent{
+    collaborators:Array<Account>;
+    collaboratorsSelected = new Array<Account>();
+    @Output()
+    selectedCollaborators = new EventEmitter<Array<Account>>();
 
-
-    constructor(){
-
+    constructor(private usersService: UsersService){
+        this.usersService.getAll().subscribe((collaborators:Array<Account>)=> this.collaborators = collaborators);
     }
 
     selectCollaborators(){
-
+        this.selectedCollaborators.emit(this.collaboratorsSelected);
     }
 }

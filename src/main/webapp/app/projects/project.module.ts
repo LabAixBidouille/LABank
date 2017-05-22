@@ -32,7 +32,6 @@ import {AddProjectsThemesComponent} from "./add-projectsThemes.component";
 import {UpdateProjectsThemesComponent} from "./update-projectsThemes.component";
 
 import {ProjectService} from "./project.service";
-import {ProjectStepsListComponent} from "./project-steps-list.component";
 
 /**
  * Created by Kandel HANAFI on 29/03/2017.
@@ -46,7 +45,7 @@ import {ProjectStepsListComponent} from "./project-steps-list.component";
         AdminProjectsMaterialsComponent, AddProjectsMaterialsComponent, UpdateProjectsMaterialsComponent,
         AdminProjectsThemesComponent, AddProjectsThemesComponent, UpdateProjectsThemesComponent, AddProjectComponent,
         UpdateProjectComponent, ProjectStepsComponent, ProjectMaterialsComponent, ProjectMachinesComponent,
-        ProjectThemesComponent, ProjectCollaboratorsComponent, ProjectLicencesComponent, ProjectStepsListComponent],
+        ProjectThemesComponent, ProjectCollaboratorsComponent, ProjectLicencesComponent],
     providers: [ ProjectService ]
 })
 export class ProjectModule{}

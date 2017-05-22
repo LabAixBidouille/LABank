@@ -10,6 +10,7 @@ import {CTheme} from "./CTheme";
 import {CStep} from "./CStep";
 import {forEach} from "@angular/router/src/utils/collection";
 import {ProjectStepsComponent} from "./project-steps.component";
+import {Account} from "../account/account";
 /**
  * Created by Kandel HANAFI on 29/03/2017.
  */
@@ -23,11 +24,12 @@ export class UpdateProjectComponent implements  OnInit{
     projects:Array<CProject>;
     employedMaterials:Array<CMaterial>;
     employedMachines:Array<IMachine>;
-    /*TODO: collaborators */
+    collaborators:Array<Account>;
     licence:CLicence;
     themes:Array<CTheme>;
 
     steps:Array<CStep>;
+    newSteps:Array<CStep>;
     step:CStep;
     order = 0;
 
@@ -43,7 +45,9 @@ export class UpdateProjectComponent implements  OnInit{
        this.projects =[];
         this.employedMaterials = [];
         this.employedMachines = [];
+        this.collaborators = [];
         this.licence = new CLicence();
+        this.newSteps = [];
         this.step = new CStep();
         this.illustration = "";
 
@@ -54,6 +58,7 @@ export class UpdateProjectComponent implements  OnInit{
             .subscribe( (project: CProject) => {
                 this.project = project;
                 this.steps = this.project.projectSteps;
+                this.order = this.steps.length;
                 this.illustration = this.project.illustration;
             } );
     }
@@ -67,12 +72,13 @@ export class UpdateProjectComponent implements  OnInit{
         }
         /*FIN TODO*/
 
-        /*TODO: collaborators + files */
+        /*TODO: files */
         this.project.projectsMaterials = this.employedMaterials;
         this.project.projectsMachines = this.employedMachines;
+        this.project.collaborators = this.collaborators;
         this.project.idLicence = this.licence.idLicence;
         this.project.projectsThemes = this.themes;
-        this.project.projectSteps = this.steps;
+        this.project.projectSteps = this.steps.concat(this.newSteps);
 
         this.projectService.updateProject(this.project).subscribe((project:CProject)=>{
             this.project=project;
@@ -97,6 +103,10 @@ export class UpdateProjectComponent implements  OnInit{
         this.employedMachines = employedMachines;
     }
 
+    getCollaborators(collaborators:Array<Account>){
+        this.collaborators = collaborators;
+    }
+
     getLicence(licence:CLicence){
         this.licence = licence;
     }
@@ -112,33 +122,34 @@ export class UpdateProjectComponent implements  OnInit{
     addStep(){
         let factory= this.resolver.resolveComponentFactory(ProjectStepsComponent);
         let componentRef = this.container.createComponent(factory);
-        // componentRef.instance.stepSelected.subscribe( (step:CStep)=>{
-        //     // this.step = step;
-        //     if(step){
-        //         this.order = this.order +1;
-        //         step.stepsOrder = this.order;
-        //         this.steps.push(step);
-        //     }
-        //
-        // });
+        componentRef.instance.stepSelected.subscribe( (step:CStep)=>{
+            // this.step = step;
+            if(step){
+                this.order = this.order +1;
+                step.stepsOrder = this.order;
+                this.newSteps.push(step);
+            }
+
+        });
     }
 
-    validate(step:CStep){
-        if(this.illustration == null){
-            step.illustration = '../assets/img/steps/defaultStep.jpg';
-        }else{
-            step.illustration = this.illustration;
-        }
-        console.log(step.title);
-        this.noDelete = true;
-        // this.steps.push(this.step);
-    }
+    // validate(step:CStep){
+    //     if(this.illustration == null){
+    //         step.illustration = '../assets/img/steps/defaultStep.jpg';
+    //     }else{
+    //         step.illustration = this.illustration;
+    //     }
+    //     console.log(step.title);
+    //     this.noDelete = true;
+    //     // this.steps.push(this.step);
+    // }
 
     delete(step:CStep){
         this.show = false;
         let stepRemoved = this.steps.splice(this.steps.indexOf(step),1);
         console.log(stepRemoved);
         this.changeOrder(this.steps);
+        this.order = this.steps.length;
     }
 
     changeOrder(steps:Array<CStep>){

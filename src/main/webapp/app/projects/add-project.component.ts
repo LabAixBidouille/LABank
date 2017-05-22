@@ -13,6 +13,7 @@ import {CLicence} from "./CLicence";
 import {CTheme} from "./CTheme";
 import {ProjectStepsComponent} from "./project-steps.component";
 import {CStep} from "./CStep";
+import {Account} from "../account/account";
 
 /**
  * Created by Kandel HANAFI on 29/03/2017.
@@ -31,7 +32,7 @@ export class AddProjectComponent{
     project:CProject;
     employedMaterials:Array<CMaterial>;
     employedMachines:Array<IMachine>;
-    /*TODO: collaborators */
+    collaborators:Array<Account>;
     licence:CLicence;
     themes:Array<CTheme>;
     steps:Array<CStep>;
@@ -47,7 +48,7 @@ export class AddProjectComponent{
         this.project = new CProject();
         this.employedMaterials=[];
         this.employedMachines=[];
-        /*TODO: collaborators */
+        this.collaborators = [];
         this.licence=new CLicence();
         this.themes=[];
         this.steps = [];
@@ -72,10 +73,11 @@ export class AddProjectComponent{
         }
         /*FIN TODO*/
         this.project.description = this.projectForm.value.description;
-        /*TODO: collaborators + files */
+        /*TODO: files */
         this.project.projectSteps = this.steps
         this.project.projectsMaterials = this.employedMaterials;
         this.project.projectsMachines = this.employedMachines;
+        this.project.collaborators = this.collaborators;
         this.project.idLicence = this.licence.idLicence;
         this.project.projectsThemes = this.themes;
         this.project.tags = this.projectForm.value.tags;
@@ -110,6 +112,10 @@ export class AddProjectComponent{
 
     getMachines(employedMachines:Array<IMachine>){
         this.employedMachines = employedMachines;
+    }
+
+    getCollaborators(collaborators:Array<Account>){
+        this.collaborators = collaborators;
     }
 
     getLicence(licence:CLicence){

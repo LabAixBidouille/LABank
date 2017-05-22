@@ -107,8 +107,12 @@
                         <!-- Project's materials -->
                         <project-materials required="true" (selectedMaterials)="getMaterials($event)"></project-materials>
 
+
                         <!-- Project's machines -->
                         <project-machines required="true" (selectedMachines)="getMachines($event)"></project-machines>
+
+                        <!-- Project's collaborators -->
+                        <project-collaborators required="true" (selectedCollaborators)="getCollaborators($event)"></project-collaborators>
 
                         <!-- Project's licence -->
                         <project-licences required="true" (selectedLicence)="getLicence($event)"></project-licences>
