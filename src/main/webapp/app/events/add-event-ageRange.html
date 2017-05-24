@@ -30,7 +30,7 @@
                 <form [formGroup]="ageRangeForm" (ngSubmit)="addAgeRange()" >
                     <fieldset>
                         <!-- Name -->
-                        <div class="form-groupId"
+                        <div class="form-group"
                              [ngClass]="{'has-error':!ageRangeForm.controls['name'].valid && ageRangeForm.controls['name'].touched}">
                             <label for="name">Nom* </label>
                             <div >
@@ -46,7 +46,7 @@
                         </div>
 
                         <!-- Form actions -->
-                        <div class="form-groupId">
+                        <div class="form-group">
                             <div class="col-md-12 text-right">
                                 <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
                                 <button [disabled]="!ageRangeForm.valid" type="submit" class="btn btn-primary">Enregistrer la tranche</button>

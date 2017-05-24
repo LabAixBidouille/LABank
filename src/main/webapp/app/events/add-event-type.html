@@ -30,7 +30,7 @@
                 <form [formGroup]="eventTypeForm" (ngSubmit)="addEventType()" >
                     <fieldset>
                         <!-- Name -->
-                        <div class="form-groupId"
+                        <div class="form-group"
                              [ngClass]="{'has-error':!eventTypeForm.controls['libelle'].valid && eventTypeForm.controls['libelle'].touched}">
                             <label for="libelle">Nom* </label>
                             <div >
@@ -46,7 +46,7 @@
                         </div>
 
                         <!-- Form actions -->
-                        <div class="form-groupId">
+                        <div class="form-group">
                             <div class="col-md-12 text-right">
                                 <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
                                 <button [disabled]="!eventTypeForm.valid" type="submit" class="btn btn-primary">Enregistrer le type</button>

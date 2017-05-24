@@ -45,16 +45,16 @@
 
                         <div class="text-center"><span class="label label-danger" *ngIf="error">{{error}}</span></div>
 
-                        <div class="input-groupId input-margin-bottom" [ngClass]="{'has-error':!loginForm.controls['username'].valid && loginForm.controls['username'].touched}">
-                            <div class="input-groupId-btn">
+                        <div class="input-group input-margin-bottom" [ngClass]="{'has-error':!loginForm.controls['username'].valid && loginForm.controls['username'].touched}">
+                            <div class="input-group-btn">
                                 <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-user"></i></button>
                             </div>
                             <input type="text" class="form-control" required [formControl]="loginForm.controls['username']"
                                    name="username" id="username" placeholder="e-mail ou login">
                         </div>
 
-                        <div class="input-groupId input-margin-bottom" [ngClass]="{'has-error':!loginForm.controls['password'].valid && loginForm.controls['password'].touched}">
-                            <div class="input-groupId-btn">
+                        <div class="input-group input-margin-bottom" [ngClass]="{'has-error':!loginForm.controls['password'].valid && loginForm.controls['password'].touched}">
+                            <div class="input-group-btn">
                                 <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-lock"></i></button>
                             </div>
                             <input type="password" class="form-control" required [formControl]="loginForm.controls['password']"
@@ -102,7 +102,7 @@
                             <div class="text-center"><span class="label label-danger" *ngIf="error">{{error}}</span></div>
 
                             <!--Sex-->
-                            <div class="input-groupId input-margin-bottom">
+                            <div class="input-group input-margin-bottom">
                                 <label class="radio-inline">
                                     <input type="radio" name="sex" value="M" id="male"
                                            [formControl]="signUpForm.controls['sex']"/>Homme
@@ -114,7 +114,7 @@
                             </div>
 
                             <!--Nom et prenom-->
-                            <div class="input-groupId input-margin-bottom">
+                            <div class="input-group input-margin-bottom">
                                 <div class="col-sm-6" style="padding-left: 0px">
                                     <input type="text" name="firstname" value="" class="form-control" placeholder="Votre prénom"
                                            [formControl]="signUpForm.controls['firstname']"/>
@@ -128,8 +128,8 @@
                             </div>
 
                             <!--Pseudo-->
-                            <div class="input-groupId input-margin-bottom" >
-                                <div class="input-groupId-btn">
+                            <div class="input-group input-margin-bottom" >
+                                <div class="input-group-btn">
                                     <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-user"></i></button>
                                 </div>
 
@@ -138,8 +138,8 @@
                             </div>
 
                             <!--Email-->
-                            <div class="input-groupId input-margin-bottom" >
-                                <div class="input-groupId-btn">
+                            <div class="input-group input-margin-bottom" >
+                                <div class="input-group-btn">
                                     <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-envelope"></i></button>
                                 </div>
 
@@ -148,8 +148,8 @@
                             </div>
 
                             <!--Password-->
-                            <div class="input-groupId input-margin-bottom" >
-                                <div class="input-groupId-btn">
+                            <div class="input-group input-margin-bottom" >
+                                <div class="input-group-btn">
                                     <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-lock"></i></button>
                                 </div>
 
@@ -158,8 +158,8 @@
                             </div>
 
                             <!--Confirmer Password-->
-                            <div class="input-groupId input-margin-bottom" >
-                                <div class="input-groupId-btn">
+                            <div class="input-group input-margin-bottom" >
+                                <div class="input-group-btn">
                                     <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-lock"></i></button>
                                 </div>
 
@@ -168,14 +168,14 @@
                             </div>
 
                             <!--Groupe -->
-                            <!--<select name="groupId" class = "form-control input-margin-bottom ">-->
+                            <!--<select name="group" class = "form-control input-margin-bottom ">-->
                                 <!--<option [value]="test">test</option>-->
                             <!--</select>-->
                             <user-groups required="true" (selectedGroup)="getGroup($event)"></user-groups>
 
                             <!--Date de naissance-->
-                            <div class="input-groupId input-append date input-margin-bottom" data-provide="datepicker">
-                                <div class="input-groupId-btn">
+                            <div class="input-group input-append date input-margin-bottom" data-provide="datepicker">
+                                <div class="input-group-btn">
                                     <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-calendar"></i></button>
                                 </div>
 
@@ -184,8 +184,8 @@
                             </div>
 
                             <!--Tel-->
-                            <div class="input-groupId input-margin-bottom">
-                                <div class="input-groupId-btn">
+                            <div class="input-group input-margin-bottom">
+                                <div class="input-group-btn">
                                     <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-earphone"></i></button>
                                 </div>
 
@@ -195,7 +195,7 @@
                             </div>
 
                             <div class="modal-footer" style="padding-bottom: 0px;">
-                                <div class="form-groupId last-row" style="padding-bottom: 0px;">
+                                <div class="form-group last-row" style="padding-bottom: 0px;">
                                     <button type="button" class="btn btn-default pull-left" data-widget="remove" data-toggle="tooltip" title="Fermer" data-dismiss="modal"><i class="fa fa-ban"></i> Annuler</button>
                                     <button type="submit" [disabled]="!signUpForm.valid" class="btn btn-primary  pull-right" ><i class="glyphicon glyphicon-log-in"></i> Enregistrer</button>
                                 </div>

@@ -30,7 +30,7 @@
                 <form  [formGroup]="trainingForm" (ngSubmit)="addTraining()" >
                     <fieldset>
                         <!-- Name -->
-                        <div class="form-groupId"
+                        <div class="form-group"
                              [ngClass]="{'has-error':!trainingForm.controls['name'].valid && trainingForm.controls['name'].touched}">
                             <label for="name">Nom*</label>
                             <div >
@@ -46,7 +46,7 @@
                         </div>
 
                         <!-- Illustration -->
-                        <div class="form-groupId">
+                        <div class="form-group">
                             <label for="illustration">Illustration </label>
                             <div>
                                 <input id="illustration" name="illustration"  class="form-control" type="file"
@@ -55,7 +55,7 @@
                         </div>
 
                         <!-- Description -->
-                        <div class="form-groupId"
+                        <div class="form-group"
                              [ngClass]="{'has-error':!trainingForm.controls['description'].valid && trainingForm.controls['description'].touched}">
                             <label for="description">Description*</label>
                             <div >
@@ -79,7 +79,7 @@
                         </div>
 
                         <!-- Number of tickets -->
-                        <div class="form-groupId">
+                        <div class="form-group">
                             <label for="nbTicket">Nombre de tickets</label>
                             <div >
                                 <input id="nbTicket" name="nbTicket" type="number" min="0"
@@ -88,7 +88,7 @@
                         </div>
 
                         <!-- Display -->
-                        <div class="form-groupId"
+                        <div class="form-group"
                              [ngClass]="{'has-error':!trainingForm.controls['display'].valid && trainingForm.controls['display'].touched}">
                             <label>Afficher dans la liste*</label>
                             <div>
@@ -110,7 +110,7 @@
                         </div>
 
                         <!-- Form actions -->
-                        <div class="form-groupId">
+                        <div class="form-group">
                             <div class="col-md-12 text-right">
                                 <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
                                 <button [disabled]="!trainingForm.valid" type="submit" class="btn btn-primary">Enregistrer la formation</button>

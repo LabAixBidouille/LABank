@@ -28,7 +28,7 @@
                 <form  #spaceForm="ngForm" (ngSubmit)="updateSpace()" >
                     <fieldset>
                         <!-- Name -->
-                        <div class="form-groupId">
+                        <div class="form-group">
                             <label for="name">Nom*</label>
                             <div >
                                 <input id="name" name="name" type="text" placeholder="Nom de l'espace de travail"
@@ -42,7 +42,7 @@
                         </div>
 
                         <!-- Illustration -->
-                        <div class="form-groupId">
+                        <div class="form-group">
                             <label for="illustration">Illustration</label>
                             <div>
                                 <input id="illustration" name="illustration"  class="form-control" type="file"
@@ -51,7 +51,7 @@
                         </div>
 
                         <!-- Tickets -->
-                        <div class="form-groupId">
+                        <div class="form-group">
                             <label for="maxTickets">Nombre de tickets</label>
                             <div >
                                 <input id="maxTickets" name="maxTickets" type="number" min="0"
@@ -60,7 +60,7 @@
                         </div>
 
                         <!-- Description -->
-                        <div class="form-groupId">
+                        <div class="form-group">
                             <label for="description">Description*</label>
                             <div >
                                 <textarea id="description" name="description" placeholder="Description de l'espace de travail"
@@ -81,7 +81,7 @@
                         </div>
 
                         <!-- Characteristics -->
-                        <div class="form-groupId">
+                        <div class="form-group">
                             <label for="characteristics">Caractéristiques*</label>
                             <div >
                                 <textarea id="characteristics" name="characteristics" placeholder="Caractéristiques de l'espace de travail"
@@ -103,7 +103,7 @@
 
                         <!--TODO: Pieces jointes-->
                         <!-- Attached files -->
-                        <!--<div class="form-groupId">-->
+                        <!--<div class="form-group">-->
                         <!--<label for="docMachine">Pieces jointes</label>-->
                         <!--<div >-->
                         <!--<input id="docMachine" name="docMachine"  class="form-control" type="file"-->
@@ -113,7 +113,7 @@
                         <!--/.TODO-->
 
                         <!-- Form actions -->
-                        <div class="form-groupId">
+                        <div class="form-group">
                             <div class="col-md-12 text-right">
                                 <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
                                 <button [disabled]="!spaceForm.valid" type="submit" class="btn btn-primary">Enregistrer les modifications</button>

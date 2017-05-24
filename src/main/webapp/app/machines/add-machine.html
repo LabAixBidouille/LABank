@@ -30,7 +30,7 @@
                 <form  [formGroup]="machineForm" (ngSubmit)="addMachine()" >
                     <fieldset>
                         <!-- Name -->
-                        <div class="form-groupId"
+                        <div class="form-group"
                              [ngClass]="{'has-error':!machineForm.controls['name'].valid && machineForm.controls['name'].touched}">
                             <label for="name">Nom* </label>
                             <div >
@@ -46,7 +46,7 @@
                         </div>
 
                         <!-- Illustration -->
-                        <div class="form-groupId">
+                        <div class="form-group">
                             <label for="illustration">Illustration </label>
                             <div>
                                 <input id="illustration" name="illustration"  class="form-control" type="file"
@@ -55,7 +55,7 @@
                         </div>
 
                         <!-- Description -->
-                        <div class="form-groupId"
+                        <div class="form-group"
                              [ngClass]="{'has-error':!machineForm.controls['description'].valid && machineForm.controls['description'].touched}">
                             <label for="description">Description*</label>
                             <div >
@@ -79,7 +79,7 @@
                         </div>
 
                         <!-- Specification -->
-                        <div class="form-groupId"
+                        <div class="form-group"
                              [ngClass]="{'has-error':!machineForm.controls['specification'].valid && machineForm.controls['specification'].touched}">
                             <label for="specification">Specification*</label>
                             <div >
@@ -104,7 +104,7 @@
                         </div>
                         <!--TODO: Pieces jointes-->
                         <!-- Attached files -->
-                        <!--<div class="form-groupId">-->
+                        <!--<div class="form-group">-->
                             <!--<label for="docMachine">Pieces jointes</label>-->
                             <!--<div >-->
                                 <!--<input id="docMachine" name="docMachine"  class="form-control" type="file"-->
@@ -114,7 +114,7 @@
                         <!--/.TODO-->
 
                         <!-- Form actions -->
-                        <div class="form-groupId">
+                        <div class="form-group">
                             <div class="col-md-12 text-right">
                                 <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
                                 <button [disabled]="!machineForm.valid" type="submit" class="btn btn-primary">Enregistrer la machine</button>

@@ -30,7 +30,7 @@
                 <form [formGroup]="materialForm" (ngSubmit)="addMaterial()" >
                     <fieldset>
                         <!-- Name -->
-                        <div class="form-groupId"
+                        <div class="form-group"
                              [ngClass]="{'has-error':!materialForm.controls['name'].valid && materialForm.controls['name'].touched}">
                             <label for="name">Nom* </label>
                             <div >
@@ -46,7 +46,7 @@
                         </div>
 
                         <!-- Form actions -->
-                        <div class="form-groupId">
+                        <div class="form-group">
                             <div class="col-md-12 text-right">
                                 <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
                                 <button [disabled]="!materialForm.valid" type="submit" class="btn btn-primary">Enregistrer le materiel</button>

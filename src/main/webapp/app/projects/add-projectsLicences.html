@@ -30,7 +30,7 @@
                 <form  [formGroup]="licenceForm" (ngSubmit)="addLicence()" >
                     <fieldset>
                         <!-- Name -->
-                        <div class="form-groupId"
+                        <div class="form-group"
                              [ngClass]="{'has-error':!licenceForm.controls['name'].valid && licenceForm.controls['name'].touched}">
                             <label for="name">Nom* </label>
                             <div >
@@ -46,7 +46,7 @@
                         </div>
 
                         <!-- Description -->
-                        <div class="form-groupId"
+                        <div class="form-group"
                              [ngClass]="{'has-error':!licenceForm.controls['description'].valid && licenceForm.controls['description'].touched}">
                             <label for="description">Description*</label>
                             <div >
@@ -71,7 +71,7 @@
                         </div>
 
                         <!-- Form actions -->
-                        <div class="form-groupId">
+                        <div class="form-group">
                             <div class="col-md-12 text-right">
                                 <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
                                 <button [disabled]="!licenceForm.valid" type="submit" class="btn btn-primary">Enregistrer la licence</button>
