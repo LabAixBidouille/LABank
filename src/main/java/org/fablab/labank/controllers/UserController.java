@@ -33,10 +33,10 @@ public class UserController {
      */
     @RequestMapping("/create")
     @ResponseBody
-    public String create(char sex, String pseudonym, String password, String email, String name, String firstname, Date dateOfBirth, String address, String phoneNumber, String website, String occupation, String interests, GroupDTO group, Profile profile, String avatar) {
+    public String create(char sex, String pseudonym, String password, String email, String name, String firstname, Date dateOfBirth, String address, String phoneNumber, String website, String occupation, String interests, Long groupId, Profile profile, String avatar) {
         UserDTO user = null;
         try {
-            user = new UserDTO(sex, pseudonym, password, email, name, firstname, dateOfBirth, address, phoneNumber, website, occupation, interests, group, profile, avatar);
+            user = new UserDTO(sex, pseudonym, password, email, name, firstname, dateOfBirth, address, phoneNumber, website, occupation, interests, groupId, profile, avatar);
             userDao.save(user);
         }
         catch (Exception ex) {

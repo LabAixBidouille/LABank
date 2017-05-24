@@ -28,7 +28,7 @@
                 <form  #trainingForm="ngForm" (ngSubmit)="updateTraining()" >
                     <fieldset>
                         <!-- Name -->
-                        <div class="form-group">
+                        <div class="form-groupId">
                             <label for="name">Nom</label>
                             <div >
                                 <input id="name" name="name" type="text" placeholder="Nom de la formation"
@@ -42,7 +42,7 @@
                         </div>
 
                         <!-- Illustration -->
-                        <div class="form-group">
+                        <div class="form-groupId">
                             <label for="illustration">Illustration</label>
                             <div>
                                 <input id="illustration" name="illustration"  class="form-control" type="file"
@@ -51,7 +51,7 @@
                         </div>
 
                         <!-- Description -->
-                        <div class="form-group">
+                        <div class="form-groupId">
                             <label for="description">Description</label>
                             <div >
                                 <textarea id="description" name="description" placeholder="Description" class="form-control"
@@ -72,7 +72,7 @@
                         </div>
 
                         <!-- Number of tickets -->
-                        <div class="form-group">
+                        <div class="form-groupId">
                             <label for="nbTicket">Nombre de tickets</label>
                             <div >
                                 <input id="nbTicket" name="nbTicket" type="number" min="0"
@@ -81,7 +81,7 @@
                         </div>
 
                         <!-- Display -->
-                        <div class="form-group">
+                        <div class="form-groupId">
                             <label>Afficher dans la liste</label>
                             <div>
                                 <label class="radio-inline">
@@ -96,7 +96,7 @@
                         </div>
 
                         <!-- Form actions -->
-                        <div class="form-group">
+                        <div class="form-groupId">
                             <div class="col-md-12 text-right">
                                 <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
                                 <button [disabled]="!trainingForm.valid" type="submit" class="btn btn-primary">Enregistrer les modifications</button>

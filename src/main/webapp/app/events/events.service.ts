@@ -8,6 +8,8 @@ import {Observable} from 'rxjs/Observable';
 import {IEvent} from "./IEvent";
 import {IEventType} from "./IEventType";
 import {CRecurrence} from "./CRecurrence";
+import {CEventTheme} from "./CEventTheme";
+import {CAgeRange} from "./CAgeRange";
 
 @Injectable()
 export class EventsService {
@@ -16,21 +18,9 @@ export class EventsService {
         this.http = http;
     }
 
-    /*
-     * Methode permettant de recuperer tous les types d'evenements retournés par le web service dont l'URL est passé
-     * en parametre de la requete http.
-     */
-    getAllEventType():Observable<Array<IEventType>> {
-        return this.http.get(AppUtils.BACKEND_ROOT_URL+'/eventstype')
-            .map((res:Response) => {
-                let eventTypes:Array<IEventType> = [];
-                let jsonResults:Array<any> = res.json();
-                jsonResults.forEach((jsonResult) => {
-                    eventTypes.push(new IEventType(jsonResult));
-                });
-                return eventTypes;
-            }).catch(this.handleError);
-    }
+    /********************************************************************
+     *  Gestion des events
+     ********************************************************************/
 
     /*
      * Methode permettant de recuperer la liste des evenements appartenant au type dont l'id est passé en
@@ -100,6 +90,10 @@ export class EventsService {
             });
     }
 
+    /********************************************************************
+     *  Gestion des recurrences
+     ********************************************************************/
+
     /*
      * Methode permettant de recuperer toutes les recurrences retournées par le web service dont l'URL est passé
      * en parametre de la requete http.
@@ -116,10 +110,219 @@ export class EventsService {
             }).catch(this.handleError);
     }
 
+    /********************************************************************
+     *  Gestion des eventType
+     ********************************************************************/
+
+    /*
+     * Methode permettant de recuperer tous les types d'evenements retournés par le web service dont l'URL est passé
+     * en parametre de la requete http.
+     */
+    getAllEventType():Observable<Array<IEventType>> {
+        return this.http.get(AppUtils.BACKEND_ROOT_URL+'/eventstype')
+            .map((res:Response) => {
+                let eventTypes:Array<IEventType> = [];
+                let jsonResults:Array<any> = res.json();
+                jsonResults.forEach((jsonResult) => {
+                    eventTypes.push(new IEventType(jsonResult));
+                });
+                return eventTypes;
+            }).catch(this.handleError);
+    }
+
+    /*
+     * Methode permettant de recuperer le type d'evenement dont l'id est passé en parametre de la requete http.
+     * Ce type d'evenement est retourné par le web service dont l'URL est passé en parametre de la requete http.
+     */
     getEventType(id:number):Observable<IEventType>{
         return this.http.get(AppUtils.BACKEND_ROOT_URL+'/eventsType/'+id).map( (res:Response) => {
             return new IEventType(res.json());
         })
+    }
+
+    /*
+     * Methode permettant d'enregister le type d'evenement passé en parametre de la requete http.
+     * Ce type d'evenement est enregistré en base par le web service dont l'URL est passé en parametre de la requete http.
+     */
+    saveEventType(eventType:IEventType):Observable<IEventType> {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post(AppUtils.BACKEND_ROOT_URL+'/admin/events/types', JSON.stringify(eventType),{headers:headers})
+            .map((res:Response) => {
+                return new IEventType(res.json());
+            });
+    }
+
+    /*
+     * Methode permettant d'enregister les modifications du type d'evenement passé en parametre de la requete http.
+     * Ce type d'evenement est enregistré en base par le web service dont l'URL est passé en parametre de la requete http.
+     */
+    updateEventType(eventType:IEventType):Observable<IEventType> {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.put(AppUtils.BACKEND_ROOT_URL+'/admin/events/types', JSON.stringify(eventType),{headers:headers})
+            .map((res:Response) => {
+                return new IEventType(res.json());
+            });
+    }
+
+    /*
+     * Methode permettant de supprimer le type d'evenement passé en parametre de la requete http.
+     * Ce type d'evenement est supprimé en base par le web service dont l'URL est passé en parametre de la requete http.
+     */
+    deleteEventType(id:number):Observable<boolean> {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.delete(AppUtils.BACKEND_ROOT_URL+'/admin/events/types/'+id, {headers:headers})
+            .map((res:Response) => {
+                let message:boolean ;
+                message = res.json();
+                return message ;
+            });
+    }
+
+    /********************************************************************
+     *  Gestion des eventTheme
+     ********************************************************************/
+
+    /*
+     * Methode permettant de recuperer tous les themes d'evenements retournés par le web service dont l'URL est passé
+     * en parametre de la requete http.
+     */
+    getAllEventTheme():Observable<Array<CEventTheme>> {
+        return this.http.get(AppUtils.BACKEND_ROOT_URL+'/eventsThemes')
+            .map((res:Response) => {
+                let eventThemes:Array<CEventTheme> = [];
+                let jsonResults:Array<any> = res.json();
+                jsonResults.forEach((jsonResult) => {
+                    eventThemes.push(new CEventTheme(jsonResult));
+                });
+                return eventThemes;
+            }).catch(this.handleError);
+    }
+
+
+    /*
+     * Methode permettant de recuperer le theme de l'evenement dont l'id est passé en parametre de la requete http.
+     * Ce theme est retourné par le web service dont l'URL est passé en parametre de la requete http.
+     */
+    getEventTheme(id:number):Observable<CEventTheme>{
+        return this.http.get(AppUtils.BACKEND_ROOT_URL+'/eventsThemes/'+id).map( (res:Response) => {
+            return new CEventTheme(res.json());
+        })
+    }
+
+    /*
+     * Methode permettant d'enregister le theme de l'evenement passé en parametre de la requete http.
+     * Ce theme est enregistré en base par le web service dont l'URL est passé en parametre de la requete http.
+     */
+    saveEventTheme(eventTheme:CEventTheme):Observable<CEventTheme> {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post(AppUtils.BACKEND_ROOT_URL+'/admin/events/themes', JSON.stringify(eventTheme),{headers:headers})
+            .map((res:Response) => {
+                return new CEventTheme(res.json());
+            });
+    }
+
+    /*
+     * Methode permettant d'enregister les modifications du theme passé en parametre de la requete http.
+     * Ce theme est enregistré en base par le web service dont l'URL est passé en parametre de la requete http.
+     */
+    updateEventTheme(event:CEventTheme):Observable<CEventTheme> {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.put(AppUtils.BACKEND_ROOT_URL+'/admin/events/themes', JSON.stringify(event),{headers:headers})
+            .map((res:Response) => {
+                return new CEventTheme(res.json());
+            });
+    }
+
+    /*
+     * Methode permettant de supprimer le theme passé en parametre de la requete http.
+     * Ce theme est supprimé en base par le web service dont l'URL est passé en parametre de la requete http.
+     */
+    deleteEventTheme(id:number):Observable<boolean> {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.delete(AppUtils.BACKEND_ROOT_URL+'/admin/events/themes/'+id, {headers:headers})
+            .map((res:Response) => {
+                let message:boolean ;
+                message = res.json();
+                return message ;
+            });
+    }
+
+    /********************************************************************
+     *  Gestion des ageRange
+     ********************************************************************/
+
+    /*
+     * Methode permettant de recuperer toutes les tranches d'age retournées par le web service dont l'URL est passé
+     * en parametre de la requete http.
+     */
+    getAllAgeRange():Observable<Array<CAgeRange>> {
+        return this.http.get(AppUtils.BACKEND_ROOT_URL+'/ageRanges')
+            .map((res:Response) => {
+                let ageRanges:Array<CAgeRange> = [];
+                let jsonResults:Array<any> = res.json();
+                jsonResults.forEach((jsonResult) => {
+                    ageRanges.push(new CAgeRange(jsonResult));
+                });
+                return ageRanges;
+            }).catch(this.handleError);
+    }
+
+
+    /*
+     * Methode permettant de recuperer la tranche d'age  dont l'id est passé en parametre de la requete http.
+     * Cette trach d'age est retournée par le web service dont l'URL est passé en parametre de la requete http.
+     */
+    getAgeRange(id:number):Observable<CAgeRange>{
+        return this.http.get(AppUtils.BACKEND_ROOT_URL+'/ageRanges/'+id).map( (res:Response) => {
+            return new CAgeRange(res.json());
+        })
+    }
+
+    /*
+     * Methode permettant d'enregister la tranche d'age passée en parametre de la requete http.
+     * Cette tranche d'age est enregistrée en base par le web service dont l'URL est passé en parametre de la requete http.
+     */
+    saveAgeRange(ageRange:CAgeRange):Observable<CAgeRange> {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post(AppUtils.BACKEND_ROOT_URL+'/admin/events/ageRanges', JSON.stringify(ageRange),{headers:headers})
+            .map((res:Response) => {
+                return new CAgeRange(res.json());
+            });
+    }
+
+    /*
+     * Methode permettant d'enregister les modifications de la tranche d'age passée en parametre de la requete http.
+     * Cette tranche d'age est enregistrée en base par le web service dont l'URL est passé en parametre de la requete http.
+     */
+    updateAgeRange(ageRange:CAgeRange):Observable<CAgeRange> {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.put(AppUtils.BACKEND_ROOT_URL+'/admin/events/ageRanges', JSON.stringify(ageRange),{headers:headers})
+            .map((res:Response) => {
+                return new CAgeRange(res.json());
+            });
+    }
+
+    /*
+     * Methode permettant de supprimer la tranche d'age passée en parametre de la requete http.
+     * Cette tranche d'age est supprimée en base par le web service dont l'URL est passé en parametre de la requete http.
+     */
+    deleteAgeRange(id:number):Observable<boolean> {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.delete(AppUtils.BACKEND_ROOT_URL+'/admin/events/ageRanges/'+id, {headers:headers})
+            .map((res:Response) => {
+                let message:boolean ;
+                message = res.json();
+                return message ;
+            });
     }
 
     private handleError(error: Response) {

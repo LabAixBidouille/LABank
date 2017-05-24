@@ -45,16 +45,16 @@
 
                         <div class="text-center"><span class="label label-danger" *ngIf="error">{{error}}</span></div>
 
-                        <div class="input-group input-margin-bottom" [ngClass]="{'has-error':!loginForm.controls['username'].valid && loginForm.controls['username'].touched}">
-                            <div class="input-group-btn">
+                        <div class="input-groupId input-margin-bottom" [ngClass]="{'has-error':!loginForm.controls['username'].valid && loginForm.controls['username'].touched}">
+                            <div class="input-groupId-btn">
                                 <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-user"></i></button>
                             </div>
                             <input type="text" class="form-control" required [formControl]="loginForm.controls['username']"
                                    name="username" id="username" placeholder="e-mail ou login">
                         </div>
 
-                        <div class="input-group input-margin-bottom" [ngClass]="{'has-error':!loginForm.controls['password'].valid && loginForm.controls['password'].touched}">
-                            <div class="input-group-btn">
+                        <div class="input-groupId input-margin-bottom" [ngClass]="{'has-error':!loginForm.controls['password'].valid && loginForm.controls['password'].touched}">
+                            <div class="input-groupId-btn">
                                 <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-lock"></i></button>
                             </div>
                             <input type="password" class="form-control" required [formControl]="loginForm.controls['password']"
@@ -95,101 +95,109 @@
                 </div>
 
                 <div class="box-body">
-                    <form id="signUpForm" class="form"  (ngSubmit)="createUser($event); " >
+                    <form id="signUpForm" [formGroup]="signUpForm" class="form"  (ngSubmit)="createUser($event) " >
                         <div class="modal-body form-horizontal">
 
                             <!-- Error message here ?? -->
                             <div class="text-center"><span class="label label-danger" *ngIf="error">{{error}}</span></div>
 
                             <!--Sex-->
-                            <div class="input-group input-margin-bottom">
+                            <div class="input-groupId input-margin-bottom">
                                 <label class="radio-inline">
-                                    <input type="radio" name="sex" value="M" id="male" />Homme
+                                    <input type="radio" name="sex" value="M" id="male"
+                                           [formControl]="signUpForm.controls['sex']"/>Homme
                                 </label>
                                 <label class="radio-inline">
-                                    <input type="radio" name="sex" value="F" id="female" />Femme
+                                    <input type="radio" name="sex" value="F" id="female"
+                                           [formControl]="signUpForm.controls['sex']" />Femme
                                 </label>
                             </div>
 
                             <!--Nom et prenom-->
-                            <div class="input-group input-margin-bottom">
+                            <div class="input-groupId input-margin-bottom">
                                 <div class="col-sm-6" style="padding-left: 0px">
-                                    <input type="text" name="firstname" value="" class="form-control" placeholder="Votre prénom"  />
+                                    <input type="text" name="firstname" value="" class="form-control" placeholder="Votre prénom"
+                                           [formControl]="signUpForm.controls['firstname']"/>
+
                                 </div>
 
                                 <div class="col-sm-6" style="padding-left: 0px; padding-right: 0px">
-                                    <input type="text" name="lastname" value="" class="form-control" placeholder="Votre nom"  />
+                                    <input type="text" name="name" value="" class="form-control" placeholder="Votre nom"
+                                           [formControl]="signUpForm.controls['name']"/>
                                 </div>
                             </div>
 
                             <!--Pseudo-->
-                            <div class="input-group input-margin-bottom" >
-                                <div class="input-group-btn">
+                            <div class="input-groupId input-margin-bottom" >
+                                <div class="input-groupId-btn">
                                     <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-user"></i></button>
                                 </div>
 
-                                <input type="text" class="form-control"
-                                       name="pseudonym" id="pseudonym" placeholder="Pseudonyme">
+                                <input type="text" class="form-control" name="pseudonym" id="pseudonym" placeholder="Pseudonyme"
+                                       [formControl]="signUpForm.controls['pseudonym']" />
                             </div>
 
                             <!--Email-->
-                            <div class="input-group input-margin-bottom" >
-                                <div class="input-group-btn">
+                            <div class="input-groupId input-margin-bottom" >
+                                <div class="input-groupId-btn">
                                     <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-envelope"></i></button>
                                 </div>
 
-                                <input type="text" class="form-control"
-                                       name="email" id="email" placeholder="Email">
+                                <input type="text" class="form-control" name="email" id="email" placeholder="Email"
+                                       [formControl]="signUpForm.controls['email']" />
                             </div>
 
                             <!--Password-->
-                            <div class="input-group input-margin-bottom" >
-                                <div class="input-group-btn">
+                            <div class="input-groupId input-margin-bottom" >
+                                <div class="input-groupId-btn">
                                     <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-lock"></i></button>
                                 </div>
 
-                                <input type="password" class="form-control"
-                                       name="password" id="pwd" placeholder="Mot de passe">
+                                <input type="password" class="form-control" name="password" id="pwd" placeholder="Mot de passe"
+                                       [formControl]="signUpForm.controls['password']"/>
                             </div>
 
                             <!--Confirmer Password-->
-                            <div class="input-group input-margin-bottom" >
-                                <div class="input-group-btn">
+                            <div class="input-groupId input-margin-bottom" >
+                                <div class="input-groupId-btn">
                                     <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-lock"></i></button>
                                 </div>
 
-                                <input type="password" class="form-control"
-                                       name="confirmpassword" id="cpwd" placeholder="Confirmer le mot de passe">
+                                <input type="password" class="form-control" name="confirmPassword" id="cpwd"
+                                       placeholder="Confirmer le mot de passe" [formControl]="signUpForm.controls['confirmPassword']"/>
                             </div>
 
                             <!--Groupe -->
-                            <select name="group" class = "form-control input-margin-bottom ">
-                                <option [value]="test">test</option>
-                            </select>
+                            <!--<select name="groupId" class = "form-control input-margin-bottom ">-->
+                                <!--<option [value]="test">test</option>-->
+                            <!--</select>-->
+                            <user-groups required="true" (selectedGroup)="getGroup($event)"></user-groups>
 
                             <!--Date de naissance-->
-                            <div class="input-group input-append date input-margin-bottom" data-provide="datepicker">
-                                <div class="input-group-btn">
+                            <div class="input-groupId input-append date input-margin-bottom" data-provide="datepicker">
+                                <div class="input-groupId-btn">
                                     <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-calendar"></i></button>
                                 </div>
 
-                                <input type="text" class="form-control pull-right" name="birthday" id="datepicker" placeholder="Date de naissance">
+                                <input type="text" class="form-control pull-right" name="birthday" id="datepicker"
+                                       placeholder="Date de naissance" [formControl]="signUpForm.controls['birthday']"/>
                             </div>
 
                             <!--Tel-->
-                            <div class="input-group input-margin-bottom">
-                                <div class="input-group-btn">
+                            <div class="input-groupId input-margin-bottom">
+                                <div class="input-groupId-btn">
                                     <button type="button" class="btn btn-primary"><i class="glyphicon glyphicon-earphone"></i></button>
                                 </div>
 
-                                <input type="text" class="form-control"
-                                       name="phone" id="phone" placeholder="Numéro de téléphone (TODO: add mask here)">
+                                <input type="text" class="form-control"name="phone" id="phone"
+                                       placeholder="Numéro de téléphone (TODO: add mask here)"
+                                       [formControl]="signUpForm.controls['phone']" />
                             </div>
 
                             <div class="modal-footer" style="padding-bottom: 0px;">
-                                <div class="form-group last-row" style="padding-bottom: 0px;">
+                                <div class="form-groupId last-row" style="padding-bottom: 0px;">
                                     <button type="button" class="btn btn-default pull-left" data-widget="remove" data-toggle="tooltip" title="Fermer" data-dismiss="modal"><i class="fa fa-ban"></i> Annuler</button>
-                                    <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary  pull-right" ><i class="glyphicon glyphicon-log-in"></i> Enregistrer</button>
+                                    <button type="submit" [disabled]="!signUpForm.valid" class="btn btn-primary  pull-right" ><i class="glyphicon glyphicon-log-in"></i> Enregistrer</button>
                                 </div>
                             </div>
                         </div>

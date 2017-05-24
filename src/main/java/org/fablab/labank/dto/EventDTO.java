@@ -104,6 +104,16 @@ public class EventDTO {
     // Likes
     private int likes;
 
+    // The theme of the event
+    @NotNull
+    @Column(name = "ideventtheme")
+    private Long idEventTheme;
+
+    // The age range of the event
+    @NotNull
+    @Column(name = "idagerange")
+    private Long idAgeRange;
+
     // ------------------------
     // PUBLIC METHODS
     // ------------------------
@@ -130,12 +140,14 @@ public class EventDTO {
         this.facebookShare = event.facebookShare;
         this.twitterShare = event.twitterShare;
         this.likes = event.likes;
+        this.idEventTheme = event.idEventTheme;
+        this.idAgeRange = event.idAgeRange;
     }
 
     public EventDTO(long idEvent, String title, String illustration, String description, long idEventType, boolean allDay,
                     Date startDate, Date endDate, Date startAt, Date endAt, long idRecurrence, Date endRecurrence,
                     float standardPrice, float reducedFare, int nbTickets, int availableTickets, int facebookShare,
-                    int twitterShare, int likes) {
+                    int twitterShare, int likes, Long idEventTheme, Long idAgeRange) {
         this.idEvent = idEvent;
         this.title = title;
         this.illustration = illustration;
@@ -155,6 +167,8 @@ public class EventDTO {
         this.facebookShare = facebookShare;
         this.twitterShare = twitterShare;
         this.likes = likes;
+        this.idEventTheme = idEventTheme;
+        this.idAgeRange = idAgeRange;
     }
 
     // Getter and setter methods
@@ -310,5 +324,21 @@ public class EventDTO {
 
     public void setLikes(int likes) {
         this.likes = likes;
+    }
+
+    public Long getIdEventTheme() {
+        return idEventTheme;
+    }
+
+    public void setIdEventTheme(Long idEventTheme) {
+        this.idEventTheme = idEventTheme;
+    }
+
+    public Long getIdAgeRange() {
+        return idAgeRange;
+    }
+
+    public void setIdAgeRange(Long idAgeRange) {
+        this.idAgeRange = idAgeRange;
     }
 }

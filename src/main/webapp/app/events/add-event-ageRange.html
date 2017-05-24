@@ -1,0 +1,64 @@
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Les Tranches d'Age des Evenements du FABLAB
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li class="active"><a href="#/admin/events/home">Gestion des tranches d'age</a></li>
+            <li class="active">Ajout d'une tranche d'age</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-primary">
+
+            <!-- Box header -->
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-th"></i> Ajouter une nouvelle tranche</h3>
+            </div>
+            <!-- /.Box header -->
+
+            <!-- Box body -->
+            <div class="box-body">
+                <form [formGroup]="ageRangeForm" (ngSubmit)="addAgeRange()" >
+                    <fieldset>
+                        <!-- Name -->
+                        <div class="form-groupId"
+                             [ngClass]="{'has-error':!ageRangeForm.controls['name'].valid && ageRangeForm.controls['name'].touched}">
+                            <label for="name">Nom* </label>
+                            <div >
+                                <input id="name" name="name" type="text" placeholder="Nom du type"
+                                       class="form-control" required [formControl]="ageRangeForm.controls['name']">
+                            </div>
+                            <!--Errors Msg-->
+                            <div *ngIf="ageRangeForm.controls['name'].hasError('required') &&
+                                  ageRangeForm.controls['name'].touched" class="alert alert-danger">
+                                Le nom de la tranche doit etre renseigné.
+                            </div>
+                            <!--/.Errors Msg-->
+                        </div>
+
+                        <!-- Form actions -->
+                        <div class="form-groupId">
+                            <div class="col-md-12 text-right">
+                                <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
+                                <button [disabled]="!ageRangeForm.valid" type="submit" class="btn btn-primary">Enregistrer la tranche</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <!-- /.Box body -->
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

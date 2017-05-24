@@ -1,0 +1,60 @@
+<!--Modal Delete EventsType-->
+<div id="deleteEventsTypeModal" class="modal fade" >
+    <div class="login-box modal-dialog modal-sm box box-primary">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="box-header with-border">
+                <i class="fa fa-tags"></i>
+
+                <h3 class="box-title">Supprimer le type d'evenement</h3>
+                <!-- tools box -->
+                <div class="pull-right box-tools">
+                    <button type="button" class="btn btn-primary btn-sm" data-widget="remove" data-toggle="tooltip" title="Fermer" data-dismiss="modal">
+                        <i class="fa fa-times"></i></button>
+                </div>
+                <!-- /. tools -->
+            </div>
+
+            <div class="modal-body form-horizontal">
+                <p>Etes vous sur de vouloir supprimer ce type d'evenement ?</p>
+            </div>
+
+            <div class="modal-footer box-footer last-row">
+                <button type="button" class="btn btn-default pull-left" data-widget="remove" data-toggle="tooltip" title="Fermer" data-dismiss="modal"><i class="fa fa-ban"></i> Annuler</button>
+                <button (click)="delete()" type="button" class="btn btn-primary pull-right" data-dismiss="modal" ><i class="glyphicon glyphicon-trash"></i> Supprimer</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="msg" class="alert alert-success alert-dismissible">
+    <a href="#/admin/events/home" (click)="closeAlert()" class="close">&times;</a>
+    <strong>Type supprimé avec succes !</strong>.
+</div>
+<div class="table-responsive">
+    <button (click)="newEventType()" type="button" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-plus"></i> Ajouter un type d'evenement</button>
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let eventType of eventTypes" >
+            <td >{{eventType.libelle}}</td>
+            <td>
+                <button (click)="updateEventType(eventType.idEventType)" type="button" class="btn btn-warning btn-circle">
+                    <i class="glyphicon glyphicon-edit"></i>Editer
+                </button>
+                <button (click)="deleteEventType(eventType.idEventType)" data-toggle="modal" data-target="#deleteEventsTypeModal"
+                        data-backdrop="false" type="button" class="btn btn-danger btn-circle">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

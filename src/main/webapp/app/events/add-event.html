@@ -30,7 +30,7 @@
                 <form  [formGroup]="eventForm" (ngSubmit)="addEvent()" >
                     <fieldset>
                         <!-- Title -->
-                        <div class="form-group"
+                        <div class="form-groupId"
                              [ngClass]="{'has-error':!eventForm.controls['title'].valid && eventForm.controls['title'].touched}">
                             <label for="title">Titre* </label>
                             <div >
@@ -46,7 +46,7 @@
                         </div>
 
                         <!-- Picture -->
-                        <div class="form-group">
+                        <div class="form-groupId">
                             <label for="illustration">Image </label>
                             <div>
                                 <input id="illustration" name="illustration"  class="form-control" type="file"
@@ -55,7 +55,7 @@
                         </div>
 
                         <!-- Description -->
-                        <div class="form-group"
+                        <div class="form-groupId"
                              [ngClass]="{'has-error':!eventForm.controls['description'].valid && eventForm.controls['description'].touched}">
                             <label for="description">Description*</label>
                             <div >
@@ -83,7 +83,7 @@
                         <event-types-select required="true" (eventTypeSelected)="getEventType($event)" ></event-types-select>
 
                         <!-- AllDay -->
-                        <div class="form-group"
+                        <div class="form-groupId"
                              [ngClass]="{'has-error':!eventForm.controls['allDay'].valid && eventForm.controls['allDay'].touched}">
                             <label>Tous les jours*</label>
                             <div>
@@ -101,35 +101,35 @@
                         </div>
 
                         <!-- StartDate -->
-                        <div class="form-group"
+                        <div class="form-groupId"
                              [ngClass]="{'has-error':!eventForm.controls['startDate'].valid && eventForm.controls['startDate'].touched}">
                             <label for="startDate">Date de debut*</label>
-                            <div class="input-group" >
+                            <div class="input-groupId" >
                                 <input id="startDate" name="startDate" type="date" class="form-control" required
                                        [formControl]="eventForm.controls['startDate']">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                <span class="input-groupId-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                             </div>
                         </div>
 
                         <!-- EndDate -->
-                        <div class="form-group"
+                        <div class="form-groupId"
                              [ngClass]="{'has-error':!eventForm.controls['endDate'].valid && eventForm.controls['endDate'].touched}">
                             <label for="endDate">Date de fin*</label>
-                            <div class="input-group" >
+                            <div class="input-groupId" >
                                 <input id="endDate" name="startDate" type="date" class="form-control" required
                                        [formControl]="eventForm.controls['endDate']">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                <span class="input-groupId-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                             </div>
                         </div>
 
                         <!-- StartAt -->
-                        <div *ngIf="noAllday.checked" class="form-group">
+                        <div *ngIf="noAllday.checked" class="form-groupId">
                             <label>Débute à </label>
                             <timepicker [showMeridian]="false" [minuteStep]="1" [(ngModel)]="startAt" [ngModelOptions]="{standalone: true}" ngDefaultControl></timepicker>
                         </div>
 
                         <!-- EndAt -->
-                        <div *ngIf="noAllday.checked" class="form-group">
+                        <div *ngIf="noAllday.checked" class="form-groupId">
                             <label>Finit à </label>
                             <timepicker [showMeridian]="false" [minuteStep]="1" [(ngModel)]="endAt" [ngModelOptions]="{standalone: true}" ngDefaultControl ></timepicker>
                         </div>
@@ -138,38 +138,38 @@
                         <event-recurrences required="true" (recurrenceSelected)="getRecurrence($event)" ></event-recurrences>
 
                         <!-- Standard price -->
-                        <div class="form-group">
+                        <div class="form-groupId">
                             <label for="stdPrice">Tarifs</label>
-                            <div class="input-group" >
+                            <div class="input-groupId" >
                                 <input id="stdPrice" name="standardPrice" type="number" min="0"
                                        class="form-control" [formControl]="eventForm.controls['standardPrice']">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-euro"></i></span>
+                                <span class="input-groupId-addon"><i class="glyphicon glyphicon-euro"></i></span>
                             </div>
                         </div>
 
                         <!-- Reduced fare -->
-                        <div class="form-group">
+                        <div class="form-groupId">
                             <label for="reducedFare">Reduction</label>
-                            <div class="input-group" >
+                            <div class="input-groupId" >
                                 <input id="reducedFare" name="reducedFare" type="number" min="0"
                                        class="form-control" [formControl]="eventForm.controls['reducedFare']">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-euro"></i></span>
+                                <span class="input-groupId-addon"><i class="glyphicon glyphicon-euro"></i></span>
                             </div>
                         </div>
 
 
                         <!-- Number of tickets -->
-                        <div class="form-group">
+                        <div class="form-groupId">
                             <label for="nbTickets">Nombre de tickets</label>
-                            <div class="input-group" >
+                            <div class="input-groupId" >
                                 <input id="nbTickets" name="nbTickets" type="number" min="0"
                                        class="form-control" [formControl]="eventForm.controls['nbTickets']">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
+                                <span class="input-groupId-addon"><i class="glyphicon glyphicon-tag"></i></span>
                             </div>
                         </div>
 
                         <!-- Form actions -->
-                        <div class="form-group">
+                        <div class="form-groupId">
                             <div class="col-md-12 text-right">
                                 <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
                                 <button [disabled]="!eventForm.valid" type="submit" class="btn btn-primary">Enregistrer la formation</button>

@@ -28,17 +28,17 @@
                 <form  #materialForm="ngForm" (ngSubmit)="updateMaterial()" >
                     <fieldset>
                         <!-- Name -->
-                        <div class="form-group">
+                        <div class="form-groupId">
                             <label for="name">Nom </label>
                             <div >
-                                <input id="name" name="name" type="text" placeholder="Nom de la licence"
+                                <input id="name" name="name" type="text" placeholder="Nom du materiel"
                                        class="form-control" required [(ngModel)]="material.name" #name="ngModel" >
                             </div>
-                            <div *ngIf="name.control.dirty && name.control.hasError('required')">Le nom doit etre renseigné</div>
+                            <div *ngIf="name.control.dirty && name.control.hasError('required')">Le nom du materiel doit etre renseigné</div>
                         </div>
 
                         <!-- Form actions -->
-                        <div class="form-group">
+                        <div class="form-groupId">
                             <div class="col-md-12 text-right">
                                 <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
                                 <button [disabled]="!materialForm.valid" type="submit" class="btn btn-primary">Enregistrer les modifications</button>

@@ -28,7 +28,7 @@
                 <form  [formGroup]="projectForm" (ngSubmit)="addProject()" >
                     <fieldset>
                         <!-- Name -->
-                        <div class="form-group"
+                        <div class="form-groupId"
                              [ngClass]="{'has-error':!projectForm.controls['name'].valid && projectForm.controls['name'].touched}">
                             <label for="name">Nom* </label>
                             <div >
@@ -44,7 +44,7 @@
                         </div>
 
                         <!-- Illustration -->
-                        <div class="form-group">
+                        <div class="form-groupId">
                             <label for="illustration">Image </label>
                             <div>
                                 <input id="illustration" name="illustration"  class="form-control" type="file"
@@ -56,7 +56,7 @@
                         <!-- TODO -->
 
                         <!-- Description -->
-                        <div class="form-group"
+                        <div class="form-groupId"
                              [ngClass]="{'has-error':!projectForm.controls['description'].valid && projectForm.controls['description'].touched}">
                             <label for="description">Description*</label>
                             <div >
@@ -88,15 +88,15 @@
                             <button (click)="addStep()">Ajouter une etape</button>
                             <br/>
                         </div>
-                        <!--<div class="form-group multiple-form-group">-->
+                        <!--<div class="form-groupId multiple-form-groupId">-->
                             <!--<label>Etapes</label>-->
 
-                            <!--<div class="form-group input-group">-->
+                            <!--<div class="form-groupId input-groupId">-->
                                 <!--<input type="text" name="multiple[]" class="form-control" placeholder="Titre de l'etape">-->
                                 <!--<textarea style="width:100%" rows="5" name="multiple[]" placeholder="Description de l'etape"></textarea>-->
                                 <!--<input name="multiple[]"  class="form-control" type="file"-->
                                        <!--(change)="getStepIllustration($event.target.files[0].name)" accept=".png,.jpg,.jpeg">-->
-                                <!--<span class="input-group-btn">-->
+                                <!--<span class="input-groupId-btn">-->
                                     <!--<button type="button" class="btn btn-default btn-add">-->
                                         <!--+ Ajouter une etape-->
 						            <!--</button>-->
@@ -121,7 +121,7 @@
                         <project-themes required="true" (selectedThemes)="getThemes($event)"></project-themes>
 
                         <!-- Project's tags -->
-                        <div class="form-group"
+                        <div class="form-groupId"
                              [ngClass]="{'has-error':!projectForm.controls['tags'].valid && projectForm.controls['tags'].touched}">
                             <label for="tags">Tags*</label>
                             <div >
@@ -137,7 +137,7 @@
                             <!--/. Errors Msg-->
                         </div>
                         <!-- Form actions -->
-                        <div class="form-group">
+                        <div class="form-groupId">
                             <div class="col-md-12 text-right">
                                 <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
                                 <button [disabled]="!projectForm.valid" type="submit" class="btn btn-primary">Enregistrer le projet</button>

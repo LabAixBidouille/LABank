@@ -12,11 +12,13 @@ import { UtilsModule } from '../utils/utils.module';
 import { User } from './user';
 import { Users } from './users';
 import { UsersService } from './users.service';
+import {UserGroupsComponent} from "./user-groups.component";
 
 @NgModule({
     imports: [ FormsModule, ReactiveFormsModule, BrowserModule, UtilsModule ],
+    exports: [UserGroupsComponent],
     bootstrap: [ User, Users ],
-    declarations: [ User, Users ],
+    declarations: [ User, Users,UserGroupsComponent ],
     providers: [ UsersService ]
 })
 export class UserModule { }

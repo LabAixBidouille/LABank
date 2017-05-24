@@ -12,7 +12,15 @@ import { EventComponent } from './event.component';
 import { Events } from './events';
 import { EventsService } from './events.service';
 import { AdminEventsHomeComponent } from './admin-events-home.component';
-import { AdminEventsFiltersComponent } from './admin-events-filters.component';
+import { AdminEventsTypesComponent } from './admin-events-types.component';
+import {AddEventTypeComponent} from "./add-event-type.component";
+import {UpdateEventTypeComponent} from "./update-event-type.component";
+import {AdminEventsThemesComponent} from "./admin-events-themes.component";
+import {AdminEventsAgeRangesComponent} from "./admin-events-ageRanges.component";
+import {AddEventAgeRangeComponent} from "./add-event-ageRange.component";
+import {UpdateEventAgeRangeComponent} from "./update-event-ageRange.component";
+import {AddEventThemeComponent} from "./add-event-theme.component";
+import {UpdateEventThemeComponent} from "./update-event-theme.component";
 import { AdminEventsPricesComponent} from './admin-events-prices.component';
 import { AdminEventsComponent } from './admin-events.component';
 import { AddEventComponent } from './add-event.component';
@@ -28,8 +36,10 @@ import { DatepickerModule, AlertModule, TimepickerModule } from 'ng2-bootstrap';
         DatepickerModule.forRoot(), TimepickerModule.forRoot() ],
     bootstrap: [EventComponent, Events, EventType ],
     declarations: [EventComponent, Events, EventType, AdminEventsComponent, AddEventComponent, UpdateEventComponent,
-                    AdminEventsHomeComponent, AdminEventsFiltersComponent, AdminEventsPricesComponent, EventRecurrencesComponent,
-                    EventTypesSelectComponent],
+        AdminEventsHomeComponent, AdminEventsPricesComponent, EventRecurrencesComponent,EventTypesSelectComponent,
+        AdminEventsAgeRangesComponent, AddEventAgeRangeComponent, UpdateEventAgeRangeComponent,
+        AdminEventsTypesComponent, AddEventTypeComponent, UpdateEventTypeComponent,
+        AdminEventsThemesComponent, AddEventThemeComponent, UpdateEventThemeComponent ],
     providers: [ EventsService ]
 })
 

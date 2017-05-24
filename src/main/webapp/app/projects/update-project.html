@@ -28,7 +28,7 @@
                 <form  #projectForm="ngForm" (ngSubmit)="updateProject()" >
                     <fieldset>
                         <!-- Name -->
-                        <div class="form-group" [ngClass]="{'has-error': !name.control.valid && name.control.touched}">
+                        <div class="form-groupId" [ngClass]="{'has-error': !name.control.valid && name.control.touched}">
                             <label for="name">Nom* </label>
                             <div >
                                 <input id="name" name="name" type="text" placeholder="Nom du projet"
@@ -43,7 +43,7 @@
                         </div>
 
                         <!-- Illustration -->
-                        <div class="form-group">
+                        <div class="form-groupId">
                             <label for="illustration">Image </label>
                             <div>
                                 <input id="illustration" name="illustration"  class="form-control" type="file"
@@ -55,7 +55,7 @@
                         <!-- TODO -->
 
                         <!-- Description -->
-                        <div class="form-group"
+                        <div class="form-groupId"
                              [ngClass]="{'has-error':!description.control.valid && description.control.touched}">
                             <label for="description">Description*</label>
                             <div >
@@ -72,15 +72,15 @@
                         </div>
 
                         <!-- Project's steps -->
-                        <!--<div class="form-group multiple-form-group">-->
+                        <!--<div class="form-groupId multiple-form-groupId">-->
                             <!--<label>Etapes</label>-->
 
-                            <!--<div class="form-group input-group">-->
+                            <!--<div class="form-groupId input-groupId">-->
                                 <!--<input type="text" name="multiple[]" class="form-control" placeholder="Titre de l'etape">-->
                                 <!--<textarea style="width:100%" rows="5" name="multiple[]" placeholder="Description de l'etape"></textarea>-->
                                 <!--<input name="multiple[]"  class="form-control" type="file"-->
                                        <!--(change)="getStepIllustration($event.target.files[0].name)" accept=".png,.jpg,.jpeg">-->
-                                <!--<span class="input-group-btn">-->
+                                <!--<span class="input-groupId-btn">-->
                                     <!--<button type="button" class="btn btn-default btn-add">-->
                                         <!--+ Ajouter une etape-->
 						            <!--</button>-->
@@ -89,7 +89,7 @@
                         <!--</div>-->
                         <label>Etapes</label>
                         <br/>
-                        <div class="form-group input-group"  *ngIf="show">
+                        <div class="form-groupId input-groupId"  *ngIf="show">
                             <div *ngFor="let step of steps">
                                 <label >Etape {{step.stepsOrder}}</label>
                                 <input [disabled]="noDelete" required="true" [(ngModel)]="step.title" type="text" name="title + {{step.idStep}}" class="form-control" placeholder="Titre de l'etape">
@@ -122,7 +122,7 @@
                         <project-themes required="true" (selectedThemes)="getThemes($event)"></project-themes>
 
                         <!-- Project's tags -->
-                        <div class="form-group" [ngClass]="{'has-error':!tags.control.valid && tags.control.touched}">
+                        <div class="form-groupId" [ngClass]="{'has-error':!tags.control.valid && tags.control.touched}">
                             <label for="tags">Tags*</label>
                             <div >
                                 <textarea id="tags" name="tags" placeholder="Mots-clés" class="form-control" rows="5"
@@ -137,7 +137,7 @@
                         </div>
 
                         <!-- Form actions -->
-                        <div class="form-group">
+                        <div class="form-groupId">
                             <div class="col-md-12 text-right">
                                 <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
                                 <button [disabled]="!projectForm.valid" type="submit" class="btn btn-primary">Enregistrer les modifications</button>

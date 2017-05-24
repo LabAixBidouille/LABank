@@ -20,7 +20,9 @@
             <div class="box-header with-border">
                 <ul class="nav nav-tabs">
                     <li class="active"><a data-toggle="tab" href="#events">Gestion des evenements</a></li>
-                    <li><a data-toggle="tab" href="#filters">Gestion des filtres</a></li>
+                    <li><a data-toggle="tab" href="#types">Gestion des types</a></li>
+                    <li><a data-toggle="tab" href="#themes">Gestion des themes</a></li>
+                    <li><a data-toggle="tab" href="#ageRanges">Gestion des tranches d'age</a></li>
                     <li><a data-toggle="tab" href="#prices">Gestion des tarifs</a></li>
                 </ul>
             </div>
@@ -32,8 +34,14 @@
                     <div id="events" class="tab-pane fade in active">
                         <admin-events></admin-events>
                     </div>
-                    <div id="filters" class="tab-pane fade in ">
-                        <admin-eventsFilters></admin-eventsFilters>
+                    <div id="types" class="tab-pane fade in ">
+                        <admin-eventsTypes></admin-eventsTypes>
+                    </div>
+                    <div id="themes" class="tab-pane fade in ">
+                        <admin-eventsThemes></admin-eventsThemes>
+                    </div>
+                    <div id="ageRanges" class="tab-pane fade in ">
+                        <admin-eventsAgeRanges></admin-eventsAgeRanges>
                     </div>
                     <div id="prices" class="tab-pane fade in ">
                         <admin-eventsPrices></admin-eventsPrices>

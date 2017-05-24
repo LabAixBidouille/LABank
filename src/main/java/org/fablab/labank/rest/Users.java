@@ -51,4 +51,23 @@ public class Users {
         }
         return profiles;
     }
+
+    @RequestMapping("/users/profiles/{id}")
+    public Profile getProfile(@PathVariable Long id){
+
+        return this.profileDAO.findOne(id);
+    }
+
+    @RequestMapping(value = "/users/", method = RequestMethod.POST)
+    public UserDTO save(@RequestBody @Valid UserDTO userDTO){
+        UserDTO u = null;
+        try{
+            u = userDao.save(userDTO);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        return u;
+        //return MockUsers.update(userDTO);
+    }
 }
