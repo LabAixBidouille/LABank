@@ -19,4 +19,10 @@ public interface EventDAO extends CrudRepository<EventDTO, Long> {
 
     public List<EventDTO> findByIdEventType (Long idEventType);
 
+    public List<EventDTO> findByIdEventTheme (Long IdEventTheme);
+
+    public  List<EventDTO> findByIdAgeRange(Long IdAgeRange);
+
+    public  List<EventDTO> findByIdEventThemeAndIdAgeRange(Long IdEventTheme, Long IdAgeRange);
+
 }

@@ -40,6 +40,40 @@ export class EventsService {
     }
 
     /*
+     * Methode permettant de recuperer la liste des evenements appartenant au theme dont l'id est passé en
+     * parametre de la requete http.
+     * Cette liste est retournée par le web service dont l'URL est passé en parametre de la requete http.
+     */
+    getEventsListByTheme(id:number):Observable<Array<IEvent>> {
+        return this.http.get(AppUtils.BACKEND_ROOT_URL+'/eventslist/themes/'+id)
+            .map((res:Response) => {
+                let events:Array<IEvent> = [];
+                let jsonResults:Array<any> = res.json();
+                jsonResults.forEach((jsonResult) => {
+                    events.push(new IEvent(jsonResult));
+                });
+                return events;
+            }).catch(this.handleError);
+    }
+
+    /*
+     * Methode permettant de recuperer la liste des evenements appartenant a la tranche d'age dont l'id est passé en
+     * parametre de la requete http.
+     * Cette liste est retournée par le web service dont l'URL est passé en parametre de la requete http.
+     */
+    getEventsListByAgeRange(id:number):Observable<Array<IEvent>> {
+        return this.http.get(AppUtils.BACKEND_ROOT_URL+'/eventslist/ageRanges/'+id)
+            .map((res:Response) => {
+                let events:Array<IEvent> = [];
+                let jsonResults:Array<any> = res.json();
+                jsonResults.forEach((jsonResult) => {
+                    events.push(new IEvent(jsonResult));
+                });
+                return events;
+            }).catch(this.handleError);
+    }
+
+    /*
      * Methode permettant de recuperer l'evenement dont l'id est passé en parametre de la requete http.
      * Cet evenement est retourné par le web service dont l'URL est passé en parametre de la requete http.
      */

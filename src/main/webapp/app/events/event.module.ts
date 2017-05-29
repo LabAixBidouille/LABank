@@ -30,6 +30,8 @@ import { EventRecurrencesComponent } from './event-recurrences.component';
 import { EventTypesSelectComponent } from './event-types-select.component';
 
 import { DatepickerModule, AlertModule, TimepickerModule } from 'ng2-bootstrap';
+import {EventThemesComponent} from "./event-themes.component";
+import {EventAgeRangesComponent} from "./event-ageRanges.component";
 
 @NgModule({
     imports: [ FormsModule, ReactiveFormsModule, BrowserModule, UtilsModule, AlertModule.forRoot(),
@@ -37,9 +39,9 @@ import { DatepickerModule, AlertModule, TimepickerModule } from 'ng2-bootstrap';
     bootstrap: [EventComponent, Events, EventType ],
     declarations: [EventComponent, Events, EventType, AdminEventsComponent, AddEventComponent, UpdateEventComponent,
         AdminEventsHomeComponent, AdminEventsPricesComponent, EventRecurrencesComponent,EventTypesSelectComponent,
-        AdminEventsAgeRangesComponent, AddEventAgeRangeComponent, UpdateEventAgeRangeComponent,
-        AdminEventsTypesComponent, AddEventTypeComponent, UpdateEventTypeComponent,
-        AdminEventsThemesComponent, AddEventThemeComponent, UpdateEventThemeComponent ],
+        AdminEventsAgeRangesComponent, AddEventAgeRangeComponent, UpdateEventAgeRangeComponent, AdminEventsTypesComponent,
+        AddEventTypeComponent, UpdateEventTypeComponent, AdminEventsThemesComponent, AddEventThemeComponent,
+        UpdateEventThemeComponent, EventThemesComponent, EventAgeRangesComponent ],
     providers: [ EventsService ]
 })
 

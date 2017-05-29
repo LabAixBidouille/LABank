@@ -6,6 +6,8 @@ import {Router, ActivatedRoute} from '@angular/router';
 import {EventsService} from './events.service';
 import {IEvent} from "./IEvent";
 import {IEventType} from "./IEventType";
+import {CEventTheme} from "./CEventTheme";
+import {CAgeRange} from "./CAgeRange";
 
 @Component({
     selector: 'events',
@@ -16,16 +18,20 @@ import {IEventType} from "./IEventType";
 export class Events {
     events:Array<IEvent>;
     router: Router;
+    theme:CEventTheme;
+    ageRange: CAgeRange;
     private sub:any;
 
     constructor(router: Router, private eventsService:EventsService, private route: ActivatedRoute) {
         this.events = [];
+        this.theme = new CEventTheme();
         this.router = router;
         this.eventsService = eventsService;
     }
 
     ngOnInit():void {
         this.sub = this.route.params.subscribe(params => this.getEventListByCat(+params['id']));
+
     }
 
     getEventListByCat(id:number):void {
@@ -34,5 +40,20 @@ export class Events {
 
     showEvent(id:number){
         this.router.navigate(['/events',id]);
+    }
+
+
+    getTheme(theme:CEventTheme){
+        this.theme = theme;
+        console.log(this.theme);
+        this.eventsService.getEventsListByTheme(this.theme.idEventTheme).
+            subscribe((events:Array<IEvent>) => this.events = events);
+    }
+
+    getAgeRange(ageRange:CAgeRange){
+        this.ageRange = ageRange;
+        console.log(this.ageRange);
+        this.eventsService.getEventsListByAgeRange(this.ageRange.idAgeRange).
+        subscribe((events:Array<IEvent>) => this.events = events);
     }
 }
