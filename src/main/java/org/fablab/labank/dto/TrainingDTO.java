@@ -56,7 +56,7 @@ public class TrainingDTO {
     private int twitterShare;
 
     // Likes
-    private int like;
+    private int likes;
 
     // List of associated machine (user can associate a machine to a training)
     @OneToMany
@@ -67,7 +67,7 @@ public class TrainingDTO {
         inverseJoinColumns={ @JoinColumn(name="machine_idmachine", referencedColumnName="id", unique=true) }
     )
     // While Update this will also insert collection row another insert
-    private List<MachineDTO> machines;
+    private List<MachineDTO> associatedMachines;
 
 
 
@@ -90,7 +90,7 @@ public class TrainingDTO {
         this.availableTickets = trainingDTO.availableTickets;
         this.facebookShare = trainingDTO.facebookShare;
         this.twitterShare = trainingDTO.twitterShare;
-        this.like = trainingDTO.like;
+        this.likes = trainingDTO.likes;
     }
 
     /** Getter and Setters **/
@@ -166,19 +166,19 @@ public class TrainingDTO {
         this.twitterShare = twitterShare;
     }
 
-    public int getLike() {
-        return like;
+    public int getLikes() {
+        return likes;
     }
 
-    public void setLike(int like) {
-        this.like = like;
+    public void setLikes(int likes) {
+        this.likes = likes;
     }
 
-    public List<MachineDTO> getMachines() {
-        return machines;
+    public List<MachineDTO> getAssociatedMachines() {
+        return associatedMachines;
     }
 
-    public void setMachines(List<MachineDTO> machines) {
-        this.machines = machines;
+    public void setAssociatedMachines(List<MachineDTO> associatedMachines) {
+        this.associatedMachines = associatedMachines;
     }
 }

@@ -10,15 +10,15 @@ import {EventsService} from "./events.service";
 })
 export class EventAgeRangesComponent{
     ageRanges:Array<CAgeRange>;
-    ageRangeSelected = new CAgeRange();
+    ageRange = new CAgeRange();
     @Output()
-    selectedAgeRange = new EventEmitter<CAgeRange>();
+    ageRangeSelected = new EventEmitter<CAgeRange>();
 
     constructor(private eventsService: EventsService){
         this.eventsService.getAllAgeRange().subscribe((ageRanges:Array<CAgeRange>) => this.ageRanges = ageRanges);
     }
 
     selectAgeRange(){
-        this.selectedAgeRange.emit(this.ageRangeSelected);
+        this.ageRangeSelected.emit(this.ageRange);
     }
 }

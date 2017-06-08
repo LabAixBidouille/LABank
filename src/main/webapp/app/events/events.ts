@@ -45,7 +45,9 @@ export class Events {
 
     getTheme(theme:CEventTheme){
         this.theme = theme;
-        console.log(this.theme);
+        if((this.ageRange == null) || (this.ageRange.idAgeRange != 1)){
+            console.log(this.theme);
+        }
         this.eventsService.getEventsListByTheme(this.theme.idEventTheme).
             subscribe((events:Array<IEvent>) => this.events = events);
     }

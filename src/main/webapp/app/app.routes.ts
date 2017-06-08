@@ -11,6 +11,7 @@ import {SignUpComponent} from './signup/sign-up.component';
 
 import {TrainingsComponent} from './training/trainings.component';
 import {TrainingComponent} from './training/training.component';
+import {TrainingMachinesComponent} from './training/training-machines.component'
 import {AdminTrainingsComponent} from './training/admin-trainings.component';
 import {AddTrainingComponent} from './training/add-training.component';
 import {UpdateTrainingComponent} from './training/update-training.component';
@@ -112,6 +113,7 @@ export const routes:Routes = [
 
     {path: 'trainings', component: TrainingsComponent},
     {path: 'trainings/:id', component: TrainingComponent},
+    {path: 'training-machines', component: TrainingMachinesComponent},
     {path: 'admin/trainings', component: AdminTrainingsComponent},
     {path: 'admin/trainings/new', component: AddTrainingComponent},
     {path: 'admin/trainings/:id', component: UpdateTrainingComponent},

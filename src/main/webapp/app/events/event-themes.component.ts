@@ -11,16 +11,16 @@ import {CEventTheme} from "./CEventTheme";
 })
 export class EventThemesComponent{
     themes:Array<CEventTheme>;
-    themeSelected = new CEventTheme();
+    theme = new CEventTheme();
     @Output()
-    selectedTheme = new EventEmitter<CEventTheme>();
+    themeSelected = new EventEmitter<CEventTheme>();
 
     constructor(private eventsService: EventsService){
         this.eventsService.getAllEventTheme().subscribe( (themes:Array<CEventTheme>) => this.themes = themes);
     }
 
     selectTheme(){
-        this.selectedTheme.emit(this.themeSelected);
+        this.themeSelected.emit(this.theme);
     }
 
 

@@ -82,6 +82,12 @@
                         <!-- Events type -->
                         <event-types-select required="true" (eventTypeSelected)="getEventType($event)" ></event-types-select>
 
+                        <!-- Events theme -->
+                        <event-themes (themeSelected)="getTheme($event)"></event-themes>
+
+                        <!-- Events age ranges -->
+                        <event-ageRanges (ageRangeSelected)="getAgeRange($event)"></event-ageRanges>
+
                         <!-- AllDay -->
                         <div class="form-group"
                              [ngClass]="{'has-error':!eventForm.controls['allDay'].valid && eventForm.controls['allDay'].touched}">
@@ -139,7 +145,7 @@
 
                         <!-- Standard price -->
                         <div class="form-group">
-                            <label for="stdPrice">Tarifs</label>
+                            <label for="stdPrice">Prix</label>
                             <div class="input-group" >
                                 <input id="stdPrice" name="standardPrice" type="number" min="0"
                                        class="form-control" [formControl]="eventForm.controls['standardPrice']">

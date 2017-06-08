@@ -71,6 +71,20 @@
                             <!--/.Errors Msg-->
                         </div>
 
+                        <!-- Associated Machines -->
+                        <div class="form-group">
+                            <label for="asssociatedMachines">Machines associées</label>
+                            <div >
+                                <button id="asssociatedMachines" (click)="deleteMachine(machine)" type="button"
+                                        class="btn btn-default btn-circle" *ngFor="let machine of training.associatedMachines">
+                                    <i class="glyphicon glyphicon-remove"></i>{{machine.name}}
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Machines -->
+                        <training-machines (selectedMachines)="getMachines($event)"></training-machines>
+
                         <!-- Number of tickets -->
                         <div class="form-group">
                             <label for="nbTicket">Nombre de tickets</label>
