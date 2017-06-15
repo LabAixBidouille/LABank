@@ -1,6 +1,6 @@
 <div >
     <label>Tranche d'age</label>
-    <select [(ngModel)]="ageRangeSelected" (change)="selectAgeRange()" class="form-control"
+    <select [(ngModel)]="ageRange" (change)="selectAgeRange()" class="form-control"
             id="theme">
         <option *ngFor="let currentAgeRange of ageRanges"  [ngValue]="currentAgeRange" >
             {{currentAgeRange.name}}</option>

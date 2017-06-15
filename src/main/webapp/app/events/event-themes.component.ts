@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Output} from "@angular/core";
-import {CTheme} from "../projects/CTheme";
 import {EventsService} from "./events.service";
 import {CEventTheme} from "./CEventTheme";
 /**
@@ -7,7 +6,8 @@ import {CEventTheme} from "./CEventTheme";
  */
 @Component({
     selector: 'event-themes',
-    templateUrl: '../app/events/event-themes.html'
+    templateUrl: '../app/events/event-themes.html',
+    providers: [EventsService]
 })
 export class EventThemesComponent{
     themes:Array<CEventTheme>;
