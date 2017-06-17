@@ -16,14 +16,14 @@
                     <form id="form" class="form" [formGroup]="loginForm" (ngSubmit)="authenticate($event)">
                         <div class="text-center"><span class="label label-danger" *ngIf="error">{{error}}</span></div>
 
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <div class="input-groupId">
+                            <span class="input-groupId-addon"><i class="glyphicon glyphicon-user"></i></span>
                             <input type="text" class="form-control" required formControlName="username"
                                    name="username" id="username" placeholder="e-mail ou login">
                         </div>
 
-                        <div class="input-group">
-                            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <div class="input-groupId">
+                            <span class="input-groupId-addon"><i class="glyphicon glyphicon-lock"></i></span>
                             <input type="password" class="form-control" required formControlName="password"
                                    name="password" id="password" placeholder="Mot de passe">
                         </div>
@@ -31,7 +31,7 @@
                         <div class="text-center">
                             <button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-log-in"></i> Se connecter</button>
                         </div>
-                        <div class="form-group last-row">
+                        <div class="form-groupId last-row">
                             <label class="checklabel">
                                 <input type="checkbox"> Rester Connecté
                             </label>
@@ -61,14 +61,14 @@
     <form id="form" class="form" [formGroup]="loginForm" (ngSubmit)="authenticate($event); " >
         <div class="text-center"><span class="label label-danger" *ngIf="error">{{error}}</span></div>
 
-        <div class="input-group" [ngClass]="{'has-error':!loginForm.controls['username'].valid && loginForm.controls['username'].touched}">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        <div class="input-groupId" [ngClass]="{'has-error':!loginForm.controls['username'].valid && loginForm.controls['username'].touched}">
+            <span class="input-groupId-addon"><i class="glyphicon glyphicon-user"></i></span>
             <input type="text" class="form-control" required [formControl]="loginForm.controls['username']"
                    name="username" id="username" placeholder="e-mail ou login">
         </div>
 
-        <div class="input-group" [ngClass]="{'has-error':!loginForm.controls['password'].valid && loginForm.controls['password'].touched}">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+        <div class="input-groupId" [ngClass]="{'has-error':!loginForm.controls['password'].valid && loginForm.controls['password'].touched}">
+            <span class="input-groupId-addon"><i class="glyphicon glyphicon-lock"></i></span>
             <input type="password" class="form-control" required [formControl]="loginForm.controls['password']"
                    name="password" id="password" placeholder="Mot de passe">
         </div>
@@ -80,7 +80,7 @@
     <div class="text-center">
         <!--<button type="submit" [disabled]="!loginForm.valid" class="btn btn-primary btn-block"><i class="glyphicon glyphicon-log-in"></i> Se connecter</button>-->
     </div>
-    <div class="form-group last-row">
+    <div class="form-groupId last-row">
         <label class="checklabel" style="font-size:smaller;margin-right: 60px;">
             <input type="checkbox"> Rester Connecté
         </label>

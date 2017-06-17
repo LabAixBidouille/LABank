@@ -29,6 +29,28 @@ public class Events {
         }
     }
 
+    @RequestMapping("/eventslist/themes/{id}")
+    public List<EventDTO> getEventsByTheme(@PathVariable Long id){
+        if(id == 1) {
+            return (List<EventDTO>) eventDAO.findAll();
+        }
+        else {
+            return eventDAO.findByIdEventTheme(id);
+        }
+    }
+
+    @RequestMapping("/eventslist/ageRanges/{id}")
+    public List<EventDTO> getEventsByAgeRange(@PathVariable Long id){
+        if(id == 1) {
+            System.out.println("BIG test");
+            return (List<EventDTO>) eventDAO.findAll();
+        }
+        else {
+            System.out.println("OK");
+            return eventDAO.findByIdAgeRange(id);
+        }
+    }
+
     @RequestMapping(value = "/events/{id}")
     public EventDTO query(@PathVariable Long id){
         return eventDAO.findOne(id);

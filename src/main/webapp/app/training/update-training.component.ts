@@ -6,6 +6,8 @@ import 'rxjs/add/operator/switchMap';
 
 import {TrainingService} from "./training.service";
 import {CTraining} from "./CTraining";
+import {IMachine} from "../machines/IMachine";
+import {and} from "@angular/router/src/utils/collection";
 
 @Component({
     selector: 'update-training',
@@ -18,10 +20,12 @@ export class UpdateTrainingComponent implements OnInit{
     trainings: Array<CTraining>;
     illustration:string;
     error:string;
+    associatedMachines: Array<IMachine>;
 
     constructor(private router:Router, private trainingService:TrainingService, private route :ActivatedRoute,
                 private location:Location, private _ngZone:NgZone){
             this.trainings=[];
+            this.associatedMachines = [];
     }
 
      ngOnInit(): void {
@@ -35,6 +39,7 @@ export class UpdateTrainingComponent implements OnInit{
         }else{
             this.training.illustration = this.illustration;
         }
+        this.training.associatedMachines = this.training.associatedMachines.concat(this.associatedMachines);
         this.trainingService.updateTraining(this.training).subscribe((training:CTraining) => {
             this.training = training;
             this.trainingService.getAll().subscribe( (trainings:Array<CTraining>) => this.trainings = trainings );
@@ -44,6 +49,33 @@ export class UpdateTrainingComponent implements OnInit{
 
     getIllustration(illustration:string){
         this.illustration = '../assets/img/trainings/'+ illustration;
+    }
+
+    getMachines(machines:Array<IMachine>){
+        this.checkDoublon(machines);
+        this.associatedMachines = machines;
+    }
+
+    checkDoublon(machines:Array<IMachine>){
+        let i=0;
+        let j=0;
+        if(machines){
+            while ( i< machines.length){
+                j=0;
+                while(j<this.training.associatedMachines.length && this.training.associatedMachines[j].id != machines[i].id){
+                    j++;
+                }
+                if(j<this.training.associatedMachines.length && this.training.associatedMachines[j].id == machines[i].id){
+                    console.log("BIG TEST");
+                    machines.splice(machines.indexOf(machines[i]));
+                }
+                i++
+            }
+        }
+    }
+
+    deleteMachine(machine:IMachine){
+        this.training.associatedMachines.splice(this.training.associatedMachines.indexOf(machine),1);
     }
 
     goBack(): void {

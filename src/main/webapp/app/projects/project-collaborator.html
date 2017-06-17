@@ -1,0 +1,10 @@
+<div class="form-group">
+    <label for="collaborators">Collaborateurs*</label>
+    <div >
+        <select [(ngModel)]="collaboratorsSelected" (change)="selectCollaborators()" class="form-control"
+                id="collaborators" multiple="multiple">
+            <option *ngFor="let currentCollab of collaborators"  [ngValue]="currentCollab" >
+                {{currentCollab.pseudonym}}</option>
+        </select>
+    </div>
+</div>

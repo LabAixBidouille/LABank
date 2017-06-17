@@ -1,0 +1,8 @@
+<div>
+    <label>Themes</label>
+    <select [(ngModel)]="theme" (change)="selectTheme()" class="form-control"
+            id="theme">
+        <option *ngFor="let currentTheme of themes"  [ngValue]="currentTheme" >
+            {{currentTheme.name}}</option>
+    </select>
+</div>

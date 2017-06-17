@@ -2,6 +2,7 @@ package org.fablab.labank.rest;
 import org.fablab.labank.dao.*;
 import org.fablab.labank.dto.LicenceDTO;
 import org.fablab.labank.dto.ProjectDTO;
+import org.fablab.labank.dto.StepDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,8 +45,8 @@ public class Projects {
         ProjectDTO p = null;
         try{
             p=projectDAO.findOne(id);
-            p.setProjectSteps(stepDAO.findByIdProject(p.getIdProject()));
-            System.out.println(p.getProjectSteps().size());
+            //p.setProjectSteps(stepDAO.findByIdProject(p.getIdProject()));
+            System.out.println("Taille de la liste de steps: "+p.getProjectSteps().size());
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -62,6 +63,8 @@ public class Projects {
         ProjectDTO p = null;
         try {
             p = this.projectDAO.save(project);
+            System.out.println(p.getIdProject());
+//            this.saveSteps(p);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -78,6 +81,7 @@ public class Projects {
         ProjectDTO p = null;
         try {
             p = this.projectDAO.save(project);
+//            this.saveSteps(project);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -93,6 +97,7 @@ public class Projects {
     public boolean delete(@PathVariable Long id){
         boolean status = false;
         try {
+            this.deleteSteps(this.projectDAO.findOne(id));
             this.projectDAO.delete(id);
             status = true;
         }catch(Exception e){
@@ -101,4 +106,34 @@ public class Projects {
         return status;
     }
 
+    /**
+     * Methode permettant de mettre à jour et enregistrer les etapes d'un projet
+     * @param project
+     */
+    public void saveSteps(ProjectDTO project){
+        StepDTO step = null;
+        if(project != null && project.getProjectSteps().size()>0) {
+            for (int i = 0; i < project.getProjectSteps().size(); i++) {
+                step = project.getProjectSteps().get(i);
+//                step.setIdProject(project.getIdProject());
+                System.out.println(step.getTitle());
+                this.stepDAO.save(step);
+            }
+        }
+    }
+
+    /**
+     * Methode permettant de supprimer les etapes d'un projet
+     * @param project
+     */
+    public void deleteSteps(ProjectDTO project){
+        StepDTO step = null;
+        if(project.getProjectSteps().size()>0) {
+            for (int i = 0; i < project.getProjectSteps().size(); i++) {
+                step = project.getProjectSteps().get(i);
+//                step.setIdProject(project.getIdProject());
+                this.stepDAO.delete(step.getIdStep());
+            }
+        }
+    }
 }

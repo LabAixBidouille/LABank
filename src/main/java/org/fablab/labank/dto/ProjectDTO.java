@@ -1,5 +1,7 @@
 package org.fablab.labank.dto;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
@@ -99,7 +101,8 @@ public class ProjectDTO {
     // While Update this will also insert collection row another insert
     private List<ProjectFileDTO> projectFiles;
 
-    @Transient
+    @JsonManagedReference
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL)
     private List<StepDTO> projectSteps;
 
 

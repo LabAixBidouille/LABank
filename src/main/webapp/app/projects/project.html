@@ -61,13 +61,12 @@
                                 </div>
                             </div>
 
-                            <div class="box-body">
-                                <div class="panel panel-info" *ngFor="let step of project.projectsSteps">
-                                    <div class="panel-heading"><h4>Etape {{step.order}} : {{step.title}}</h4></div>
-                                    <div class="panel-body">
-                                        <img [attr.src]="step.illustration" alt="Step Image" width="200px" height="200px"
-                                             class="pull-left"/>
-                                        <div class="pull-right">{{step.description}}</div>
+                            <div class="box-body ">
+                                <div class="panel panel-info" *ngFor="let step of project.projectSteps">
+                                    <div class="panel-heading text-left"><h4>Etape {{step.stepsOrder}} : {{step.title}}</h4></div>
+                                    <div class="panel-body text-center">
+                                        <img [attr.src]="step.illustration" alt="Step Image" width="200px" height="140px"/>
+                                        <div class="text-justify">{{step.description}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -78,7 +77,7 @@
                         <div>
                             <div class="panel panel-info">
                                 <div class="panel-heading">
-                                    <h4>Fichiers CAO à télécharger <span class="badge">0</span></h4> <!-- TODO: rajouter la taille de la liste a place du 0 -->
+                                    <h4>Fichiers CAO à télécharger <span class="badge">{{project.projectsFiles?.length}}</span></h4> <!-- TODO: rajouter la taille de la liste a place du 0 -->
                                 </div>
                                 <div class="panel-body" *ngFor="let file of project.projectsFiles">
                                     <div >{{file.fileName}}</div>
@@ -89,7 +88,7 @@
 
                         <div class="panel panel-info" >
                             <div class="panel-heading">
-                                <h4>Machines et materiaux <span class="badge">0</span></h4> <!-- TODO: rajouter la taille de la liste a place du 0 -->
+                                <h4>Machines et materiaux <span class="badge">{{project?.projectsMachines?.length + project.projectsMaterials?.length}}</span></h4> <!-- TODO: rajouter la taille de la liste a place du 0 -->
                             </div>
                             <div class="panel-body" *ngFor="let machine of project.projectsMachines">
                                 <div>{{machine.name}}</div>
@@ -100,10 +99,10 @@
                         </div>
 
                         <div class="panel panel-info" >
-                            <div class="panel-heading"><h4>Collaborateurs <span class="badge">0</span></h4> <!-- TODO: rajouter la taille de la liste a place du 0 -->
+                            <div class="panel-heading"><h4>Collaborateurs <span class="badge">{{project.collaborators?.length}}</span></h4> <!-- TODO: rajouter la taille de la liste a place du 0 -->
                             </div>
                             <div class="panel-body" *ngFor="let collab of project.collaborators">
-                                <div>{{collab.id}}</div>
+                                <div>{{collab.pseudonym}}</div>
                             </div>
                         </div>
 

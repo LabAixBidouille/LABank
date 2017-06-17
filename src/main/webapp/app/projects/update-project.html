@@ -72,27 +72,48 @@
                         </div>
 
                         <!-- Project's steps -->
-                        <div class="form-group multiple-form-group">
-                            <label>Etapes</label>
+                        <!--<div class="form-group multiple-form-group">-->
+                            <!--<label>Etapes</label>-->
 
-                            <div class="form-group input-group">
-                                <input type="text" name="multiple[]" class="form-control" placeholder="Titre de l'etape">
-                                <textarea style="width:100%" rows="5" name="multiple[]" placeholder="Description de l'etape"></textarea>
-                                <input name="multiple[]"  class="form-control" type="file"
+                            <!--<div class="form-group input-group">-->
+                                <!--<input type="text" name="multiple[]" class="form-control" placeholder="Titre de l'etape">-->
+                                <!--<textarea style="width:100%" rows="5" name="multiple[]" placeholder="Description de l'etape"></textarea>-->
+                                <!--<input name="multiple[]"  class="form-control" type="file"-->
+                                       <!--(change)="getStepIllustration($event.target.files[0].name)" accept=".png,.jpg,.jpeg">-->
+                                <!--<span class="input-group-btn">-->
+                                    <!--<button type="button" class="btn btn-default btn-add">-->
+                                        <!--+ Ajouter une etape-->
+						            <!--</button>-->
+                                <!--</span>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <label>Etapes</label>
+                        <br/>
+                        <div class="form-group input-group"  *ngIf="show">
+                            <div *ngFor="let step of steps">
+                                <label >Etape {{step.stepsOrder}}</label>
+                                <input [disabled]="noDelete" required="true" [(ngModel)]="step.title" type="text" name="title + {{step.idStep}}" class="form-control" placeholder="Titre de l'etape">
+                                <textarea [disabled]="noDelete" requiredl="true"  [(ngModel)]="step.description" style="width:100%" rows="5" name="desc + {{step.idStep}}" placeholder="Description de l'etape"></textarea>
+                                <input [disabled]="noDelete"  name="illustration"  class="form-control" type="file"
                                        (change)="getStepIllustration($event.target.files[0].name)" accept=".png,.jpg,.jpeg">
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-default btn-add">
-                                        + Ajouter une etape
-						            </button>
-                                </span>
+                                <!--<button [disabled]="noDelete" (click)="validate(step)" type="button" class="btn btn-default"  title="Valider">Valider l'étape</button>-->
+                                <button [disabled]="noDelete" (click)="delete(step)" type="button" class="btn btn-danger"  title="Supprimer"><i class="fa fa-ban"></i> Supprimer</button>
                             </div>
                         </div>
+                        <!--<project-steps-list [currentProject]="project"></project-steps-list>-->
+                        <template #stepContainer ></template>
+                        <br/>
+                        <button (click)="addStep()">Ajouter une etape</button>
+                        <br/>
 
                         <!-- Project's materials -->
                         <project-materials required="true" (selectedMaterials)="getMaterials($event)"></project-materials>
 
                         <!-- Project's machines -->
                         <project-machines required="true" (selectedMachines)="getMachines($event)"></project-machines>
+
+                        <!-- Project's collaborators -->
+                        <project-collaborators required="true" (selectedCollaborators)="getCollaborators($event)"></project-collaborators>
 
                         <!-- Project's licence -->
                         <project-licences required="true" (selectedLicence)="getLicence($event)"></project-licences>

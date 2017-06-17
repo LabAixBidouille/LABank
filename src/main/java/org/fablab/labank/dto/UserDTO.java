@@ -1,8 +1,5 @@
 package org.fablab.labank.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.springframework.beans.factory.annotation.Qualifier;
-
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -79,11 +76,12 @@ public class UserDTO {
     // The user's interests
     private String interests;
 
-    // The user's group ID
-    @OneToOne
-    @JoinColumn(name = "groupid")
+    // The user's groupId ID
+//    @OneToOne
+//    @JoinColumn(name = "groupid")
+    @Column(name = "groupid")
     @NotNull
-    private GroupDTO group;
+    private Long groupId;
 
     // The user's profile ID
     @OneToOne
@@ -126,7 +124,7 @@ public class UserDTO {
         this.website = userDTO.website;
         this.occupation = userDTO.occupation;
         this.interests = userDTO.interests;
-        this.group = userDTO.group;
+        this.groupId = userDTO.groupId;
         this.profile = userDTO.profile;
         this.avatar = userDTO.avatar;
     }
@@ -135,7 +133,7 @@ public class UserDTO {
         this.id = id;
     }
 
-    public UserDTO(char sex, String pseudonym, String password, String email, String name, String firstname, Date birthday, String address, String phone, String website, String occupation, String interests, GroupDTO group, Profile profile, String avatar) {
+    public UserDTO(char sex, String pseudonym, String password, String email, String name, String firstname, Date birthday, String address, String phone, String website, String occupation, String interests, Long groupId, Profile profile, String avatar) {
         this.sex = sex;
         this.pseudonym = pseudonym;
         this.password = password;
@@ -148,7 +146,7 @@ public class UserDTO {
         this.website = website;
         this.occupation = occupation;
         this.interests = interests;
-        this.group = group;
+        this.groupId = groupId;
         this.profile = profile;
         this.avatar = avatar;
     }
@@ -247,12 +245,12 @@ public class UserDTO {
         this.interests = interests;
     }
 
-    public GroupDTO getGroup() {
-        return group;
+    public Long getGroupId() {
+        return groupId;
     }
 
-    public void setGroup(GroupDTO group) {
-        this.group = group;
+    public void setGroupId(Long groupId) {
+        this.groupId = groupId;
     }
 
     public Profile getProfile() {

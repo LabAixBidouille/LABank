@@ -6,6 +6,7 @@ import { Location } from '@angular/common';
 
 import {TrainingService} from "./training.service";
 import {CTraining} from "./CTraining";
+import {IMachine} from "../machines/IMachine";
 
 @Component({
     selector: 'add-training',
@@ -18,10 +19,13 @@ export class AddTrainingComponent{
 
     training:CTraining;
     illustration:string;
+    associatedMachines:Array<IMachine>;
     error:string;
 
     constructor(router:Router,form: FormBuilder, private trainingService:TrainingService, private location:Location){
         this.router = router;
+        this.associatedMachines=[];
+
         this.trainingForm = form.group({
                 name: ['', Validators.required],
                 illustration: "",
@@ -42,6 +46,7 @@ export class AddTrainingComponent{
         this.training.description = this.trainingForm.value.description;
         this.training.nbTicket = this.trainingForm.value.nbTicket;
         this.training.display = this.trainingForm.value.display;
+        this.training.associatedMachines = this.associatedMachines;
 
         this.trainingService.saveTraining(this.training).subscribe((training:CTraining) => {
             this.training = training;
@@ -53,6 +58,10 @@ export class AddTrainingComponent{
 
     getIllustration(illustration:any){
         this.illustration = '../assets/img/trainings/'+ illustration;
+    }
+
+    getMachines(machines:Array<IMachine>){
+        this.associatedMachines = machines;
     }
 
     goBack(): void {

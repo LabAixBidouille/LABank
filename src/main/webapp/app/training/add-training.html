@@ -78,6 +78,9 @@
                             <!--/. Errors Msg-->
                         </div>
 
+                        <!-- Associated Machines -->
+                        <training-machines (selectedMachines)="getMachines($event)"></training-machines>
+
                         <!-- Number of tickets -->
                         <div class="form-group">
                             <label for="nbTicket">Nombre de tickets</label>

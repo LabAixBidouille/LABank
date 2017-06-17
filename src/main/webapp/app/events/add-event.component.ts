@@ -11,6 +11,8 @@ import {EventsService} from "./events.service";
 import {IEvent} from "./IEvent";
 import {IEventType} from "./IEventType";
 import {CRecurrence} from "./CRecurrence";
+import {CEventTheme} from "./CEventTheme";
+import {CAgeRange} from "./CAgeRange";
 
 @Component({
     selector: 'add-event',
@@ -27,6 +29,8 @@ export class AddEventComponent{
     event:IEvent;
     eventType:IEventType;
     recurrence: CRecurrence;
+    theme:CEventTheme;
+    ageRange:CAgeRange;
 
     illustration:string;
     error:string;
@@ -37,6 +41,8 @@ export class AddEventComponent{
         this.event = new IEvent();
         this.eventType = new IEventType();
         this.recurrence = new CRecurrence();
+        this.theme = new CEventTheme();
+        this.ageRange = new CAgeRange();
         this.test="";
 
         this.router = router;
@@ -80,6 +86,9 @@ export class AddEventComponent{
         this.event.reducedFare = this.eventForm.value.reducedFare ;
         this.event.nbTickets = this.eventForm.value.nbTickets ;
 
+        this.event.idEventTheme = this.theme.idEventTheme;
+        this.event.idAgeRange = this.ageRange.idAgeRange;
+
         this.eventService.saveEvent(this.event).subscribe((event:IEvent) => {
             this.event = event
             this.router.navigate(['admin/events/home']);
@@ -97,6 +106,14 @@ export class AddEventComponent{
 
     getRecurrence(recurrence:CRecurrence){
         this.recurrence = recurrence;
+    }
+
+    getTheme(theme:CEventTheme){
+        this.theme = theme;
+    }
+
+    getAgeRange(ageRange:CAgeRange){
+        this.ageRange = ageRange;
     }
 
     goBack(): void {

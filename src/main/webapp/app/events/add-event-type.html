@@ -1,0 +1,64 @@
+
+
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Les Types d'Evenements du FABLAB
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li class="active"><a href="#/admin/events/home">Gestion des types d'evenement</a></li>
+            <li class="active">Ajout de type d'evenement</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-primary">
+
+            <!-- Box header -->
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-th"></i> Ajouter un nouveau type</h3>
+            </div>
+            <!-- /.Box header -->
+
+            <!-- Box body -->
+            <div class="box-body">
+                <form [formGroup]="eventTypeForm" (ngSubmit)="addEventType()" >
+                    <fieldset>
+                        <!-- Name -->
+                        <div class="form-group"
+                             [ngClass]="{'has-error':!eventTypeForm.controls['libelle'].valid && eventTypeForm.controls['libelle'].touched}">
+                            <label for="libelle">Nom* </label>
+                            <div >
+                                <input id="libelle" name="libelle" type="text" placeholder="Nom du type"
+                                       class="form-control" required [formControl]="eventTypeForm.controls['libelle']">
+                            </div>
+                            <!--Errors Msg-->
+                            <div *ngIf="eventTypeForm.controls['libelle'].hasError('required') &&
+                                  eventTypeForm.controls['libelle'].touched" class="alert alert-danger">
+                                Le nom du type doit etre renseigné.
+                            </div>
+                            <!--/.Errors Msg-->
+                        </div>
+
+                        <!-- Form actions -->
+                        <div class="form-group">
+                            <div class="col-md-12 text-right">
+                                <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
+                                <button [disabled]="!eventTypeForm.valid" type="submit" class="btn btn-primary">Enregistrer le type</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <!-- /.Box body -->
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

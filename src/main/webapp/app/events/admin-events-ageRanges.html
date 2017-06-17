@@ -1,0 +1,60 @@
+<!--Modal Delete AgeRannges-->
+<div id="deleteAgeRangesModal" class="modal fade" >
+    <div class="login-box modal-dialog modal-sm box box-primary">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="box-header with-border">
+                <i class="fa fa-tags"></i>
+
+                <h3 class="box-title">Supprimer la tranche d'age</h3>
+                <!-- tools box -->
+                <div class="pull-right box-tools">
+                    <button type="button" class="btn btn-primary btn-sm" data-widget="remove" data-toggle="tooltip" title="Fermer" data-dismiss="modal">
+                        <i class="fa fa-times"></i></button>
+                </div>
+                <!-- /. tools -->
+            </div>
+
+            <div class="modal-body form-horizontal">
+                <p>Etes vous sur de vouloir supprimer la tranche d'age ?</p>
+            </div>
+
+            <div class="modal-footer box-footer last-row">
+                <button type="button" class="btn btn-default pull-left" data-widget="remove" data-toggle="tooltip" title="Fermer" data-dismiss="modal"><i class="fa fa-ban"></i> Annuler</button>
+                <button (click)="delete()" type="button" class="btn btn-primary pull-right" data-dismiss="modal" ><i class="glyphicon glyphicon-trash"></i> Supprimer</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="msg" class="alert alert-success alert-dismissible">
+    <a href="#/admin/events/home" (click)="closeAlert()" class="close">&times;</a>
+    <strong>Tranche d'age supprimée avec succes !</strong>.
+</div>
+<div class="table-responsive">
+    <button (click)="newAgeRange()" type="button" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-plus"></i> Ajouter une tranche d'age</button>
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let ageRange of ageRanges" >
+            <td >{{ageRange.name}}</td>
+            <td>
+                <button (click)="updateAgeRange(ageRange.idAgeRange)" type="button" class="btn btn-warning btn-circle">
+                    <i class="glyphicon glyphicon-edit"></i>Editer
+                </button>
+                <button (click)="deleteAgeRange(ageRange.idAgeRange)" data-toggle="modal" data-target="#deleteAgeRangesModal"
+                        data-backdrop="false" type="button" class="btn btn-danger btn-circle">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

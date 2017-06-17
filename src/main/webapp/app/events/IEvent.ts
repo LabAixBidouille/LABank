@@ -18,10 +18,17 @@ export class IEvent {
     standardPrice : number;
     reducedFare : number;
     nbTickets : number;
+    availableTickets: number;
+    facebookShare: number;
+    twitterShare: number;
+    likes :number;
+    idEventTheme : number;
+    idAgeRange : number;
     constructor(event?:{idEvent:number, title:string, illustration:string, description:string,
                         idEventType:number, allDay:boolean, startDate:Date, endDate:Date, startAt:Date,
                         endAt:Date, idRecurrence:number, endRecurrence:Date, standardRecurrence:number,
-                        reducedFare:number, nbTickets:number}) {
+                        reducedFare:number, nbTickets:number,  availableTickets:number, facebookShare:number,
+                        twitterShare:number, likes:number, idEventTheme:number, idAgeRange:number}) {
         if(event) {
             _.assignIn(this, event);
         }

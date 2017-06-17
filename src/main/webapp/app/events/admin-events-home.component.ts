@@ -4,7 +4,7 @@ import {Component} from "@angular/core";
  */
 @Component({
     selector:'admin-eventsHome',
-    templateUrl:'./app/events/admin-eventsHome.html'
+    templateUrl:'./app/events/admin-events-home.html'
 })
 export class AdminEventsHomeComponent{
 

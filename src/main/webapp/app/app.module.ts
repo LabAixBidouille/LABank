@@ -30,14 +30,15 @@ import { EventModule } from "./events/event.module"
 import { DatepickerModule, TimepickerModule, AlertModule } from 'ng2-bootstrap';
 import {ProjectModule} from "./projects/project.module";
 import {SpaceModule} from "./spaces/space.module";
+import {HeaderModule} from "./header/header.module";
 
 @NgModule({
     imports:        [ HttpModule, RouterModule, BrowserModule ,FormsModule, ReactiveFormsModule, AccountModule,
         LoginModule, UserModule, UtilsModule, RoutesModule, DashboardModule,MachineModule, TrainingModule, SignUpModule,
         EventModule, AlertModule.forRoot(), DatepickerModule.forRoot(), TimepickerModule.forRoot(), ProjectModule,
-        SpaceModule],
-    declarations:   [ AppComponent, Header, Sidebar ],
-    bootstrap:      [ AppComponent, Header ],
+        SpaceModule, HeaderModule],
+    declarations:   [ AppComponent, Sidebar ],
+    bootstrap:      [ AppComponent ],
     providers:      [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
         {

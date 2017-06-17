@@ -37,6 +37,7 @@ import {ProjectService} from "./project.service";
  * Created by Kandel HANAFI on 29/03/2017.
  */
 @NgModule({
+    entryComponents: [ProjectStepsComponent],
     imports: [ FormsModule, ReactiveFormsModule, BrowserModule, UtilsModule ],
     bootstrap: [ ProjectComponent, ProjectsComponent,  AdminProjectsComponent, AddProjectComponent, UpdateProjectComponent ],
     declarations: [ ProjectComponent, ProjectsComponent, AdminProjectsComponent, AdminProjectsHomeComponent,

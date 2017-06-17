@@ -50,6 +50,7 @@ export class ProjectService{
     saveProject(project:CProject):Observable<CProject> {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
+        console.log(project.projectSteps[0].title);
         return this.http.post(AppUtils.BACKEND_ROOT_URL+'/admin/projects', JSON.stringify(project),{headers:headers})
             .map((res:Response) => {
                 return new CProject(res.json());
@@ -85,8 +86,8 @@ export class ProjectService{
     }
 
 
-       /********************************************************************
-     * Gestion des licences
+    /********************************************************************
+     *  Gestion des licences
      ********************************************************************/
 
 
@@ -301,6 +302,18 @@ export class ProjectService{
      */
     getAllStep():Observable<Array<CStep>> {
         return this.http.get(AppUtils.BACKEND_ROOT_URL+'/steps')
+            .map((res:Response) => {
+                let steps:Array<CStep> = [];
+                let jsonResults:Array<any> = res.json();
+                jsonResults.forEach((jsonResult) => {
+                    steps.push(new CStep(jsonResult));
+                });
+                return steps;
+            }).catch(this.handleError);
+    }
+
+    getStepsByIdProject(id:number):Observable<Array<CStep>>{
+        return this.http.get(AppUtils.BACKEND_ROOT_URL+'/steps/'+id)
             .map((res:Response) => {
                 let steps:Array<CStep> = [];
                 let jsonResults:Array<any> = res.json();

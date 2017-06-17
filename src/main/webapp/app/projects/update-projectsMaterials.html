@@ -31,10 +31,10 @@
                         <div class="form-group">
                             <label for="name">Nom </label>
                             <div >
-                                <input id="name" name="name" type="text" placeholder="Nom de la licence"
+                                <input id="name" name="name" type="text" placeholder="Nom du materiel"
                                        class="form-control" required [(ngModel)]="material.name" #name="ngModel" >
                             </div>
-                            <div *ngIf="name.control.dirty && name.control.hasError('required')">Le nom doit etre renseigné</div>
+                            <div *ngIf="name.control.dirty && name.control.hasError('required')">Le nom du materiel doit etre renseigné</div>
                         </div>
 
                         <!-- Form actions -->
