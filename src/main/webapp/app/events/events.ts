@@ -54,8 +54,9 @@ export class Events {
 
     getAgeRange(ageRange:CAgeRange){
         this.ageRange = ageRange;
-        console.log(this.ageRange);
-        this.eventsService.getEventsListByAgeRange(this.ageRange.idAgeRange).
-        subscribe((events:Array<IEvent>) => this.events = events);
+        if(this.theme.idEventTheme != null){
+            this.eventsService.getEventsListByThemeAndAgeRange(this.theme.idEventTheme,this.ageRange.idAgeRange).
+            subscribe((events:Array<IEvent>) => this.events = events);
+        }
     }
 }

@@ -74,6 +74,24 @@ export class EventsService {
     }
 
     /*
+    * Methode permettant de recuperer la liste des evenements appartenant au theme et à la tranche d'age dont les ids
+    * sont passés en parametre de la requete http.
+    * Cette liste est retournée par le web service dont l'URL est passé en parametre de la requete http.
+    */
+    getEventsListByThemeAndAgeRange(idTheme:number, idAgeRange:number):Observable<Array<IEvent>> {
+        return this.http.get(AppUtils.BACKEND_ROOT_URL+'/eventslist/themes/'+idTheme+'/ageRanges/'+idAgeRange)
+            .map((res:Response) => {
+                let events:Array<IEvent> = [];
+                let jsonResults:Array<any> = res.json();
+                jsonResults.forEach((jsonResult) => {
+                    events.push(new IEvent(jsonResult));
+                });
+                return events;
+            }).catch(this.handleError);
+    }
+
+
+    /*
      * Methode permettant de recuperer l'evenement dont l'id est passé en parametre de la requete http.
      * Cet evenement est retourné par le web service dont l'URL est passé en parametre de la requete http.
      */

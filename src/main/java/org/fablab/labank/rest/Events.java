@@ -51,6 +51,12 @@ public class Events {
         }
     }
 
+    @RequestMapping("/eventslist/themes/{idTheme}/ageRanges/{idAgeRange}")
+    public List<EventDTO> getEventsByThemeAndAgeRange(@PathVariable Long idTheme, @PathVariable Long idAgeRange){
+
+        return (List<EventDTO>) eventDAO.findByIdEventThemeAndIdAgeRange(idTheme,idAgeRange);
+    }
+
     @RequestMapping(value = "/events/{id}")
     public EventDTO query(@PathVariable Long id){
         return eventDAO.findOne(id);
