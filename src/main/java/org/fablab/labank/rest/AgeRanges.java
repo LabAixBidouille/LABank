@@ -21,7 +21,7 @@ public class AgeRanges {
 
     /**
      * Methode permettant de retourner une liste de AgeRangeDTO à l'URL spécifiée
-     * @return List<AgeRangeDTO> eventsTheme : liste de AgeRangeDTO
+     * @return List<AgeRangeDTO> ageRanges : liste de AgeRangeDTO
      */
     @RequestMapping("/ageRanges")
     public List<AgeRangeDTO> getAllAgeRange(){
@@ -57,7 +57,7 @@ public class AgeRanges {
     /**
      * Methode permettant de mettre à jour l'objet AgeRangeDTO passé en parametre de la requete HTTP.
      * @param ageRange : objet AgeRangeDTO.
-     * @return AgeRangeDTO eventTheme : objet AgeRangeDTO passé en parametre de la requete HTTP.
+     * @return AgeRangeDTO ageRange : objet AgeRangeDTO passé en parametre de la requete HTTP.
      */
     @RequestMapping(value = "/admin/events/ageRanges", method = RequestMethod.PUT)
     public AgeRangeDTO update(@RequestBody AgeRangeDTO ageRange){

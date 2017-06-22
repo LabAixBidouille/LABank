@@ -1,0 +1,66 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <h1>
+            Les Tarifs des Evenements du FABLAB
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Accueil</a></li>
+            <li class="active"><a href="#/admin/events/home">Gestion des tarifs</a></li>
+            <li class="active">Modification du tarif</li>
+        </ol>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+        <div class="box box-primary">
+
+            <!-- Box header -->
+            <div class="box-header with-border">
+                <h3 class="box-title"><i class="fa fa-tags"></i> Modifier le tarif</h3>
+            </div>
+            <!-- /.Box header -->
+
+            <!-- Box body -->
+            <div class="box-body">
+                <form  #eventPricesCategoriesForm="ngForm" (ngSubmit)="updateEventPricesCategory()" >
+                    <fieldset>
+                        <!-- Name -->
+                        <div class="form-group">
+                            <label for="name">Nom </label>
+                            <div >
+                                <input id="name" name="name" type="text" placeholder="Nom du tarif"
+                                       class="form-control" required [(ngModel)]="eventPricesCategory.name" #name="ngModel" >
+                            </div>
+                            <div *ngIf="name.control.dirty && name.control.hasError('required')">Le nom du tarif doit etre renseigné</div>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-group">
+                            <label for="description">Description</label>
+                            <div >
+                                <textarea id="description" name="description" placeholder="Description du tarif"
+                                          class="form-control" rows="5" required
+                                          [(ngModel)]="eventPricesCategory.description" #description="ngModel"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Form actions -->
+                        <div class="form-group">
+                            <div class="col-md-12 text-right">
+                                <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
+                                <button [disabled]="!eventPricesCategoriesForm.valid" type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+            <!-- /.Box body -->
+        </div>
+
+    </section>
+    <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->

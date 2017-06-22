@@ -10,6 +10,7 @@ import {IEventType} from "./IEventType";
 import {CRecurrence} from "./CRecurrence";
 import {CEventTheme} from "./CEventTheme";
 import {CAgeRange} from "./CAgeRange";
+import {CEventPricesCategories} from "./CEventPricesCategories";
 
 @Injectable()
 export class EventsService {
@@ -328,7 +329,7 @@ export class EventsService {
 
     /*
      * Methode permettant de recuperer la tranche d'age  dont l'id est passé en parametre de la requete http.
-     * Cette trach d'age est retournée par le web service dont l'URL est passé en parametre de la requete http.
+     * Cette tranche d'age est retournée par le web service dont l'URL est passé en parametre de la requete http.
      */
     getAgeRange(id:number):Observable<CAgeRange>{
         return this.http.get(AppUtils.BACKEND_ROOT_URL+'/ageRanges/'+id).map( (res:Response) => {
@@ -370,6 +371,78 @@ export class EventsService {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         return this.http.delete(AppUtils.BACKEND_ROOT_URL+'/admin/events/ageRanges/'+id, {headers:headers})
+            .map((res:Response) => {
+                let message:boolean ;
+                message = res.json();
+                return message ;
+            });
+    }
+
+    /********************************************************************
+     *  Gestion des eventPricesCategories
+     ********************************************************************/
+
+    /*
+     * Methode permettant de recuperer toutes les categories de prix retournées par le web service dont l'URL est passé
+     * en parametre de la requete http.
+     */
+    getAllEventPricesCategories():Observable<Array<CEventPricesCategories>> {
+        return this.http.get(AppUtils.BACKEND_ROOT_URL+'/eventPricesCategories')
+            .map((res:Response) => {
+                let eventPricesCategories:Array<CEventPricesCategories> = [];
+                let jsonResults:Array<any> = res.json();
+                jsonResults.forEach((jsonResult) => {
+                    eventPricesCategories.push(new CEventPricesCategories(jsonResult));
+                });
+                return eventPricesCategories;
+            }).catch(this.handleError);
+    }
+
+
+    /*
+     * Methode permettant de recuperer la categporie de prix  dont l'id est passé en parametre de la requete http.
+     * Cette categorie de prix est retournée par le web service dont l'URL est passé en parametre de la requete http.
+     */
+    getEventPricesCategory(id:number):Observable<CEventPricesCategories>{
+        return this.http.get(AppUtils.BACKEND_ROOT_URL+'/eventPricesCategories/'+id).map( (res:Response) => {
+            return new CEventPricesCategories(res.json());
+        })
+    }
+
+    /*
+     * Methode permettant d'enregister la categorie de prix passée en parametre de la requete http.
+     * Cette categorie de prix est enregistrée en base par le web service dont l'URL est passé en parametre de la requete http.
+     */
+    saveEventPricesCategory(eventPricesCategory:CEventPricesCategories):Observable<CEventPricesCategories> {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.post(AppUtils.BACKEND_ROOT_URL+'/admin/events/eventPricesCategories', JSON.stringify(eventPricesCategory),{headers:headers})
+            .map((res:Response) => {
+                return new CEventPricesCategories(res.json());
+            });
+    }
+
+    /*
+     * Methode permettant d'enregister les modifications de la categorie de prix passée en parametre de la requete http.
+     * Cette categorie de prix est enregistrée en base par le web service dont l'URL est passé en parametre de la requete http.
+     */
+    updateEventPricesCategory(eventPricesCategory:CEventPricesCategories):Observable<CEventPricesCategories> {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.put(AppUtils.BACKEND_ROOT_URL+'/admin/events/eventPricesCategories', JSON.stringify(eventPricesCategory),{headers:headers})
+            .map((res:Response) => {
+                return new CEventPricesCategories(res.json());
+            });
+    }
+
+    /*
+     * Methode permettant de supprimer la categorie de prix passée en parametre de la requete http.
+     * Cette categorie de prix est supprimée en base par le web service dont l'URL est passé en parametre de la requete http.
+     */
+    deleteEventPricesCategory(id:number):Observable<boolean> {
+        let headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        return this.http.delete(AppUtils.BACKEND_ROOT_URL+'/admin/events/eventPricesCategories/'+id, {headers:headers})
             .map((res:Response) => {
                 let message:boolean ;
                 message = res.json();

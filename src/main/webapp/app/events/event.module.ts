@@ -21,7 +21,7 @@ import {AddEventAgeRangeComponent} from "./add-event-ageRange.component";
 import {UpdateEventAgeRangeComponent} from "./update-event-ageRange.component";
 import {AddEventThemeComponent} from "./add-event-theme.component";
 import {UpdateEventThemeComponent} from "./update-event-theme.component";
-import { AdminEventsPricesComponent} from './admin-events-prices.component';
+import {AdminEventsPricesCategoriesComponent} from './admin-events-pricesCategories.component';
 import { AdminEventsComponent } from './admin-events.component';
 import { AddEventComponent } from './add-event.component';
 import { UpdateEventComponent } from './update-event.component';
@@ -32,16 +32,19 @@ import { EventTypesSelectComponent } from './event-types-select.component';
 import { DatepickerModule, AlertModule, TimepickerModule } from 'ng2-bootstrap';
 import {EventThemesComponent} from "./event-themes.component";
 import {EventAgeRangesComponent} from "./event-ageRanges.component";
+import {AddEventPricesCategoriesComponent} from "./add-event-pricesCategories.component";
+import {UpdateEventPricesCategoriesComponent} from "./update-event-pricesCategories.component";
 
 @NgModule({
     imports: [ FormsModule, ReactiveFormsModule, BrowserModule, UtilsModule, AlertModule.forRoot(),
         DatepickerModule.forRoot(), TimepickerModule.forRoot() ],
     bootstrap: [EventComponent, Events, EventType ],
     declarations: [EventComponent, Events, EventType, AdminEventsComponent, AddEventComponent, UpdateEventComponent,
-        AdminEventsHomeComponent, AdminEventsPricesComponent, EventRecurrencesComponent,EventTypesSelectComponent,
+        AdminEventsHomeComponent, AdminEventsPricesCategoriesComponent, EventRecurrencesComponent,EventTypesSelectComponent,
         AdminEventsAgeRangesComponent, AddEventAgeRangeComponent, UpdateEventAgeRangeComponent, AdminEventsTypesComponent,
         AddEventTypeComponent, UpdateEventTypeComponent, AdminEventsThemesComponent, AddEventThemeComponent,
-        UpdateEventThemeComponent, EventThemesComponent, EventAgeRangesComponent ],
+        UpdateEventThemeComponent, EventThemesComponent, EventAgeRangesComponent, AddEventPricesCategoriesComponent,
+        UpdateEventPricesCategoriesComponent],
     providers: [ EventsService ]
 })
 

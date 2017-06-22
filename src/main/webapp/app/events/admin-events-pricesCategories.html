@@ -1,0 +1,62 @@
+<!--Modal Delete EventPricesCategories-->
+<div id="deleteEventPricesCategoriesModal" class="modal fade" >
+    <div class="login-box modal-dialog modal-sm box box-primary">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="box-header with-border">
+                <i class="fa fa-tags"></i>
+
+                <h3 class="box-title">Supprimer le tarif</h3>
+                <!-- tools box -->
+                <div class="pull-right box-tools">
+                    <button type="button" class="btn btn-primary btn-sm" data-widget="remove" data-toggle="tooltip" title="Fermer" data-dismiss="modal">
+                        <i class="fa fa-times"></i></button>
+                </div>
+                <!-- /. tools -->
+            </div>
+
+            <div class="modal-body form-horizontal">
+                <p>Etes vous sur de vouloir supprimer le tarif ?</p>
+            </div>
+
+            <div class="modal-footer box-footer last-row">
+                <button type="button" class="btn btn-default pull-left" data-widget="remove" data-toggle="tooltip" title="Fermer" data-dismiss="modal"><i class="fa fa-ban"></i> Annuler</button>
+                <button (click)="delete()" type="button" class="btn btn-primary pull-right" data-dismiss="modal" ><i class="glyphicon glyphicon-trash"></i> Supprimer</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="msg" class="alert alert-success alert-dismissible">
+    <a href="#/admin/events/home" (click)="closeAlert()" class="close">&times;</a>
+    <strong>Tarif supprimé avec succes !</strong>.
+</div>
+<div class="table-responsive">
+    <button (click)="newEventPricesCategory()" type="button" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-plus"></i> Ajouter un nouveau tarif</button>
+    <table class="table table-condensed">
+        <thead>
+        <tr>
+            <th>Nom</th>
+            <th>Nombre d'utilisation</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let eventPricesCategory of eventPricesCategories" >
+            <td>{{eventPricesCategory.name}}</td>
+            <td>{{eventPricesCategory.usageCount}}</td>
+            <td>
+                <button (click)="updateEventPricesCategory(eventPricesCategory.idEventPricesCategories)" type="button" class="btn btn-warning btn-circle">
+                    <i class="glyphicon glyphicon-edit"></i>Editer
+                </button>
+                <button (click)="deleteEventPricesCategory(eventPricesCategory.idEventPricesCategories)" data-toggle="modal" data-target="#deleteEventPricesCategoriesModal"
+                        data-backdrop="false" type="button" class="btn btn-danger btn-circle">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

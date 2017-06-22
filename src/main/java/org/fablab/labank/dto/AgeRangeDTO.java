@@ -5,6 +5,7 @@ import javax.validation.constraints.NotNull;
 
 /**
  * Created by Kandel on 24/05/2017.
+ * Classe DTO permettant de gerer les informations relatives aux AgeRange.
  */
 @Entity
 @Table(name="agerange")

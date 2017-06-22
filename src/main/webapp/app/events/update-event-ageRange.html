@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <label for="name">Nom </label>
                             <div >
-                                <input id="name" name="name" type="text" placeholder="Nom du type"
+                                <input id="name" name="name" type="text" placeholder="Nom de la tranche d'age"
                                        class="form-control" required [(ngModel)]="ageRange.name" #name="ngModel" >
                             </div>
                             <div *ngIf="name.control.dirty && name.control.hasError('required')">Le nom de la tranche d'age doit etre renseigné</div>

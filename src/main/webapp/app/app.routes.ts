@@ -32,7 +32,9 @@ import {UpdateEventThemeComponent} from "./events/update-event-theme.component";
 import {AdminEventsAgeRangesComponent} from "./events/admin-events-ageRanges.component";
 import {AddEventAgeRangeComponent} from "./events/add-event-ageRange.component";
 import {UpdateEventAgeRangeComponent} from "./events/update-event-ageRange.component";
-import {AdminEventsPricesComponent} from './events/admin-events-prices.component';
+import {AdminEventsPricesCategoriesComponent} from './events/admin-events-pricesCategories.component';
+import {AddEventPricesCategoriesComponent} from './events/add-event-pricesCategories.component';
+import {UpdateEventPricesCategoriesComponent} from './events/update-event-pricesCategories.component';
 import {AdminEventsComponent} from './events/admin-events.component';
 import {AddEventComponent} from './events/add-event.component';
 import {UpdateEventComponent} from './events/update-event.component';
@@ -109,7 +111,9 @@ export const routes:Routes = [
     {path: 'admin/events/ageRanges', component: AdminEventsAgeRangesComponent},
     {path: 'admin/events/ageRanges/new', component: AddEventAgeRangeComponent},
     {path: 'admin/events/ageRanges/:id', component: UpdateEventAgeRangeComponent},
-    {path: 'admin/events/prices', component: AdminEventsPricesComponent},
+    {path: 'admin/events/prices', component: AdminEventsPricesCategoriesComponent},
+    {path: 'admin/events/prices/new', component: AddEventPricesCategoriesComponent},
+    {path: 'admin/events/prices/:id', component: UpdateEventPricesCategoriesComponent},
 
     {path: 'trainings', component: TrainingsComponent},
     {path: 'trainings/:id', component: TrainingComponent},
