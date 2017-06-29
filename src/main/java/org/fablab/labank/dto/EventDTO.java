@@ -3,6 +3,7 @@ package org.fablab.labank.dto;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by kprim on 02/03/2017.
@@ -81,10 +82,6 @@ public class EventDTO {
     @Column(name="standardprice")
     private float standardPrice;
 
-    // Fare reduction
-    @Column(name="reducedfare")
-    private float reducedFare;
-
     // Tickets numbers for this event
     @Column(name = "nbtickets")
     private int nbTickets;
@@ -114,6 +111,10 @@ public class EventDTO {
     @Column(name = "idagerange")
     private Long idAgeRange;
 
+    // List of special rates
+    @OneToMany(mappedBy = "event")
+    private List<EventPricesCategoriesDTO> eventPricesCategories;
+
     // ------------------------
     // PUBLIC METHODS
     // ------------------------
@@ -134,7 +135,6 @@ public class EventDTO {
         this.idRecurrence = event.idRecurrence;
         this.endRecurrence = event.endRecurrence;
         this.standardPrice = event.standardPrice;
-        this.reducedFare = event.reducedFare;
         this.nbTickets = event.nbTickets;
         this.availableTickets = event.availableTickets;
         this.facebookShare = event.facebookShare;
@@ -146,7 +146,7 @@ public class EventDTO {
 
     public EventDTO(long idEvent, String title, String illustration, String description, long idEventType, boolean allDay,
                     Date startDate, Date endDate, Date startAt, Date endAt, long idRecurrence, Date endRecurrence,
-                    float standardPrice, float reducedFare, int nbTickets, int availableTickets, int facebookShare,
+                    float standardPrice, int nbTickets, int availableTickets, int facebookShare,
                     int twitterShare, int likes, Long idEventTheme, Long idAgeRange) {
         this.idEvent = idEvent;
         this.title = title;
@@ -161,7 +161,6 @@ public class EventDTO {
         this.idRecurrence = idRecurrence;
         this.endRecurrence =  endRecurrence;
         this.standardPrice = standardPrice;
-        this.reducedFare =  reducedFare;
         this.nbTickets = nbTickets;
         this.availableTickets = availableTickets;
         this.facebookShare = facebookShare;
@@ -278,14 +277,6 @@ public class EventDTO {
         this.standardPrice = standardPrice;
     }
 
-    public float getReducedFare() {
-        return reducedFare;
-    }
-
-    public void setReducedFare(float reducedFare) {
-        this.reducedFare = reducedFare;
-    }
-
     public int getNbTickets() {
         return nbTickets;
     }
@@ -340,5 +331,13 @@ public class EventDTO {
 
     public void setIdAgeRange(Long idAgeRange) {
         this.idAgeRange = idAgeRange;
+    }
+
+    public List<EventPricesCategoriesDTO> getEventPricesCategories() {
+        return eventPricesCategories;
+    }
+
+    public void setEventPricesCategories(List<EventPricesCategoriesDTO> eventPricesCategories) {
+        this.eventPricesCategories = eventPricesCategories;
     }
 }

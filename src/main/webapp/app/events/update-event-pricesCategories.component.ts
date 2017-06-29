@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 import {EventsService} from "./events.service";
 import {Location} from "@angular/common";
 import {Router, ActivatedRoute, Params} from "@angular/router";
-import {CEventPricesCategories} from "./CEventPricesCategories";
+import {CPricesCategories} from "./CPricesCategories";
 /**
  * Created by Kandel on 22/06/2017.
  */
@@ -12,23 +12,23 @@ import {CEventPricesCategories} from "./CEventPricesCategories";
     providers: [EventsService]
 })
 export class UpdateEventPricesCategoriesComponent{
-    eventPricesCategory= new CEventPricesCategories();
-    eventPricesCategories = new Array<CEventPricesCategories>();
+    pricesCategory= new CPricesCategories();
+    pricesCategories = new Array<CPricesCategories>();
 
     constructor(private router:Router, private route:ActivatedRoute, private location:Location,
                 private eventsService:EventsService){
-        this.eventPricesCategories=[];
+        this.pricesCategories=[];
     }
 
     ngOnInit(){
-        this.route.params.switchMap((params: Params) => this.eventsService.getEventPricesCategory(+params['id']))
-            .subscribe( (eventPricesCategory: CEventPricesCategories) => this.eventPricesCategory = eventPricesCategory );
+        this.route.params.switchMap((params: Params) => this.eventsService.getPricesCategory(+params['id']))
+            .subscribe( (pricesCategory: CPricesCategories) => this.pricesCategory = pricesCategory );
     }
 
-    updateEventPricesCategory(){
-        this.eventsService.updateEventPricesCategory(this.eventPricesCategory).subscribe((eventPricesCategory:CEventPricesCategories) => {
-            this.eventPricesCategory = eventPricesCategory;
-            this.eventsService.getAllEventPricesCategories().subscribe( (eventPricesCategories:Array<CEventPricesCategories>) => this.eventPricesCategories = eventPricesCategories );
+    updatePricesCategory(){
+        this.eventsService.updatePricesCategory(this.pricesCategory).subscribe((pricesCategory:CPricesCategories) => {
+            this.pricesCategory = pricesCategory;
+            this.eventsService.getAllPricesCategories().subscribe( (pricesCategories:Array<CPricesCategories>) => this.pricesCategories = pricesCategories );
             this.router.navigate(['/admin/events/home']);
         });
     }

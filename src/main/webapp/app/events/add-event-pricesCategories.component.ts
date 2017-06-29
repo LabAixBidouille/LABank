@@ -2,7 +2,7 @@ import {Component} from "@angular/core";
 import {EventsService} from "./events.service";
 import {Router} from "@angular/router";
 import {FormGroup, FormBuilder, Validators} from "@angular/forms";
-import {CEventPricesCategories} from "./CEventPricesCategories";
+import {CPricesCategories} from "./CPricesCategories";
 import {Location} from "@angular/common";
 /**
  * Created by Kandel on 22/06/2017.
@@ -14,27 +14,27 @@ import {Location} from "@angular/common";
 })
 export class AddEventPricesCategoriesComponent{
     router: Router;
-    eventPricesCategoriesForm:FormGroup;
+    pricesCategoriesForm:FormGroup;
 
-    eventPricesCategory:CEventPricesCategories;
+    pricesCategory:CPricesCategories;
 
     constructor(router:Router,form: FormBuilder, private eventsService:EventsService, private location:Location){
-        this.eventPricesCategory = new CEventPricesCategories();
+        this.pricesCategory = new CPricesCategories();
 
         this.router = router;
-        this.eventPricesCategoriesForm = form.group({
+        this.pricesCategoriesForm = form.group({
             name: ['', Validators.required],
             description: ['', Validators.required]});
     }
 
-    addEventPricesCategories(){
-        this.eventPricesCategory = new CEventPricesCategories();
-        this.eventPricesCategory.name = this.eventPricesCategoriesForm.value.name;
-        this.eventPricesCategory.description = this.eventPricesCategoriesForm.value.description;
-        this.eventPricesCategory.usageCount = 0;
+    addPricesCategories(){
+        this.pricesCategory = new CPricesCategories();
+        this.pricesCategory.name = this.pricesCategoriesForm.value.name;
+        this.pricesCategory.description = this.pricesCategoriesForm.value.description;
+        this.pricesCategory.usageCount = 0;
 
-        this.eventsService.saveEventPricesCategory(this.eventPricesCategory).subscribe((eventPricesCategory:CEventPricesCategories) => {
-            this.eventPricesCategory = eventPricesCategory;
+        this.eventsService.savePricesCategory(this.pricesCategory).subscribe((pricesCategory:CPricesCategories) => {
+            this.pricesCategory = pricesCategory;
             this.router.navigate(['admin/events/home']);
         });
     }

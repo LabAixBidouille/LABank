@@ -40,6 +40,7 @@ import {AddEventComponent} from './events/add-event.component';
 import {UpdateEventComponent} from './events/update-event.component';
 import {EventThemesComponent} from './events/event-themes.component';
 import {EventAgeRangesComponent} from "./events/event-ageRanges.component";
+import {EventPricesCategoriesComponent} from "./events/event-pricesCategories.component";
 
 import {Machines} from "./machines/machines";
 import {Machine} from "./machines/machine";
@@ -98,6 +99,7 @@ export const routes:Routes = [
     {path: 'event-recurrences', component: EventRecurrencesComponent},
     {path: 'event-themes', component: EventThemesComponent},
     {path: 'event-ageRanges', component: EventAgeRangesComponent},
+    {path: 'event-pricesCategories', component: EventPricesCategoriesComponent},
     {path: 'admin/events/home', component: AdminEventsHomeComponent},
     {path: 'admin/events', component: AdminEventsComponent},
     {path: 'admin/events/new', component: AddEventComponent},

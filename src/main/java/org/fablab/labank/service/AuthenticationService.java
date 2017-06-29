@@ -34,7 +34,7 @@ public class AuthenticationService {
     public static final String CSRF_CLAIM_HEADER = "X-HMAC-CSRF";
     public static final String JWT_CLAIM_LOGIN = "login";
 
-    @Autowired
+     @Autowired
     private AuthenticationManager authenticationManager;
 
     @Autowired

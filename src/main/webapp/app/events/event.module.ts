@@ -34,6 +34,7 @@ import {EventThemesComponent} from "./event-themes.component";
 import {EventAgeRangesComponent} from "./event-ageRanges.component";
 import {AddEventPricesCategoriesComponent} from "./add-event-pricesCategories.component";
 import {UpdateEventPricesCategoriesComponent} from "./update-event-pricesCategories.component";
+import {EventPricesCategoriesComponent} from './event-pricesCategories.component';
 
 @NgModule({
     imports: [ FormsModule, ReactiveFormsModule, BrowserModule, UtilsModule, AlertModule.forRoot(),
@@ -44,7 +45,7 @@ import {UpdateEventPricesCategoriesComponent} from "./update-event-pricesCategor
         AdminEventsAgeRangesComponent, AddEventAgeRangeComponent, UpdateEventAgeRangeComponent, AdminEventsTypesComponent,
         AddEventTypeComponent, UpdateEventTypeComponent, AdminEventsThemesComponent, AddEventThemeComponent,
         UpdateEventThemeComponent, EventThemesComponent, EventAgeRangesComponent, AddEventPricesCategoriesComponent,
-        UpdateEventPricesCategoriesComponent],
+        UpdateEventPricesCategoriesComponent, EventPricesCategoriesComponent],
     providers: [ EventsService ]
 })
 

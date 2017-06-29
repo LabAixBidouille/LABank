@@ -1,5 +1,5 @@
 import {Component} from "@angular/core";
-import {CEventPricesCategories} from "./CEventPricesCategories";
+import {CPricesCategories} from "./CPricesCategories";
 import {Router} from "@angular/router";
 import {EventsService} from "./events.service";
 /**
@@ -10,37 +10,37 @@ import {EventsService} from "./events.service";
     templateUrl: './app/events/admin-events-pricesCategories.html'
 })
 export class AdminEventsPricesCategoriesComponent{
-    eventPricesCategoryToDelete: CEventPricesCategories;
-    eventPricesCategories: Array<CEventPricesCategories>;
+    pricesCategoryToDelete: CPricesCategories;
+    pricesCategories: Array<CPricesCategories>;
 
     msg:boolean;
 
     constructor(private router:Router, private eventsService:EventsService){
-        this.eventPricesCategories = [];
-        this.eventPricesCategoryToDelete = new CEventPricesCategories();
+        this.pricesCategories = [];
+        this.pricesCategoryToDelete = new CPricesCategories();
         this.msg=false;
-        this.eventsService.getAllEventPricesCategories().subscribe((eventPricesCategories:Array<CEventPricesCategories>)=> {
-            this.eventPricesCategories = eventPricesCategories;
-            console.log(eventPricesCategories[0].name);
+        this.eventsService.getAllPricesCategories().subscribe((pricesCategories:Array<CPricesCategories>)=> {
+            this.pricesCategories = pricesCategories;
+            console.log(pricesCategories[0].name);
         });
     }
 
-    newEventPricesCategory(){
+    newPricesCategory(){
         this.router.navigate(['admin/events/prices/new']);
     }
 
-    updateEventPricesCategory(id:number){
+    updatePricesCategory(id:number){
         this.router.navigate(['admin/events/prices/', id]);
     }
 
-    deleteEventPricesCategory(id:number){
-        this.eventsService.getEventPricesCategory(id).subscribe( (eventPricesCategory:CEventPricesCategories) => this.eventPricesCategoryToDelete = eventPricesCategory );
+    deletePricesCategory(id:number){
+        this.eventsService.getPricesCategory(id).subscribe( (pricesCategory:CPricesCategories) => this.pricesCategoryToDelete = pricesCategory );
     }
 
     delete(){
-        this.eventsService.deleteEventPricesCategory(this.eventPricesCategoryToDelete.idEventPricesCategories).subscribe( (msg:boolean) => {
+        this.eventsService.deletePricesCategory(this.pricesCategoryToDelete.idPricesCategories).subscribe( (msg:boolean) => {
             this.msg = msg;
-            this.eventsService.getAllEventPricesCategories().subscribe( (eventPricesCategories:Array<CEventPricesCategories>) => this.eventPricesCategories = eventPricesCategories );
+            this.eventsService.getAllPricesCategories().subscribe( (pricesCategories:Array<CPricesCategories>) => this.pricesCategories = pricesCategories );
             this.router.navigate(['admin/events/home']);
         } );
     }

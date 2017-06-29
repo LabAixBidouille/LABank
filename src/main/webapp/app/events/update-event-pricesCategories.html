@@ -25,14 +25,14 @@
 
             <!-- Box body -->
             <div class="box-body">
-                <form  #eventPricesCategoriesForm="ngForm" (ngSubmit)="updateEventPricesCategory()" >
+                <form  #pricesCategoriesForm="ngForm" (ngSubmit)="updatePricesCategory()" >
                     <fieldset>
                         <!-- Name -->
                         <div class="form-group">
                             <label for="name">Nom </label>
                             <div >
                                 <input id="name" name="name" type="text" placeholder="Nom du tarif"
-                                       class="form-control" required [(ngModel)]="eventPricesCategory.name" #name="ngModel" >
+                                       class="form-control" required [(ngModel)]="pricesCategory.name" #name="ngModel" >
                             </div>
                             <div *ngIf="name.control.dirty && name.control.hasError('required')">Le nom du tarif doit etre renseigné</div>
                         </div>
@@ -43,7 +43,7 @@
                             <div >
                                 <textarea id="description" name="description" placeholder="Description du tarif"
                                           class="form-control" rows="5" required
-                                          [(ngModel)]="eventPricesCategory.description" #description="ngModel"></textarea>
+                                          [(ngModel)]="pricesCategory.description" #description="ngModel"></textarea>
                             </div>
                         </div>
 
@@ -51,7 +51,7 @@
                         <div class="form-group">
                             <div class="col-md-12 text-right">
                                 <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
-                                <button [disabled]="!eventPricesCategoriesForm.valid" type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+                                <button [disabled]="!pricesCategoriesForm.valid" type="submit" class="btn btn-primary">Enregistrer les modifications</button>
                             </div>
                         </div>
                     </fieldset>

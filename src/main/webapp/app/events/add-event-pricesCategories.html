@@ -27,43 +27,43 @@
 
             <!-- Box body -->
             <div class="box-body">
-                <form [formGroup]="eventPricesCategoriesForm" (ngSubmit)="addEventPricesCategories()" >
+                <form [formGroup]="pricesCategoriesForm" (ngSubmit)="addPricesCategories()" >
                     <fieldset>
                         <!-- Name -->
                         <div class="form-group"
-                             [ngClass]="{'has-error':!eventPricesCategoriesForm.controls['name'].valid && eventPricesCategoriesForm.controls['name'].touched}">
+                             [ngClass]="{'has-error':!pricesCategoriesForm.controls['name'].valid && pricesCategoriesForm.controls['name'].touched}">
                             <label for="name">Nom* </label>
                             <div >
                                 <input id="name" name="name" type="text" placeholder="Nom du tarif"
-                                       class="form-control" required [formControl]="eventPricesCategoriesForm.controls['name']">
+                                       class="form-control" required [formControl]="pricesCategoriesForm.controls['name']">
                             </div>
                             <!--Errors Msg-->
-                            <div *ngIf="eventPricesCategoriesForm.controls['name'].hasError('required') &&
-                                  eventPricesCategoriesForm.controls['name'].touched" class="alert alert-danger">
+                            <div *ngIf="pricesCategoriesForm.controls['name'].hasError('required') &&
+                                  pricesCategoriesForm.controls['name'].touched" class="alert alert-danger">
                                 Le nom du tarif doit etre renseigné.
                             </div>
                             <!--/.Errors Msg-->
                         </div>
 
                         <div class="form-group"
-                             [ngClass]="{'has-error':!eventPricesCategoriesForm.controls['description'].valid &&
-                             eventPricesCategoriesForm.controls['description'].touched}">
+                             [ngClass]="{'has-error':!pricesCategoriesForm.controls['description'].valid &&
+                             pricesCategoriesForm.controls['description'].touched}">
                             <label for="description">Description*</label>
                             <div >
                                 <textarea id="description" name="description" placeholder="Veuillez indiiquer sous quelles conditions ce tarif est applicable" class="form-control" rows="5" required
-                                          [formControl]="eventPricesCategoriesForm.controls['description']"></textarea>
+                                          [formControl]="pricesCategoriesForm.controls['description']"></textarea>
                             </div>
                             <!-- Errors Msg-->
-                            <div *ngIf="eventPricesCategoriesForm.controls['description'].hasError('required') &&
-                                  eventPricesCategoriesForm.controls['description'].touched" class="alert alert-danger">
+                            <div *ngIf="pricesCategoriesForm.controls['description'].hasError('required') &&
+                                  pricesCategoriesForm.controls['description'].touched" class="alert alert-danger">
                                 La description du tarif doit etre renseignée.
                             </div>
-                            <div *ngIf="eventPricesCategoriesForm.controls['description'].hasError('minlength') &&
-                                  eventPricesCategoriesForm.controls['description'].touched" class="alert alert-danger">
+                            <div *ngIf="pricesCategoriesForm.controls['description'].hasError('minlength') &&
+                                  pricesCategoriesForm.controls['description'].touched" class="alert alert-danger">
                                 La description du tarif doit contenir 5 caracteres minimum.
                             </div>
-                            <div *ngIf="eventPricesCategoriesForm.controls['description'].hasError('maxlength') &&
-                                  eventPricesCategoriesForm.controls['description'].touched" class="alert alert-danger">
+                            <div *ngIf="pricesCategoriesForm.controls['description'].hasError('maxlength') &&
+                                  pricesCategoriesForm.controls['description'].touched" class="alert alert-danger">
                                 La description du tarif doit contenir 180 caracteres maximum.
                             </div>
                             <!--/. Errors Msg-->
@@ -73,7 +73,7 @@
                         <div class="form-group">
                             <div class="col-md-12 text-right">
                                 <button (click)="goBack()" type="button" class="btn btn-danger"  title="Annuler"><i class="fa fa-ban"></i> Annuler</button>
-                                <button [disabled]="!eventPricesCategoriesForm.valid" type="submit" class="btn btn-primary">Enregistrer le tarif</button>
+                                <button [disabled]="!pricesCategoriesForm.valid" type="submit" class="btn btn-primary">Enregistrer le tarif</button>
                             </div>
                         </div>
                     </fieldset>

@@ -1,7 +1,7 @@
 /**
  * Created by Kandel HANAFI on 15/03/17.
  */
-import {Component} from '@angular/core';
+import {Component, ViewChild, ViewContainerRef, ComponentFactoryResolver} from '@angular/core';
 import {Router} from '@angular/router';
 import {FormBuilder, Validators, FormGroup} from '@angular/forms';
 
@@ -13,6 +13,8 @@ import {IEventType} from "./IEventType";
 import {CRecurrence} from "./CRecurrence";
 import {CEventTheme} from "./CEventTheme";
 import {CAgeRange} from "./CAgeRange";
+import {EventPricesCategoriesComponent} from "./event-pricesCategories.component";
+import {CPricesCategories} from "./CPricesCategories";
 
 @Component({
     selector: 'add-event',
@@ -31,19 +33,22 @@ export class AddEventComponent{
     recurrence: CRecurrence;
     theme:CEventTheme;
     ageRange:CAgeRange;
+    pricesCategories:Array<CPricesCategories>;
 
     illustration:string;
     error:string;
     display:string;
-    test:string;
 
-    constructor(router:Router,form: FormBuilder, private eventService:EventsService, private location:Location){
+    @ViewChild("pricesCategoriesContainer", { read: ViewContainerRef }) container;
+
+    constructor(router:Router,form: FormBuilder, private eventService:EventsService,
+                private location:Location, private resolver: ComponentFactoryResolver){
         this.event = new IEvent();
         this.eventType = new IEventType();
         this.recurrence = new CRecurrence();
         this.theme = new CEventTheme();
         this.ageRange = new CAgeRange();
-        this.test="";
+        this.pricesCategories = [];
 
         this.router = router;
         this.eventForm = form.group({
@@ -114,6 +119,18 @@ export class AddEventComponent{
 
     getAgeRange(ageRange:CAgeRange){
         this.ageRange = ageRange;
+    }
+
+    addPricesCategories(){
+        let factory= this.resolver.resolveComponentFactory(EventPricesCategoriesComponent);
+        let componentRef = this.container.createComponent(factory);
+
+        componentRef.instance.pricesCategorySelected.subscribe( (pricesCategory:CPricesCategories)=>{
+            if(pricesCategory){
+                pricesCategory.usageCount= pricesCategory.usageCount + 1;
+                this.pricesCategories.push(pricesCategory);
+            }
+        });
     }
 
     goBack(): void {

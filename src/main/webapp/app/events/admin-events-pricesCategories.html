@@ -1,5 +1,5 @@
-<!--Modal Delete EventPricesCategories-->
-<div id="deleteEventPricesCategoriesModal" class="modal fade" >
+<!--Modal Delete PricesCategories-->
+<div id="deletePricesCategoriesModal" class="modal fade" >
     <div class="login-box modal-dialog modal-sm box box-primary">
         <!-- Modal content-->
         <div class="modal-content">
@@ -34,7 +34,7 @@
     <strong>Tarif supprimé avec succes !</strong>.
 </div>
 <div class="table-responsive">
-    <button (click)="newEventPricesCategory()" type="button" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-plus"></i> Ajouter un nouveau tarif</button>
+    <button (click)="newPricesCategory()" type="button" class="btn btn-primary btn-circle"><i class="glyphicon glyphicon-plus"></i> Ajouter un nouveau tarif</button>
     <table class="table table-condensed">
         <thead>
         <tr>
@@ -44,14 +44,14 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let eventPricesCategory of eventPricesCategories" >
-            <td>{{eventPricesCategory.name}}</td>
-            <td>{{eventPricesCategory.usageCount}}</td>
+        <tr *ngFor="let pricesCategory of pricesCategories" >
+            <td>{{pricesCategory.name}}</td>
+            <td>{{pricesCategory.usageCount}}</td>
             <td>
-                <button (click)="updateEventPricesCategory(eventPricesCategory.idEventPricesCategories)" type="button" class="btn btn-warning btn-circle">
+                <button (click)="updatePricesCategory(pricesCategory.idPricesCategories)" type="button" class="btn btn-warning btn-circle">
                     <i class="glyphicon glyphicon-edit"></i>Editer
                 </button>
-                <button (click)="deleteEventPricesCategory(eventPricesCategory.idEventPricesCategories)" data-toggle="modal" data-target="#deleteEventPricesCategoriesModal"
+                <button (click)="deletePricesCategory(pricesCategory.idPricesCategories)" data-toggle="modal" data-target="#deletePricesCategoriesModal"
                         data-backdrop="false" type="button" class="btn btn-danger btn-circle">
                     <i class="glyphicon glyphicon-trash"></i>
                 </button>
