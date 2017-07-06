@@ -14,8 +14,12 @@ export class EventPricesCategoriesComponent{
     pricesCategories:Array<CPricesCategories>;
     @Input()
     pricesCategory = new CPricesCategories();
+    @Input()
+    price:number;
     @Output()
     pricesCategorySelected = new EventEmitter<CPricesCategories>();
+    @Output()
+    priceSelected = new EventEmitter<number>();
     show=true;
     noDelete=false;
 
@@ -27,9 +31,8 @@ export class EventPricesCategoriesComponent{
     }
 
     validate(){
-
-        console.log(this.pricesCategory.name);
         this.pricesCategorySelected.emit(this.pricesCategory);
+        this.priceSelected.emit(this.price);
         this.noDelete = true;
     }
 

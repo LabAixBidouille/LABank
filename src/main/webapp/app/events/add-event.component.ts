@@ -15,6 +15,7 @@ import {CEventTheme} from "./CEventTheme";
 import {CAgeRange} from "./CAgeRange";
 import {EventPricesCategoriesComponent} from "./event-pricesCategories.component";
 import {CPricesCategories} from "./CPricesCategories";
+import {CEventPricesCategories} from "./CEventPricesCategories";
 
 @Component({
     selector: 'add-event',
@@ -33,7 +34,7 @@ export class AddEventComponent{
     recurrence: CRecurrence;
     theme:CEventTheme;
     ageRange:CAgeRange;
-    pricesCategories:Array<CPricesCategories>;
+    eventPricesCategories:Array<CEventPricesCategories>;
 
     illustration:string;
     error:string;
@@ -48,7 +49,7 @@ export class AddEventComponent{
         this.recurrence = new CRecurrence();
         this.theme = new CEventTheme();
         this.ageRange = new CAgeRange();
-        this.pricesCategories = [];
+        this.eventPricesCategories = [];
 
         this.router = router;
         this.eventForm = form.group({
@@ -61,9 +62,8 @@ export class AddEventComponent{
             startAt :"",
             endAt : "",
             endRecurrence : "",
-            standardPrice : "",
-            reducedFare : "",
-            nbTickets : ""
+            standardPrice : ['', Validators.required],
+            nbTickets : ['', Validators.required]
         });
     }
 
@@ -93,6 +93,8 @@ export class AddEventComponent{
 
         this.event.idEventTheme = this.theme.idEventTheme;
         this.event.idAgeRange = this.ageRange.idAgeRange;
+
+        this.event.eventPricesCategories = this.eventPricesCategories;
 
         this.eventService.saveEvent(this.event).subscribe((event:IEvent) => {
             this.event = event
@@ -124,13 +126,25 @@ export class AddEventComponent{
     addPricesCategories(){
         let factory= this.resolver.resolveComponentFactory(EventPricesCategoriesComponent);
         let componentRef = this.container.createComponent(factory);
-
+        let eventPricesCategory = new CEventPricesCategories();
         componentRef.instance.pricesCategorySelected.subscribe( (pricesCategory:CPricesCategories)=>{
             if(pricesCategory){
+
+                // Incrementation du nombre d'utilisation de la categorie de prix
                 pricesCategory.usageCount= pricesCategory.usageCount + 1;
-                this.pricesCategories.push(pricesCategory);
+
+                eventPricesCategory.pricesCat=pricesCategory;
+                eventPricesCategory.event = this.event;
+            }
+
+        });
+        componentRef.instance.priceSelected.subscribe((price:number)=>{
+            if(price){
+                eventPricesCategory.price = price;
+                this.eventPricesCategories.push(eventPricesCategory);
             }
         });
+
     }
 
     goBack(): void {

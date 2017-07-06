@@ -83,4 +83,12 @@ public class PricesCategoriesDTO {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public List<EventPricesCategoriesDTO> getEventPricesCategories() {
+        return eventPricesCategories;
+    }
+
+    public void setEventPricesCategories(List<EventPricesCategoriesDTO> eventPricesCategories) {
+        this.eventPricesCategories = eventPricesCategories;
+    }
 }

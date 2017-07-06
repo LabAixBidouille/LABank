@@ -112,7 +112,7 @@ public class EventDTO {
     private Long idAgeRange;
 
     // List of special rates
-    @OneToMany(mappedBy = "event")
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<EventPricesCategoriesDTO> eventPricesCategories;
 
     // ------------------------

@@ -1,4 +1,4 @@
-import {CEventPricesCategories} from "./CPricesCategories";
+import {CEventPricesCategories} from "./CEventPricesCategories";
 /**
  * Created by kprim on 02/03/2017.
  */

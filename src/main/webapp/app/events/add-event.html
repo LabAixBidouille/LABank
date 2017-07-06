@@ -91,7 +91,7 @@
                         <!-- AllDay -->
                         <div class="form-group"
                              [ngClass]="{'has-error':!eventForm.controls['allDay'].valid && eventForm.controls['allDay'].touched}">
-                            <label>Tous les jours*</label>
+                            <label>Toute la journée*</label>
                             <div>
                                 <label class="radio-inline">
                                     <input type="radio" name="allDay" value="true"
@@ -99,7 +99,7 @@
                                     Oui
                                 </label>
                                 <label class="radio-inline">
-                                    <input #noAllday type="radio" name="allDay" value="false" (change)="displayHour(noAllday.value)"
+                                    <input #noAllday type="radio" name="allDay" value="false"
                                            [formControl]="eventForm.controls['allDay']">
                                     Non
                                 </label>
@@ -147,7 +147,7 @@
                         <div class="form-group">
                             <label for="stdPrice">Prix standard</label>
                             <div class="input-group" >
-                                <input id="stdPrice" name="standardPrice" type="number" min="0"
+                                <input required id="stdPrice" name="standardPrice" type="number" min="0"
                                        class="form-control" [formControl]="eventForm.controls['standardPrice']">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-euro"></i></span>
                             </div>
@@ -175,7 +175,7 @@
                         <div class="form-group">
                             <label for="nbTickets">Nombre de tickets</label>
                             <div class="input-group" >
-                                <input id="nbTickets" name="nbTickets" type="number" min="0"
+                                <input required id="nbTickets" name="nbTickets" type="number" min="0"
                                        class="form-control" [formControl]="eventForm.controls['nbTickets']">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
                             </div>
