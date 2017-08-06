@@ -75,6 +75,7 @@ import {SpaceComponent} from "./spaces/space.component";
 import {AdminSpacesComponent} from './spaces/admin-spaces.component';
 import {AddSpaceComponent} from './spaces/add-space.component';
 import {UpdateSpaceComponent} from './spaces/update-space.component';
+import {LabankAgenda} from "./calendar/labankAgenda.component";
 
 
 export const routes:Routes = [
@@ -116,6 +117,8 @@ export const routes:Routes = [
     {path: 'admin/events/prices', component: AdminEventsPricesCategoriesComponent},
     {path: 'admin/events/prices/new', component: AddEventPricesCategoriesComponent},
     {path: 'admin/events/prices/:id', component: UpdateEventPricesCategoriesComponent},
+
+    {path: 'calendar', component: LabankAgenda},
 
     {path: 'trainings', component: TrainingsComponent},
     {path: 'trainings/:id', component: TrainingComponent},

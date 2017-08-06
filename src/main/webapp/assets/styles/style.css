@@ -1,5 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);
 
+/* remove border on select2 component when focus */
+.select2-search__field:focus {
+    border: none !important;
+}
+
 html,
 body {
     height: 100%;
@@ -4116,7 +4121,7 @@ table.text-center th {
     background-color: #ffffff;
 }
 /*
- * Plugin: Full Calendar
+ * Plugin: Full LabankAgenda
  * ---------------------
  */
 .fc-button {

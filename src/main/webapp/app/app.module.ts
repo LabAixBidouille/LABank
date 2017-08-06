@@ -13,7 +13,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { Header } from './header/header';
 import { Sidebar } from './sidebar/sidebar';
 
 import { RoutesModule } from './app.routes';
@@ -27,17 +26,22 @@ import { SignUpModule } from "./signup/sign-up.module";
 import { TrainingModule } from "./training/training.module";
 import { EventModule } from "./events/event.module"
 
-import { DatepickerModule, TimepickerModule, AlertModule } from 'ng2-bootstrap';
+import { DatepickerModule, TimepickerModule, AlertModule } from 'ngx-bootstrap';
 import {ProjectModule} from "./projects/project.module";
 import {SpaceModule} from "./spaces/space.module";
 import {HeaderModule} from "./header/header.module";
+import {JQ_TOKEN} from "./utils/JQuery.service";
+import {CalendarModule} from "./calendar/Calendar.module";
+
+
+declare let jQuery: any;
 
 @NgModule({
     imports:        [ HttpModule, RouterModule, BrowserModule ,FormsModule, ReactiveFormsModule, AccountModule,
         LoginModule, UserModule, UtilsModule, RoutesModule, DashboardModule,MachineModule, TrainingModule, SignUpModule,
         EventModule, AlertModule.forRoot(), DatepickerModule.forRoot(), TimepickerModule.forRoot(), ProjectModule,
-        SpaceModule, HeaderModule],
-    declarations:   [ AppComponent, Sidebar ],
+        SpaceModule, HeaderModule,CalendarModule],
+    declarations:   [ AppComponent, Sidebar],
     bootstrap:      [ AppComponent ],
     providers:      [
         {provide: LocationStrategy, useClass: HashLocationStrategy},
@@ -48,6 +52,8 @@ import {HeaderModule} from "./header/header.module";
             },
             deps: [XHRBackend, RequestOptions, AccountEventsService],
             multi: false
-        }]
+        },
+        { provide: JQ_TOKEN, useValue: jQuery }
+    ]
 })
 export class AppModule { }
