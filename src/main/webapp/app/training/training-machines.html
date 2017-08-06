@@ -1,8 +1,8 @@
 <div class="form-group">
-    <label for="machines">Machines à associer</label>
+    <label for="machinesSelect">Machines à associer</label>
     <div >
         <select [(ngModel)]="machinesSelected" (change)="selectMachines()" class="form-control"
-                id="machines" multiple="multiple">
+                id="machinesSelect" multiple="multiple">
             <option *ngFor="let currentMachine of machines"  [ngValue]="currentMachine" >
                 {{currentMachine.name}}</option>
         </select>

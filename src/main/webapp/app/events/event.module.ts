@@ -29,7 +29,7 @@ import { EventType } from './eventtype';
 import { EventRecurrencesComponent } from './event-recurrences.component';
 import { EventTypesSelectComponent } from './event-types-select.component';
 
-import { DatepickerModule, AlertModule, TimepickerModule } from 'ng2-bootstrap';
+import { DatepickerModule, AlertModule, TimepickerModule } from 'ngx-bootstrap';
 import {EventThemesComponent} from "./event-themes.component";
 import {EventAgeRangesComponent} from "./event-ageRanges.component";
 import {AddEventPricesCategoriesComponent} from "./add-event-pricesCategories.component";
