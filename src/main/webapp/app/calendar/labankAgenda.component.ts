@@ -10,15 +10,20 @@ export class LabankAgenda implements OnInit {
     private idCalendar = '#calendar';
 
     calendarOptions: any = {
-        height: 'parent',
         fixedWeekCount : false,
         defaultDate: '2017-09-12',
         editable: true,
         eventLimit: true, // allow "more" link when too many events
         header: {
-            left:   'today prev,next',
+            left:   'prev,next today',
             center: 'title',
-            right:  'month basicWeek basicDay'
+            right:  'month,agendaWeek,agendaDay'
+        },
+        buttonText: {
+            today: 'today',
+            month: 'month',
+            week: 'week',
+            day: 'day'
         },
         events: []
     };
